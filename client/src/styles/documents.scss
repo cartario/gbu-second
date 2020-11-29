@@ -1,0 +1,15 @@
+.documents__list{
+  background: url('https://odesign.ru/wp-content/uploads/8812-r1.jpg') no-repeat;
+}
+
+.documents__item{
+  border-bottom: 1px solid grey;
+  border-top: 1px solid grey;
+  a {
+    display: block;
+    padding: 20px;
+    &:hover{
+      background: rgb(238, 238, 238);
+    }
+  }
+}

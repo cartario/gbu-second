@@ -11,3 +11,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  font-family: 'Roboto'
+}
+
+ *{
+   box-sizing: border-box;
+ }
+
+ ul{
+   margin: 0;
+   padding: 0;
+   list-style: none;
+ }
+
+.App {
+  text-align: center;
+}
+
+.container{
+  width: 90%;
+  margin: 0 auto;
+}
+
+@media(max-width: 415px){
+  .container{
+    width: 100%;
+  }
+}
+
+ @import './styles/navbar.scss';
+ @import './styles/anouncement.scss';
+ @import './styles/studios.scss';
+ @import './styles/about.scss';
+ @import './styles/documents.scss';
+ @import './styles/schedule.scss';

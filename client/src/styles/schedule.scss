@@ -1,0 +1,16 @@
+.schedule__list{
+  background: url('http://fm.artlab.club/uploads/images/00/03/30/2016/07/07/0u5081dca0-5a4b2a1a-4f28fbb5.jpg') no-repeat;
+}
+
+.schedule__item{
+  border-bottom: 1px solid grey;
+  border-top: 1px solid grey;
+  background: rgba(233, 233, 233, 0.7);
+  a {
+    display: block;
+    padding: 20px;
+    &:hover{
+      background: rgb(207, 207, 207);
+    }
+  }
+}
