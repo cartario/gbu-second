@@ -1,27 +1,17 @@
 import React from 'react';
-import cardUrl from '../data/card01.jpg';
 
-const cards = [
-  {
-    name: 'Break dance',
-    cardUrl,
-    price: 'бесплатно',
-  },
-];
-
-export default function () {
+export default function ({title, description, cardUrl, type, price}) {
   return (
     <article className="card">
       <div className="card__img">
-        <img src={cards[0].cardUrl} width="300" alt="cardImg" />
-        <p>{cards[0].name}</p>
+        <img src={cardUrl} width="300" alt="cardImg" />
+        <p>{title}</p>
       </div>
       <div className="card__text">
-        <p>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        <p className="card__description">
+          {description.substr(0, 200)}...
         </p>
-        <p className="card__price">{cards[0].price}</p>
+        <p className="card__price">{price === 'free'? "бесплатно": price}</p>
       </div>
     </article>
   );
