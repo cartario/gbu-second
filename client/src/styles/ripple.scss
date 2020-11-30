@@ -1,0 +1,50 @@
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  background-color: lightblue;
+  border: none;
+  outline: none;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 20px 40px;
+  min-width: 10vw;
+  font-size: 20px;
+  font-family: sans-serif;
+  color: black;
+}
+
+.ripple::after {
+  display: none;
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.3);
+  
+  width: 100px;
+  height: 100px;
+  margin-top: -50px;
+  margin-left: -50px;
+  
+  /* Center the ripple */
+  top: 50%;
+  left: 50%;
+
+  animation: ripple 1s;
+  opacity: 0;
+}
+.ripple:focus:not(:active)::after {
+  display: block;
+}
+
+@keyframes ripple {
+  from {
+    opacity: 1;
+    transform: scale(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(10);
+  }
+}

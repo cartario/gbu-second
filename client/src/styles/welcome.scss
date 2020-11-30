@@ -23,9 +23,15 @@ $btnColor: #8BC34A;
 .welcome{  
   width: 100%;
   min-height: 690px;  
+  margin-bottom: 50px;
   background: url('https://sun9-65.userapi.com/impf/c855236/v855236685/187175/_jmxEGoDqJk.jpg?size=2560x1920&quality=96&proxy=1&sign=710008b906f55e30f2d22105e1e073af') center center no-repeat;
   background-size: cover; 
   color: white; 
+  h1{
+    padding: 0 15px;
+    font-size: 40px;
+    text-transform: uppercase;
+  }
 }
 
 .btn{
@@ -47,7 +53,7 @@ $btnColor: #8BC34A;
   transform: rotate(-3deg);
 
   &:hover{
-    background: #689f38;    
+    background: #689f38;
   }
 }
 
@@ -64,5 +70,9 @@ $btnColor: #8BC34A;
 
   .btn{
     max-width: none;
+  }
+
+  .welcome h1{
+    font-size: 24px;
   }
 }

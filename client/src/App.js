@@ -6,6 +6,7 @@ import Studios from './pages/studios';
 import Schedule from './pages/schedule';
 import Documents from './pages/documents';
 import Contacts from './pages/contacts';
+import DetailPage from './pages/detail-page';
 
 function App() {
   return (
@@ -13,7 +14,10 @@ function App() {
       <Route path={['/','/gbu-dan']} exact component={Home}/>
       <Route path="/about" component={About}/>
       <Route path="/events" component={Events}/>
-      <Route path="/studios" component={Studios}/>
+      <Route path="/studios" exact component={Studios}/>
+      <Route path="/detail/:id">
+        <DetailPage />
+      </Route>
       <Route path="/schedule" component={Schedule}/>
       <Route path="/documents" component={Documents}/>
       <Route path="/contacts" component={Contacts}/>

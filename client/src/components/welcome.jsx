@@ -21,7 +21,7 @@ const WelcomeBlock = () => {
 
         <div className="row">
           <div className="col col-50">
-            <button onClick={handleClick} className="btn">Проверить расписание</button>
+            <button onClick={handleClick} className="btn">Проверить расписание</button>      
           </div>
         </div>
       </div>
