@@ -7,8 +7,11 @@ const Studios = () => {
     <>
       <Navbar />
       <div className="studios">
+      <div className="title-header">
+          <h2 className="title-top">Студии и секции</h2>
+          </div>
         <div className="container">
-          <h2>Студии и секции</h2>
+        
           <ul className="studios__list">
             <li className="studios__item">
               <Card />

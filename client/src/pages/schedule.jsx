@@ -11,31 +11,31 @@ import CCF_000028z from '../uploads/2020/06/sch06.docx';
 const schedules = [
   {
     title: 'Расписание на ноябрь 2020 (дистанционный режим)',
-    link: CCF_000090
+    link: CCF_000090,
   },
   {
     title: 'Расписание на октябрь 2020 (дистанционный режим)',
-    link: CCF_000062
+    link: CCF_000062,
   },
   {
     title: 'Расписание платных секций на 2020',
-    link: CCF_000058
+    link: CCF_000058,
   },
   {
     title: 'Расписание на сентябрь 2020',
-    link: CCF_000052
+    link: CCF_000052,
   },
   {
     title: 'Расписание на август 2020',
-    link: CCF_000027
+    link: CCF_000027,
   },
   {
     title: 'Расписание на июль 2020',
-    link: CCF_000027z
+    link: CCF_000027z,
   },
   {
     title: 'Расписание на июнь 2020',
-    link: CCF_000028z
+    link: CCF_000028z,
   },
 ];
 
@@ -43,13 +43,16 @@ const Schedule = () => {
   return (
     <div className="schedule">
       <Navbar />
-      <h1 className="schedule__title">Расписание</h1>
+      <div className="title-header">
+        <h1 className="title-top">Расписание</h1>
+      </div>
       <ul className="schedule__list">
-        {schedules&&schedules.map((doc) => (
-          <li key={doc.title} className="schedule__item">
-            <a  href={doc.link}>{doc.title}</a>            
-          </li>
-        ))}
+        {schedules &&
+          schedules.map((doc) => (
+            <li key={doc.title} className="schedule__item">
+              <a href={doc.link}>{doc.title}</a>
+            </li>
+          ))}
       </ul>
     </div>
   );

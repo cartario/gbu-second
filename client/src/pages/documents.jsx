@@ -38,7 +38,10 @@ const Documents = () => {
   return (
     <div className="documents">
       <Navbar />
-      <h1 className="documents__title">Документы.:</h1>
+      <div className="title-header">
+        <h1 className="title-top documents__title">Документы.:</h1>
+      </div>
+      
       <ul className="documents__list">
         {documents&&documents.map((doc) => (
           <li key={doc.title} className="documents__item">

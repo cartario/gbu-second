@@ -5,6 +5,16 @@ $marginGrid: 12px;
 
 $btnColor: #8BC34A;
 
+@keyframes change {
+  0% {
+    filter: hue-rotate(0deg);
+  } 100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+
+
 .overlay{ 
   display: flex;
   flex-direction: column;
@@ -31,14 +41,18 @@ $btnColor: #8BC34A;
   font-size: 19px;
   font-weight: bold;
   text-transform: uppercase;
-  border-radius: 15px;
+  border-radius: 15px 2px 15px 2px;
   background: $btnColor;
+  animation: change 20s linear infinite;
   color: white;
   border: none;
   outline: none;
+  box-shadow: 0px 0px 24px rgba(255, 255, 255, 43%);
+  transform: rotate(-3deg);
 
   &:hover{
     background: #689f38;
+    
   }
 }
 

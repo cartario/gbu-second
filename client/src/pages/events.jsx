@@ -5,7 +5,13 @@ const Events = () => {
   return (
     <>
       <Navbar />
-      <div className="events">EventsPage</div>
+      
+      <div className="events">
+        <div className="title-header">
+            <h2 className="title-top">Мероприятия</h2>
+            </div>
+      
+      </div>
     </>
   );
 };

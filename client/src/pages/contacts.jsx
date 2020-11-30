@@ -5,7 +5,10 @@ const Contacts = () => {
   return (
     <>
       <Navbar />
-      <div className="about">ContactsPage</div>
+      <div className="title-header">
+        <h1 className="title-top">Контакты</h1>
+      </div>
+      
     </>
   );
 };
