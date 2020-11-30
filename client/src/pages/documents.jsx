@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../components/navbar';
+import Header from '../components/header';
 import CCF_000026 from '../uploads/2020/08/CCF_000026.pdf';
 import CCF_000027z from '../uploads/2019/11/Антикоррупционная-политика.pdf';
 import CCF_000028z from '../uploads/2019/11/Кодекс-этики-сотрудников.pdf';
@@ -36,25 +37,24 @@ const documents = [
 
 const Documents = () => {
   return (
-    <div className="documents">
+    <>
       <Navbar />
-      <div className="title-header">
-        <h1 className="title-top documents__title">Документы.:</h1>
-      </div>
-      
-      <ul className="documents__list">
-        {documents&&documents.map((doc) => (
-          <li key={doc.title} className="documents__item">
-            <a  href={doc.link}>{doc.title}</a>
-          </li>
-        ))}
-      </ul>
-    </div>
+      <Header title="Документы" />
+      <main className="documents">
+        <ul className="documents__list">
+          {documents &&
+            documents.map((doc) => (
+              <li key={doc.title} className="documents__item">
+                <a href={doc.link}>{doc.title}</a>
+              </li>
+            ))}
+        </ul>
+      </main>
+    </>
   );
 };
 
 export default Documents;
-
 
 //         работы Положение о деятельности по организации досуговой работы Положение о защите
 //         персональных данных работников Положение о конфликте интересов Положение о предоставлении

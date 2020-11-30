@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../components/navbar';
 import Anouncement from '../components/anouncement';
 import WelcomeBlock from '../components/welcome';
+import Header from '../components/header';
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <div className="home">
         <Navbar />
         <WelcomeBlock />
+        <Header title="Анонс"/>
         <Anouncement/>
       </div>
     </>

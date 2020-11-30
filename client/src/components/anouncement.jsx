@@ -3,12 +3,8 @@ import posterImg from '../data/poster01.jpg';
 
 export default function() {
   return (
-    <section className="anouncement">
-       <div className="title-header">
-        <h1 className="title-top">Анонс</h1>
-       </div>
-      <div className="container">
-       
+    <section className="anouncement">       
+      <div className="container">       
         <div className="anouncement__bg">
           <p className="anouncement__place">Онлайн</p>
           <div className="anouncement__top">

@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../components/navbar';
+import Header from '../components/header';
 import CCF_000090 from '../uploads/2020/11/CCF_000090.pdf';
 import CCF_000062 from '../uploads/2020/10/CCF_000062.pdf';
 import CCF_000058 from '../uploads/2020/09/CCF_000058.pdf';
@@ -41,20 +42,20 @@ const schedules = [
 
 const Schedule = () => {
   return (
-    <div className="schedule">
+    <>
       <Navbar />
-      <div className="title-header">
-        <h1 className="title-top">Расписание</h1>
-      </div>
-      <ul className="schedule__list">
-        {schedules &&
-          schedules.map((doc) => (
-            <li key={doc.title} className="schedule__item">
-              <a href={doc.link}>{doc.title}</a>
-            </li>
-          ))}
-      </ul>
-    </div>
+      <Header title="Расписание" />
+      <main className="schedule">       
+        <ul className="schedule__list">
+          {schedules &&
+            schedules.map((doc) => (
+              <li key={doc.title} className="schedule__item">
+                <a href={doc.link}>{doc.title}</a>
+              </li>
+            ))}
+        </ul>
+      </main>
+    </>
   );
 };
 

@@ -1,17 +1,15 @@
 import React from 'react';
 import Navbar from '../components/navbar';
 import Card from '../components/studioCard';
+import Header from '../components/header';
 
 const Studios = () => {
   return (
     <>
       <Navbar />
-      <div className="studios">
-      <div className="title-header">
-          <h2 className="title-top">Студии и секции</h2>
-          </div>
-        <div className="container">
-        
+      <Header title="Студии и секции"/>
+      <main className="studios">      
+        <div className="container">        
           <ul className="studios__list">
             <li className="studios__item">
               <Card />
@@ -24,7 +22,7 @@ const Studios = () => {
             </li>
           </ul>
         </div>
-      </div>
+      </main>
     </>
   );
 };

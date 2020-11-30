@@ -1,14 +1,12 @@
 import React from 'react';
 import Navbar from '../components/navbar';
+import Header from '../components/header';
 
 const Contacts = () => {
   return (
     <>
-      <Navbar />
-      <div className="title-header">
-        <h1 className="title-top">Контакты</h1>
-      </div>
-      
+      <Navbar />      
+      <Header title="Контакты"/>
     </>
   );
 };

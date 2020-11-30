@@ -4,6 +4,10 @@ import {useHistory} from 'react-router-dom';
 const WelcomeBlock = () => {
   const history = useHistory();
 
+  const handleClick = () => {
+    history.push('/schedule');
+  }
+
   return (
     <section className="welcome">
       <div className="welcome__overlay overlay">
@@ -17,7 +21,7 @@ const WelcomeBlock = () => {
 
         <div className="row">
           <div className="col col-50">
-            <button onClick={()=>history.push('/schedule')}className="btn">Проверить расписание</button>
+            <button onClick={handleClick} className="btn">Проверить расписание</button>
           </div>
         </div>
       </div>

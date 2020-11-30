@@ -1,8 +1,4 @@
-.container{
-  width: 90%;
-  margin: 0 auto;
-  padding-top: 15px;
-}
+$marginGrid: 12px;
 
 .row{  
   display: flex;
@@ -38,7 +34,7 @@
   width: calc(75% - #{$marginGrid});  
 }
 
-.col-extra{
+.col-1012{
   width: calc(100%/12*10 - #{$marginGrid});  
 }
 
@@ -60,9 +56,7 @@
   }
 }
 
-@media(max-width: $mobileWidth){
-  
-  
+@media(max-width: $mobileWidth){  
   .col-25{
     width: calc(100% / 1 - #{$marginGrid});
   }

@@ -35,35 +35,9 @@ body {
   margin: 0 auto;  
 }
 
-.title-header{
-  height: 227px;
-  background-color: black;
-  background: url('../src//img/zastavka.jpg') center center no-repeat;
-  background-size: cover;
-}
-
-.title-top {
-  margin: 0;
-  padding-top: 46px;
-  font-size: 40px;
-  text-transform: uppercase;
-  font-weight: bold;
-  color: white;
-  &::first-letter{
-    color: red;
-  }
-}
-
 @media(max-width: 415px){
   .container{
     width: 100%;
-  }
-  .title-header{
-    height: 137px;    
-  }
-  .title-top{
-    padding-top: 25px;
-    font-size: 31px;
   }
 }
 
@@ -75,3 +49,4 @@ body {
  @import './styles/schedule.scss';
  @import './styles/welcome.scss';
  @import './styles/grid.scss';
+ @import './styles/header.scss';

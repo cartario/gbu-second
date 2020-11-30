@@ -4,6 +4,7 @@
   justify-content: space-between;
   max-width: 1260px;
   margin: 0 auto;
+  margin-top: 20px;
 }
 
 .studios__item {
@@ -23,13 +24,7 @@
   &:hover{    
     border-color:#ef6c00;
   }
-  // &:hover>.card__text{
-  //   color: #ef6c00;
-  // }
-  // &:hover>.card__img::before{
-  //   background: #ef6c00;
-  //   opacity: 0.5;
-  // }
+ 
   &:active{
     opacity: 0.8;
   }

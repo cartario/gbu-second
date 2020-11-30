@@ -2,17 +2,15 @@ import React from 'react';
 import Navbar from '../components/navbar';
 import aboutImg01 from '../data/about01.jpg';
 import aboutImg02 from '../data/about02.jpg';
+import Header from '../components/header';
 
 const About = () => {
   return (
     <>
-      <Navbar />
-      <div className="title-header">
-          <h1 className="title-top">Центр досуга "Даниил"</h1>
-          </div>
-      <div className="about">
+      <Navbar />      
+      <Header title={`Центр досуга "Даниил"`}/>
+      <main className="about">
         <div className="container">
-       
           <p>
             Муниципальное бюджетное учреждение Центр досуга «Даниил» внутригородского муниципального
             образования Даниловское в городе Москве создано 15 ноября 2006 года. 26 апреля 2013 года
@@ -47,7 +45,7 @@ const About = () => {
             <i>Структурное подразделение “Браво”</i>
           </p>
         </div>
-      </div>
+      </main>
     </>
   );
 };

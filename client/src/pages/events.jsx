@@ -1,17 +1,15 @@
 import React from 'react';
 import Navbar from '../components/navbar';
+import Header from '../components/header';
 
 const Events = () => {
   return (
     <>
       <Navbar />
-      
-      <div className="events">
-        <div className="title-header">
-            <h2 className="title-top">Мероприятия</h2>
-            </div>
-      
-      </div>
+      <Header title="Мероприятия"/>
+      <main className="events">
+        
+      </main>
     </>
   );
 };

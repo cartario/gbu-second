@@ -1,8 +1,5 @@
 $tabletWidth: 768px;
 $mobileWidth: 415px;
-
-$marginGrid: 12px;
-
 $btnColor: #8BC34A;
 
 @keyframes change {
@@ -13,8 +10,6 @@ $btnColor: #8BC34A;
   }
 }
 
-
-
 .overlay{ 
   display: flex;
   flex-direction: column;
@@ -22,11 +17,12 @@ $btnColor: #8BC34A;
   height: 100%;
   min-height: 690px;
   background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(2px);
 }
 
 .welcome{  
   width: 100%;
-  min-height: 690px;
+  min-height: 690px;  
   background: url('https://sun9-65.userapi.com/impf/c855236/v855236685/187175/_jmxEGoDqJk.jpg?size=2560x1920&quality=96&proxy=1&sign=710008b906f55e30f2d22105e1e073af') center center no-repeat;
   background-size: cover; 
   color: white; 
@@ -51,8 +47,7 @@ $btnColor: #8BC34A;
   transform: rotate(-3deg);
 
   &:hover{
-    background: #689f38;
-    
+    background: #689f38;    
   }
 }
 
