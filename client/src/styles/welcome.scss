@@ -1,0 +1,59 @@
+$tabletWidth: 768px;
+$mobileWidth: 415px;
+
+$marginGrid: 12px;
+
+$btnColor: #8BC34A;
+
+.overlay{ 
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  height: 100%;
+  min-height: 690px;
+  background: rgba(0,0,0,0.35);
+}
+
+.welcome{  
+  width: 100%;
+  min-height: 690px;
+  background: url('https://sun9-65.userapi.com/impf/c855236/v855236685/187175/_jmxEGoDqJk.jpg?size=2560x1920&quality=96&proxy=1&sign=710008b906f55e30f2d22105e1e073af') center center no-repeat;
+  background-size: cover; 
+  color: white; 
+}
+
+.btn{
+  width: 100%;
+  padding: 10px;
+  max-width: 200px;
+  min-width: 123px;  
+  font-family: inherit;
+  font-size: 19px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 15px;
+  background: $btnColor;
+  color: white;
+  border: none;
+  outline: none;
+
+  &:hover{
+    background: #689f38;
+  }
+}
+
+@media(max-width: $tabletWidth){
+  .welcome, .overlay{    
+    min-height: 564px;
+  }  
+}
+
+@media(max-width: $mobileWidth){
+  .welcome, .overlay{    
+    min-height: 341px;
+  }
+
+  .btn{
+    max-width: none;
+  }
+}
