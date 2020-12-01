@@ -14,9 +14,9 @@ export const cards = [
     cardUrl: breakingCard,
     price: 'free',
     type: 'dance',
-    timeFrom: 19,
-    timeTo: 21,
-    repeatDays: [2]
+    timeFrom: '19:30',
+    timeTo: '21:00',
+    repeatDays: [2, 4]
   },
   {
     id: 2,
@@ -36,9 +36,9 @@ export const cards = [
     cardUrl: guitarCard,
     price: 'free',
     type: 'music',
-    timeFrom: 16,
-    timeTo: 20,
-    repeatDays: [2]
+    timeFrom: '18:00',
+    timeTo: '20:30',
+    repeatDays: [2,5]
   },
   {
     id: 4,

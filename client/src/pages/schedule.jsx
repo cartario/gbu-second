@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/navbar';
 import Header from '../components/header';
+import {useParams, useHistory} from 'react-router-dom';
 import CCF_000090 from '../uploads/2020/11/CCF_000090.pdf';
 import CCF_000062 from '../uploads/2020/10/CCF_000062.pdf';
 import CCF_000058 from '../uploads/2020/09/CCF_000058.pdf';
@@ -46,11 +47,12 @@ const schedules = [
 ];
 
 const Schedule = () => {
+  
   return (
     <>
       <Navbar />
       <Header title="Расписание" />
-      <main className="schedule">       
+      <main className="schedule">      
         <ul className="schedule__list">
           {schedules &&
             schedules.map((doc) => (

@@ -1,0 +1,17 @@
+.detailPage {
+  
+}
+
+.detailPage__info{
+  padding: 10px;
+}
+
+.detailPage__img {
+  width: 50%;
+}
+
+@media(max-width: 415px){  
+  .detailPage__img {
+    width: 100%;
+  }
+}
