@@ -5,6 +5,7 @@ import artCard from './art_card.jpg';
 import voiceCard from './voice_card.jpeg';
 import chessCard from './chess_card.jpg';
 
+//0-sunday, 1-monday etc.
 export const cards = [
   {
     id: 1,
@@ -12,7 +13,10 @@ export const cards = [
     description: "Брейк-данс - динамичный танец. Здесь главное - уметь чувствовать ритм. Исполнителей называют “b-boy” или ”b-girl”, как сокращение от break-boy - танцор ломаного бита. На занятиях дети учатся импровизировать и мыслить творчески, развивают гибкость, музыкальность и чувство стиля",
     cardUrl: breakingCard,
     price: 'free',
-    type: 'dance'
+    type: 'dance',
+    timeFrom: 19,
+    timeTo: 21,
+    repeatDays: [2]
   },
   {
     id: 2,
@@ -20,7 +24,10 @@ export const cards = [
     description: "Все для  юных звездочек: Актерское мастерство Сценречь/ Логопед Пластика / Ритмика",
     cardUrl: theaterCard,
     price: 'free',
-    type: 'play'
+    type: 'play',
+    timeFrom: 6,
+    timeTo: 10,
+    repeatDays: []
   },
   {
     id: 3,
@@ -28,7 +35,10 @@ export const cards = [
     description: "Акустическая гитара - это одним из наиболее популярных музыкальных инструментов. Для акустики написано множество красивых мелодий и песен. Желание научиться играть на гитаре абсолютно понятно и закономерно.",
     cardUrl: guitarCard,
     price: 'free',
-    type: 'music'
+    type: 'music',
+    timeFrom: 16,
+    timeTo: 20,
+    repeatDays: [2]
   },
   {
     id: 4,

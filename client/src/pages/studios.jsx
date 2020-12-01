@@ -4,7 +4,6 @@ import Card from '../components/studioCard';
 import Header from '../components/header';
 import {cards} from '../data/data';
 
-
 const Studios = () => {
   return (
     <>

@@ -4,7 +4,7 @@ $marginGrid: 12px;
   display: flex;
   flex-wrap: wrap;  
   justify-content: center;
-  margin: 0 #{-$marginGrid/2};
+  // margin: 0 #{-$marginGrid/2};
   box-sizing: border-box;
 }
 

@@ -8,8 +8,13 @@ import CCF_000052 from '../uploads/2020/09/CCF_000052.pdf';
 import CCF_000027 from '../uploads/2020/08/CCF_000027.pdf';
 import CCF_000027z from '../uploads/2020/07/07sch.pdf';
 import CCF_000028z from '../uploads/2020/06/sch06.docx';
+import CCF_000112 from '../uploads/2020/11/CCF_000112.pdf';
 
 const schedules = [
+  {
+    title: 'Расписание на декабрь 2020 (дистанционный режим)',
+    link: CCF_000112,
+  },
   {
     title: 'Расписание на ноябрь 2020 (дистанционный режим)',
     link: CCF_000090,
