@@ -93,6 +93,132 @@ $btnColor: #8BC34A;
   background-size: cover; 
 }
 
+
+.now__total{  
+  max-width: 550px;
+  margin: 15px auto;
+  margin-bottom: 50px;
+  padding: 30px;
+  text-align: left;  
+  
+  h3{
+    position: relative;  
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    font-size: 40px;
+    text-align: center;    
+    color: grey;
+    &::before{
+      position: absolute;
+      content: "";
+      top: -20px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #DE2BD7 0%, rgba(250, 168, 7, 0.37) 100%);;
+      animation: change 3s infinite;
+    }
+
+    @media(max-width: 415px){
+      font-size: 36px;
+    }
+  } 
+  p{
+    font-size: 28px;    
+    span {
+      vertical-align: middle;
+      font-size: 70px;
+      font-weight:bold;
+
+      @media(max-width: 415px){
+        font-size: 40px;
+      }
+    }
+    @media(max-width: 415px){
+      font-size: 16px;
+    }
+  }
+}
+
+.now__total-sport{
+  span {   
+    color: #ef7e02;
+  }
+}
+
+.now__total-art{
+  span {
+    color: #23bad7;
+  }
+}
+
+.now__total-instructors{
+  position: relative;  
+  &::after{
+    position: absolute;
+    content: "";
+    bottom: -30px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(-90deg, #DE2BD7 0%, rgba(250, 168, 7, 0.37) 100%);;
+    animation: change 4s infinite;
+  }
+  span {
+    color: #1bd83a;
+  }
+}
+
+.sessions {
+  margin-bottom: 50px;
+  padding: 20px;
+  background: linear-gradient(180deg, #EF7E02 0%, rgba(179, 0, 66, 0.74) 100%);
+  h3 {
+    font-size: 40px;
+    color: white;    
+  }
+}
+
+.sessions__address{
+  margin: 30px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.sessions__item{
+  width: 50%;
+  margin: 0 auto;
+  padding: 10px;
+  border-top: 1px solid white;
+
+  p{
+    margin: 0;
+  }
+  span{
+    font-size: 14px;
+    color: rgb(77, 77, 77);
+  }
+  &:last-child{
+    border-bottom: 1px solid white;
+  }
+  &:hover{
+    background: white;
+    color: #EF7E02;
+    cursor: pointer;
+    span{
+      color: black;
+    }
+  }
+
+  @media(max-width: 600px){
+    width: 100%;
+  }
+}
+
+.sessions__address--trofimova{
+  margin-top: 60px;
+}
+
 @media(max-width: $tabletWidth){
   .welcome, .overlay{    
     min-height: 564px;

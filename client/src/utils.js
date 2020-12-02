@@ -14,5 +14,5 @@ export const sayWelcome = () => {
   if(hours >=18 & hours<22){
     return {name: 'Добрый вечер!', status: 3}
   }
-  return 'Доброй ночи!'
+  return {name: 'Доброй ночи!', status: 0}
 };

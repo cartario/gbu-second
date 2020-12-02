@@ -6,6 +6,8 @@ import {cards} from '../data/data';
 import {studios} from '../data/studios-mock';
 
 const Studios = () => {
+  const studiosCopy = [...studios].filter((studio)=>!studio.isDuplicate);
+  
   return (
     <>
       <Navbar />
@@ -13,7 +15,7 @@ const Studios = () => {
       <main className="studios">         
         <div className="container">        
           <ul className="studios__list">
-            {studios&&studios.map((card)=><li key={card.title + card.id} className="studios__item">
+            {studiosCopy&&studiosCopy.map((card)=><li key={card.title + card.id} className="studios__item">
               <Card {...card}/>
             </li>)}
             

@@ -14,7 +14,7 @@ const DetailPage = () => {
     //TODO fetch card by id
     
     setCard(studios.find((card)=>card.id===cardId));    
-  },[]);  
+  },[cardId]);  
 
   if(!card){
     return null;
@@ -26,16 +26,16 @@ const DetailPage = () => {
       <Header title={card.title}/>
       <main className="detailPage">
         <div className="detailPage__info">          
-          <h1>{card.title}</h1>
+          {/* <h1>{card.title}</h1> */}
           <p>Категория: {card.type}</p>
           <p>Стоимость: {card.price==='free'? "бесплатно" : card.price}</p>        
-          {/* <p>{card.description}</p> */}
-          <p><a href="/schedule">Расписание:</a>           
+          <p>{card.description}</p>
+          <div><a href="/schedule">Расписание:</a>           
             <span>{daysOfWeek[card.day]}</span>
             <span>{card.timeFrom}-{card.timeTo}</span>
-  <p>{card.adress}</p>
-  <p>группа №{card.groupNumber}</p>
-          </p>
+            <p>{card.adress}</p>
+            <p>группа №{card.groupNumber}</p>
+          </div>
         </div>
         <img className="detailPage__img" src={card.cardUrl} alt="cardImg"/>
       </main>
