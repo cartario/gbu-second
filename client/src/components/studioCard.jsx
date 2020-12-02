@@ -11,12 +11,12 @@ export default function ({id, title, description, cardUrl, price}) {
   return (
     <article onClick = {()=>handleClick(id)} className="card">
       <div className="card__img">
-        <img src={cardUrl} width="300" alt="cardImg" />
+        <img src={cardUrl? cardUrl : "https://bayramix.ru/local/templates/bayramix_new/images/load.gif"} width="300" alt="cardImg" />
         <p>{title}</p>
       </div>
       <div className="card__text">
         <p className="card__description">
-          {description.substr(0, 180)}...
+          {description ? description.substr(0, 180) : "Description"}...
         </p>
         <p className="card__price">{price === 'free'? "бесплатно": price}</p>
       </div>

@@ -2,6 +2,9 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { sayWelcome } from '../utils';
 import { cards } from '../data/data';
+import { studios } from '../data/studios-mock';
+import classNames from 'classnames';
+
 
 const WelcomeBlock = () => {
   const history = useHistory();
@@ -13,11 +16,14 @@ const WelcomeBlock = () => {
   const date = new Date();
   const day = date.getDay();
 
-  const todayCards = cards.filter((card) => {
-    if (!card.repeatDays) {
+  const welcome = sayWelcome();
+
+
+  const todayCards = studios.filter((card) => {
+    if (!card.day) {
       return;
     }
-    return card.repeatDays.includes(day);
+    return card.day.includes(day);
   });
 
   return (
@@ -42,7 +48,16 @@ const WelcomeBlock = () => {
         </div>
       </section>
       <section className="now">
-        <h2>{sayWelcome()}</h2>
+        <div className={classNames({
+          "now__welcome" : true,
+          "now__welcome--morning": welcome.status===1,
+          "now__welcome--day": welcome.status===2,
+          "now__welcome--evening": welcome.status===3,
+          "now__welcome--night": welcome.status===0,
+        })}>          
+          <h2><span>{welcome.name}</span></h2>
+        </div>       
+        
         {!todayCards.length ? (
           <h3>
             Сегодня выходной и занятия закончилиь. Однако вы можете присмотреть себе{' '}
@@ -51,13 +66,16 @@ const WelcomeBlock = () => {
         ) : (
           ''
         )}
-        {todayCards.length ? <h3>Сегодня проходят занятия:</h3> : ''}
-        {todayCards &&
+        {todayCards.length && welcome.status!==0 ? <h3>Занятия на сегодня:</h3> : ''}
+
+        {todayCards &&welcome.status!==0 &&
           todayCards.map((card) => (
             <p key={card.id}>
-              <a href={`/detail/${card.id}`}>{card.title}</a>
+              <a href={`/detail/${card.id}`}>{card.title}</a><span> начало в {card.timeFrom}</span>
             </p>
           ))}
+
+
         {/* <h3>Также в скором времени у нас появятся мероприятия</h3> */}
         {/* <h3>Совсем скоро у нас состоится концерт! Подробности в анонсе</h3> */}
       </section>

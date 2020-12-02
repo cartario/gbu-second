@@ -3,6 +3,7 @@ import Navbar from '../components/navbar';
 import Card from '../components/studioCard';
 import Header from '../components/header';
 import {cards} from '../data/data';
+import {studios} from '../data/studios-mock';
 
 const Studios = () => {
   return (
@@ -12,7 +13,7 @@ const Studios = () => {
       <main className="studios">         
         <div className="container">        
           <ul className="studios__list">
-            {cards&&cards.map((card)=><li key={card.title} className="studios__item">
+            {studios&&studios.map((card)=><li key={card.title + card.id} className="studios__item">
               <Card {...card}/>
             </li>)}
             
