@@ -20,14 +20,17 @@ const DetailPage = () => {
     return null;
   }
 
-  const cardsByTitle = studios.filter((studio)=>studio.title===card.title).map((card)=>{
-    return {
-      day: card.day,
-      timeFrom: card.timeFrom,
-      timeTo: card.timeTo,
-      groupNumber: card.groupNumber,
-    }
-  });  
+  const cardsByTitle = studios.reduce((acc, studio)=>{
+    if(studio.title===card.title){
+      acc.push({
+        day: studio.day,
+        timeFrom: studio.timeFrom,
+        timeTo: studio.timeTo,
+        groupNumber: studio.groupNumber,
+      })
+    }    
+    return acc;
+  },[]);
 
   return (
     <>
@@ -48,8 +51,7 @@ const DetailPage = () => {
             <div key={card.day + card.timeFrom +card.timeTo}>
               <b><span>{daysOfWeek[card.day]}</span></b>
           <span>{card.timeFrom}-{card.timeTo}</span><span style={{color: "grey"}}> подгруппа: {card.groupNumber}</span>
-            </div>)}           
-            
+            </div>)}            
             
           </div>
           <p>Категория: {card.type}</p>
