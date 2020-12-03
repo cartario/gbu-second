@@ -7,18 +7,27 @@ import {studios} from '../data/studios-mock';
 const daysOfWeek = ['Восересенье ','Понедельник ','Вторник ','Среда ','Четверг ','Пятница ','Суббота '];
 
 const DetailPage = () => {
-  const [card, setCard] = React.useState(null);  
+  const [card, setCard] = React.useState(null);
   const cardId = useParams().id;  
 
   React.useEffect(()=>{    
     //TODO fetch card by id
     
     setCard(studios.find((card)=>card.id===cardId));    
-  },[cardId]);  
+  },[cardId]);
 
   if(!card){
     return null;
   }
+
+  const cardsByTitle = studios.filter((studio)=>studio.title===card.title).map((card)=>{
+    return {
+      day: card.day,
+      timeFrom: card.timeFrom,
+      timeTo: card.timeTo,
+      groupNumber: card.groupNumber,
+    }
+  });  
 
   return (
     <>
@@ -27,17 +36,25 @@ const DetailPage = () => {
       <main className="detailPage">
         <div className="detailPage__info">          
           {/* <h1>{card.title}</h1> */}
-          <p>Категория: {card.type}</p>
-          <p>Стоимость: {card.price==='free'? "бесплатно" : card.price}</p>        
-          <p>{card.description}</p>
-          <div><a href="/schedule">Расписание:</a>           
-            <span>{daysOfWeek[card.day]}</span>
-            <span>{card.timeFrom}-{card.timeTo}</span>
-            <p>{card.adress}</p>
-            <p>группа №{card.groupNumber}</p>
+          <p>Адрес: {card.adress}</p>
+          <p>Группа №{card.groupNumber}</p> 
+          <p>Возраст: от {card.age_min} {card.age_max ? `до ${card.age_max}`: ''} лет</p>          
+          <p>Стоимость: {card.price==='free'? "бесплатно" : card.price}</p>                
+          <p>Описание: {card.description}</p>
+
+
+          <div><a href="/schedule">Расписание:</a>
+          {cardsByTitle.map((card)=>
+            <div key={card.day + card.timeFrom +card.timeTo}>
+              <b><span>{daysOfWeek[card.day]}</span></b>
+          <span>{card.timeFrom}-{card.timeTo}</span><span style={{color: "grey"}}> подгруппа: {card.groupNumber}</span>
+            </div>)}           
+            
+            
           </div>
+          <p>Категория: {card.type}</p>
         </div>
-        <img className="detailPage__img" src={card.cardUrl} alt="cardImg"/>
+        <img className="detailPage__img" src={card.cardUrl ||"https://bayramix.ru/local/templates/bayramix_new/images/load.gif"} alt="cardImg"/>
       </main>
       
     </>

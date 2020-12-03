@@ -15,6 +15,7 @@ const WelcomeBlock = () => {
 
   const date = new Date();
   const day = date.getDay();
+  const currentHour = date.getHours();
 
   const welcome = sayWelcome();
   const sportStudiosCount = studios.filter(
@@ -22,6 +23,8 @@ const WelcomeBlock = () => {
   ).length;
   const artStudiosCount = studios.filter((studio) => !studio.isDuplicate && studio.type !== 'sport')
     .length;
+
+  const instructorsCount = [...new Set(studios.map((studio) => studio.teacher))].length;
 
   const todayCards = studios.filter((card) => {
     if (!card.day) {
@@ -75,13 +78,13 @@ const WelcomeBlock = () => {
         <div className="now__total">
           <h3>В нашем центре:</h3>
           <p className="now__total-sport">
-            <span>{sportStudiosCount}</span> спортивных направлений
+            <span>{sportStudiosCount}</span> спортивных секций
           </p>
           <p className="now__total-art">
-            <span>{artStudiosCount}</span> творческих направлений
+            <span>{artStudiosCount}</span> творческих студий
           </p>
           <p className="now__total-instructors">
-            <span>{17}</span>тренеров и преподавателей
+            <span>{instructorsCount}</span>тренеров и преподавателей
           </p>
         </div>
 
@@ -101,9 +104,16 @@ const WelcomeBlock = () => {
           <ul>
             {lusinovaSessionsToday &&              
               lusinovaSessionsToday.map((card) => (
-                <li key={card.id} className="sessions__item" onClick={()=>handleClickItem(card.id)}>
+                <li key={card.id} 
+                
+                className={classNames({
+                  "sessions__item": true,
+                  "sessions__item--active": currentHour>=card.timeFrom.split(':')[0]&&currentHour<card.timeTo.split(':')[0]
+                })}
+                
+                onClick={()=>handleClickItem(card.id)}>
                  <p>{card.title}
-                    <span> начало в {card.timeFrom}</span>
+              <span> начало в {card.timeFrom}</span>
                   </p> 
                 </li>
               ))}
@@ -112,7 +122,14 @@ const WelcomeBlock = () => {
           <ul>
             {trofimovaSessionsToday &&              
               trofimovaSessionsToday.map((card) => (
-                <li key={card.id} className="sessions__item" onClick={()=>handleClickItem(card.id)}>
+                <li key={card.id} 
+
+                className={classNames({
+                  "sessions__item": true,
+                  "sessions__item--active": currentHour>=card.timeFrom.split(':')[0]&&currentHour<card.timeTo.split(':')[0]
+                })}
+                
+                onClick={()=>handleClickItem(card.id)}>
                   <p>{card.title}
                     <span> начало в {card.timeFrom}</span>
                   </p>                  
