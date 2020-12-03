@@ -56,7 +56,7 @@ const SessionsTodayBoard = () => {
                 })}
                 
                 onClick={()=>handleClickItem(card.id)}>
-                 <p>{card.title}
+                 <p>{card.name}
               <span> начало в {card.timeFrom}</span>
                   </p> 
                 </li>
@@ -74,7 +74,7 @@ const SessionsTodayBoard = () => {
                 })}
                 
                 onClick={()=>handleClickItem(card.id)}>
-                  <p>{card.title}
+                  <p>{card.name}
                     <span> начало в {card.timeFrom}</span>
                   </p>                  
                 </li>

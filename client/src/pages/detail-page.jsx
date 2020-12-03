@@ -21,12 +21,13 @@ const DetailPage = () => {
   }
 
   const cardsByTitle = studios.reduce((acc, studio)=>{
-    if(studio.title===card.title){
+    if(studio.name===card.name){
       acc.push({
         day: studio.day,
         timeFrom: studio.timeFrom,
         timeTo: studio.timeTo,
         groupNumber: studio.groupNumber,
+        title: studio.title,
       })
     }    
     return acc;
@@ -35,13 +36,13 @@ const DetailPage = () => {
   return (
     <>
       <Navbar />      
-      <Header title={card.title}/>
+      <Header title={card.name}/>
       <main className="detailPage">
         <div className="detailPage__info">          
           {/* <h1>{card.title}</h1> */}
           <p>Адрес: {card.adress}</p>
-          <p>Группа №{card.groupNumber}</p> 
-          <p>Возраст: от {card.age_min} {card.age_max ? `до ${card.age_max}`: ''} лет</p>          
+          <p>Группа №{card.groupNumber}</p>          
+          <p>Возраст: от {card.age_min} {card.age_max ? `до ${card.age_max}`: ''} лет</p>      {/* TODO пофиксить мин и макс возраст */}
           <p>Стоимость: {card.price==='free'? "бесплатно" : card.price}</p>                
           <p>Описание: {card.description}</p>
 
@@ -50,7 +51,9 @@ const DetailPage = () => {
           {cardsByTitle.map((card)=>
             <div key={card.day + card.timeFrom +card.timeTo}>
               <b><span>{daysOfWeek[card.day]}</span></b>
-          <span>{card.timeFrom}-{card.timeTo}</span><span style={{color: "grey"}}> подгруппа: {card.groupNumber}</span>
+          <span>{card.timeFrom}-{card.timeTo}</span>
+          <span style={{color: "grey"}}>{card.title}</span>
+          <span style={{color: "grey"}}> подгруппа: {card.groupNumber}</span>
             </div>)}            
             
           </div>

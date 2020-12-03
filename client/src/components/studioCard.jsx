@@ -1,7 +1,7 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
 
-export default function ({id, title, description, imgUrl, price}) {
+export default function ({id, name, title, description, imgUrl, price}) {
   const history = useHistory();
 
   const handleClick = (id) => {
@@ -12,7 +12,7 @@ export default function ({id, title, description, imgUrl, price}) {
     <article onClick = {()=>handleClick(id)} className="card">
       <div className="card__img">
         <img src={imgUrl? imgUrl : "https://bayramix.ru/local/templates/bayramix_new/images/load.gif"} width="300" alt="cardImg" />
-        <p>{title}</p>
+        <p>{name}</p>
       </div>
       <div className="card__text">
         <p className="card__description">
