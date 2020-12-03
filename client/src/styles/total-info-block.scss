@@ -1,0 +1,74 @@
+.totalInfoBlock{  
+  max-width: 550px;
+  margin: 15px auto;
+  margin-bottom: 50px;
+  padding: 30px;
+  text-align: left;  
+  
+  h3{
+    position: relative;  
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    font-size: 40px;
+    text-align: center;    
+    color: grey;
+    &::before{
+      position: absolute;
+      content: "";
+      top: -20px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #DE2BD7 0%, rgba(250, 168, 7, 0.37) 100%);;
+      animation: change 3s infinite;
+    }
+
+    @media(max-width: 415px){
+      font-size: 36px;
+    }
+  } 
+  p{
+    font-size: 28px;    
+    span {
+      vertical-align: middle;
+      font-size: 70px;
+      font-weight:bold;
+
+      @media(max-width: 415px){
+        font-size: 40px;
+      }
+    }
+    @media(max-width: 415px){
+      font-size: 16px;
+    }
+  }
+}
+
+.totalInfoBlock-sport{
+  span {   
+    color: $orangeColor;
+  }
+}
+
+.totalInfoBlock-art{
+  span {
+    color: $blueColor;
+  }
+}
+
+.totalInfoBlock-instructors{
+  position: relative;  
+  &::after{
+    position: absolute;
+    content: "";
+    bottom: -30px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(-90deg, #DE2BD7 0%, rgba(250, 168, 7, 0.37) 100%);;
+    animation: change 4s infinite;
+  }
+  span {
+    color: $greenColor;
+  }
+}

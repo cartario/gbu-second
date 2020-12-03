@@ -1,0 +1,36 @@
+
+.helloBlock{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width:100%;  
+  height: 300px;
+  font-size: 30px;
+  background: lightgrey;  
+  color: white;
+  span{
+    padding:5px;
+    background-color:rgba(14, 14, 14, 0.322);
+    border-radius: 5px;
+  }
+}
+
+.helloBlock--morning{  
+  background: url('../img/morning.JPG') 100% 50% no-repeat;
+  background-size: cover; 
+}
+
+.helloBlock--day{  
+  background: url('../img/day.jpg') 100% 50% no-repeat;
+  background-size: cover; 
+}
+
+.helloBlock--evening{
+  background: url('../img/evening.JPG') 100% 50% no-repeat;
+  background-size: cover; 
+}
+
+.helloBlock--night{
+  background: url('../img/night.PNG') 100% 50% no-repeat;
+  background-size: cover; 
+}

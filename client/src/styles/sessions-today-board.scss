@@ -1,0 +1,53 @@
+.sessions {
+  margin-bottom: 50px;
+  padding: 20px;
+  background: linear-gradient(180deg, $orangeColor 0%, rgba(179, 0, 66, 0.74) 100%);
+  h3 {
+    font-size: 40px;
+    color: white;    
+  }
+}
+
+.sessions__address{
+  margin: 30px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.sessions__item{
+  width: 50%;
+  margin: 0 auto;
+  padding: 10px;
+  border-top: 1px solid white;
+
+  p{
+    margin: 0;
+  }
+  span{
+    font-size: 14px;
+    color: rgb(77, 77, 77);
+  }
+  &:last-child{
+    border-bottom: 1px solid white;
+  }
+  &:hover{
+    background: white;
+    color: $orangeColor;
+    cursor: pointer;
+    span{
+      color: black;
+    }
+  }
+
+  @media(max-width: 600px){
+    width: 100%;
+  }
+}
+
+.sessions__item--active{
+  background: $blueColor;
+}
+
+.sessions__address--trofimova{
+  margin-top: 60px;
+}

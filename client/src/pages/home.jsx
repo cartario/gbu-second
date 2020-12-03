@@ -2,23 +2,20 @@ import React from 'react';
 import Navbar from '../components/navbar';
 import Anouncement from '../components/anouncement';
 import WelcomeBlock from '../components/welcome';
-import Header from '../components/header';
-
-
+import SayHello from '../components/say-hello';
+import TotalInfoBlock from '../components/total-info-block';
+import SessionsTodayBoard from '../components/sessions-today-board';
 
 const Home = () => {
-  
-
-  return (
-    <>
-      <div className="home">
+  return (    
+      <section className="home">
         <Navbar />
         <WelcomeBlock />
-        
-        <Header title="Анонс"/>
+        <SayHello />
+        <TotalInfoBlock />
+        <SessionsTodayBoard />        
         <Anouncement/>
-      </div>
-    </>
+      </section>    
   );
 };
 
