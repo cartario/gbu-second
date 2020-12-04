@@ -1,0 +1,128 @@
+.soon-events{
+  width: 50%;
+  margin: 0 auto;
+  h1 {
+    font-size: 40px;
+    color: #808080;
+  }
+}
+
+.soon-events__categories{  
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  padding: 5px;
+  padding-top:15px;
+  overflow: scroll;
+  
+  .hidden {
+    display: none;
+  }
+
+  .active{
+    position: relative;
+    &::before{
+    position: absolute;
+    content: "+";
+    top: -2px;
+    right:10px;
+    width: 10px;
+    height: 10px;
+    transform: rotate(-45deg)
+    }    
+  }  
+}
+
+.soon-events__categorie{  
+  display: flex;
+  align-items: center;
+  height: 30px;
+  margin-right: 30px;  
+  padding: 0 10px;  
+  font-size: 18px;
+  white-space: nowrap;
+  box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 60px;
+  cursor: pointer; 
+
+  &:hover{
+    margin-top: -5px;
+    box-shadow: 0px 0px 4px 6px rgba(67, 141, 227, 0.25);
+
+  }
+  &:active{
+    transform: scale(0.95);
+  }
+}
+
+.soon-events__categorie--close{  
+  display: block;
+  min-width:30px;
+  height:30px;
+  border-radius: 50%;
+  background: $orangeColor;
+  background-image: url('../img/close-icon.png');
+  background-size:50%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  &::before{
+    content: ""
+  }
+  
+  &:hover{
+    margin-top: 0;
+  }
+}
+
+.soon-events__img{
+  img{
+    width: 100%;
+  }
+}
+
+.soon-events__control{
+  background: $orangeColor;
+  background-image: url('../img/arrow.svg');  
+  background-position: center center;
+  background-repeat: no-repeat;
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.25);
+  cursor: pointer; 
+}
+
+.soon-events__control--left{  
+  left: -30px;
+  transform: rotate(180deg);
+  &:hover{   
+    transform: scale(1.05) rotate(180deg);    
+  }
+  &:active{
+    transform: scale(0.95) rotate(180deg);
+  }
+}
+
+.soon-events__control--right{  
+  right: -30px;
+  &:hover{
+    transform: scale(1.05);
+  }
+  &:active{
+    transform: scale(0.95);
+  }
+}
+
+
+
+.soon-events__btn{
+  display: block;
+  width: 100%;
+  margin: 30px 0;
+  background: $orangeColor;
+  box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.25);
+  max-width: none;
+  transform: none;
+  animation: none;
+  &:hover{
+    background: rgb(211, 137, 0);
+  }
+}

@@ -41,7 +41,7 @@ const SessionsTodayBoard = () => {
           )}
         </div>
             
-          {todayCards.length && dayStatus.status !== 0 ? 
+          {todayCards.length && dayStatus.status !== 10 ? 
           <div className="sessions">     
           <h3>Занятия на сегодня:</h3> 
           <h4 className="sessions__address">Люсиновская, 53 :</h4>
