@@ -32,16 +32,16 @@ const SessionsTodayBoard = () => {
     <section className="now">
         <div>
           {day===HOLIDAY ? (
-            <h3>
-              Сегодня выходной и занятия закончилиь. Однако вы можете присмотреть себе{' '}
-              <a href="/studios">студию/секцию</a> по душе
+            <h3 className="now__holiday">
+              Сегодня выходной и занятия закончилиь. Однако до понедельника вы можете присмотреть себе{' '}
+              <a href="/studios">студию/секцию</a> по душе и записаться онлайн
             </h3>
           ) : (
             ''
           )}
         </div>
             
-          {todayCards.length && dayStatus.status !== 10 ? 
+          {todayCards.length && dayStatus.status !== 0 ? 
           <div className="sessions">     
           <h3>Занятия на сегодня:</h3> 
           <h4 className="sessions__address">Люсиновская, 53 :</h4>
@@ -62,7 +62,8 @@ const SessionsTodayBoard = () => {
                 </li>
               ))}
           </ul>
-          <h4 className="sessions__address sessions__address--trofimova">Трофимова 9, корп.2 :</h4>
+
+          {trofimovaSessionsToday.length ? <h4 className="sessions__address sessions__address--trofimova">Трофимова 9, корп.2 :</h4> : ""}
           <ul>
             {trofimovaSessionsToday &&              
               trofimovaSessionsToday.map((card) => (

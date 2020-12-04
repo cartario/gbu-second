@@ -45,9 +45,28 @@
 }
 
 .sessions__item--active{
+  position: relative;
   background: $blueColor;
+  &::before{
+    position: absolute;
+    content: "прямо сейчас";
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 10px;
+    padding-right: 20px;
+    font-size: 10px;
+    text-align:right;
+    color: white;
+  }
 }
 
 .sessions__address--trofimova{
   margin-top: 60px;
 }
+
+.now__holiday {
+  padding: 15px;
+  background: tomato;
+}
+
