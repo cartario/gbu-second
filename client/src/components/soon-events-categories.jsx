@@ -2,7 +2,7 @@ import React from 'react';
 
 const SoonEventsCategories = ({ categories, setFilteredEvents, setCount, events }) => {
   const [visible, setVisible] = React.useState(false);
-  const [active, setActive] = React.useState(null);
+  const [active, setActive] = React.useState(null);  
 
   const handleClickVisible = () => {
     setVisible(!visible);
@@ -14,6 +14,7 @@ const SoonEventsCategories = ({ categories, setFilteredEvents, setCount, events 
   };
 
   const handleClickActive = (index, category) => {
+
     setCount(0);
     setFilteredEvents(events.filter((event) => event.category === category));
 
@@ -23,6 +24,8 @@ const SoonEventsCategories = ({ categories, setFilteredEvents, setCount, events 
     if (active !== index) {
       setActive(index);
       setVisible(true);
+      
+      
     } else {
       setVisible(false);
       setActive(null);
@@ -40,7 +43,7 @@ const SoonEventsCategories = ({ categories, setFilteredEvents, setCount, events 
       ></li>
       {categories &&
         categories.map((category, index) => (
-          <li
+          <li            
             key={category}
             onClick={() => handleClickActive(index, category)}
             className={`soon-events__categorie ${active === index ? 'active' : ''}`}

@@ -38,14 +38,10 @@ const SoonEvents = () => {
           <SoonEventsSlider filteredEvents={filteredEvents} setCount={setCount} count={count} />
 
           <div className="soon-events__description">
-            <p onClick={handleClickDescription}>
-              {visibleDescription ? (
-                <span className="soon-events__description-btn">Скрыть описание</span>
-              ) : (
-                <span className="soon-events__description-btn soon-events__description-btn--hide">
-                  Развернуть описание
-                </span>
-              )}
+            <p onClick={handleClickDescription}>              
+              {<span className={`soon-events__description-btn ${!visibleDescription && "hide"}`}>
+                {visibleDescription ? "Скрыть описание" : "Развернуть описание"}
+              </span>}
             </p>
             <div className={visibleDescription ? '' : 'hidden'}>
               {filteredEvents.map((event, index) => (
