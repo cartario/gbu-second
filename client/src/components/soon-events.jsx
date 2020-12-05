@@ -59,8 +59,6 @@ const SoonEvents = () => {
   const [categories, setCategories] = React.useState(null);
   const [filteredEvents, setFilteredEvents] = React.useState([]);
 
-  //TODO fix filteredEvents
-
   React.useEffect(()=>{
     //TODO fetch events;    
     setCategories([...new Set(events.map((event)=>event.category))]);
@@ -77,9 +75,8 @@ const SoonEvents = () => {
   }
 
   const handleClickActive = (index, category) => {
-    
-    setFilteredEvents(events.filter((event)=>event.category===category)); 
-      
+    setCount(0);    
+    setFilteredEvents(events.filter((event)=>event.category===category));     
 
     setActive(index);
     setVisible(true);    
@@ -92,9 +89,7 @@ const SoonEvents = () => {
       setVisible(false);
       setActive(null);
       setFilteredEvents(events)
-    } 
-    
-    
+    }    
   }
 
   const handlePlus = () => {    
