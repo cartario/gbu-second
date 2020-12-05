@@ -1,63 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import img from '../data/poster01.jpg';
-import img2 from '../data/poster02.jpg';
-import img3 from '../data/poster03.jpg';
 import SoonEventsCategories from '../components/soon-events-categories';
 import SoonEventsSlider from '../components/soon-events-slider';
-
-const events = [
-  {
-    id: '1q',
-    title: 'Соревнования по киберспорту, посвященные Дню конституции',
-    date: new Date(2020, 11, 11, 18, 0),
-    place: 'Люсиновская, 53',
-    description: 'description description description description description',
-    posterUrl: img,
-    category: 'концерт',
-  },
-  {
-    id: '2sq',
-    title: 'Соревнования по киберспорту, посвященные Дню конституции 2',
-    date: new Date(2020, 11, 13, 19, 0),
-    place: 'Люсиновская, 54',
-    description: 'description description desc',
-    posterUrl: img2,
-    category: 'акция',
-  },
-  {
-    id: '2aq',
-    title: 'Соревнования по киберспорту, посвященные Дню конституции 2',
-    date: new Date(2020, 11, 13, 19, 0),
-    place: 'Люсиновская, 54',
-    description: 'description description desc',
-    posterUrl: img2,
-    category: 'акция',
-  },
-  {
-    id: '3q',
-    title: 'Соревнования по киберспорту, посвященные Дню конституции 2',
-    date: new Date(2020, 11, 13, 19, 0),
-    place: 'Люсиновская, 54',
-    description: 'description description desc description description desc',
-    posterUrl: null,
-    category: 'кдн',
-  },
-  {
-    id: '4q',
-    title: 'Соревнования по киберспорту, посвященные Дню конституции 2',
-    date: new Date(2020, 11, 13, 19, 0),
-    place: 'Люсиновская, 54',
-    description: 'description description desc description description desc',
-    posterUrl: img3,
-    category: 'концерт2',
-  },
-];
+import {events} from '../data/events-mock';
 
 const SoonEvents = () => {
   const [count, setCount] = React.useState(0);
   const [categories, setCategories] = React.useState(null);
   const [filteredEvents, setFilteredEvents] = React.useState([]);
+  const [visibleDescription, setVisibleDescription] = React.useState(false);
 
   React.useEffect(() => {
     //TODO fetch events;
@@ -65,11 +16,15 @@ const SoonEvents = () => {
     setFilteredEvents(events);
   }, []);
 
+  const handleClickDescription = () => {
+    setVisibleDescription(!visibleDescription);
+  };
+
   return (
     <section className="soon-events">
       <h1>В ближайшее время:</h1>
 
-      {filteredEvents&&filteredEvents.length ? (
+      {filteredEvents && filteredEvents.length ? (
         <>
           {categories && (
             <SoonEventsCategories
@@ -82,11 +37,21 @@ const SoonEvents = () => {
 
           <SoonEventsSlider filteredEvents={filteredEvents} setCount={setCount} count={count} />
 
-          <div>
-            <p>Описание:</p>
-            {filteredEvents.map((event, index) => (
-              <p key={event.id}>{count === index ? event.description : ''}</p>
-            ))}
+          <div className="soon-events__description">
+            <p onClick={handleClickDescription}>
+              {visibleDescription ? (
+                <span className="soon-events__description-btn">Скрыть описание</span>
+              ) : (
+                <span className="soon-events__description-btn soon-events__description-btn--hide">
+                  Развернуть описание
+                </span>
+              )}
+            </p>
+            <div className={visibleDescription ? '' : 'hidden'}>
+              {filteredEvents.map((event, index) => (
+                <p key={event.id}>{count === index ? event.description : ''}</p>
+              ))}
+            </div>
           </div>
         </>
       ) : (

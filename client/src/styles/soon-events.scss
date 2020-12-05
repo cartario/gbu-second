@@ -186,3 +186,34 @@ $soonEventsMobile: 740px;
     font-size: 16px;
   }
 }
+
+.soon-events__description { 
+  .hidden{
+    display: none;
+    opacity: 0;
+  }
+}
+
+.soon-events__description-btn{
+  position: relative;
+  text-decoration: underline;
+  cursor: pointer; 
+
+  &::before {
+    position: absolute;
+    content: "";
+    top: 5px;
+    right: -15px;
+    width: 0; 
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid #24375B;    
+    transition:  0.5s all ease;
+  }
+
+  &--hide::before{
+   transform: rotate(180deg);    
+  }
+}
+
