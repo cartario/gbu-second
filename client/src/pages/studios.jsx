@@ -2,7 +2,6 @@ import React from 'react';
 import Navbar from '../components/navbar';
 import Card from '../components/studioCard';
 import Header from '../components/header';
-import {cards} from '../data/data';
 import {studios} from '../data/studios-mock';
 
 const Studios = () => {
