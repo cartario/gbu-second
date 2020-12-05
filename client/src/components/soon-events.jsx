@@ -4,7 +4,7 @@ import img from '../data/poster01.jpg';
 import img2 from '../data/poster02.jpg';
 import img3 from '../data/poster03.jpg';
 
-const categories = ['Концерты','Соревнования','Открытые занятия','Акции','КДН', 'Конкурсы'];
+// const categories = ['Концерты','Соревнования','Открытые занятия','Акции','КДН', 'Конкурсы'];
 
 const events = [{
   id: '1q',
@@ -16,7 +16,16 @@ const events = [{
   category: 'концерт'
 },
 {
-  id: '2q',
+  id: '2sq',
+  title: 'Соревнования по киберспорту, посвященные Дню конституции 2',
+  date: new Date(2020, 11,13,19,0),
+  place: 'Люсиновская, 54',
+  description: "description description desc",
+  posterUrl: img2,
+  category: 'акция'
+},
+{
+  id: '2aq',
   title: 'Соревнования по киберспорту, посвященные Дню конституции 2',
   date: new Date(2020, 11,13,19,0),
   place: 'Люсиновская, 54',
@@ -31,35 +40,65 @@ const events = [{
   place: 'Люсиновская, 54',
   description: "description description desc description description desc",
   posterUrl: null,
-  category: 'КДН'
+  category: 'кдн'
+},
+{
+  id: '4q',
+  title: 'Соревнования по киберспорту, посвященные Дню конституции 2',
+  date: new Date(2020, 11,13,19,0),
+  place: 'Люсиновская, 54',
+  description: "description description desc description description desc",
+  posterUrl: img3,
+  category: 'концерт2'
 }];
 
 const SoonEvents = () => {
   const [visible, setVisible] = React.useState(false);
   const [active, setActive] = React.useState(null);
   const [count, setCount] = React.useState(0);
+  const [categories, setCategories] = React.useState(null);
+  const [filteredEvents, setFilteredEvents] = React.useState([]);
+
+  //TODO fix filteredEvents
+
+  React.useEffect(()=>{
+    //TODO fetch events;    
+    setCategories([...new Set(events.map((event)=>event.category))]);
+    setFilteredEvents(events);
+  }, []);
 
   const handleClickVisible = () => {
-    setVisible(!visible);
+    setVisible(!visible);    
     setActive(null);
+    
+    if(visible){
+      setFilteredEvents(events);
+    }
   }
 
-  const handleClickActive = (index) => {
+  const handleClickActive = (index, category) => {
+    
+    setFilteredEvents(events.filter((event)=>event.category===category)); 
+      
+
     setActive(index);
-    setVisible(true);
+    setVisible(true);    
 
     if(active!==index){
       setActive(index);
-      setVisible(true)
+      setVisible(true);      
     }
     else {
       setVisible(false);
-      setActive(null)
-    }    
+      setActive(null);
+      setFilteredEvents(events)
+    } 
+    
+    
   }
 
-  const handlePlus = () => {
-    if(count < events.length - 1){
+  const handlePlus = () => {    
+    if(count < filteredEvents.length - 1){
       setCount((prev)=>prev + 1);
     }
     else{
@@ -67,26 +106,30 @@ const SoonEvents = () => {
     }
   }
 
-  const handleMinus = () => {
+  const handleMinus = () => {    
     if(count <= 0){
-      setCount(events.length);
+      setCount(filteredEvents.length);
     }
     setCount((prev)=>prev - 1);
   }
-
+  
   return (
     <section className="soon-events">
       <h1>В ближайшее время:</h1>
+
+      {categories&&
       <ul className="soon-events__categories">
         <li className={`soon-events__categorie soon-events__categorie--close ${visible ? "" : "hidden"}`} onClick={handleClickVisible}></li>
-          {categories.map((category, index)=><li key={category} 
-          onClick={()=>handleClickActive(index)}
+          {categories&&categories.map((category, index)=><li key={category} 
+          onClick={()=>handleClickActive(index, category)}
           className={`soon-events__categorie ${ active===index? "active" : ""}`}>{category}</li>)}        
       </ul>
+    }
+
       <div className="slider">
         <ul className="slider__list soon-events__list">
-          
-          {events.map((event, index)=>
+        
+          {filteredEvents&&filteredEvents.map((event, index)=>
           <li key={event.id} className={`slider__item soon-events__item ${count===index ? "visible" : ""}`}>
             <div className="soon-events__img">
               {event.posterUrl ? <img src={event.posterUrl} alt="soonEvents"/> :
@@ -99,21 +142,18 @@ const SoonEvents = () => {
               }
             </div>
           </li>)}         
-        </ul>
-
-        
+        </ul>        
 
         <div className="slider__controls">
           <div onClick={handleMinus} className="slider__control slider__control--left soon-events__control soon-events__control--left"></div>
           <div onClick={handlePlus} className="slider__control slider__control--right soon-events__control soon-events__control--right"></div>
         </div>
-
         
       </div>
 
       <div>
           <p>Описание:</p>
-          {events.map((event, index)=><p key={event.id}>
+          {filteredEvents.map((event, index)=><p key={event.id}>
             
               {count===index? event.description : ""}
             </p>)}
