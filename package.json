@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "classnames": "2.2.6",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "react-content-loader": "5.1.4"
   }
 }
