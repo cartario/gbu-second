@@ -1,6 +1,7 @@
 import React from 'react';
 
 const SoonEventsSlider = ({filteredEvents, count, setCount}) => {
+  
   const handleSlider = (e) => {
     const target = e.target.className;
 
