@@ -1,25 +1,10 @@
 import React from 'react';
 import Navbar from '../components/navbar';
 import Header from '../components/header';
+import EventsPopup from '../components/events-popup';
 import { events } from '../data/events-mock';
 import emptyImg from '../data/card01.jpg';
-
-const SHOWING_BY_CLICK = 2;
-
-const MONTH_NAMES = [
-  'ЯНВАРЬ',
-  'ФЕВРАЛЬ',
-  'МАРТ',
-  'АПРЕЛЬ',
-  'МАЙ',
-  'ИЮНЬ',
-  'ИЮЛЬ',
-  'АВГУСТ',
-  'СЕНТЯБРЬ',
-  'ОКТЯБРЬ',
-  'НОЯБРЬ',
-  'ДЕКАБРЬ',
-];
+import { SHOWING_BY_CLICK, MONTH_NAMES } from '../constants';
 
 const Event = ({ event, handleEventClick }) => {
   const [isLoading, setLoading] = React.useState(true);
@@ -44,7 +29,7 @@ const Event = ({ event, handleEventClick }) => {
   );
 };
 
-const EventsByMonth = ({
+const EventsList = ({
   events,
   title,
   setEvent,
@@ -145,9 +130,10 @@ const Events = () => {
     <>
       <Navbar />
       <Header title="Мероприятия" />
+
       <main className="events">
         {targetEvents.map((events) => (
-          <EventsByMonth
+          <EventsList
             key={events[0].id}
             title={`${MONTH_NAMES[events[0].date.getMonth()]} ${events[0].date.getFullYear()}`}
             events={events}
@@ -157,38 +143,9 @@ const Events = () => {
             handleEventClick={handleEventClick}
             showingEvents={showingEvents}
           />
-        ))}     
+        ))}
 
-        {visible && (
-          <div className="popup">
-            <div className="popup__top">
-              <div ref={popupRef} className="popup__inner">
-                <h4>{event && event.title}</h4>
-                <p>{event.description}</p>
-                <div className="events__popup-info">
-                  <span>{event.place} </span>
-                  <span>{event.category} </span>
-                  <span>{event.date.toLocaleString()} </span>
-                </div>
-                <img className="events__poster" src={event.posterUrl || emptyImg} alt="imgPoster" />
-
-                {new Date() < event.date ? (
-                  ''
-                ) : (
-                  <div className="events__old">
-                    <h4>Как это было:</h4>
-                    <img src={event.photos&&event.photos[1]} alt="img" />
-                    <img src={event.photos&&event.photos[0]} alt="img" />{' '}
-                  </div>
-                )}
-
-                <div className="popup__close" onClick={() => setVisible(false)}>
-                  +
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+        {visible && <EventsPopup event={event} popupRef={popupRef} setVisible={setVisible} />}
 
         {visibleShowMore && events.length ? (
           <button className="btn events__btn" onClick={handleClickShowMore}>
