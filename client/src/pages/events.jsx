@@ -4,8 +4,10 @@ import Header from '../components/header';
 import { events } from '../data/events-mock';
 import emptyImg from '../data/card01.jpg';
 
+const SHOWING_BY_CLICK = 1;
+
 const Event = ({ event, handleEventClick }) => {
-  const [isLoading, setLoading] = React.useState(true);
+  const [isLoading, setLoading] = React.useState(true);  
 
   React.useEffect(()=>{
     setLoading(false)
@@ -27,13 +29,13 @@ const Event = ({ event, handleEventClick }) => {
   );
 };
 
-const EventsByMonth = ({ events, title, setEvent, setVisible, visible, handleEventClick }) => {
+const EventsByMonth = ({ events, title, setEvent, setVisible, visible, handleEventClick, showingEvents }) => {
   return (
     <>
       <h2>{title}</h2>
       <ul className="events__list">
         {events &&
-          events.map((event) => (
+          events.slice(0, showingEvents).map((event) => (
             <Event key={event.id} event={event} handleEventClick={handleEventClick} />
           ))}
       </ul>
@@ -46,6 +48,8 @@ const Events = () => {
   const [visible, setVisible] = React.useState(false);
   const [event, setEvent] = React.useState(null);
   const popupRef = React.useRef();
+  const [showingEvents, setShowingEvents] = React.useState(1);
+  const [visibleShowMore, setVisibleShowMore] = React.useState(true);
 
   const handleEventClick = (event) => {
     setEvent(event);
@@ -66,6 +70,14 @@ const Events = () => {
     }
   };
 
+  const handleClickShowMore = () => {
+    setShowingEvents((prev)=>prev + SHOWING_BY_CLICK);
+    if(showingEvents>=events.length - SHOWING_BY_CLICK){
+      setVisibleShowMore(false);
+      setShowingEvents(events.length);
+    }    
+  };
+  
   React.useEffect(() => {
     if (visible) {
       document.body.setAttribute('style', 'overflow:hidden');
@@ -89,19 +101,21 @@ const Events = () => {
       <main className="events">
         <EventsByMonth
           title={'Декабрь 2020'}
-          events={events.slice(0, 3)}
+          events={events.slice(0, showingEvents)}
           setEvent={setEvent}
           setVisible={setVisible}
           visible={visible}
           handleEventClick={handleEventClick}
+          showingEvents={showingEvents}
         />
-        <EventsByMonth
+        {/* <EventsByMonth
           title={'Ноябрь 2020'}
           events={events.slice(0, 6)}
           setEvent={setEvent}
           setVisible={setVisible}
           visible={visible}
           handleEventClick={handleEventClick}
+          showingEvents={showingEvents}
         />
         <EventsByMonth
           title={'Октябрь 2020'}
@@ -110,7 +124,8 @@ const Events = () => {
           setVisible={setVisible}
           visible={visible}
           handleEventClick={handleEventClick}
-        />
+          showingEvents={showingEvents}
+        /> */}
 
         {visible && (
           <div className="popup">
@@ -142,8 +157,9 @@ const Events = () => {
             </div>
           </div>
         )}
-
-        <button className="btn events__btn">Показать еще</button>
+        
+        {visibleShowMore &&<button className="btn events__btn" onClick={handleClickShowMore}>Показать еще</button>}
+        
       </main>
     </>
   );
