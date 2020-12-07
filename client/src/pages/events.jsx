@@ -9,14 +9,11 @@ import { SHOWING_BY_CLICK, MONTH_NAMES } from '../constants';
 const Events = () => {
   const [showingEvents, setShowingEvents] = React.useState(3);
   const [visibleShowMore, setVisibleShowMore] = React.useState(true);
+  const listRef = React.useRef();
 
   const handleClickShowMore = () => {
     setShowingEvents((prev) => prev + SHOWING_BY_CLICK);
-
-    if (showingEvents >= events.length - SHOWING_BY_CLICK) {
-      setVisibleShowMore(false);
-      setShowingEvents(events.length);
-    }
+    listRef.current.scroll(1000,0);    
   };
 
   //TODO replace to Reducer
@@ -41,6 +38,13 @@ const Events = () => {
     ),
   );
 
+ React.useEffect(()=>{
+  if (showingEvents >= events.length - SHOWING_BY_CLICK) {
+    setVisibleShowMore(false);
+    setShowingEvents(events.length);
+  }
+ },[showingEvents])
+
   return (
     <>
       <Navbar />
@@ -52,7 +56,8 @@ const Events = () => {
               key={events[0].id}
               title={`${MONTH_NAMES[events[0].date.getMonth()]} ${events[0].date.getFullYear()}`}
               events={events}
-              showingEvents={showingEvents}
+              showingEvents={showingEvents} 
+              listRef={listRef}             
             />
           ))}
 
