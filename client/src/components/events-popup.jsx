@@ -1,7 +1,40 @@
 import React from 'react';
 import emptyImg from '../data/card01.jpg';
 
-const EventsPopup = ({ event, popupRef, setVisible }) => {
+const EventsPopup = ({ event , visible, setVisible}) => {
+  const popupRef = React.useRef();
+
+  const handleEscKeyDown = (e) => {
+    const isEsc = e.keyCode === 27;
+    if (visible && isEsc) {
+      setVisible(false);
+    }
+  };
+
+  const handleClickOutPopup = (e) => {
+    const isOutside = !e.path.includes(popupRef.current);
+    if (visible && isOutside) {
+      setVisible(false);
+    }
+  };
+
+  React.useEffect(() => {
+    if (visible) {
+      document.body.setAttribute('style', 'overflow:hidden');
+    } else {
+      document.body.setAttribute('style', 'overflow:scroll');
+    }
+
+    document.addEventListener('keydown', handleEscKeyDown);
+    document.addEventListener('click', handleClickOutPopup);
+
+    return function () {
+      document.removeEventListener('keydown', handleEscKeyDown);
+      document.removeEventListener('click', handleClickOutPopup);
+    };
+  });
+
+
   return (
     <div className="popup">
       <div className="popup__top">

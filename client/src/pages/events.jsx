@@ -1,41 +1,14 @@
 import React from 'react';
 import Navbar from '../components/navbar';
 import Header from '../components/header';
-import EventsPopup from '../components/events-popup';
+import Event from '../components/event';
 import { events } from '../data/events-mock';
-import emptyImg from '../data/card01.jpg';
 import { SHOWING_BY_CLICK, MONTH_NAMES } from '../constants';
 
-const Event = ({ event, handleEventClick }) => {
-  const [isLoading, setLoading] = React.useState(true);
-
-  React.useEffect(() => {
-    setLoading(false);
-  }, []);
-
-  return (
-    <li key={event.id} className="events__item" onClick={() => handleEventClick(event)}>
-      {isLoading ? (
-        <img
-          className="events__loading"
-          src="https://bayramix.ru/local/templates/bayramix_new/images/load.gif"
-          alt="loader"
-        />
-      ) : (
-        <img className="events__img" src={event.posterUrl || emptyImg} alt={event.title} />
-      )}
-      {event.posterUrl ? '' : <span>{event.title.substr(0, 7)}...</span>}
-    </li>
-  );
-};
-
-const EventsList = ({
+const EventsListMonth = ({
   events,
   title,
-  setEvent,
-  setVisible,
-  visible,
-  handleEventClick,
+  setEvent, 
   showingEvents,
 }) => {
   return (
@@ -46,7 +19,7 @@ const EventsList = ({
           events
             .slice(0, showingEvents)
             .map((event) => (
-              <Event key={event.id} event={event} handleEventClick={handleEventClick} />
+              <Event key={event.id} event={event} setEvent={setEvent} />
             ))}
       </ul>
     </>
@@ -54,30 +27,16 @@ const EventsList = ({
 };
 
 const Events = () => {
-  const [count, setCount] = React.useState(0);
+  
   const [visible, setVisible] = React.useState(false);
   const [event, setEvent] = React.useState(null);
-  const popupRef = React.useRef();
+  
   const [showingEvents, setShowingEvents] = React.useState(3);
   const [visibleShowMore, setVisibleShowMore] = React.useState(true);
 
   const handleEventClick = (event) => {
     setEvent(event);
     setVisible(true);
-  };
-
-  const handleEscKeyDown = (e) => {
-    const isEsc = e.keyCode === 27;
-    if (visible && isEsc) {
-      setVisible(false);
-    }
-  };
-
-  const handleClickOutPopup = (e) => {
-    const isOutside = !e.path.includes(popupRef.current);
-    if (visible && isOutside) {
-      setVisible(false);
-    }
   };
 
   const handleClickShowMore = () => {
@@ -87,23 +46,7 @@ const Events = () => {
       setVisibleShowMore(false);
       setShowingEvents(events.length);
     }
-  };
-
-  React.useEffect(() => {
-    if (visible) {
-      document.body.setAttribute('style', 'overflow:hidden');
-    } else {
-      document.body.setAttribute('style', 'overflow:scroll');
-    }
-
-    document.addEventListener('keydown', handleEscKeyDown);
-    document.addEventListener('click', handleClickOutPopup);
-
-    return function () {
-      document.removeEventListener('keydown', handleEscKeyDown);
-      document.removeEventListener('click', handleClickOutPopup);
-    };
-  });
+  };  
 
   //TODO replace to Reducer
   const uniq = [
@@ -132,8 +75,8 @@ const Events = () => {
       <Header title="Мероприятия" />
 
       <main className="events">
-        {targetEvents.map((events) => (
-          <EventsList
+        {targetEvents&&targetEvents.map((events) => (
+          <EventsListMonth
             key={events[0].id}
             title={`${MONTH_NAMES[events[0].date.getMonth()]} ${events[0].date.getFullYear()}`}
             events={events}
@@ -143,9 +86,7 @@ const Events = () => {
             handleEventClick={handleEventClick}
             showingEvents={showingEvents}
           />
-        ))}
-
-        {visible && <EventsPopup event={event} popupRef={popupRef} setVisible={setVisible} />}
+        ))}        
 
         {visibleShowMore && events.length ? (
           <button className="btn events__btn" onClick={handleClickShowMore}>
