@@ -5,7 +5,7 @@ import EventsListMonth from '../components/events-month';
 import { events } from '../data/events-mock';
 import { SHOWING_BY_CLICK, MONTH_NAMES } from '../constants';
 
-const Events = () => {  
+const Events = () => {
   const [showingEvents, setShowingEvents] = React.useState(3);
   const [visibleShowMore, setVisibleShowMore] = React.useState(true);
 
@@ -16,7 +16,7 @@ const Events = () => {
       setVisibleShowMore(false);
       setShowingEvents(events.length);
     }
-  };  
+  };
 
   //TODO replace to Reducer
   const uniq = [
@@ -44,14 +44,15 @@ const Events = () => {
       <Navbar />
       <Header title="Мероприятия" />
       <main className="events">
-        {targetEvents&&targetEvents.map((events) => (
-          <EventsListMonth
-            key={events[0].id}
-            title={`${MONTH_NAMES[events[0].date.getMonth()]} ${events[0].date.getFullYear()}`}
-            events={events}             
-            showingEvents={showingEvents}
-          />
-        ))}        
+        {targetEvents &&
+          targetEvents.map((events) => (
+            <EventsListMonth
+              key={events[0].id}
+              title={`${MONTH_NAMES[events[0].date.getMonth()]} ${events[0].date.getFullYear()}`}
+              events={events}
+              showingEvents={showingEvents}
+            />
+          ))}
 
         {visibleShowMore && events.length ? (
           <button className="btn events__btn" onClick={handleClickShowMore}>

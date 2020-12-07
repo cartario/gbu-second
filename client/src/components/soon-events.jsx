@@ -9,6 +9,7 @@ const SoonEvents = () => {
   const [categories, setCategories] = React.useState(null);
   const [filteredEvents, setFilteredEvents] = React.useState([]);
   const [visibleDescription, setVisibleDescription] = React.useState(false);
+  const [currentEvents, setCurrentEvents] = React.useState([]);
 
   const date = new Date();
   const currentYear = date.getFullYear();
@@ -19,7 +20,8 @@ const SoonEvents = () => {
     const currentEvents = events.filter((event)=>event.date.getFullYear()===currentYear&&event.date.getMonth()===currentMonth);
     setCategories([...new Set(currentEvents.map((event) => event.category))]);
     setFilteredEvents(currentEvents);
-  }, []);
+    setCurrentEvents(currentEvents);
+  }, [currentMonth, currentYear]);
 
   const handleClickDescription = () => {
     setVisibleDescription(!visibleDescription);
@@ -33,7 +35,7 @@ const SoonEvents = () => {
         <>
           {categories && (
             <SoonEventsCategories
-              events={events}
+              events={currentEvents}
               categories={categories}
               setFilteredEvents={setFilteredEvents}
               setCount={setCount}
