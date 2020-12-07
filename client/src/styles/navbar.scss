@@ -30,8 +30,9 @@
   margin: 0px;  
   font-weight: bold;  
 
-  &:hover{    
-    background: #1e88e5;
+  &:hover:not(.navbar__item--active){    
+    background: $blueColor;
+    
   } 
 
   a{

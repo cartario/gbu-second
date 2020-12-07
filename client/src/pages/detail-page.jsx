@@ -36,7 +36,7 @@ const DetailPage = () => {
 
   return (
     <>
-      <Navbar />      
+        
       <Header title={card.name}/>
       <main className="detailPage">
         <div className="detailPage__info">          
@@ -62,7 +62,7 @@ const DetailPage = () => {
         </div>
         <img className="detailPage__img" src={card.cardUrl ||"https://bayramix.ru/local/templates/bayramix_new/images/load.gif"} alt="cardImg"/>
       </main>
-      <Footer/>
+      
     </>
   );
 };

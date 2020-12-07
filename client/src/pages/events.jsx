@@ -47,7 +47,7 @@ const Events = () => {
 
   return (
     <>
-      <Navbar />
+     
       <Header title="Мероприятия" />
       <main className="events">
         {targetEvents &&
@@ -70,7 +70,7 @@ const Events = () => {
         )}
         {events.length ? '' : <p>Кажется мероприятия закончились...</p>}
       </main>
-      <Footer/>
+     
     </>
   );
 };

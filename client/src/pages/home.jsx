@@ -10,13 +10,13 @@ import Footer from '../components/footer.jsx';
 const Home = () => {
   return (    
       <section className="home">
-        <Navbar />
+       
         <WelcomeBlock />
         <SayHello />
         <TotalInfoBlock />
         <SessionsTodayBoard />        
         <SoonEvents/>
-        <Footer/>
+        
       </section>    
   );
 };

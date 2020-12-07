@@ -6,9 +6,9 @@ import Footer from '../components/footer.jsx';
 const Contacts = () => {
   return (
     <>
-      <Navbar />      
+         
       <Header title="Контакты"/>
-      <Footer/>
+      
     </>
   );
 };

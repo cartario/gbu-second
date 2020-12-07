@@ -37,7 +37,7 @@ const SoonEventsSlider = ({filteredEvents, count, setCount}) => {
             ))}
         </ul>
 
-        <div className="slider__controls">
+        <div className={`slider__controls ${filteredEvents.length<=1 ? "slider__control--hide" : ""}`}>
           <div
             onClick={handleSlider}
             className="slider__control slider__control--left soon-events__control soon-events__control--left"

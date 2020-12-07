@@ -2,13 +2,19 @@
   position: relative;
 }
 
-.slider__control{
+.slider__control{  
   position: absolute;
   top: calc(50% - 30px);
   width: 60px;
   height: 60px;
   background: black;
   border-radius: 50%;
+
+  
+}
+
+.slider__control--hide{
+  display:none;
 }
 
 .slider__control--left{  

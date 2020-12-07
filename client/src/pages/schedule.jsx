@@ -50,7 +50,7 @@ const Schedule = () => {
   
   return (
     <>
-      <Navbar />
+      
       <Header title="Расписание" />
       <main className="schedule">      
         <ul className="schedule__list">
@@ -62,7 +62,7 @@ const Schedule = () => {
             ))}
         </ul>
       </main>
-      <Footer/>
+      
     </>
   );
 };

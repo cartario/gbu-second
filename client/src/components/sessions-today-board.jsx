@@ -41,7 +41,7 @@ const SessionsTodayBoard = () => {
           ''
         )}
       </div>
-      {todayCards.length && dayStatus.status !== 10 ? (
+      {todayCards.length && dayStatus.status !== 0 ? (
         <div className="sessions">
           <h3>Занятия на сегодня:</h3>
           {addreses.map((addres) => (

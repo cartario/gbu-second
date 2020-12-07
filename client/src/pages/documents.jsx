@@ -39,7 +39,7 @@ const documents = [
 const Documents = () => {
   return (
     <>
-      <Navbar />
+     
       <Header title="Документы" />
       <main className="documents">
         <ul className="documents__list">
@@ -51,7 +51,7 @@ const Documents = () => {
             ))}
         </ul>
       </main>
-      <Footer/>
+      
     </>
   );
 };

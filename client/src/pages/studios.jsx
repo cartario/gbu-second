@@ -10,7 +10,7 @@ const Studios = () => {
   
   return (
     <>
-      <Navbar />
+      
       <Header title="Студии и секции"/>
       <main className="studios">         
         <div className="container">        
@@ -22,7 +22,7 @@ const Studios = () => {
           </ul>
         </div>
       </main>
-      <Footer/>
+      
     </>
   );
 };
