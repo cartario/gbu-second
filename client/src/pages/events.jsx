@@ -19,6 +19,7 @@ const Events = () => {
   };
 
   //TODO replace to Reducer
+  //TODO fix showmore btn
   const uniq = [
     ...new Set(
       events

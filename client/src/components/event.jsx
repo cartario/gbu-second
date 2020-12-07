@@ -14,6 +14,14 @@ const Event = ({event}) => {
     setLoading(false);
   }, []);
 
+  React.useEffect(()=>{
+    if (visiblePopup) {
+      document.body.setAttribute('style', 'overflow:hidden');
+    } else {
+      document.body.setAttribute('style', 'overflow:scroll');
+    }
+  });
+
   return (
     <>
       {visiblePopup && (

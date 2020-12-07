@@ -19,12 +19,6 @@ const EventsPopup = ({ event , visible, setVisible}) => {
   };
 
   React.useEffect(() => {
-    if (visible) {
-      document.body.setAttribute('style', 'overflow:hidden');
-    } else {
-      document.body.setAttribute('style', 'overflow:scroll');
-    }
-
     document.addEventListener('keydown', handleEscKeyDown);
     document.addEventListener('click', handleClickOutPopup);
 
