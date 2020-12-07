@@ -3,6 +3,7 @@ import Navbar from '../components/navbar';
 import aboutImg01 from '../data/about01.jpg';
 import aboutImg02 from '../data/about02.jpg';
 import Header from '../components/header';
+import Footer from '../components/footer.jsx';
 
 const About = () => {
   return (
@@ -46,6 +47,7 @@ const About = () => {
           </p>
         </div>
       </main>
+      <Footer/>
     </>
   );
 };

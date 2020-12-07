@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../components/navbar';
 import Card from '../components/studioCard';
 import Header from '../components/header';
+import Footer from '../components/footer.jsx';
 import {studios} from '../data/studios-mock';
 
 const Studios = () => {
@@ -21,6 +22,7 @@ const Studios = () => {
           </ul>
         </div>
       </main>
+      <Footer/>
     </>
   );
 };

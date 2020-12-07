@@ -54,7 +54,26 @@ $eventsMobileWidth: 668px;
 }
 
 .events__btn{
+  max-width: none;
+  width: calc(70% - 30px);
+  margin: 0 auto;
+  margin-bottom: 40px;
   transform: rotate(0);
+  background: $orangeColor;  
+  animation: none;
+
+  &:hover{
+    font-size: 22px;
+    background: rgb(219, 131, 15);
+    
+  }
+
+  @media(max-width: $eventsTabletWidth){
+    width: calc(78% - 40px);
+  }
+  @media(max-width: $eventsMobileWidth){
+    width: calc(100% - 10px);    
+  }
 }
 
 .events__popup-info{  
@@ -128,9 +147,21 @@ $eventsMobileWidth: 668px;
 .popup__close{
   position: absolute;
   top: 0;
-  right: 4px;
+  right: 4px;  
+  height: 40px;
+  width: 40px;  
   font-size: 50px;
-  font-weight: bold;
-  transform: rotate(45deg);  
-  cursor: pointer;  
+  font-weight: bold;  
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.85);
+  cursor: pointer; 
+  
+  &::before{
+    content: "+";
+    position: absolute;
+    top: -8px;
+    left: 7px;
+    color: white;   
+    transform: rotate(45deg);
+  }
 }

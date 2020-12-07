@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/navbar';
 import Header from '../components/header';
+import Footer from '../components/footer.jsx';
 import {useParams} from 'react-router-dom';
 import {studios} from '../data/studios-mock';
 
@@ -61,7 +62,7 @@ const DetailPage = () => {
         </div>
         <img className="detailPage__img" src={card.cardUrl ||"https://bayramix.ru/local/templates/bayramix_new/images/load.gif"} alt="cardImg"/>
       </main>
-      
+      <Footer/>
     </>
   );
 };

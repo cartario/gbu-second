@@ -52,7 +52,7 @@ const EventsPopup = ({ event , visible, setVisible}) => {
           )}
 
           <div className="popup__close" onClick={() => setVisible(false)}>
-            +
+            
           </div>
         </div>
       </div>

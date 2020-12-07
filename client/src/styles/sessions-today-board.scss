@@ -19,6 +19,7 @@
   margin: 0 auto;
   padding: 10px;
   border-top: 1px solid white;
+  cursor: pointer;
 
   p{
     margin: 0;
@@ -30,13 +31,8 @@
   &:last-child{
     border-bottom: 1px solid white;
   }
-  &:hover{
-    background: white;
-    color: $orangeColor;
-    cursor: pointer;
-    span{
-      color: black;
-    }
+  &:hover{    
+    transform: scale(1.05);
   }
 
   @media(max-width: 600px){
