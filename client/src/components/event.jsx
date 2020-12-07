@@ -2,12 +2,11 @@ import React from 'react';
 import emptyImg from '../data/card01.jpg';
 import EventsPopup from './events-popup';
 
-const Event = ({ event, setEvent }) => {
+const Event = ({event}) => {
   const [isLoading, setLoading] = React.useState(true);
   const [visiblePopup, setVisiblePopup] = React.useState(false);
 
-  const handleEventClick = (event) => {
-    setEvent(event);
+  const handleEventClick = () => {    
     setVisiblePopup(true);
   };
 
@@ -20,7 +19,7 @@ const Event = ({ event, setEvent }) => {
       {visiblePopup && (
         <EventsPopup event={event} setVisible={setVisiblePopup} visible={visiblePopup} />
       )}
-      <li key={event.id} className="events__item" onClick={() => handleEventClick(event)}>
+      <li key={event.id} className="events__item" onClick={handleEventClick}>
         {isLoading ? (
           <img
             className="events__loading"

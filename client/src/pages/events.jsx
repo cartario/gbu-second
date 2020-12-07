@@ -1,43 +1,13 @@
 import React from 'react';
 import Navbar from '../components/navbar';
 import Header from '../components/header';
-import Event from '../components/event';
+import EventsListMonth from '../components/events-month';
 import { events } from '../data/events-mock';
 import { SHOWING_BY_CLICK, MONTH_NAMES } from '../constants';
 
-const EventsListMonth = ({
-  events,
-  title,
-  setEvent, 
-  showingEvents,
-}) => {
-  return (
-    <>
-      <h2>{title}</h2>
-      <ul className="events__list">
-        {events &&
-          events
-            .slice(0, showingEvents)
-            .map((event) => (
-              <Event key={event.id} event={event} setEvent={setEvent} />
-            ))}
-      </ul>
-    </>
-  );
-};
-
-const Events = () => {
-  
-  const [visible, setVisible] = React.useState(false);
-  const [event, setEvent] = React.useState(null);
-  
+const Events = () => {  
   const [showingEvents, setShowingEvents] = React.useState(3);
   const [visibleShowMore, setVisibleShowMore] = React.useState(true);
-
-  const handleEventClick = (event) => {
-    setEvent(event);
-    setVisible(true);
-  };
 
   const handleClickShowMore = () => {
     setShowingEvents((prev) => prev + SHOWING_BY_CLICK);
@@ -73,17 +43,12 @@ const Events = () => {
     <>
       <Navbar />
       <Header title="Мероприятия" />
-
       <main className="events">
         {targetEvents&&targetEvents.map((events) => (
           <EventsListMonth
             key={events[0].id}
             title={`${MONTH_NAMES[events[0].date.getMonth()]} ${events[0].date.getFullYear()}`}
-            events={events}
-            setEvent={setEvent}
-            setVisible={setVisible}
-            visible={visible}
-            handleEventClick={handleEventClick}
+            events={events}             
             showingEvents={showingEvents}
           />
         ))}        
