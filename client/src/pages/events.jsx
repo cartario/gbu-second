@@ -6,12 +6,27 @@ import emptyImg from '../data/card01.jpg';
 
 const SHOWING_BY_CLICK = 1;
 
-const Event = ({ event, handleEventClick }) => {
-  const [isLoading, setLoading] = React.useState(true);  
+const MONTH_NAMES = [
+  'ЯНВАРЬ',
+  'ФЕВРАЛЬ',
+  'МАРТ',
+  'АПРЕЛЬ',
+  'МАЙ',
+  'ИЮНЬ',
+  'ИЮЛЬ',
+  'АВГУСТ',
+  'СЕНТЯБРЬ',
+  'ОКТЯБРЬ',
+  'НОЯБРЬ',
+  'ДЕКАБРЬ',
+];
 
-  React.useEffect(()=>{
-    setLoading(false)
-  },[])
+const Event = ({ event, handleEventClick }) => {
+  const [isLoading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    setLoading(false);
+  }, []);
 
   return (
     <li key={event.id} className="events__item" onClick={() => handleEventClick(event)}>
@@ -29,15 +44,25 @@ const Event = ({ event, handleEventClick }) => {
   );
 };
 
-const EventsByMonth = ({ events, title, setEvent, setVisible, visible, handleEventClick, showingEvents }) => {
+const EventsByMonth = ({
+  events,
+  title,
+  setEvent,
+  setVisible,
+  visible,
+  handleEventClick,
+  showingEvents,
+}) => {
   return (
     <>
       <h2>{title}</h2>
       <ul className="events__list">
         {events &&
-          events.slice(0, showingEvents).map((event) => (
-            <Event key={event.id} event={event} handleEventClick={handleEventClick} />
-          ))}
+          events
+            .slice(0, showingEvents)
+            .map((event) => (
+              <Event key={event.id} event={event} handleEventClick={handleEventClick} />
+            ))}
       </ul>
     </>
   );
@@ -71,13 +96,14 @@ const Events = () => {
   };
 
   const handleClickShowMore = () => {
-    setShowingEvents((prev)=>prev + SHOWING_BY_CLICK);
-    if(showingEvents>=events.length - SHOWING_BY_CLICK){
+    setShowingEvents((prev) => prev + SHOWING_BY_CLICK);
+
+    if (showingEvents >= events.length - SHOWING_BY_CLICK) {
       setVisibleShowMore(false);
       setShowingEvents(events.length);
-    }    
+    }
   };
-  
+
   React.useEffect(() => {
     if (visible) {
       document.body.setAttribute('style', 'overflow:hidden');
@@ -94,38 +120,44 @@ const Events = () => {
     };
   });
 
+  //TODO replace to Reducer
+  const uniq = [
+    ...new Set(
+      events
+        .sort((a, b) => b.date - a.date)
+        .slice(0, showingEvents)
+        .map((event) =>
+          JSON.stringify({
+            year: event.date.getFullYear(),
+            month: event.date.getMonth(),
+          }),
+        ),
+    ),
+  ].map((item) => JSON.parse(item));
+
+  const targetEvents = uniq.map((item) =>
+    events.filter(
+      (event) => item.year === event.date.getFullYear() && item.month === event.date.getMonth(),
+    ),
+  );
+
   return (
     <>
       <Navbar />
       <Header title="Мероприятия" />
       <main className="events">
-        <EventsByMonth
-          title={'Декабрь 2020'}
-          events={events.slice(0, showingEvents)}
-          setEvent={setEvent}
-          setVisible={setVisible}
-          visible={visible}
-          handleEventClick={handleEventClick}
-          showingEvents={showingEvents}
-        />
-        {/* <EventsByMonth
-          title={'Ноябрь 2020'}
-          events={events.slice(0, 6)}
-          setEvent={setEvent}
-          setVisible={setVisible}
-          visible={visible}
-          handleEventClick={handleEventClick}
-          showingEvents={showingEvents}
-        />
-        <EventsByMonth
-          title={'Октябрь 2020'}
-          events={events.slice(2, 7)}
-          setEvent={setEvent}
-          setVisible={setVisible}
-          visible={visible}
-          handleEventClick={handleEventClick}
-          showingEvents={showingEvents}
-        /> */}
+        {targetEvents.map((events) => (
+          <EventsByMonth
+            key={events[0].id}
+            title={`${MONTH_NAMES[events[0].date.getMonth()]} ${events[0].date.getFullYear()}`}
+            events={events}
+            setEvent={setEvent}
+            setVisible={setVisible}
+            visible={visible}
+            handleEventClick={handleEventClick}
+            showingEvents={showingEvents}
+          />
+        ))}     
 
         {visible && (
           <div className="popup">
@@ -157,9 +189,15 @@ const Events = () => {
             </div>
           </div>
         )}
-        
-        {visibleShowMore &&<button className="btn events__btn" onClick={handleClickShowMore}>Показать еще</button>}
-        
+
+        {visibleShowMore && events.length ? (
+          <button className="btn events__btn" onClick={handleClickShowMore}>
+            Показать еще
+          </button>
+        ) : (
+          ''
+        )}
+        {events.length ? '' : <p>Кажется мероприятия закончились...</p>}
       </main>
     </>
   );

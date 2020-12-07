@@ -41,7 +41,7 @@ export const events = [
   {
     id: '3q',
     title: 'Соревнования по киберспорту, посвященные Дню конституции 2',
-    date: new Date(2020, 11, 13, 19, 0),
+    date: new Date(2020, 10, 13, 19, 0),
     place: 'Люсиновская, 54',
     description: 'description description desc description description desc',
     posterUrl: null,
