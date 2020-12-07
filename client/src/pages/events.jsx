@@ -4,7 +4,7 @@ import Header from '../components/header';
 import { events } from '../data/events-mock';
 import emptyImg from '../data/card01.jpg';
 
-const SHOWING_BY_CLICK = 1;
+const SHOWING_BY_CLICK = 2;
 
 const MONTH_NAMES = [
   'ЯНВАРЬ',
@@ -73,7 +73,7 @@ const Events = () => {
   const [visible, setVisible] = React.useState(false);
   const [event, setEvent] = React.useState(null);
   const popupRef = React.useRef();
-  const [showingEvents, setShowingEvents] = React.useState(1);
+  const [showingEvents, setShowingEvents] = React.useState(3);
   const [visibleShowMore, setVisibleShowMore] = React.useState(true);
 
   const handleEventClick = (event) => {
@@ -177,8 +177,8 @@ const Events = () => {
                 ) : (
                   <div className="events__old">
                     <h4>Как это было:</h4>
-                    <img src={event.photos[1]} alt="img" />
-                    <img src={event.photos[0]} alt="img" />{' '}
+                    <img src={event.photos&&event.photos[1]} alt="img" />
+                    <img src={event.photos&&event.photos[0]} alt="img" />{' '}
                   </div>
                 )}
 

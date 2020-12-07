@@ -10,10 +10,15 @@ const SoonEvents = () => {
   const [filteredEvents, setFilteredEvents] = React.useState([]);
   const [visibleDescription, setVisibleDescription] = React.useState(false);
 
+  const date = new Date();
+  const currentYear = date.getFullYear();
+  const currentMonth = date.getMonth();
+
   React.useEffect(() => {
     //TODO fetch events;
-    setCategories([...new Set(events.map((event) => event.category))]);
-    setFilteredEvents(events);
+    const currentEvents = events.filter((event)=>event.date.getFullYear()===currentYear&&event.date.getMonth()===currentMonth);
+    setCategories([...new Set(currentEvents.map((event) => event.category))]);
+    setFilteredEvents(currentEvents);
   }, []);
 
   const handleClickDescription = () => {
