@@ -1,4 +1,5 @@
 import { Route } from 'react-router-dom';
+import React from 'react';
 import Home from './pages/home';
 import About from './pages/about';
 import Events from './pages/events';
@@ -11,13 +12,19 @@ import Navbar from './components/navbar';
 import Footer from './components/footer';
 
 function App() {
+  const [active, setActive] = React.useState(0); 
+  //fix костыльный способ
+  
   return (
     <div className="App">
       <div className="App__content">
-        <Navbar />
-        <Route path={['/', '/gbu-dan']} exact component={Home} />
+        <Navbar active={active} setActive={setActive}/>
+        
+        <Route path={['/', '/gbu-dan']} exact>
+          <Home setActiveMenuItem={setActive}/>
+        </Route>
         <Route path="/about" component={About} />
-        <Route path="/events" component={Events} />
+        <Route path="/events" component={Events} />        
         <Route path="/studios" exact component={Studios} />
         <Route path="/detail/:id">
           <DetailPage />

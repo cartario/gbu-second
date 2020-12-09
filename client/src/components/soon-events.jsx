@@ -4,7 +4,8 @@ import SoonEventsCategories from '../components/soon-events-categories';
 import SoonEventsSlider from '../components/soon-events-slider';
 import {events} from '../data/events-mock';
 
-const SoonEvents = () => {
+const SoonEvents = ({setActiveMenuItem}) => {
+  
   const [count, setCount] = React.useState(0);
   const [categories, setCategories] = React.useState(null);
   const [filteredEvents, setFilteredEvents] = React.useState([]);
@@ -17,7 +18,7 @@ const SoonEvents = () => {
 
   React.useEffect(() => {
     //TODO fetch events;
-    const currentEvents = events.filter((event)=>event.date.getFullYear()===currentYear&&event.date.getMonth()===currentMonth);
+    const currentEvents = events.filter((event)=>event.date.getFullYear()===currentYear&&event.date.getMonth()===currentMonth).sort((a,b)=>b.date - a.date);
     setCategories([...new Set(currentEvents.map((event) => event.category))]);
     setFilteredEvents(currentEvents);
     setCurrentEvents(currentEvents);
@@ -29,7 +30,7 @@ const SoonEvents = () => {
 
   return (
     <section className="soon-events">
-      <h1>В ближайшее время:</h1>
+      <h1>В этом месяце:</h1>
 
       {filteredEvents && filteredEvents.length ? (
         <>
@@ -61,7 +62,7 @@ const SoonEvents = () => {
         <p>В этом месяце все...</p>
       )}
 
-      <Link className="soon-events__btn btn" to="/events">
+      <Link className="soon-events__btn btn" to="/events" onClick={()=>setActiveMenuItem(2)}> 
         Все мероприятия
       </Link>
     </section>
