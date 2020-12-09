@@ -1,5 +1,45 @@
 export const studios = [
     {
+        "name": "Секция «Брейк Данс»",
+        "title": "Секция «Брейк Данс»",
+        "age_min": "12",
+        "groupNumber": "1",
+        "cab": "online",
+        "day": "2",
+        "timeFrom": "19:30",
+        "timeTo": "21:00",
+        "teacher": "Зикевская\r\n Анастасия Викторовна",
+        "type": "sport",
+        "price": "free",
+        "priceOptions": "free",
+        "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-39.userapi.com/impf/mfKk-8UPREgbYOe5tY6VrSajsPK_rQND4PQlfw/eLFQpVRhwHM.jpg?size=1440x900&quality=96&proxy=1&sign=ca80c26c357e995f6d4f03ecc059bffc",
+        "description": "Брейк-данс - динамичный танец. Здесь главное - уметь чувствовать ритм. Исполнителей называют “b-boy” или ”b-girl”, как сокращение от break-boy - танцор ломаного бита. На занятиях дети учатся импровизировать и мыслить творчески, развивают гибкость, музыкальность и чувство стиля",
+        "status": "1",
+        "id": "15"
+    },
+    {
+        "isDuplicate": "1",
+        "name": "Секция «Брейк Данс»",
+        "title": "Секция «Брейк Данс»",
+        "age_min": "12",
+        "groupNumber": "1",
+        "cab": "online",
+        "day": "4",
+        "timeFrom": "19:30",
+        "timeTo": "21:00",
+        "teacher": "Зикевская\r\n Анастасия Викторовна",
+        "type": "sport",
+        "price": "free",
+        "priceOptions": "free",
+        "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-39.userapi.com/impf/mfKk-8UPREgbYOe5tY6VrSajsPK_rQND4PQlfw/eLFQpVRhwHM.jpg?size=1440x900&quality=96&proxy=1&sign=ca80c26c357e995f6d4f03ecc059bffc",
+        "description": "Брейк-данс - динамичный танец. Здесь главное - уметь чувствовать ритм. Исполнителей называют “b-boy” или ”b-girl”, как сокращение от break-boy - танцор ломаного бита. На занятиях дети учатся импровизировать и мыслить творчески, развивают гибкость, музыкальность и чувство стиля",
+        "status": "1",
+        "id": "16"
+    },
+    {
+        "isDuplicate": "1",
         "name": "Музыкально-вокальная студия для взрослых и детей \"ЯРД I+II\"",
         "title": "Музыкальная студия «Ярмарка»",
         "age_min": "55",
@@ -13,6 +53,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
+        "imgUrl": "https://sun9-44.userapi.com/impf/qKUEEmyweMHaSLWNh_L-RKbTVHZYOE6wNIuDng/5umOfCOzghk.jpg?size=900x900&quality=96&proxy=1&sign=1838d4ca7d508f6a2c19dfc6586cab0d&type=album\"",
+        "description": "Под одним названием произошло слияние нескольких студий: Ярмарка, Романтики и Домисолька(для детей) . Самая массовая и популярная студия нашего центра, в которой раскрываются  таланты всех возрастов. Педагог Фатеева Ольга -  настоящий профессионал своего дела, превратит обучение в увлекательный процесс.",
         "status": "1",
         "id": "14"
     },
@@ -30,6 +72,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-45.userapi.com/impf/aVGi_H4zlotUNmbYJ7GCawyg-nrpuLvzT7igxg/2Dp_4gtvsSI.jpg?size=2560x1712&quality=96&proxy=1&sign=27adcd3c89be8b61c369ca727fa0f672&type=album",
+        "description": "Обучение игре на аккордеоне доступно каждому. Неважно, сколько вам лет, занимались ли вы ранее музыкой или начинаете учиться с нуля, хотите ли вы профессионально играть или просто музицировать для себя, мы поможем освоить игру на аккордеоне с максимальным позитивом",
         "status": "1",
         "id": "48"
     },
@@ -48,6 +92,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-45.userapi.com/impf/aVGi_H4zlotUNmbYJ7GCawyg-nrpuLvzT7igxg/2Dp_4gtvsSI.jpg?size=2560x1712&quality=96&proxy=1&sign=27adcd3c89be8b61c369ca727fa0f672&type=album",
+        "description": "Обучение игре на аккордеоне доступно каждому. Неважно, сколько вам лет, занимались ли вы ранее музыкой или начинаете учиться с нуля, хотите ли вы профессионально играть или просто музицировать для себя, мы поможем освоить игру на аккордеоне с максимальным позитивом",
         "status": "1",
         "id": "49"
     },
@@ -67,7 +113,7 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
-        "imgUrl": "https://sun9-10.userapi.com/impf/-hZkDC-3c0EFGfhrKofijLww6cP4tjHJ709llg/oIBywXYY_so.jpg?size=1000x667&quality=96&proxy=1&sign=d1fa31f795b3f0b062c8559be55dc113",
+        "imgUrl": "https://sun9-51.userapi.com/impf/GC0XGiugbfK-pKO0SlQtX9Bjdi45JLoWD2XnIw/BJHUNxKiepQ.jpg?size=800x800&quality=96&proxy=1&sign=0dfd7344a12f460445780a9ccd425e7f&type=album",
         "description": "В студиях изобразительного искусства изучают графику, живопись, станковую и декоративную композиции. Студии дают возможность попробовать свои силы в разных направлениях классического и прикладного творчества: рисунок, живопись, лепка и т. д. Все предметы взаимосвязаны между собой, при этом каждый в отдельности имеет определенные задачи.",
         "status": "1",
         "id": "46"
@@ -88,7 +134,7 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
-        "imgUrl": "https://sun9-10.userapi.com/impf/-hZkDC-3c0EFGfhrKofijLww6cP4tjHJ709llg/oIBywXYY_so.jpg?size=1000x667&quality=96&proxy=1&sign=d1fa31f795b3f0b062c8559be55dc113",
+        "imgUrl": "https://sun9-51.userapi.com/impf/GC0XGiugbfK-pKO0SlQtX9Bjdi45JLoWD2XnIw/BJHUNxKiepQ.jpg?size=800x800&quality=96&proxy=1&sign=0dfd7344a12f460445780a9ccd425e7f&type=album",
         "description": "В студиях изобразительного искусства изучают графику, живопись, станковую и декоративную композиции. Студии дают возможность попробовать свои силы в разных направлениях классического и прикладного творчества: рисунок, живопись, лепка и т. д. Все предметы взаимосвязаны между собой, при этом каждый в отдельности имеет определенные задачи.",
         "status": "1",
         "id": "47"
@@ -107,6 +153,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-14.userapi.com/impf/9KkmCFmwvZE06we7Te3M00Xy0mZE8NBpha4FDg/cwsxFippZbI.jpg?size=1200x750&quality=96&proxy=1&sign=6910593f0b0dd7fbe9469791c871ad7e&type=album",
+        "description": "Эта студия зарекомендовала себя во многих конкурсах и неоднократно завоевывала почетные места. Дружный опытный коллектив наполняет пространство центра - красивой музыкой, и хорошим настроением.",
         "status": "1",
         "id": "13"
     },
@@ -143,6 +191,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-15.userapi.com/impf/OWunzZl_yZr_aK_te2YgTE7FBbmz6UQDCk6MQg/3e82vREdd_Y.jpg?size=2048x1384&quality=96&proxy=1&sign=0f094c1b46051e94a8e42bb192456748&type=album",
+        "description": "Хоровое пение активизирует слух, укрепляет память, развивает творческие способности благодаря вовлечению в интересную практическую деятельность. Хоровое исполнительство несет широкую образовательную функцию. Оно активизирует идеологическую направленность, психическую деятельность, воспитывает память, чувства, вкус, артистичность, выразительность, эмоциональность.",
         "status": "1",
         "id": "87"
     },
@@ -161,6 +211,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-15.userapi.com/impf/OWunzZl_yZr_aK_te2YgTE7FBbmz6UQDCk6MQg/3e82vREdd_Y.jpg?size=2048x1384&quality=96&proxy=1&sign=0f094c1b46051e94a8e42bb192456748&type=album",
+        "description": "Хоровое пение активизирует слух, укрепляет память, развивает творческие способности благодаря вовлечению в интересную практическую деятельность. Хоровое исполнительство несет широкую образовательную функцию. Оно активизирует идеологическую направленность, психическую деятельность, воспитывает память, чувства, вкус, артистичность, выразительность, эмоциональность.",
         "status": "1",
         "id": "88"
     },
@@ -199,6 +251,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
+        "imgUrl": "https://sun9-54.userapi.com/impf/X0JuOlg0AUsLY33f0aaprcA69IkQnvI_X5FbxA/l4t50hqX3Lw.jpg?size=980x567&quality=96&proxy=1&sign=20ee4011ad46792d33de0e5956af3104&type=album",
+        "description": "Классическая хореография – это основа, на которой формируется красивое тело, отличный тонус, гибкость и выносливость.",
         "status": "1",
         "id": "74"
     },
@@ -217,6 +271,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
+        "imgUrl": "https://sun9-54.userapi.com/impf/X0JuOlg0AUsLY33f0aaprcA69IkQnvI_X5FbxA/l4t50hqX3Lw.jpg?size=980x567&quality=96&proxy=1&sign=20ee4011ad46792d33de0e5956af3104&type=album",
+        "description": "Классическая хореография – это основа, на которой формируется красивое тело, отличный тонус, гибкость и выносливость.",
         "status": "1",
         "id": "76"
     },
@@ -256,6 +312,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
+        "imgUrl": "https://sun9-44.userapi.com/impf/qKUEEmyweMHaSLWNh_L-RKbTVHZYOE6wNIuDng/5umOfCOzghk.jpg?size=900x900&quality=96&proxy=1&sign=1838d4ca7d508f6a2c19dfc6586cab0d&type=album\"",
+        "description": "Под одним названием произошло слияние нескольких студий: Ярмарка, Романтики и Домисолька(для детей) . Самая массовая и популярная студия нашего центра, в которой раскрываются  таланты всех возрастов. Педагог Фатеева Ольга -  настоящий профессионал своего дела, превратит обучение в увлекательный процесс.",
         "status": "1",
         "id": "69"
     },
@@ -274,6 +332,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
+        "imgUrl": "https://sun9-54.userapi.com/impf/X0JuOlg0AUsLY33f0aaprcA69IkQnvI_X5FbxA/l4t50hqX3Lw.jpg?size=980x567&quality=96&proxy=1&sign=20ee4011ad46792d33de0e5956af3104&type=album",
+        "description": "Классическая хореография – это основа, на которой формируется красивое тело, отличный тонус, гибкость и выносливость.",
         "status": "1",
         "id": "75"
     },
@@ -311,6 +371,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-46.userapi.com/impf/LkH9OMUAPooC2Ryrnn6A5Ui0jU3yYsIG5aDzEQ/QA8lU8_MTuY.jpg?size=720x615&quality=96&proxy=1&sign=55faac0a5108a8cd9b3ad64961ec2f2f&type=album",
+        "description": "На занятиях мы занимакмся не только обучением историческим танцам, но и вашей осанкой, речью, умением вести себя на балах так, как подобает даме или кавалеру высокого происхождения",
         "status": "1",
         "id": "66"
     },
@@ -329,6 +391,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-46.userapi.com/impf/LkH9OMUAPooC2Ryrnn6A5Ui0jU3yYsIG5aDzEQ/QA8lU8_MTuY.jpg?size=720x615&quality=96&proxy=1&sign=55faac0a5108a8cd9b3ad64961ec2f2f&type=album",
+        "description": "На занятиях мы занимакмся не только обучением историческим танцам, но и вашей осанкой, речью, умением вести себя на балах так, как подобает даме или кавалеру высокого происхождения",
         "status": "1",
         "id": "67"
     },
@@ -347,6 +411,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
+        "imgUrl": "https://sun9-54.userapi.com/impf/X0JuOlg0AUsLY33f0aaprcA69IkQnvI_X5FbxA/l4t50hqX3Lw.jpg?size=980x567&quality=96&proxy=1&sign=20ee4011ad46792d33de0e5956af3104&type=album",
+        "description": "Классическая хореография – это основа, на которой формируется красивое тело, отличный тонус, гибкость и выносливость.",
         "status": "1",
         "id": "77"
     },
@@ -365,6 +431,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
+        "imgUrl": "https://sun9-68.userapi.com/impf/WZH-yAVBx3LrfIGxjZM2v2AEgTbBCb18g0KafA/h13QUUosrKg.jpg?size=1920x1200&quality=96&proxy=1&sign=60cc56fb9e2e3da480b0d6131e7a4bbd&type=album",
+        "description": "это не только очень распространенная игра, но и некий стиль жизни. Такое времяпрепровождение интересно как профессиональным бильярдистам, так и игрокам–любителям. ",
         "status": "1",
         "id": "1"
     },
@@ -404,6 +472,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-14.userapi.com/impf/9KkmCFmwvZE06we7Te3M00Xy0mZE8NBpha4FDg/cwsxFippZbI.jpg?size=1200x750&quality=96&proxy=1&sign=6910593f0b0dd7fbe9469791c871ad7e&type=album",
+        "description": "Эта студия зарекомендовала себя во многих конкурсах и неоднократно завоевывала почетные места. Дружный опытный коллектив наполняет пространство центра - красивой музыкой, и хорошим настроением.",
         "status": "1",
         "id": "68"
     },
@@ -421,6 +491,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
+        "imgUrl": "https://sun9-7.userapi.com/impf/pU7yui5S3nmdVbCXCm4bJP-f1AzS9XyJqS5aFw/JaHg8aNhifY.jpg?size=1200x811&quality=96&proxy=1&sign=38d7c2456d056ff657e14e045249da33&type=album",
+        "description": "При попадании в цирковую студию дети занимаются общей физической подготовкой, уделяя внимания растяжке и чувству ритма. ",
         "status": "1",
         "id": "34"
     },
@@ -438,6 +510,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
+        "imgUrl": "https://sun9-12.userapi.com/impf/VTH9-YUwN7v7kxnpxH1J5R4g6fOYd--216h0Kw/GwM3GxF9_AU.jpg?size=1200x800&quality=96&proxy=1&sign=473e1a8fb574b531be37999a55753ce6&type=album",
+        "description": "При попадании в цирковую студию дети занимаются общей физической подготовкой, уделяя внимания растяжке и чувству ритма. ",
         "status": "1",
         "id": "37"
     },
@@ -456,6 +530,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-52.userapi.com/impf/LvhqHa_sumnPYm2T6XqD2ZdT4pK8nmVCpbNsGg/LXM2HXuzm7U.jpg?size=1600x1067&quality=96&proxy=1&sign=9fb0752639cddad087396c2956ec033d&type=album",
+        "description": "Современные эстрадные танцы – это небольшие, мастерски разыгранные сценки с завязкой, сюжетной линией, кульминацией ",
         "status": "1",
         "id": "30"
     },
@@ -475,6 +551,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-52.userapi.com/impf/LvhqHa_sumnPYm2T6XqD2ZdT4pK8nmVCpbNsGg/LXM2HXuzm7U.jpg?size=1600x1067&quality=96&proxy=1&sign=9fb0752639cddad087396c2956ec033d&type=album",
+        "description": "Современные эстрадные танцы – это небольшие, мастерски разыгранные сценки с завязкой, сюжетной линией, кульминацией ",
         "status": "1",
         "id": "31"
     },
@@ -515,6 +593,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
+        "imgUrl": "https://sun9-55.userapi.com/impf/ZOF7eMeuQKdOaqbttPj8MCxoZOdKJsLfU74Wxw/XSKejfeCtLU.jpg?size=736x530&quality=96&proxy=1&sign=c393a44746e7f2776358462e0c7c6e19&type=album",
+        "description": "Хореография  способствует развитию творческого начала, а также художественного вкуса. Хореография для детей - это прежде всего приобретение уверенности уже в юном возрасте.",
         "status": "1",
         "id": "73"
     },
@@ -532,6 +612,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-38.userapi.com/impf/RjaQutRfYpoDM_IunKW2BtJZ2pVmz01fiMYyYw/HsGmCaFjuCE.jpg?size=1280x720&quality=96&sign=c882df72f4595fd661d77d89a02efadb&type=album",
+        "description": "Хореография - важный предмет в развитии ребёнка хореография-Это в первую очередь культура движений, искусство красиво преподнести себя в танце. Также это вид создания художественного образа, показанного без помощи речи. ... Детям полезно заниматься танцами. Ведь такое увлечение помогает выработать чувство ритма, получить хорошую растяжку, обрести пластичность и гибкость",
         "status": "1",
         "id": "79"
     },
@@ -550,6 +632,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-38.userapi.com/impf/RjaQutRfYpoDM_IunKW2BtJZ2pVmz01fiMYyYw/HsGmCaFjuCE.jpg?size=1280x720&quality=96&sign=c882df72f4595fd661d77d89a02efadb&type=album",
+        "description": "Хореография - важный предмет в развитии ребёнка хореография-Это в первую очередь культура движений, искусство красиво преподнести себя в танце. Также это вид создания художественного образа, показанного без помощи речи. ... Детям полезно заниматься танцами. Ведь такое увлечение помогает выработать чувство ритма, получить хорошую растяжку, обрести пластичность и гибкость",
         "status": "1",
         "id": "78"
     },
@@ -588,11 +672,12 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-38.userapi.com/impf/RjaQutRfYpoDM_IunKW2BtJZ2pVmz01fiMYyYw/HsGmCaFjuCE.jpg?size=1280x720&quality=96&sign=c882df72f4595fd661d77d89a02efadb&type=album",
+        "description": "Хореография - важный предмет в развитии ребёнка хореография-Это в первую очередь культура движений, искусство красиво преподнести себя в танце. Также это вид создания художественного образа, показанного без помощи речи. ... Детям полезно заниматься танцами. Ведь такое увлечение помогает выработать чувство ритма, получить хорошую растяжку, обрести пластичность и гибкость",
         "status": "1",
         "id": "80"
     },
     {
-        "isDuplicate": "1",
         "name": "Музыкально-вокальная студия для взрослых и детей \"ЯРД I+II\"",
         "title": "Музыкальная студия «Домисолька I»",
         "age_min": "3",
@@ -607,6 +692,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
+        "imgUrl": "https://sun9-44.userapi.com/impf/qKUEEmyweMHaSLWNh_L-RKbTVHZYOE6wNIuDng/5umOfCOzghk.jpg?size=900x900&quality=96&proxy=1&sign=1838d4ca7d508f6a2c19dfc6586cab0d&type=album\"",
+        "description": "Под одним названием произошло слияние нескольких студий: Ярмарка, Романтики и Домисолька(для детей) . Самая массовая и популярная студия нашего центра, в которой раскрываются  таланты всех возрастов. Педагог Фатеева Ольга -  настоящий профессионал своего дела, превратит обучение в увлекательный процесс.",
         "status": "1",
         "id": "10"
     },
@@ -624,6 +711,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-60.userapi.com/impf/1QblcgaTKGmSv04fehXJ92_ayKJ_YqCTAtpJ1g/elLIHvTPDSA.jpg?size=1120x541&quality=96&proxy=1&sign=567b07912c646143a4107035a6fec9c1&type=album",
+        "description": "Дети изучают дисциплины: актерское мастерство, хоровое пение, танец, сценическая речь и сценическое движение.",
         "status": "1",
         "id": "82"
     },
@@ -642,6 +731,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-55.userapi.com/impf/ZOF7eMeuQKdOaqbttPj8MCxoZOdKJsLfU74Wxw/XSKejfeCtLU.jpg?size=736x530&quality=96&proxy=1&sign=c393a44746e7f2776358462e0c7c6e19&type=album",
+        "description": "Хореография  способствует развитию творческого начала, а также художественного вкуса. Хореография для детей - это прежде всего приобретение уверенности уже в юном возрасте.",
         "status": "1",
         "id": "86"
     },
@@ -660,6 +751,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-21.userapi.com/impf/Srb4SQmXDYEyERrBv4Yd9TZCm33Ib95B3RD6uA/8jHlPH3MbB0.jpg?size=1200x789&quality=96&proxy=1&sign=59bbcdacca1619bf0bb648ee76825799&type=album",
+        "description": "Настольные игры развивают критическое мышление, эрудицию,  внимание",
         "status": "1",
         "id": "4"
     },
@@ -677,6 +770,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-51.userapi.com/impf/kmNYjtb0mx4SH8WCwjNopB76u7YQnNVLrGf1zg/t826vJWPt18.jpg?size=1000x731&quality=96&proxy=1&sign=30a36e9a9df82fc2a1edd61c34212b64&type=album",
+        "description": "Мини-футбол, называемый также футзалом – это командная спортивная игра. От классического большого футбола данный вид спорта отличается продолжительностью матча, правилами, размерами поля и численностью игроков.",
         "status": "1",
         "id": "24"
     },
@@ -695,6 +790,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-51.userapi.com/impf/kmNYjtb0mx4SH8WCwjNopB76u7YQnNVLrGf1zg/t826vJWPt18.jpg?size=1000x731&quality=96&proxy=1&sign=30a36e9a9df82fc2a1edd61c34212b64&type=album",
+        "description": "Мини-футбол, называемый также футзалом – это командная спортивная игра. От классического большого футбола данный вид спорта отличается продолжительностью матча, правилами, размерами поля и численностью игроков.",
         "status": "1",
         "id": "25"
     },
@@ -713,6 +810,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-51.userapi.com/impf/kmNYjtb0mx4SH8WCwjNopB76u7YQnNVLrGf1zg/t826vJWPt18.jpg?size=1000x731&quality=96&proxy=1&sign=30a36e9a9df82fc2a1edd61c34212b64&type=album",
+        "description": "Мини-футбол, называемый также футзалом – это командная спортивная игра. От классического большого футбола данный вид спорта отличается продолжительностью матча, правилами, размерами поля и численностью игроков.",
         "status": "1",
         "id": "26"
     },
@@ -731,6 +830,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-32.userapi.com/impf/GGPjmJkIqtnBwyBp70k05V3Q-Z9xydLieFg3zw/s33ZxgFmaps.jpg?size=1000x744&quality=96&proxy=1&sign=3349d7ee8b89e4fb204873394cbdf603&type=album",
+        "description": "Акустическая гитара идеально подходит для аккомпанемента, исполнения джаза, блюза, рока, поп-музыки, шансона и т.д. Металлические струны отлично подходят для игры медиатором, а узкий гриф значительно упрощает игру аккордов с приемом «баре».",
         "status": "1",
         "id": "40"
     },
@@ -750,6 +851,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-32.userapi.com/impf/GGPjmJkIqtnBwyBp70k05V3Q-Z9xydLieFg3zw/s33ZxgFmaps.jpg?size=1000x744&quality=96&proxy=1&sign=3349d7ee8b89e4fb204873394cbdf603&type=album",
+        "description": "Акустическая гитара идеально подходит для аккомпанемента, исполнения джаза, блюза, рока, поп-музыки, шансона и т.д. Металлические струны отлично подходят для игры медиатором, а узкий гриф значительно упрощает игру аккордов с приемом «баре».",
         "status": "1",
         "id": "41"
     },
@@ -789,7 +892,7 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
-        "imgUrl": "https://sun9-10.userapi.com/impf/-hZkDC-3c0EFGfhrKofijLww6cP4tjHJ709llg/oIBywXYY_so.jpg?size=1000x667&quality=96&proxy=1&sign=d1fa31f795b3f0b062c8559be55dc113",
+        "imgUrl": "https://sun9-73.userapi.com/impf/GTiPPE95g2vyTJzswitw2fMAIfMJFIM3a9vYUA/53WSU_vKPa8.jpg?size=706x470&quality=96&proxy=1&sign=bf7a79453475c0ae3c670aad190d74da&type=album",
         "description": "В студиях изобразительного искусства изучают графику, живопись, станковую и декоративную композиции. Студии дают возможность попробовать свои силы в разных направлениях классического и прикладного творчества: рисунок, живопись, лепка и т. д. Все предметы взаимосвязаны между собой, при этом каждый в отдельности имеет определенные задачи.",
         "status": "1",
         "id": "62"
@@ -810,7 +913,7 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
-        "imgUrl": "https://sun9-10.userapi.com/impf/-hZkDC-3c0EFGfhrKofijLww6cP4tjHJ709llg/oIBywXYY_so.jpg?size=1000x667&quality=96&proxy=1&sign=d1fa31f795b3f0b062c8559be55dc113",
+        "imgUrl": "https://sun9-73.userapi.com/impf/GTiPPE95g2vyTJzswitw2fMAIfMJFIM3a9vYUA/53WSU_vKPa8.jpg?size=706x470&quality=96&proxy=1&sign=bf7a79453475c0ae3c670aad190d74da&type=album",
         "description": "В студиях изобразительного искусства изучают графику, живопись, станковую и декоративную композиции. Студии дают возможность попробовать свои силы в разных направлениях классического и прикладного творчества: рисунок, живопись, лепка и т. д. Все предметы взаимосвязаны между собой, при этом каждый в отдельности имеет определенные задачи.",
         "status": "1",
         "id": "63"
@@ -831,6 +934,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
+        "imgUrl": "https://sun9-55.userapi.com/impf/ZOF7eMeuQKdOaqbttPj8MCxoZOdKJsLfU74Wxw/XSKejfeCtLU.jpg?size=736x530&quality=96&proxy=1&sign=c393a44746e7f2776358462e0c7c6e19&type=album",
+        "description": "Хореография  способствует развитию творческого начала, а также художественного вкуса. Хореография для детей - это прежде всего приобретение уверенности уже в юном возрасте.",
         "status": "1",
         "id": "72"
     },
@@ -850,6 +955,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-55.userapi.com/impf/ZOF7eMeuQKdOaqbttPj8MCxoZOdKJsLfU74Wxw/XSKejfeCtLU.jpg?size=736x530&quality=96&proxy=1&sign=c393a44746e7f2776358462e0c7c6e19&type=album",
+        "description": "Хореография  способствует развитию творческого начала, а также художественного вкуса. Хореография для детей - это прежде всего приобретение уверенности уже в юном возрасте.",
         "status": "1",
         "id": "85"
     },
@@ -869,6 +976,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
+        "imgUrl": "https://sun9-44.userapi.com/impf/qKUEEmyweMHaSLWNh_L-RKbTVHZYOE6wNIuDng/5umOfCOzghk.jpg?size=900x900&quality=96&proxy=1&sign=1838d4ca7d508f6a2c19dfc6586cab0d&type=album\"",
+        "description": "Под одним названием произошло слияние нескольких студий: Ярмарка, Романтики и Домисолька(для детей) . Самая массовая и популярная студия нашего центра, в которой раскрываются  таланты всех возрастов. Педагог Фатеева Ольга -  настоящий профессионал своего дела, превратит обучение в увлекательный процесс.",
         "status": "1",
         "id": "11"
     },
@@ -887,6 +996,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-60.userapi.com/impf/1QblcgaTKGmSv04fehXJ92_ayKJ_YqCTAtpJ1g/elLIHvTPDSA.jpg?size=1120x541&quality=96&proxy=1&sign=567b07912c646143a4107035a6fec9c1&type=album",
+        "description": "Дети изучают дисциплины: актерское мастерство, хоровое пение, танец, сценическая речь и сценическое движение.",
         "status": "1",
         "id": "83"
     },
@@ -905,6 +1016,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-62.userapi.com/impf/WITzC2zKgjNKcE3vZMdr50-FcHRT-6r0e4zCZg/umkL9INSlYk.jpg?size=1020x574&quality=96&proxy=1&sign=5c86c43d0d1378919f95ea5b9dde2948&type=album",
+        "description": "Все учащиеся студии занимаются музыкой с большим желанием и учатся не только творческой деятельности, но и умению дружить. ... Музыка – это прекрасно! ",
         "status": "1",
         "id": "9"
     },
@@ -923,6 +1036,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-36.userapi.com/impf/F31r8TS4mP9gSKViBJM_gdbJwPr6Zuq0hPyHKQ/voOTbYHY5kk.jpg?size=1920x1080&quality=96&proxy=1&sign=9165147c35f40ca36ec91c8f82160983&type=album",
+        "description": "Детям полезно заниматься танцами. Ведь такое увлечение помогает выработать чувство ритма, получить хорошую растяжку, обрести пластичность и гибкость.",
         "status": "1",
         "id": "18"
     },
@@ -942,6 +1057,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-36.userapi.com/impf/F31r8TS4mP9gSKViBJM_gdbJwPr6Zuq0hPyHKQ/voOTbYHY5kk.jpg?size=1920x1080&quality=96&proxy=1&sign=9165147c35f40ca36ec91c8f82160983&type=album",
+        "description": "Детям полезно заниматься танцами. Ведь такое увлечение помогает выработать чувство ритма, получить хорошую растяжку, обрести пластичность и гибкость.",
         "status": "1",
         "id": "19"
     },
@@ -960,7 +1077,7 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
-        "imgUrl": "https://sun9-10.userapi.com/impf/-hZkDC-3c0EFGfhrKofijLww6cP4tjHJ709llg/oIBywXYY_so.jpg?size=1000x667&quality=96&proxy=1&sign=d1fa31f795b3f0b062c8559be55dc113",
+        "imgUrl": "https://sun9-51.userapi.com/impf/GC0XGiugbfK-pKO0SlQtX9Bjdi45JLoWD2XnIw/BJHUNxKiepQ.jpg?size=800x800&quality=96&proxy=1&sign=0dfd7344a12f460445780a9ccd425e7f&type=album",
         "description": "В студиях изобразительного искусства изучают графику, живопись, станковую и декоративную композиции. Студии дают возможность попробовать свои силы в разных направлениях классического и прикладного творчества: рисунок, живопись, лепка и т. д. Все предметы взаимосвязаны между собой, при этом каждый в отдельности имеет определенные задачи.",
         "status": "1",
         "id": "45"
@@ -979,7 +1096,7 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
-        "imgUrl": "https://sun9-10.userapi.com/impf/-hZkDC-3c0EFGfhrKofijLww6cP4tjHJ709llg/oIBywXYY_so.jpg?size=1000x667&quality=96&proxy=1&sign=d1fa31f795b3f0b062c8559be55dc113",
+        "imgUrl": "https://sun9-51.userapi.com/impf/GC0XGiugbfK-pKO0SlQtX9Bjdi45JLoWD2XnIw/BJHUNxKiepQ.jpg?size=800x800&quality=96&proxy=1&sign=0dfd7344a12f460445780a9ccd425e7f&type=album",
         "description": "В студиях изобразительного искусства изучают графику, живопись, станковую и декоративную композиции. Студии дают возможность попробовать свои силы в разных направлениях классического и прикладного творчества: рисунок, живопись, лепка и т. д. Все предметы взаимосвязаны между собой, при этом каждый в отдельности имеет определенные задачи.",
         "status": "1",
         "id": "44"
@@ -998,6 +1115,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-28.userapi.com/impf/6ufP5YORIR5sm5ZC9JUsTMTV_6UuhZJQ2Qb_9w/qbcMmT51STk.jpg?size=1200x595&quality=96&proxy=1&sign=a7e7b24c82d6a05c1b8a9785d15c3ea5&type=album",
+        "description": "Киберспорт — командное или индивидуальное соревнование на основе видеоигр. В России признан официальным видом спорта.",
         "status": "1",
         "id": "7"
     },
@@ -1039,7 +1158,7 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
-        "imgUrl": "https://sun9-10.userapi.com/impf/-hZkDC-3c0EFGfhrKofijLww6cP4tjHJ709llg/oIBywXYY_so.jpg?size=1000x667&quality=96&proxy=1&sign=d1fa31f795b3f0b062c8559be55dc113",
+        "imgUrl": "https://sun9-73.userapi.com/impf/GTiPPE95g2vyTJzswitw2fMAIfMJFIM3a9vYUA/53WSU_vKPa8.jpg?size=706x470&quality=96&proxy=1&sign=bf7a79453475c0ae3c670aad190d74da&type=album",
         "description": "В студиях изобразительного искусства изучают графику, живопись, станковую и декоративную композиции. Студии дают возможность попробовать свои силы в разных направлениях классического и прикладного творчества: рисунок, живопись, лепка и т. д. Все предметы взаимосвязаны между собой, при этом каждый в отдельности имеет определенные задачи.",
         "status": "1",
         "id": "64"
@@ -1060,7 +1179,7 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
-        "imgUrl": "https://sun9-10.userapi.com/impf/-hZkDC-3c0EFGfhrKofijLww6cP4tjHJ709llg/oIBywXYY_so.jpg?size=1000x667&quality=96&proxy=1&sign=d1fa31f795b3f0b062c8559be55dc113",
+        "imgUrl": "https://sun9-73.userapi.com/impf/GTiPPE95g2vyTJzswitw2fMAIfMJFIM3a9vYUA/53WSU_vKPa8.jpg?size=706x470&quality=96&proxy=1&sign=bf7a79453475c0ae3c670aad190d74da&type=album",
         "description": "В студиях изобразительного искусства изучают графику, живопись, станковую и декоративную композиции. Студии дают возможность попробовать свои силы в разных направлениях классического и прикладного творчества: рисунок, живопись, лепка и т. д. Все предметы взаимосвязаны между собой, при этом каждый в отдельности имеет определенные задачи.",
         "status": "1",
         "id": "65"
@@ -1079,6 +1198,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-22.userapi.com/impf/_Qt8Tfj2A0SuM-eWLy9cki6jreMo4C4Vrbhncw/mXebkx_icEs.jpg?size=2160x2160&quality=96&proxy=1&sign=3380e976df447f5294111ee4ba17b9d9&type=album",
+        "description": "Практический психолог — специалист, оказывающий психологическую помощь в различных непростых жизненных ситуациях",
         "status": "1",
         "id": "70"
     },
@@ -1097,6 +1218,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-36.userapi.com/impf/wVQdq8gK3IhBPNxyA2NLC3FNjpN02OMY4egiYg/VuIhPReSpCg.jpg?size=2560x1709&quality=96&proxy=1&sign=06b3ce233fa3e3de3dc72ae639361d7f&type=album",
+        "description": "Настольный теннис — это развитие мелкой моторики, тренировка мышц руки и кисти. Более точные движения помогут тебе не только побеждать за теннисным столом, но и показывать лучшие результаты за столом письменным. ",
         "status": "1",
         "id": "21"
     },
@@ -1114,6 +1237,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-21.userapi.com/impf/Srb4SQmXDYEyERrBv4Yd9TZCm33Ib95B3RD6uA/8jHlPH3MbB0.jpg?size=1200x789&quality=96&proxy=1&sign=59bbcdacca1619bf0bb648ee76825799&type=album",
+        "description": "Настольные игры развивают критическое мышление, эрудицию,  внимание",
         "status": "1",
         "id": "3"
     },
@@ -1132,6 +1257,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-28.userapi.com/impf/6ufP5YORIR5sm5ZC9JUsTMTV_6UuhZJQ2Qb_9w/qbcMmT51STk.jpg?size=1200x595&quality=96&proxy=1&sign=a7e7b24c82d6a05c1b8a9785d15c3ea5&type=album",
+        "description": "Киберспорт — командное или индивидуальное соревнование на основе видеоигр. В России признан официальным видом спорта.",
         "status": "1",
         "id": "6"
     },
@@ -1151,6 +1278,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-62.userapi.com/impf/WITzC2zKgjNKcE3vZMdr50-FcHRT-6r0e4zCZg/umkL9INSlYk.jpg?size=1020x574&quality=96&proxy=1&sign=5c86c43d0d1378919f95ea5b9dde2948&type=album",
+        "description": "Все учащиеся студии занимаются музыкой с большим желанием и учатся не только творческой деятельности, но и умению дружить. ... Музыка – это прекрасно! ",
         "status": "1",
         "id": "12"
     },
@@ -1168,6 +1297,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-36.userapi.com/impf/wVQdq8gK3IhBPNxyA2NLC3FNjpN02OMY4egiYg/VuIhPReSpCg.jpg?size=2560x1709&quality=96&proxy=1&sign=06b3ce233fa3e3de3dc72ae639361d7f&type=album",
+        "description": "Настольный теннис — это развитие мелкой моторики, тренировка мышц руки и кисти. Более точные движения помогут тебе не только побеждать за теннисным столом, но и показывать лучшие результаты за столом письменным. ",
         "status": "1",
         "id": "20"
     },
@@ -1186,6 +1317,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
+        "imgUrl": "https://sun9-36.userapi.com/impf/wVQdq8gK3IhBPNxyA2NLC3FNjpN02OMY4egiYg/VuIhPReSpCg.jpg?size=2560x1709&quality=96&proxy=1&sign=06b3ce233fa3e3de3dc72ae639361d7f&type=album",
+        "description": "Настольный теннис — это развитие мелкой моторики, тренировка мышц руки и кисти. Более точные движения помогут тебе не только побеждать за теннисным столом, но и показывать лучшие результаты за столом письменным. ",
         "status": "1",
         "id": "35"
     },
@@ -1204,6 +1337,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-51.userapi.com/impf/kmNYjtb0mx4SH8WCwjNopB76u7YQnNVLrGf1zg/t826vJWPt18.jpg?size=1000x731&quality=96&proxy=1&sign=30a36e9a9df82fc2a1edd61c34212b64&type=album",
+        "description": "Мини-футбол, называемый также футзалом – это командная спортивная игра. От классического большого футбола данный вид спорта отличается продолжительностью матча, правилами, размерами поля и численностью игроков.",
         "status": "1",
         "id": "27"
     },
@@ -1222,6 +1357,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-51.userapi.com/impf/kmNYjtb0mx4SH8WCwjNopB76u7YQnNVLrGf1zg/t826vJWPt18.jpg?size=1000x731&quality=96&proxy=1&sign=30a36e9a9df82fc2a1edd61c34212b64&type=album",
+        "description": "Мини-футбол, называемый также футзалом – это командная спортивная игра. От классического большого футбола данный вид спорта отличается продолжительностью матча, правилами, размерами поля и численностью игроков.",
         "status": "1",
         "id": "28"
     },
@@ -1240,6 +1377,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-51.userapi.com/impf/kmNYjtb0mx4SH8WCwjNopB76u7YQnNVLrGf1zg/t826vJWPt18.jpg?size=1000x731&quality=96&proxy=1&sign=30a36e9a9df82fc2a1edd61c34212b64&type=album",
+        "description": "Мини-футбол, называемый также футзалом – это командная спортивная игра. От классического большого футбола данный вид спорта отличается продолжительностью матча, правилами, размерами поля и численностью игроков.",
         "status": "1",
         "id": "29"
     },
@@ -1258,6 +1397,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-58.userapi.com/impf/3GVtmNDk0NyzDk8A0Z3CZl1K3E3FJVwRUWVyzQ/2vUT08cp-hQ.jpg?size=1100x733&quality=96&proxy=1&sign=30b5421ecb5a026bce8cb686d187e5f0&type=album",
+        "description": "Современные эстрадные танцы – это небольшие, мастерски разыгранные сценки с завязкой, сюжетной линией, кульминацией ",
         "status": "1",
         "id": "32"
     },
@@ -1277,6 +1418,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-58.userapi.com/impf/3GVtmNDk0NyzDk8A0Z3CZl1K3E3FJVwRUWVyzQ/2vUT08cp-hQ.jpg?size=1100x733&quality=96&proxy=1&sign=30b5421ecb5a026bce8cb686d187e5f0&type=album",
+        "description": "Современные эстрадные танцы – это небольшие, мастерски разыгранные сценки с завязкой, сюжетной линией, кульминацией ",
         "status": "1",
         "id": "33"
     },
@@ -1295,6 +1438,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-32.userapi.com/impf/GGPjmJkIqtnBwyBp70k05V3Q-Z9xydLieFg3zw/s33ZxgFmaps.jpg?size=1000x744&quality=96&proxy=1&sign=3349d7ee8b89e4fb204873394cbdf603&type=album",
+        "description": "Акустическая гитара идеально подходит для аккомпанемента, исполнения джаза, блюза, рока, поп-музыки, шансона и т.д. Металлические струны отлично подходят для игры медиатором, а узкий гриф значительно упрощает игру аккордов с приемом «баре».",
         "status": "1",
         "id": "42"
     },
@@ -1313,6 +1458,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-32.userapi.com/impf/GGPjmJkIqtnBwyBp70k05V3Q-Z9xydLieFg3zw/s33ZxgFmaps.jpg?size=1000x744&quality=96&proxy=1&sign=3349d7ee8b89e4fb204873394cbdf603&type=album",
+        "description": "Акустическая гитара идеально подходит для аккомпанемента, исполнения джаза, блюза, рока, поп-музыки, шансона и т.д. Металлические струны отлично подходят для игры медиатором, а узкий гриф значительно упрощает игру аккордов с приемом «баре».",
         "status": "1",
         "id": "43"
     },
@@ -1352,7 +1499,7 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
-        "imgUrl": "https://sun9-10.userapi.com/impf/-hZkDC-3c0EFGfhrKofijLww6cP4tjHJ709llg/oIBywXYY_so.jpg?size=1000x667&quality=96&proxy=1&sign=d1fa31f795b3f0b062c8559be55dc113",
+        "imgUrl": "https://sun9-75.userapi.com/impf/58YK0EKBM3RP6HsDprf92RjWtv929uahndQUVQ/7Bp7uro4A0Y.jpg?size=2048x1152&quality=96&proxy=1&sign=5b0b35b35e333c66507a9589f831f398&type=album",
         "description": "В студиях изобразительного искусства изучают графику, живопись, станковую и декоративную композиции. Студии дают возможность попробовать свои силы в разных направлениях классического и прикладного творчества: рисунок, живопись, лепка и т. д. Все предметы взаимосвязаны между собой, при этом каждый в отдельности имеет определенные задачи.",
         "status": "1",
         "id": "60"
@@ -1373,7 +1520,7 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
-        "imgUrl": "https://sun9-10.userapi.com/impf/-hZkDC-3c0EFGfhrKofijLww6cP4tjHJ709llg/oIBywXYY_so.jpg?size=1000x667&quality=96&proxy=1&sign=d1fa31f795b3f0b062c8559be55dc113",
+        "imgUrl": "https://sun9-75.userapi.com/impf/58YK0EKBM3RP6HsDprf92RjWtv929uahndQUVQ/7Bp7uro4A0Y.jpg?size=2048x1152&quality=96&proxy=1&sign=5b0b35b35e333c66507a9589f831f398&type=album",
         "description": "В студиях изобразительного искусства изучают графику, живопись, станковую и декоративную композиции. Студии дают возможность попробовать свои силы в разных направлениях классического и прикладного творчества: рисунок, живопись, лепка и т. д. Все предметы взаимосвязаны между собой, при этом каждый в отдельности имеет определенные задачи.",
         "status": "1",
         "id": "61"
@@ -1393,6 +1540,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-38.userapi.com/impf/RjaQutRfYpoDM_IunKW2BtJZ2pVmz01fiMYyYw/HsGmCaFjuCE.jpg?size=1280x720&quality=96&sign=c882df72f4595fd661d77d89a02efadb&type=album",
+        "description": "Хореография - важный предмет в развитии ребёнка хореография-Это в первую очередь культура движений, искусство красиво преподнести себя в танце. Также это вид создания художественного образа, показанного без помощи речи. ... Детям полезно заниматься танцами. Ведь такое увлечение помогает выработать чувство ритма, получить хорошую растяжку, обрести пластичность и гибкость",
         "status": "1",
         "id": "81"
     },
@@ -1410,6 +1559,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
+        "imgUrl": "https://sun9-68.userapi.com/impf/WZH-yAVBx3LrfIGxjZM2v2AEgTbBCb18g0KafA/h13QUUosrKg.jpg?size=1920x1200&quality=96&proxy=1&sign=60cc56fb9e2e3da480b0d6131e7a4bbd&type=album",
+        "description": "это не только очень распространенная игра, но и некий стиль жизни. Такое времяпрепровождение интересно как профессиональным бильярдистам, так и игрокам–любителям. ",
         "status": "1",
         "id": "2"
     },
@@ -1428,6 +1579,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-60.userapi.com/impf/1QblcgaTKGmSv04fehXJ92_ayKJ_YqCTAtpJ1g/elLIHvTPDSA.jpg?size=1120x541&quality=96&proxy=1&sign=567b07912c646143a4107035a6fec9c1&type=album",
+        "description": "Дети изучают дисциплины: актерское мастерство, хоровое пение, танец, сценическая речь и сценическое движение.",
         "status": "1",
         "id": "84"
     },
@@ -1446,7 +1599,7 @@ export const studios = [
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
         "imgUrl": "https://sun9-54.userapi.com/impf/u_lHrNxQ0q91PETuXjC8I7vrMqxkpMstNihoLg/-D1B1aQDICc.jpg?size=1200x800&quality=96&proxy=1&sign=4891b26fb464b37e59e46019f431b1eb",
-        "description": "Вы получите увлекательное хобби и новых друзей, привыкнете планировать свои поступки, порадуете близких усидчивостью и собранностью, разовьете логическое мышление и интерес к точным наукам.",
+        "description": "Простая понятная логика позволяет начинать осваивать эту игру ребенку, начиная с четырех лет. Благодаря именно своей логической простоте шашки стали очень популярны по всему миру",
         "status": "1",
         "id": "22"
     },
@@ -1466,7 +1619,7 @@ export const studios = [
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
         "imgUrl": "https://sun9-54.userapi.com/impf/u_lHrNxQ0q91PETuXjC8I7vrMqxkpMstNihoLg/-D1B1aQDICc.jpg?size=1200x800&quality=96&proxy=1&sign=4891b26fb464b37e59e46019f431b1eb",
-        "description": "Вы получите увлекательное хобби и новых друзей, привыкнете планировать свои поступки, порадуете близких усидчивостью и собранностью, разовьете логическое мышление и интерес к точным наукам.",
+        "description": "Простая понятная логика позволяет начинать осваивать эту игру ребенку, начиная с четырех лет. Благодаря именно своей логической простоте шашки стали очень популярны по всему миру",
         "status": "1",
         "id": "23"
     },
@@ -1485,6 +1638,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
+        "imgUrl": "https://sun9-7.userapi.com/impf/pU7yui5S3nmdVbCXCm4bJP-f1AzS9XyJqS5aFw/JaHg8aNhifY.jpg?size=1200x811&quality=96&proxy=1&sign=38d7c2456d056ff657e14e045249da33&type=album",
+        "description": "При попадании в цирковую студию дети занимаются общей физической подготовкой, уделяя внимания растяжке и чувству ритма. ",
         "status": "1",
         "id": "36"
     },
@@ -1503,6 +1658,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
+        "imgUrl": "https://sun9-28.userapi.com/impf/6ufP5YORIR5sm5ZC9JUsTMTV_6UuhZJQ2Qb_9w/qbcMmT51STk.jpg?size=1200x595&quality=96&proxy=1&sign=a7e7b24c82d6a05c1b8a9785d15c3ea5&type=album",
+        "description": "Киберспорт — командное или индивидуальное соревнование на основе видеоигр. В России признан официальным видом спорта.",
         "status": "1",
         "id": "5"
     },
@@ -1522,7 +1679,7 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
-        "imgUrl": "https://sun9-10.userapi.com/impf/-hZkDC-3c0EFGfhrKofijLww6cP4tjHJ709llg/oIBywXYY_so.jpg?size=1000x667&quality=96&proxy=1&sign=d1fa31f795b3f0b062c8559be55dc113",
+        "imgUrl": "https://sun9-75.userapi.com/impf/58YK0EKBM3RP6HsDprf92RjWtv929uahndQUVQ/7Bp7uro4A0Y.jpg?size=2048x1152&quality=96&proxy=1&sign=5b0b35b35e333c66507a9589f831f398&type=album",
         "description": "В студиях изобразительного искусства изучают графику, живопись, станковую и декоративную композиции. Студии дают возможность попробовать свои силы в разных направлениях классического и прикладного творчества: рисунок, живопись, лепка и т. д. Все предметы взаимосвязаны между собой, при этом каждый в отдельности имеет определенные задачи.",
         "status": "1",
         "id": "50"
@@ -1543,7 +1700,7 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
-        "imgUrl": "https://sun9-10.userapi.com/impf/-hZkDC-3c0EFGfhrKofijLww6cP4tjHJ709llg/oIBywXYY_so.jpg?size=1000x667&quality=96&proxy=1&sign=d1fa31f795b3f0b062c8559be55dc113",
+        "imgUrl": "https://sun9-75.userapi.com/impf/58YK0EKBM3RP6HsDprf92RjWtv929uahndQUVQ/7Bp7uro4A0Y.jpg?size=2048x1152&quality=96&proxy=1&sign=5b0b35b35e333c66507a9589f831f398&type=album",
         "description": "В студиях изобразительного искусства изучают графику, живопись, станковую и декоративную композиции. Студии дают возможность попробовать свои силы в разных направлениях классического и прикладного творчества: рисунок, живопись, лепка и т. д. Все предметы взаимосвязаны между собой, при этом каждый в отдельности имеет определенные задачи.",
         "status": "1",
         "id": "51"
@@ -1584,7 +1741,7 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
-        "imgUrl": "https://sun9-54.userapi.com/impf/u_lHrNxQ0q91PETuXjC8I7vrMqxkpMstNihoLg/-D1B1aQDICc.jpg?size=1200x800&quality=96&proxy=1&sign=4891b26fb464b37e59e46019f431b1eb",
+        "imgUrl": "https://sun9-33.userapi.com/impf/XKDssMraLl_6QjES84ZhihybX9-lHyhM-mBHtQ/eracheHYlDQ.jpg?size=1920x1200&quality=96&proxy=1&sign=629d3b28a9e5c816cda52db45fcd5fe5&type=album",
         "description": "Вы получите увлекательное хобби и новых друзей, привыкнете планировать свои поступки, порадуете близких усидчивостью и собранностью, разовьете логическое мышление и интерес к точным наукам.",
         "status": "1",
         "id": "89"
@@ -1604,50 +1761,12 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Люсиновская, 53",
-        "imgUrl": "https://sun9-54.userapi.com/impf/u_lHrNxQ0q91PETuXjC8I7vrMqxkpMstNihoLg/-D1B1aQDICc.jpg?size=1200x800&quality=96&proxy=1&sign=4891b26fb464b37e59e46019f431b1eb",
+        "imgUrl": "https://sun9-33.userapi.com/impf/XKDssMraLl_6QjES84ZhihybX9-lHyhM-mBHtQ/eracheHYlDQ.jpg?size=1920x1200&quality=96&proxy=1&sign=629d3b28a9e5c816cda52db45fcd5fe5&type=album",
         "description": "Вы получите увлекательное хобби и новых друзей, привыкнете планировать свои поступки, порадуете близких усидчивостью и собранностью, разовьете логическое мышление и интерес к точным наукам.",
         "status": "1",
         "id": "90"
     },
-    {
-        "name": "Секция «Брейк Данс»",
-        "title": "Секция «Брейк Данс»",
-        "age_min": "12",
-        "groupNumber": "1",
-        "cab": "online",
-        "day": "2",
-        "timeFrom": "19:30",
-        "timeTo": "21:00",
-        "teacher": "Зикевская\r\n Анастасия Викторовна",
-        "type": "sport",
-        "price": "free",
-        "priceOptions": "free",
-        "adress": "Люсиновская, 53",
-        "imgUrl": "https://sun9-39.userapi.com/impf/mfKk-8UPREgbYOe5tY6VrSajsPK_rQND4PQlfw/eLFQpVRhwHM.jpg?size=1440x900&quality=96&proxy=1&sign=ca80c26c357e995f6d4f03ecc059bffc",
-        "description": "Брейк-данс - динамичный танец. Здесь главное - уметь чувствовать ритм. Исполнителей называют “b-boy” или ”b-girl”, как сокращение от break-boy - танцор ломаного бита. На занятиях дети учатся импровизировать и мыслить творчески, развивают гибкость, музыкальность и чувство стиля",
-        "status": "1",
-        "id": "15"
-    },
-    {
-        "isDuplicate": "1",
-        "name": "Секция «Брейк Данс»",
-        "title": "Секция «Брейк Данс»",
-        "age_min": "12",
-        "groupNumber": "1",
-        "cab": "online",
-        "day": "4",
-        "timeFrom": "19:30",
-        "timeTo": "21:00",
-        "teacher": "Зикевская\r\n Анастасия Викторовна",
-        "type": "sport",
-        "price": "free",
-        "priceOptions": "free",
-        "adress": "Люсиновская, 53",
-        "imgUrl": "https://sun9-39.userapi.com/impf/mfKk-8UPREgbYOe5tY6VrSajsPK_rQND4PQlfw/eLFQpVRhwHM.jpg?size=1440x900&quality=96&proxy=1&sign=ca80c26c357e995f6d4f03ecc059bffc",
-        "description": "Брейк-данс - динамичный танец. Здесь главное - уметь чувствовать ритм. Исполнителей называют “b-boy” или ”b-girl”, как сокращение от break-boy - танцор ломаного бита. На занятиях дети учатся импровизировать и мыслить творчески, развивают гибкость, музыкальность и чувство стиля",
-        "status": "1",
-        "id": "16"
-    },
+    
     {
         "isDuplicate": "1",
         "name": "Спортивно-цирковая секция\r\n«Мульти-пульти»",
@@ -1663,6 +1782,8 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
+        "imgUrl": "https://sun9-12.userapi.com/impf/VTH9-YUwN7v7kxnpxH1J5R4g6fOYd--216h0Kw/GwM3GxF9_AU.jpg?size=1200x800&quality=96&proxy=1&sign=473e1a8fb574b531be37999a55753ce6&type=album",
+        "description": "При попадании в цирковую студию дети занимаются общей физической подготовкой, уделяя внимания растяжке и чувству ритма. ",
         "status": "1",
         "id": "38"
     },
@@ -1681,7 +1802,9 @@ export const studios = [
         "price": "free",
         "priceOptions": "free",
         "adress": "Трофимова 9, корп.2",
+        "imgUrl": "https://sun9-12.userapi.com/impf/VTH9-YUwN7v7kxnpxH1J5R4g6fOYd--216h0Kw/GwM3GxF9_AU.jpg?size=1200x800&quality=96&proxy=1&sign=473e1a8fb574b531be37999a55753ce6&type=album",
+        "description": "При попадании в цирковую студию дети занимаются общей физической подготовкой, уделяя внимания растяжке и чувству ритма. ",
         "status": "1",
         "id": "39"
     }
-];
+]

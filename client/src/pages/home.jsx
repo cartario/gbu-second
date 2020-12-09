@@ -7,17 +7,15 @@ import TotalInfoBlock from '../components/total-info-block';
 import SessionsTodayBoard from '../components/sessions-today-board';
 import Footer from '../components/footer.jsx';
 
-const Home = ({setActiveMenuItem}) => {
-  return (    
-      <section className="home">
-       
-        <WelcomeBlock />
-        <SayHello />
-        <TotalInfoBlock />
-        <SessionsTodayBoard />        
-        <SoonEvents setActiveMenuItem={setActiveMenuItem}/>
-        
-      </section>    
+const Home = ({ setActiveMenuItem }) => {
+  return (
+    <section className="home">
+      <WelcomeBlock />
+      <SayHello />      
+      <TotalInfoBlock />
+      <SessionsTodayBoard />
+      <SoonEvents setActiveMenuItem={setActiveMenuItem} />
+    </section>
   );
 };
 

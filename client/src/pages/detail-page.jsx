@@ -60,7 +60,7 @@ const DetailPage = () => {
           </div>
           <p>Категория: {card.type}</p>
         </div>
-        <img className="detailPage__img" src={card.cardUrl ||"https://bayramix.ru/local/templates/bayramix_new/images/load.gif"} alt="cardImg"/>
+        <img className="detailPage__img" src={card.imgUrl ||"https://bayramix.ru/local/templates/bayramix_new/images/load.gif"} alt="cardImg"/>
       </main>
       
     </>
