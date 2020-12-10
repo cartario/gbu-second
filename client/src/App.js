@@ -8,7 +8,6 @@ import Schedule from './pages/schedule';
 import Documents from './pages/documents';
 import Contacts from './pages/contacts';
 import DetailPage from './pages/detail-page';
-import Navbar from './components/navbar';
 import Footer from './components/footer';
 
 function App() { 
