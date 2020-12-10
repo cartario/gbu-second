@@ -37,7 +37,7 @@ const Studios = () => {
         <Compilation studios={studiosTeenAge} title={'Тинэйджерам:'}/>
         <Compilation studios={studiosParents} title={'Родителям:'}/>
 
-        <h3>Все студии:</h3>
+        <h2>ВСЕ СТУДИИ:</h2>
 
           <ul className="studios__list">
             {studiosCopy&&studiosCopy.slice(0,showingCards).map((card)=><li key={card.title + card.id} className="studios__item">

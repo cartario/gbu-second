@@ -22,12 +22,17 @@
 }
 
 .studios__compilation-list{
-  display: flex;
-  
+  display: flex; 
+  flex-wrap: wrap; 
   min-height: 200px;
   margin: 0 auto;
-  
+  margin-bottom: 10px;
   overflow-x: scroll;
+  overflow-y: hidden;
+
+  @media(max-width: 833px){
+    flex-wrap: nowrap;
+  }
 }
 
 .studios__compilation-item{

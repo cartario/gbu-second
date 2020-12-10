@@ -5,9 +5,7 @@ const Footer = () => {
     <footer>
       
       <div className="footer__content">
-        <p className="footer__copyright">Разработка и дизайн: <br/>
-          <a href="http://instagram.com/vasiliyizrossii"> Зайков Василий</a>
-        </p>
+        
         <h4>Мы в социальных сетях:</h4>
           <ul className="footer__list">
           <li className="footer__item">
@@ -55,6 +53,12 @@ const Footer = () => {
             </a>
           </li>
         </ul>
+        <p className="footer__copyright">
+        <a href="http://instagram.com/vasiliyizrossii">
+          Разработка и дизайн - Vasiliy Zaikov
+           </a>
+          
+        </p>
       </div>
     </footer>
   );

@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "../components/navbar";
 import Header from "../components/header";
-import Footer from "../components/footer.jsx";
 
 const Contacts = () => {
   return (
@@ -9,6 +8,7 @@ const Contacts = () => {
       <Navbar/>
       <Header title="Контакты" />      
       <main className="contacts">
+        
         <ul className="contacts__team">
           <li className="contacts__team-item">
             <img
@@ -153,6 +153,18 @@ const Contacts = () => {
         <p>
           Зеркало:{" "}
           <a href="http://xn--80ahcoasjcyt5b.xn--p1ai/">ЦЕНТРДАНИИЛ.РФ</a>
+        </p>
+        <p>
+          
+          <a href="https://vk.com/centerdaniil">Вконтакте</a>
+        </p>
+        <p>
+          
+          <a href="https://www.instagram.com/centerdaniil/">Интсаграм</a>
+        </p>
+        <p>
+         
+          <a href="https://www.youtube.com/channel/UCysktd_Jfz233rxvmfz1F2w"> Youtube</a>
         </p>
          </div>
 

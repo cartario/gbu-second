@@ -35,10 +35,28 @@ $eventsMobileWidth: 668px;
 }
 
 .events__item{  
+  position: relative;
   min-width: 100px;
   max-width: 400px;
   margin: 15px;
-  flex: 1;
+  flex: 1;  
+}
+
+.show-result::before{
+  position: absolute;
+  content: "РЕЗУЛЬТАТЫ";
+  top: 30%;
+  width: 100%;
+  height: 30px;
+  padding-top:15px;
+  background: rgba(38, 125, 240, 0.8);
+  color: white;
+  font-weight: bold;    
+  vertical-align: middle;
+
+  @media(max-width: 415px){
+    font-size: 14px;
+  }    
 }
 
 .events__img{

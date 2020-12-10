@@ -5,6 +5,7 @@ import EventsPopup from './events-popup';
 const Event = ({event}) => {
   const [isLoading, setLoading] = React.useState(true);
   const [visiblePopup, setVisiblePopup] = React.useState(false);
+  
 
   const handleEventClick = () => {    
     setVisiblePopup(true);
@@ -27,7 +28,7 @@ const Event = ({event}) => {
       {visiblePopup && (
         <EventsPopup event={event} setVisible={setVisiblePopup} visible={visiblePopup} />
       )}
-      <li key={event.id} className="events__item" onClick={handleEventClick}>
+      <li key={event.id} className={`events__item ${event.category==='Результаты'? "show-result" : ""}`} onClick={handleEventClick}>
         {isLoading ? (
           <img
             className="events__loading"

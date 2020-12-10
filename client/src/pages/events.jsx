@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from '../components/navbar';
 import Header from '../components/header';
-import Footer from '../components/footer.jsx';
 import EventsListMonth from '../components/events-month';
 import { events } from '../data/events-mock';
 import { SHOWING_BY_CLICK, MONTH_NAMES } from '../constants';

@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from '../components/navbar';
 import Header from '../components/header';
-import Footer from '../components/footer.jsx';
 import CCF_000026 from '../uploads/2020/08/CCF_000026.pdf';
 import CCF_000027z from '../uploads/2019/11/Антикоррупционная-политика.pdf';
 import CCF_000028z from '../uploads/2019/11/Кодекс-этики-сотрудников.pdf';

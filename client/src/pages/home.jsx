@@ -5,7 +5,6 @@ import WelcomeBlock from '../components/welcome';
 import SayHello from '../components/say-hello';
 import TotalInfoBlock from '../components/total-info-block';
 import SessionsTodayBoard from '../components/sessions-today-board';
-import Footer from '../components/footer.jsx';
 
 const Home = () => {
   return (
