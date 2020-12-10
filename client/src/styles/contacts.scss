@@ -1,0 +1,39 @@
+
+.contacts{  
+  padding: 15px;
+  text-align: left;  
+  background: url('../img/contacts.png') center center; 
+}
+
+.contacts__info{
+  max-width: 500px;
+  margin: 20px auto; 
+  padding:15px; 
+  background: rgba(255,255,255,0.8);
+  border-radius: 15px;
+  h4{
+    text-align:center;
+  }
+
+}
+
+.contacts__block{
+  margin: 40px auto;
+}
+
+.contacts__team {
+  max-width: 500px;
+  margin: 0 auto;
+  padding:15px; 
+  background: rgba(255,255,255,0.8);
+  border-radius: 15px;
+  img{
+    width: 200px;
+    height: auto;
+  }
+}
+
+.contacts__team-item{
+  padding: 10px;
+  border-bottom: 1px solid grey;
+}
