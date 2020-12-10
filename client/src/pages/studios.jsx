@@ -14,11 +14,13 @@ const Studios = () => {
 
   const studiosCopy = [...studios].filter((studio)=>!studio.isDuplicate);
 
-  const studiosKids = [...studios].filter((studio)=>!studio.isDuplicate&&studio.age_max<=6);
+  const studiosKids = [...studios].filter((studio)=>!studio.isDuplicate&&studio.age_min<=6);
   const studiosDance = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.type==='dance')||(studio.id==='15'));
   const studiosArt = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.type==='art'));
   const studiosMusic = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.type==='music'));
   const studiosSport = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.type==='sport')).reverse();
+  const studiosTeenAge = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.age_min>=12&&studio.age_min<=16));
+  const studiosParents = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.age_min>=18&&studio.age_min<55));
 
   const handleClickShowMore =()=>{
     setShowingCards((prev) => prev + SHOWING_BY_CLICK);
@@ -82,6 +84,28 @@ const Studios = () => {
           <h3>Порисовать:</h3>
           <ul className="studios__compilation-list">
             {studiosArt.map((studio)=><li className="studios__compilation-item" onClick={()=>handleClickCardCompilation(studio.id)}>
+              <img src={studio.imgUrl} alt="imgStudio"/>
+              <p>{studio.title} </p>
+            </li>)
+            }
+          </ul>  
+        </div>
+
+        <div className="studios__compilation">
+          <h3>Тинэйджерам:</h3>
+          <ul className="studios__compilation-list">
+            {studiosTeenAge.map((studio)=><li className="studios__compilation-item" onClick={()=>handleClickCardCompilation(studio.id)}>
+              <img src={studio.imgUrl} alt="imgStudio"/>
+              <p>{studio.title} </p>
+            </li>)
+            }
+          </ul>  
+        </div>
+
+        <div className="studios__compilation">
+          <h3>Родителям:</h3>
+          <ul className="studios__compilation-list">
+            {studiosParents.map((studio)=><li className="studios__compilation-item" onClick={()=>handleClickCardCompilation(studio.id)}>
               <img src={studio.imgUrl} alt="imgStudio"/>
               <p>{studio.title} </p>
             </li>)
