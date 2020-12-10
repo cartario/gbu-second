@@ -11,7 +11,7 @@ const Studios = () => {
   const [showingCards, setShowingCards] = React.useState(6);
   const studiosCopy = [...studios].filter((studio)=>!studio.isDuplicate);
   const studiosKids = [...studios].filter((studio)=>!studio.isDuplicate&&studio.age_min<=6);
-  const studiosDance = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.type==='dance')||(studio.id==='15'));
+  const studiosDance = [...studios].filter((studio)=>(!studio.isDuplicate&&(studio.type==='dance'))||(studio.id==='15'));
   const studiosArt = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.type==='art'));
   const studiosMusic = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.type==='music'));
   const studiosSport = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.type==='sport')).reverse();

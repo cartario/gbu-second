@@ -182,4 +182,8 @@ $eventsMobileWidth: 668px;
     color: white;   
     transform: rotate(45deg);
   }
+
+  &:hover{
+    transform: scale(1.05);
+  }
 }

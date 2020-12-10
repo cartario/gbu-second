@@ -41,7 +41,7 @@ const EventsPopup = ({ event , visible, setVisible}) => {
           </div>
           <img className="events__poster" src={event.posterUrl || emptyImg} alt="imgPoster" />
 
-          {new Date() < event.date ? (
+          {/* {new Date() < event.date ? (
             ''
           ) : (
             <div className="events__old">
@@ -49,7 +49,7 @@ const EventsPopup = ({ event , visible, setVisible}) => {
               <img src={event.photos && event.photos[1]} alt="img" />
               <img src={event.photos && event.photos[0]} alt="img" />{' '}
             </div>
-          )}
+          )} */}
 
           <div className="popup__close" onClick={() => setVisible(false)}>
             
