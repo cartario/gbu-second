@@ -6,8 +6,8 @@ import Footer from "../components/footer.jsx";
 const Contacts = () => {
   return (
     <>
-      <Header title="Контакты" />
-      
+      <Navbar/>
+      <Header title="Контакты" />      
       <main className="contacts">
         <ul className="contacts__team">
           <li className="contacts__team-item">

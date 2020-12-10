@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link} from 'react-router-dom';
+import { Link, useHistory} from 'react-router-dom';
 import logo from '../img/logo.png';
 
 const MenuItems = [{ 
@@ -32,11 +32,13 @@ const MenuItems = [{
 },
 ];
 
-export default function Navbar({active, setActive}) {
+const Navbar =({activeItem}) =>{
+  const pathname = useHistory().location.pathname; 
   const [open, setOpen] = React.useState(false);
+  const [active, setActive] = React.useState(activeItem || MenuItems.find((item)=>item.link===pathname).title);  
 
-  const handleClick = (index) => {
-    setActive(index);    
+  const handleClick = (title) => {
+    setActive(title);    
     setOpen(false);    
   };
 
@@ -50,8 +52,9 @@ export default function Navbar({active, setActive}) {
         </div>
         <ul className={open ? 'navbar__list' : 'navbar__list closed'}>
           {MenuItems.map((item, index)=>
-          <li key={item.title} className={`navbar__item ${active===index ? "navbar__item--active" : ""}`} onClick={()=>handleClick(index)}>
+          <li key={item.title} className={`navbar__item ${active===item.title ? "navbar__item--active" : ""}`} onClick={()=>handleClick(item.title)}>
             <Link to={item.link}>{item.title}</Link>
+          
           </li>)}          
         </ul>        
       </nav>
@@ -65,3 +68,6 @@ export default function Navbar({active, setActive}) {
     </>
   );
 }
+
+export default Navbar;
+

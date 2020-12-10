@@ -47,7 +47,7 @@ const Events = () => {
 
   return (
     <>
-     
+      <Navbar/>
       <Header title="Мероприятия" />
       <main className="events">
         {targetEvents &&

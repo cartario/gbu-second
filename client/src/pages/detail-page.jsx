@@ -38,7 +38,7 @@ const DetailPage = () => {
 
   return (
     <>
-        
+      <Navbar activeItem={"Студии"}/>      
       <Header title={card.name}/>
       <main className="detailPage">
         <div className="detailPage__info">          

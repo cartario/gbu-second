@@ -8,7 +8,7 @@ import Footer from '../components/footer.jsx';
 const About = () => {
   return (
     <>
-       
+      <Navbar/>
       <Header title={`Центр досуга "Даниил"`}/>
       <main className="about">
         <div className="container">

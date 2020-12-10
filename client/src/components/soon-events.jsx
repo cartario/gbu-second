@@ -4,7 +4,7 @@ import SoonEventsCategories from '../components/soon-events-categories';
 import SoonEventsSlider from '../components/soon-events-slider';
 import {events} from '../data/events-mock';
 
-const SoonEvents = ({setActiveMenuItem}) => {
+const SoonEvents = () => {
   
   const [count, setCount] = React.useState(0);
   const [categories, setCategories] = React.useState(null);
@@ -62,7 +62,7 @@ const SoonEvents = ({setActiveMenuItem}) => {
         <p>В этом месяце все...</p>
       )}
 
-      <Link className="soon-events__btn btn" to="/events" onClick={()=>setActiveMenuItem(2)}> 
+      <Link className="soon-events__btn btn" to="/events"> 
         Все мероприятия
       </Link>
     </section>

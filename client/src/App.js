@@ -11,18 +11,12 @@ import DetailPage from './pages/detail-page';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 
-function App() {
-  const [active, setActive] = React.useState(0); 
-  //fix костыльный способ
+function App() { 
   
   return (
     <div className="App">
-      <div className="App__content">
-        <Navbar active={active} setActive={setActive}/>
-        
-        <Route path={['/', '/gbu-dan']} exact>
-          <Home setActiveMenuItem={setActive}/>
-        </Route>
+      <div className="App__content">       
+        <Route path="/" component={Home} exact/>
         <Route path="/about" component={About} />
         <Route path="/events" component={Events} />        
         <Route path="/studios" exact component={Studios} />

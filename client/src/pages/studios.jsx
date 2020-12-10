@@ -23,7 +23,8 @@ const Studios = () => {
   }
   
   return (
-    <>      
+    <>  
+      <Navbar/>    
       <Header title="Студии и секции"/>
       <main className="studios">         
         <div className="container">  
