@@ -29,6 +29,8 @@ const DetailPage = () => {
         timeTo: studio.timeTo,
         groupNumber: studio.groupNumber,
         title: studio.title,
+        age_min: studio.age_min,
+        age_max: studio.age_max
       })
     }    
     return acc;
@@ -40,25 +42,28 @@ const DetailPage = () => {
       <Header title={card.name}/>
       <main className="detailPage">
         <div className="detailPage__info">          
-          {/* <h1>{card.title}</h1> */}
-          <p>Адрес: {card.adress}</p>
-          <p>Группа №{card.groupNumber}</p>          
-          <p>Возраст: от {card.age_min} {card.age_max ? `до ${card.age_max}`: ''} лет</p>      {/* TODO пофиксить мин и макс возраст */}
-          <p>Стоимость: {card.price==='free'? "бесплатно" : card.price}</p>                
-          <p>Описание: {card.description}</p>
-
-
-          <div><a href="/schedule">Расписание:</a>
-          {cardsByTitle.map((card)=>
-            <div key={card.day + card.timeFrom +card.timeTo}>
-              <b><span>{daysOfWeek[card.day]}</span></b>
-          <span>{card.timeFrom}-{card.timeTo}</span>
-          <span style={{color: "grey"}}>{card.title}</span>
-          <span style={{color: "grey"}}> подгруппа: {card.groupNumber}</span>
-            </div>)}            
-            
+          <div className="detailPage__top">
+            <p><b>Адрес: {card.adress}</b></p>
+            <p>Стоимость: {card.price==='free'? "бесплатно" : card.price}</p>   
+            <p>Группа №{card.groupNumber}</p>                                     
+            <p>Описание: {card.description}</p>
+            <p>Категория: {card.type}</p>
           </div>
-          <p>Категория: {card.type}</p>
+
+          <div >
+            <h3><a href="/schedule">Расписание:</a></h3>
+            {cardsByTitle.map((card)=>
+              <div className="detailPage__day" key={card.day + card.timeFrom +card.timeTo}>
+                <b><span>{daysOfWeek[card.day]}</span></b>
+            <p>{card.timeFrom}-{card.timeTo}
+            <span className="detailPage__day-age"> Возраст: от {card.age_min} {card.age_max ? `до ${card.age_max}`: ''} лет</span></p>
+            <p>{card.title}
+              <span style={{color: 'grey'}}> подгруппа: {card.groupNumber}</span>
+            </p>
+            
+              </div>)}            
+          </div>
+          
         </div>
         <img className="detailPage__img" src={card.imgUrl ||"https://bayramix.ru/local/templates/bayramix_new/images/load.gif"} alt="cardImg"/>
       </main>

@@ -20,7 +20,14 @@ const Studios = () => {
     <>      
       <Header title="Студии и секции"/>
       <main className="studios">         
-        <div className="container">        
+        <div className="container"> 
+
+        <div className="studios__compilation">
+          <h3>Для самых маленьких</h3>
+          <ul>
+          </ul>  
+        </div>
+
           <ul className="studios__list">
             {studiosCopy&&studiosCopy.slice(0,showingCards).map((card)=><li key={card.title + card.id} className="studios__item">
               <Card {...card}/>

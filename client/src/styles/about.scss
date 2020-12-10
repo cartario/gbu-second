@@ -17,4 +17,20 @@
   p {
     margin: 10px;
   }
+  i{
+    display: block;
+    margin-top: -10px;
+    padding: 0;
+    font-size: 12px;
+  }
+}
+
+.about__content{
+  width: 50%;
+  margin: 0 auto;
+  text-align: left;
+
+  @media(max-width: 415px){
+    width: 100%;
+  }
 }
