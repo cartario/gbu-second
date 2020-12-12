@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const router = require('./routes/auth.routes');
+const routerStudios = require('./routes/studios.routes');
 const path = require('path');
 
 require('dotenv').config();
@@ -11,6 +12,7 @@ const mongoURI = process.env.mongoURI;
 app.use(express.json({extended: true}));
 
 app.use('/api/auth', router);
+app.use('/api/studios', routerStudios);
 
 app.use('/', express.static(path.join(__dirname, 'client', 'build')));
 

@@ -4,11 +4,39 @@ import Card from '../components/studioCard';
 import Header from '../components/header';
 import Compilation from '../components/studios-compilation';
 import {studios} from '../data/studios-mock';
+import useHttp from '../hooks/http.hook';
 
 const SHOWING_BY_CLICK = 6;
 
 const Studios = () => {
   const [showingCards, setShowingCards] = React.useState(6);
+  const {request, loading} = useHttp();
+  const [studiosServer, setStudiosServer] = React.useState(null);  
+
+  const handleClickShowMore =()=>{
+    setShowingCards((prev) => prev + SHOWING_BY_CLICK);
+  }
+
+  const fetchStudios = async () => {
+    try {
+      const fetchedStudios = await request('/api/studios');
+      setStudiosServer(fetchedStudios);
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
+
+  React.useEffect(()=>{
+    fetchStudios();
+  }, []);
+  
+  if(!studiosServer){
+    return null;
+  }  
+console.log(studiosServer.filter((studio)=>!studio.isDuplicate));
+
+
   const studiosCopy = [...studios].filter((studio)=>!studio.isDuplicate);
   const studiosKids = [...studios].filter((studio)=>!studio.isDuplicate&&studio.age_min<=6);
   const studiosDance = [...studios].filter((studio)=>(!studio.isDuplicate&&(studio.type==='dance'))||(studio.id==='15'));
@@ -16,11 +44,7 @@ const Studios = () => {
   const studiosMusic = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.type==='music'));
   const studiosSport = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.type==='sport')).reverse();
   const studiosTeenAge = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.age_min>=12&&studio.age_min<=16));
-  const studiosParents = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.age_min>=18&&studio.age_min<55));
-
-  const handleClickShowMore =()=>{
-    setShowingCards((prev) => prev + SHOWING_BY_CLICK);
-  }
+  const studiosParents = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.age_min>=18&&studio.age_min<55)); 
   
   return (
     <>  
@@ -40,7 +64,7 @@ const Studios = () => {
         <h2>ВСЕ СТУДИИ:</h2>
 
           <ul className="studios__list">
-            {studiosCopy&&studiosCopy.slice(0,showingCards).map((card)=><li key={card.title + card.id} className="studios__item">
+            {studiosCopy&&studiosCopy.slice(0,showingCards).map((card)=><li key={card.title + card._id} className="studios__item">
               <Card {...card}/>
             </li>)}            
           </ul>
