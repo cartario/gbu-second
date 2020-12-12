@@ -1,0 +1,145 @@
+.auth {  
+  // height: 100vh;  
+  margin: 0 auto; 
+  margin-bottom: 50px; 
+  text-align: center; 
+  // overflow: auto; 
+}
+
+.auth__header {
+  margin-top: 50px;
+}
+
+.auth__header h2 {
+  margin: 0 0 25px 0;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.auth__header p {
+  margin: 0 0 31px 0;
+  font-size: 16px;
+  color: #A09D9D;
+}
+
+.auth__form {
+  max-width: 430px;
+  margin: 0 auto;  
+  padding: 39px 36px 29px 36px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+}
+
+.auth__field + .auth__field{
+  margin-top: 31px;
+}
+
+.auth__field {
+  position: relative;
+  text-align: left;
+}
+
+.auth__field input {
+  width: 100%;
+  height: 58px;
+  padding-left: 24px;
+  font-size: 16px;
+  font-family: inherit;
+  line-height: 18px;
+  color: #727171;
+  border: 1px solid #C4C4C4;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.valid::after {
+  content: "";
+  position: absolute;
+  top: 23px;
+  right: 19px;
+  width: 12px;
+  height: 12px;
+  // background: url('../img/icons/valid.jpg');
+}
+
+.invalid::after {
+  content: "";
+  position: absolute;
+  top: 19px;
+  right: 19px;
+  width: 12px;
+  height: 18px;
+  // background: url('../img/icons/invalid.png');
+}
+
+.auth__error {
+  
+  padding-left: 24px;  
+  font-size: 12px;
+  color: rgb(231, 36, 36);
+}
+
+.invalid > input{
+  border: 1px solid rgb(231, 36, 36);
+}
+
+.invalid > .auth__error {
+  display: block;
+}
+
+.auth__login {
+  width: 100%;
+  margin-bottom: 15px;
+  margin-top: 38px;
+  padding: 20px;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: white;
+  background: $orangeColor;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  
+  &:hover{
+    background: #be7310;
+  }
+
+  &:active{
+    opacity: 0.7;
+  }
+
+  &:focus {
+    background: #d4850d;
+  }
+}
+
+.auth__signin {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 16px;  
+  color: #979797;
+  border: none;
+  outline: none; 
+  background: transparent;
+  cursor: pointer;
+
+  &:hover{
+    text-decoration: underline;
+    color: #7e7d7d;
+  }
+
+  &:active{
+    opacity: 0.7;
+  }
+
+  &:focus {
+    text-decoration: underline;
+    color: #7e7d7d;
+  }  
+}
+

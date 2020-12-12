@@ -5,7 +5,7 @@ const WelcomeBlock = () => {
   const history = useHistory();
 
   const handleClick = () => {
-    history.push('/schedule');
+    history.push('/studios');
   }; 
 
   return (    
@@ -22,7 +22,7 @@ const WelcomeBlock = () => {
         <div className="row">
           <div className="col col-50">
             <button onClick={handleClick} className="btn">
-              Проверить расписание
+              Подобрать студии/секции
             </button>
           </div>
         </div>
