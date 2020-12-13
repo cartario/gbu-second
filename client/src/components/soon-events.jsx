@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SoonEventsCategories from '../components/soon-events-categories';
 import SoonEventsSlider from '../components/soon-events-slider';
-import {events} from '../data/events-mock';
+// import {events} from '../data/events-mock';
 
-const SoonEvents = () => {
+const SoonEvents = ({events}) => {
   
   const [count, setCount] = React.useState(0);
   const [categories, setCategories] = React.useState(null);
@@ -53,7 +53,7 @@ const SoonEvents = () => {
             </p>
             <div className={visibleDescription ? '' : 'hidden'}>
               {filteredEvents.map((event, index) => (
-                <p key={event.id}>{count === index ? event.description : ''}</p>
+                <p key={event._id}>{count === index ? event.description : ''}</p>
               ))}
             </div>
           </div>

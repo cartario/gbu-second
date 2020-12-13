@@ -18,7 +18,7 @@ const SoonEventsSlider = ({filteredEvents, count, setCount}) => {
           {filteredEvents &&
             filteredEvents.map((event, index) => (
               <li
-                key={event.id}
+                key={event._id}
                 className={`slider__item soon-events__item ${count === index ? 'visible' : ''}`}
               >
                 <div className="soon-events__img">

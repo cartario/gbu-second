@@ -6,7 +6,8 @@ import SayHello from '../components/say-hello';
 import TotalInfoBlock from '../components/total-info-block';
 import SessionsTodayBoard from '../components/sessions-today-board';
 
-const Home = () => {
+const Home = ({events}) => {
+  
   return (
     <section className="home">
       <Navbar/>
@@ -14,7 +15,7 @@ const Home = () => {
       <SayHello />      
       <TotalInfoBlock />
       <SessionsTodayBoard />
-      <SoonEvents/>
+      <SoonEvents events={events}/>
     </section>
   );
 };

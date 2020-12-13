@@ -2,53 +2,31 @@ import React from 'react';
 import Navbar from '../components/navbar';
 import Header from '../components/header';
 import EventsListMonth from '../components/events-month';
-import { events } from '../data/events-mock';
+// import { events } from '../data/events-mock';
 import { SHOWING_BY_CLICK, MONTH_NAMES } from '../constants';
-import useHttp from '../hooks/http.hook';
 
-const Events = () => {
-  const [showingEvents, setShowingEvents] = React.useState(3);
+const Events = ({events}) => {
+  const [showingEvents, setShowingEvents] = React.useState(3);  
   const [visibleShowMore, setVisibleShowMore] = React.useState(true);
-  const  [eventsServer, setEventsServer] = React.useState(null);
   const listRef = React.useRef();
-  const {request} = useHttp();
-
-  const fetchEvents = async () => {
-    try{
-      const eventsServer = await request('/api/events');
-      setEventsServer(eventsServer.map((event)=> {
-        const date = new Date(event.date)
-        return {...event, date}
-      }))
-    }
-    catch(err){}
-  }
 
   React.useEffect(()=>{
-    fetchEvents();
-  },[]);
-
-  React.useEffect(()=>{
-    if (eventsServer&&showingEvents >= eventsServer.length - SHOWING_BY_CLICK) {
+    if (showingEvents > events.length) {      
       setVisibleShowMore(false);
-      setShowingEvents(eventsServer.length);
+      setShowingEvents(events.length);
     }
-   },[showingEvents])
+   },[showingEvents, events]);
 
   const handleClickShowMore = () => {
     setShowingEvents((prev) => prev + SHOWING_BY_CLICK);
     listRef.current.scroll(1000,0);    
   };
 
-  if(!eventsServer){
-    return null;
-  }
-
   //TODO replace to Reducer
   //TODO fix showmore btn
   const uniq = [
     ...new Set(
-      eventsServer
+      events
         .sort((a, b) => b.date - a.date)
         .slice(0, showingEvents)
         .map((event) =>
@@ -61,7 +39,7 @@ const Events = () => {
   ].map((item) => JSON.parse(item));
 
   const targetEvents = uniq.map((item) =>
-  eventsServer.filter(
+  events.filter(
       (event) => item.year === event.date.getFullYear() && item.month === event.date.getMonth(),
     ),
   );
@@ -82,14 +60,14 @@ const Events = () => {
             />
           ))}
 
-        {visibleShowMore && eventsServer.length ? (
+        {visibleShowMore  ? (
           <button className="btn events__btn" onClick={handleClickShowMore}>
             Показать еще
           </button>
         ) : (
           ''
         )}
-        {eventsServer.length ? '' : <p>Кажется мероприятия закончились...</p>}
+        {events.length ? '' : <p>Кажется мероприятия закончились...</p>}
       </main>
      
     </>

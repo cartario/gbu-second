@@ -137,6 +137,8 @@ const AdminEventCard = ({ event }) => {
     };    
   };
 
+ 
+
   return (
     <li className="admin-event_item">
       <p>id: {event._id}</p>
@@ -155,12 +157,12 @@ const AdminEventCard = ({ event }) => {
 
       <div>
         <label>
-          Date:{form.date}
+          Date:{form.date.toLocaleString()}
           <input
             name="date"
             disabled={!editMode}
             type="datetime-local"
-            value={new Date(form.date)}
+            value={form.date.toLocaleString()}
             onChange={handleClickForm}
           />
         </label>
@@ -233,9 +235,9 @@ const AdminEventCard = ({ event }) => {
   );
 };
 
-const AdminPage = () => {
+const AdminPage = ({events}) => {
   const { request, loading, error, clearError } = useHttp();
-  const [events, setEvents] = React.useState(null);
+  
   const auth = useContext(AuthConext);
   const [showNewEvent, setshowNewEvent] = React.useState(false);
 
@@ -244,19 +246,6 @@ const AdminPage = () => {
   const handleShowNewEvent = (value) => {
     setshowNewEvent(value);
   };
-
-  React.useEffect(() => {
-    async function fetchEvents() {
-      const response = await request('api/events'); 
-      (response.forEach((event)=>new Date(event.date)))     
-      setEvents(response);
-    }
-    fetchEvents();
-  }, [request]);
-
-  if(!events){
-    return null;
-  }
 
   return (
     <>
@@ -283,7 +272,7 @@ const AdminPage = () => {
         ) : (
           <button onClick={() => handleShowNewEvent(true)}>+</button>
         )}
-        <ul>{events && events.map((event) => <AdminEventCard key={event._id} event={event} />)}</ul>
+        <ul>{events.map((event) => <AdminEventCard key={event._id} event={event} />)}</ul>
       </div>
 
       <div>
