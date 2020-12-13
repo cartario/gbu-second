@@ -55,7 +55,7 @@ const AdminEventNewCard = ({ handleShowNewEvent }) => {
       <div>
         <label>
           Date:
-          <input name="date" type="text" value={form.date} onChange={handleClickForm} />
+          <input name="date" type="datetime-local" value={form.date} onChange={handleClickForm} />
         </label>
       </div>
 
@@ -93,9 +93,10 @@ const AdminEventNewCard = ({ handleShowNewEvent }) => {
       </div>
 
       <div>
+        
         <button
           onClick={() => {
-            handleShowNewEvent(false);
+            // handleShowNewEvent(false);
             handleSubmit();
           }}
         >
@@ -109,7 +110,8 @@ const AdminEventNewCard = ({ handleShowNewEvent }) => {
 const AdminEventCard = ({ event }) => {
   const [editMode, setEditMode] = React.useState(false);
   const [form, setForm] = React.useState(event);
-
+  const {request} = useHttp();
+  
   const handleClickForm = (e) => {
     const target = e.target.value;
     const name = e.target.name;
@@ -120,8 +122,19 @@ const AdminEventCard = ({ event }) => {
     });
   };
 
-  const handleEditMode = () => {
+  const handleEditMode = () => {    
     setEditMode(!editMode);
+    handleUpdateEvent(form)
+  };
+
+  const handleDeleteEvent = (id) => {
+    request(`api/events/${id}`, 'DELETE');
+  };
+
+  const handleUpdateEvent = (form) => {
+    if(editMode){
+      request(`api/events/${form._id}`, 'PATCH', form);
+    };    
   };
 
   return (
@@ -142,12 +155,12 @@ const AdminEventCard = ({ event }) => {
 
       <div>
         <label>
-          Date:
+          Date:{form.date}
           <input
             name="date"
             disabled={!editMode}
-            type="text"
-            value={form.date}
+            type="datetime-local"
+            value={new Date(form.date)}
             onChange={handleClickForm}
           />
         </label>
@@ -182,10 +195,12 @@ const AdminEventCard = ({ event }) => {
       <div>
         <label>
           Description:
-          <input
+          <textarea
+          rows={10}
+          cols={30}
             name="description"
             disabled={!editMode}
-            type="text"
+            
             value={form.description}
             onChange={handleClickForm}
           />
@@ -206,7 +221,11 @@ const AdminEventCard = ({ event }) => {
       </div>
 
       <div>
-        <button>Delete</button>
+        <img style={{width: '100px'}} src={event.posterUrl} alt="eventPoster"/>
+      </div>
+
+      <div>
+        <button onClick={()=>{handleDeleteEvent(event._id)}}>Delete</button>
         <button onClick={handleEditMode}>{editMode ? 'Save' : 'Edit'}</button>
         <button onClick={() => setEditMode(false)}>Cancel</button>
       </div>
@@ -220,17 +239,24 @@ const AdminPage = () => {
   const auth = useContext(AuthConext);
   const [showNewEvent, setshowNewEvent] = React.useState(false);
 
+  
+
   const handleShowNewEvent = (value) => {
     setshowNewEvent(value);
   };
 
   React.useEffect(() => {
     async function fetchEvents() {
-      const response = await request('api/events');
+      const response = await request('api/events'); 
+      (response.forEach((event)=>new Date(event.date)))     
       setEvents(response);
     }
     fetchEvents();
   }, [request]);
+
+  if(!events){
+    return null;
+  }
 
   return (
     <>

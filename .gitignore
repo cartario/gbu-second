@@ -2,7 +2,7 @@
 client/.eslintcache
 /client/.eslintcache
 
-.env
+./.env
 .DS_Store
 .env.local
 .env.development.local

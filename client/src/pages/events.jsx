@@ -4,11 +4,26 @@ import Header from '../components/header';
 import EventsListMonth from '../components/events-month';
 import { events } from '../data/events-mock';
 import { SHOWING_BY_CLICK, MONTH_NAMES } from '../constants';
+import useHttp from '../hooks/http.hook';
 
 const Events = () => {
   const [showingEvents, setShowingEvents] = React.useState(3);
   const [visibleShowMore, setVisibleShowMore] = React.useState(true);
+  const  [eventsServer, setEventsServer] = React.useState(null);
   const listRef = React.useRef();
+  const {request} = useHttp();
+
+  const fetchEvents = async () => {
+    try{
+      const events = await request('/api/events');
+      setEventsServer(events)
+    }
+    catch(err){}
+  }
+
+  React.useEffect(()=>{
+    fetchEvents();
+  },[])
 
   const handleClickShowMore = () => {
     setShowingEvents((prev) => prev + SHOWING_BY_CLICK);
@@ -43,6 +58,12 @@ const Events = () => {
     setShowingEvents(events.length);
   }
  },[showingEvents])
+
+ if(!eventsServer){
+   return null;
+ }
+
+ console.log(eventsServer);
 
   return (
     <>
