@@ -15,26 +15,40 @@ const Events = () => {
 
   const fetchEvents = async () => {
     try{
-      const events = await request('/api/events');
-      setEventsServer(events)
+      const eventsServer = await request('/api/events');
+      setEventsServer(eventsServer.map((event)=> {
+        const date = new Date(event.date)
+        return {...event, date}
+      }))
     }
     catch(err){}
   }
 
   React.useEffect(()=>{
     fetchEvents();
-  },[])
+  },[]);
+
+  React.useEffect(()=>{
+    if (eventsServer&&showingEvents >= eventsServer.length - SHOWING_BY_CLICK) {
+      setVisibleShowMore(false);
+      setShowingEvents(eventsServer.length);
+    }
+   },[showingEvents])
 
   const handleClickShowMore = () => {
     setShowingEvents((prev) => prev + SHOWING_BY_CLICK);
     listRef.current.scroll(1000,0);    
   };
 
+  if(!eventsServer){
+    return null;
+  }
+
   //TODO replace to Reducer
   //TODO fix showmore btn
   const uniq = [
     ...new Set(
-      events
+      eventsServer
         .sort((a, b) => b.date - a.date)
         .slice(0, showingEvents)
         .map((event) =>
@@ -47,23 +61,10 @@ const Events = () => {
   ].map((item) => JSON.parse(item));
 
   const targetEvents = uniq.map((item) =>
-    events.filter(
+  eventsServer.filter(
       (event) => item.year === event.date.getFullYear() && item.month === event.date.getMonth(),
     ),
   );
-
- React.useEffect(()=>{
-  if (showingEvents >= events.length - SHOWING_BY_CLICK) {
-    setVisibleShowMore(false);
-    setShowingEvents(events.length);
-  }
- },[showingEvents])
-
- if(!eventsServer){
-   return null;
- }
-
- console.log(eventsServer);
 
   return (
     <>
@@ -73,7 +74,7 @@ const Events = () => {
         {targetEvents &&
           targetEvents.map((events) => (
             <EventsListMonth
-              key={events[0].id}
+              key={events[0]._id}
               title={`${MONTH_NAMES[events[0].date.getMonth()]} ${events[0].date.getFullYear()}`}
               events={events}
               showingEvents={showingEvents} 
@@ -81,14 +82,14 @@ const Events = () => {
             />
           ))}
 
-        {visibleShowMore && events.length ? (
+        {visibleShowMore && eventsServer.length ? (
           <button className="btn events__btn" onClick={handleClickShowMore}>
             Показать еще
           </button>
         ) : (
           ''
         )}
-        {events.length ? '' : <p>Кажется мероприятия закончились...</p>}
+        {eventsServer.length ? '' : <p>Кажется мероприятия закончились...</p>}
       </main>
      
     </>

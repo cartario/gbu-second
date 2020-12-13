@@ -15,7 +15,7 @@ const EventsListMonth = ({
         {events
             .slice(0, showingEvents)
             .map((event) => (
-              <Event key={event.id} event={event}/>
+              <Event key={event._id} event={event}/>
             ))}
       </ul>
     </>
