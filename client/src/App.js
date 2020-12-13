@@ -33,7 +33,9 @@ function App() {
           <Route path="/documents" component={Documents} />
           <Route path="/contacts" component={Contacts} />  
           
-          {isAuth ? <AdminPage/> : <Login/>}
+          {/* {isAuth ? <AdminPage/> : <Login/>} */}
+          <Route path="/admin" component={AdminPage} exact /> 
+          <Route path="/login" component={Login} exact />  
           
         </div>
         <div className="App__footer">
