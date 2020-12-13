@@ -1,10 +1,8 @@
 const { Router } = require('express');
 const router = Router();
-const StudioModel = require('../models/Studio');
+const EventModel = require('../models/Event');
 const { check, validationResult } = require('express-validator');
 
-
-//TODO: add auth middleware
 router.post('/create', async (req, res) => {
   const obj = req.body; 
 
@@ -15,8 +13,8 @@ router.post('/create', async (req, res) => {
       return;
     }
 
-    const studioItem = await StudioModel.create(obj);
-    res.status(200).send(studioItem);
+    const eventItem = await EventModel.create(obj);
+    res.status(200).send(eventItem);
   } catch (err) {
     res.status(500).send({ message: err });
   }
@@ -30,16 +28,16 @@ router.get('/:id', async (req, res) => {
       return;
     }
 
-    const studioId = req.params.id;
-    const studio = await StudioModel.findById(studioId);
+    const eventId = req.params.id;
+    const event = await EventModel.findById(eventId);
 
-    if (!studio) {
+    if (!eventId) {
       res.status(400).json({
-        message: 'студия не найдена',
+        message: 'событие не найдено',
       });
     }
 
-    res.status(200).send(studio);
+    res.status(200).send(event);
   } catch (err) {
     res.status(500).send(err);
   }
@@ -53,8 +51,8 @@ router.get('/', async (req, res) => {
       return;
     }
 
-    const studios = await StudioModel.find({});
-    res.status(200).send(studios);
+    const events = await EventModel.find({});
+    res.status(200).send(events);
   } catch (err) {
     res.status(500).send();
   }
@@ -68,22 +66,22 @@ router.patch('/:id', async (req, res) => {
       return;
     }
 
-    const studioId = req.params.id;
+    const eventsId = req.params.id;
     const obj = req.body;
-    const studio = await StudioModel.findById(studioId);
+    const event = await EventModel.findById(eventsId);
 
-    if (!studio) {
+    if (!event) {
       res.status(400).json({
-        message: 'студия не найдена',
+        message: 'событие не найдено',
       });
     }
 
     const fields = Object.keys(obj);
 
     fields.forEach((field) => {      
-      studio[field] = obj[field];
+      event[field] = obj[field];
     });
-    await studio.save();
+    await event.save();
     
     res.status(200).send({
       message: `Updated success. Updated fields: ${fields}`,
@@ -101,12 +99,12 @@ router.delete('/:id', async (req, res) => {
       return;
     }
 
-    const studioId = req.params.id;
-    const studio = await StudioModel.findByIdAndDelete(studioId);
+    const eventId = req.params.id;
+    const event = await EventModel.findByIdAndDelete(eventId);
 
-    if (!studio) {
+    if (!event) {
       res.status(400).json({
-        message: 'студия не найдена',
+        message: 'событие не найдено',
       });
     }
 
