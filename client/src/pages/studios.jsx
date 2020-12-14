@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import Navbar from '../components/navbar';
 import Card from '../components/studioCard';
 import Header from '../components/header';
@@ -8,14 +8,26 @@ import useHttp from '../hooks/http.hook';
 
 const SHOWING_BY_CLICK = 6;
 
-const Studios = ({studios}) => {
+const Studios = () => {
   const [showingCards, setShowingCards] = React.useState(6);
-  // const {request, loading} = useHttp();
-  // const [studiosServer, setStudiosServer] = React.useState(null);  
+  const {request, loading} = useHttp();
+  const [studios, setStudios] = React.useState(null);  
 
   const handleClickShowMore =()=>{
     setShowingCards((prev) => prev + SHOWING_BY_CLICK);
-  }
+  };
+
+  const getStudios = useCallback(async ()=>{
+    try {
+      const response = await request(`/api/studios`);
+      setStudios(response)
+    }
+    catch(err){}
+  },[request]);  
+
+  React.useEffect(()=>{    
+    getStudios();
+  }, [getStudios])
 
   // const fetchStudios = async () => {
   //   try {
@@ -33,11 +45,13 @@ const Studios = ({studios}) => {
   
   if(!studios){
     return null;
-  }  
+  }
+  
+  console.log(studios)
 
   const studiosCopy = [...studios].filter((studio)=>!studio.isDuplicate);
   const studiosKids = [...studios].filter((studio)=>!studio.isDuplicate&&studio.age_min<=6);
-  const studiosDance = [...studios].filter((studio)=>(!studio.isDuplicate&&(studio.type==='dance'))||(studio.id==='15'));
+  const studiosDance = [...studios].filter((studio)=>(!studio.isDuplicate&&(studio.type==='dance'))||(studio._id==='15'));
   const studiosArt = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.type==='art'));
   const studiosMusic = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.type==='music'));
   const studiosSport = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.type==='sport')).reverse();

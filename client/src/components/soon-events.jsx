@@ -1,49 +1,67 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import { Link } from 'react-router-dom';
 import SoonEventsCategories from '../components/soon-events-categories';
 import SoonEventsSlider from '../components/soon-events-slider';
 // import {events} from '../data/events-mock';
+import useHttp from '../hooks/http.hook';
 
-const SoonEvents = ({events}) => {
-  
+const SoonEvents = () => {
+  const {request} = useHttp(); 
   const [count, setCount] = React.useState(0);
-  const [categories, setCategories] = React.useState(null);
+  // const [categories, setCategories] = React.useState(null);
   const [filteredEvents, setFilteredEvents] = React.useState([]);
   const [visibleDescription, setVisibleDescription] = React.useState(false);
-  const [currentEvents, setCurrentEvents] = React.useState([]);
+  // const [currentEvents, setCurrentEvents] = React.useState([]);
+  const [events, setEvents] = React.useState(null);
 
   const date = new Date();
   const currentYear = date.getFullYear();
   const currentMonth = date.getMonth();
 
-  React.useEffect(() => {
-    //TODO fetch events;
-    const currentEvents = events.filter((event)=>event.date.getFullYear()===currentYear&&event.date.getMonth()===currentMonth).sort((a,b)=>b.date - a.date);
-    setCategories([...new Set(currentEvents.map((event) => event.category))]);
-    setFilteredEvents(currentEvents);
-    setCurrentEvents(currentEvents);
-  }, [currentMonth, currentYear]);
+  const getEvents = useCallback(async ()=>{
+    try {
+      const response = await request(`/api/events`);
+      setEvents(response.map((event)=> {
+        const date = new Date(event.date)
+        return {...event, date}
+      }));      
+    }
+    catch(err){}
+  },[request]);  
+
+  React.useEffect(()=>{    
+    getEvents();    
+  }, [getEvents])
 
   const handleClickDescription = () => {
     setVisibleDescription(!visibleDescription);
   };
 
+  if(!events){
+    return null;
+  }
+
+const currentEvents = (events.filter((event)=>event.date.getFullYear()===currentYear&&event.date.getMonth()===currentMonth).sort((a,b)=>b.date - a.date));
+const categories = [...new Set(currentEvents.map((event) => event.category.trim()))];
+
+//TODO fix slider data
+
   return (
     <section className="soon-events">
       <h1>В этом месяце:</h1>
 
-      {filteredEvents && filteredEvents.length ? (
+      {currentEvents && currentEvents.length ? (
         <>
           {categories && (
             <SoonEventsCategories
-              events={currentEvents}
+              events={filteredEvents}
               categories={categories}
               setFilteredEvents={setFilteredEvents}
               setCount={setCount}
             />
           )}
 
-          <SoonEventsSlider filteredEvents={filteredEvents} setCount={setCount} count={count} />
+          <SoonEventsSlider filteredEvents={currentEvents} setCount={setCount} count={count} />
 
           <div className="soon-events__description">
             <p onClick={handleClickDescription}>              
@@ -52,7 +70,7 @@ const SoonEvents = ({events}) => {
               </span>}
             </p>
             <div className={visibleDescription ? '' : 'hidden'}>
-              {filteredEvents.map((event, index) => (
+              {currentEvents.map((event, index) => (
                 <p key={event._id}>{count === index ? event.description : ''}</p>
               ))}
             </div>

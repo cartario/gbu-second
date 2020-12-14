@@ -1,28 +1,52 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Navbar from '../components/navbar';
 import Header from '../components/header';
 import EventsListMonth from '../components/events-month';
 import { SHOWING_BY_CLICK, MONTH_NAMES } from '../constants';
+import useHttp from '../hooks/http.hook';
 
-const Events = ({events}) => {
-  const [showingEvents, setShowingEvents] = React.useState(3);  
+const Events = () => {
+  const { request } = useHttp();
+  const [showingEvents, setShowingEvents] = React.useState(3);
   const [visibleShowMore, setVisibleShowMore] = React.useState(true);
   const listRef = React.useRef();
+  const [events, setEvents] = React.useState(null);
 
-  React.useEffect(()=>{
-    if (showingEvents > events.length) {      
-      setVisibleShowMore(false);
-      setShowingEvents(events.length);
-    }
-   },[showingEvents, events]);
+  const getEvents = useCallback(async () => {
+    try {
+      const response = await request(`/api/events`);
+      setEvents(
+        response.map((event) => {
+          const date = new Date(event.date);
+          return { ...event, date };
+        }),
+      );
+    } catch (err) {}
+  }, [request]);
+
+  React.useEffect(() => {
+    getEvents();
+  }, [getEvents]);
 
   const handleClickShowMore = () => {
     setShowingEvents((prev) => prev + SHOWING_BY_CLICK);
-    listRef.current.scroll(1000,0);    
+    listRef.current.scroll(1000, 0);
   };
+
+
 
   //TODO replace to Reducer
   //TODO fix showmore btn
+
+  if (!events) {
+    return null;
+  }
+
+  if (showingEvents > events.length) {
+    setVisibleShowMore(false);
+    setShowingEvents(events.length);
+  }
+
   const uniq = [
     ...new Set(
       events
@@ -38,14 +62,14 @@ const Events = ({events}) => {
   ].map((item) => JSON.parse(item));
 
   const targetEvents = uniq.map((item) =>
-  events.filter(
+    events.filter(
       (event) => item.year === event.date.getFullYear() && item.month === event.date.getMonth(),
     ),
   );
 
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <Header title="Мероприятия" />
       <main className="events">
         {targetEvents &&
@@ -54,12 +78,12 @@ const Events = ({events}) => {
               key={events[0]._id}
               title={`${MONTH_NAMES[events[0].date.getMonth()]} ${events[0].date.getFullYear()}`}
               events={events}
-              showingEvents={showingEvents} 
-              listRef={listRef}             
+              showingEvents={showingEvents}
+              listRef={listRef}
             />
           ))}
 
-        {visibleShowMore  ? (
+        {visibleShowMore ? (
           <button className="btn events__btn" onClick={handleClickShowMore}>
             Показать еще
           </button>
@@ -68,7 +92,6 @@ const Events = ({events}) => {
         )}
         {events.length ? '' : <p>Кажется мероприятия закончились...</p>}
       </main>
-     
     </>
   );
 };

@@ -3,7 +3,7 @@ import { Route} from 'react-router-dom';
 import Footer from './components/footer';
 import { AuthConext } from './context/auth.context';
 import useAuth from './hooks/auth.hook';
-import useHttp from './hooks/http.hook';
+
 import Home from './pages/home';
 import About from './pages/about';
 import Events from './pages/events';
@@ -18,56 +18,27 @@ import { events as eventsMock } from './data/events-mock';
 
 function App() {
   const { token, userId, login , logout} = useAuth();
-  const {request} = useHttp();
+
   const isAuth = !!token;
 
-  const [events, setEvents] = React.useState(null);
-  const [studios, setStudios] = React.useState(null);
+
   
-
-  React.useEffect(() => {
-    async function fetchEvents() {
-      const response = await request('api/events');          
-      setEvents(response.map((event)=> {
-        const date = new Date(event.date)
-        return {...event, date}
-      }));
-    }
-    fetchEvents();
-  }, [request]);
-
-  React.useEffect(() => {
-    async function fetchStudios() {
-      const response = await request('api/studios');          
-      setStudios(response.map((studio)=> {
-        
-        return {...studio, id: studio._id}
-      }));
-    }
-    fetchStudios();
-  }, [request]);
-
-  //TODO: preloader
-  if(!events){
-    return <p>Loading...</p>
-  }  
-
   return (
     <AuthConext.Provider value={{ token, userId, isAuth, login, logout }}>
       <div className="App">
         <div className="App__content">
           <Route path="/" exact>          
-            <Home events={events} />          
+            <Home />          
           </Route>
           <Route path="/about" component={About} />
           <Route path="/events" exact>
-            <Events events={events}/>
+            <Events/>
           </Route>
           <Route path="/studios" exact>
-            <Studios studios={studios}/>
+            <Studios />
           </Route>
           <Route path="/detail/:id">
-            <DetailPage studios={studios}/>
+            <DetailPage />
           </Route>
           <Route path="/schedule" component={Schedule} />
           <Route path="/documents" component={Documents} />
@@ -76,7 +47,7 @@ function App() {
           {/* {isAuth ? <AdminPage/> : <Login/>} */}
           {/* <Route path="/admin" component={AdminPage} exact />  */}
           <Route path="/admin" exact>
-            <AdminPage events={events} studios={studios}/>
+            <AdminPage />
           </Route>
 
           <Route path="/login" component={Login} exact />  

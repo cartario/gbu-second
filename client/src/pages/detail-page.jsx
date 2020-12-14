@@ -1,22 +1,48 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import Navbar from '../components/navbar';
 import Header from '../components/header';
 import {useParams} from 'react-router-dom';
 // import {studios} from '../data/studios-mock';
+import useHttp from '../hooks/http.hook';
 
 const daysOfWeek = ['Восересенье ','Понедельник ','Вторник ','Среда ','Четверг ','Пятница ','Суббота '];
 
-const DetailPage = ({studios}) => {
+const DetailPage = () => {
   const [card, setCard] = React.useState(null);
-  const cardId = useParams().id;  
+  const [studios, setStudios] = React.useState(null);
+  const cardId = useParams().id; 
+  const {request} = useHttp(); 
 
-  React.useEffect(()=>{    
-    //TODO fetch card by id
+  const getStudio = useCallback(async ()=>{
+    try {
+      const response = await request(`/api/studios/${cardId}`);
+      setCard(response)
+    }
+    catch(err){}
+  },[cardId, request]);
+
+  const getStudios = useCallback(async ()=>{
+    try {
+      const response = await request(`/api/studios`);
+      setStudios(response)
+    }
+    catch(err){}
+  },[request]);
+
+  
+
+  React.useEffect(()=>{
+    getStudio();
+    getStudios();
+  }, [getStudio, getStudios])
+
+  // React.useEffect(()=>{    
+  //   //TODO fetch card by id
     
-    setCard(studios.find((card)=>card.id===cardId));    
-  },[cardId]);
+  //   setCard(studios.find((card)=>card.id===cardId));    
+  // },[cardId]);
 
-  if(!card){
+  if(!card || !studios){
     return null;
   }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
 
-export default function ({id, name, title, description, imgUrl, price}) {
+export default function ({_id: id, name, title, description, imgUrl, price}) {
   const history = useHistory();
 
   const handleClick = (id) => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import AdminEventCard from '../components/admin-event-card';
 import AdminEventNewCard from '../components/admin-event-newcard';
 import AdminStudioCard from '../components/admin-studio';
@@ -7,8 +7,10 @@ import useHttp from '../hooks/http.hook';
 import { useContext } from 'react';
 import { AuthConext } from '../context/auth.context';
 
-const AdminPage = ({events, studios}) => {
+const AdminPage = () => {
   const { request, loading, error, clearError } = useHttp();
+  const [events, setEvents] = React.useState(null);
+  const [studios, setStudios] = React.useState(null);
   
   const auth = useContext(AuthConext);
   const [showNewEvent, setshowNewEvent] = React.useState(false);
@@ -21,6 +23,31 @@ const AdminPage = ({events, studios}) => {
   const handleShowNewStudio = (value) => {
     setshowNewStudio(value);
   };
+
+  const getStudios = useCallback(async ()=>{
+    try {
+      const response = await request(`/api/studios`);
+      setStudios(response)
+    }
+    catch(err){}
+  },[request]);
+
+  const getEvents = useCallback(async () => {
+    try {
+      const response = await request(`/api/events`);
+      setEvents(
+        response.map((event) => {
+          const date = new Date(event.date);
+          return { ...event, date };
+        }),
+      );
+    } catch (err) {}
+  }, [request]);
+
+  React.useEffect(()=>{    
+    getStudios();
+    getEvents();
+  }, [getStudios, getEvents])
 
   return (
     <>
