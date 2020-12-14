@@ -803,9 +803,7 @@ const AdminPage = ({events, studios}) => {
           <button onClick={() => handleShowNewStudio(true)}>+</button>
         )}
         <ul>{studios&&studios.map((studio) => <AdminStudioCard key={studio._id} studio={studio} />)}</ul>
-      </div>
-
-      
+      </div>      
     </>
   );
 };
