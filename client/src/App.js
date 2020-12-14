@@ -14,6 +14,7 @@ import Contacts from './pages/contacts';
 import DetailPage from './pages/detail-page';
 import AdminPage from './pages/admin-page';
 import Login from './pages/login';
+import { events as eventsMock } from './data/events-mock';
 
 function App() {
   const { token, userId, login , logout} = useAuth();
@@ -21,6 +22,7 @@ function App() {
   const isAuth = !!token;
 
   const [events, setEvents] = React.useState(null);
+  const [studios, setStudios] = React.useState(null);
 
   React.useEffect(() => {
     async function fetchEvents() {
@@ -31,6 +33,14 @@ function App() {
       }));
     }
     fetchEvents();
+  }, [request]);
+
+  React.useEffect(() => {
+    async function fetchStudios() {
+      const response = await request('api/studios');          
+      setStudios(response);
+    }
+    fetchStudios();
   }, [request]);
 
   //TODO: preloader
@@ -49,7 +59,9 @@ function App() {
           <Route path="/events" exact>
             <Events events={events}/>
           </Route>
-          <Route path="/studios" exact component={Studios} />
+          <Route path="/studios" exact>
+            <Studios studios={studios}/>
+          </Route>
           <Route path="/detail/:id">
             <DetailPage />
           </Route>
@@ -60,7 +72,7 @@ function App() {
           {/* {isAuth ? <AdminPage/> : <Login/>} */}
           {/* <Route path="/admin" component={AdminPage} exact />  */}
           <Route path="/admin" exact>
-            <AdminPage events={events}/>
+            <AdminPage events={events} studios={studios}/>
           </Route>
 
           <Route path="/login" component={Login} exact />  

@@ -34,8 +34,6 @@ const Studios = () => {
   if(!studiosServer){
     return null;
   }  
-console.log(studiosServer.filter((studio)=>!studio.isDuplicate));
-
 
   const studiosCopy = [...studios].filter((studio)=>!studio.isDuplicate);
   const studiosKids = [...studios].filter((studio)=>!studio.isDuplicate&&studio.age_min<=6);
