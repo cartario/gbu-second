@@ -23,6 +23,7 @@ function App() {
 
   const [events, setEvents] = React.useState(null);
   const [studios, setStudios] = React.useState(null);
+  
 
   React.useEffect(() => {
     async function fetchEvents() {
@@ -38,7 +39,10 @@ function App() {
   React.useEffect(() => {
     async function fetchStudios() {
       const response = await request('api/studios');          
-      setStudios(response);
+      setStudios(response.map((studio)=> {
+        
+        return {...studio, id: studio._id}
+      }));
     }
     fetchStudios();
   }, [request]);
@@ -63,7 +67,7 @@ function App() {
             <Studios studios={studios}/>
           </Route>
           <Route path="/detail/:id">
-            <DetailPage />
+            <DetailPage studios={studios}/>
           </Route>
           <Route path="/schedule" component={Schedule} />
           <Route path="/documents" component={Documents} />

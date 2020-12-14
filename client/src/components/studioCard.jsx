@@ -9,7 +9,7 @@ export default function ({id, name, title, description, imgUrl, price}) {
   }
 
   return (
-    <article onClick = {()=>handleClick(_id)} className="card">
+    <article onClick = {()=>handleClick(id)} className="card">
       <div className="card__img">
         <img src={imgUrl? imgUrl : "https://bayramix.ru/local/templates/bayramix_new/images/load.gif"} width="300" alt="cardImg" />
         <p>{name}</p>

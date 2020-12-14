@@ -39,7 +39,7 @@ const AdminStudioNewCard = ({ handleShowNewStudio }) => {
     });
   };
 
-  const handleSubmit = async ()=>{
+  const handleSubmit = async ()=>{    
    try{
     const response = await request('/api/studios/create', 'POST', form);
     setStudio(response);
@@ -216,7 +216,8 @@ const AdminStudioNewCard = ({ handleShowNewStudio }) => {
           name="imgUrl" 
           type="text" 
           value={form.imgUrl} 
-          onChange={handleClickForm}/>
+          onChange={handleClickForm}          
+          />
         </label>
       </div>
 
@@ -391,9 +392,7 @@ const AdminEventCard = ({ event }) => {
     if(editMode){
       request(`api/events/${form._id}`, 'PATCH', form);
     };    
-  };
-
- 
+  }; 
 
   return (
     <li className="admin-event_item">
@@ -491,6 +490,265 @@ const AdminEventCard = ({ event }) => {
   );
 };
 
+const AdminStudioCard = ({ studio }) => {
+  const [editMode, setEditMode] = React.useState(false);
+  const [form, setForm] = React.useState(studio);
+  const {request} = useHttp();
+  
+  const handleClickForm = (e) => {
+    const target = e.target.value;
+    const name = e.target.name;
+
+    setForm({
+      ...form,
+      [name]: target,
+    });
+  };
+
+  const handleEditMode = (e) => {   
+    e.preventDefault(); 
+    setEditMode(!editMode);
+    handleUpdateStudio(form)
+  };
+
+  const handleDeleteStudio = (id) => {
+    request(`api/studios/${id}`, 'DELETE');
+  };
+
+  const handleUpdateStudio = (form) => {
+    if(editMode){
+      request(`api/studios/${form._id}`, 'PATCH', form);
+    };    
+  }; 
+
+  return (
+    <li className="admin-studio_item">
+      <p>id: {studio._id}</p>
+
+      <form>
+      <div>
+        <label>
+          *Название группы студий/секций
+          <input name="name" type="text" value={form.name} onChange={handleClickForm} 
+          disabled={!editMode}
+          required/>
+        </label>
+      </div>
+
+      <div>
+        <label>
+        *Название студии/секции
+          <input name="title" type="text" value={form.title} onChange={handleClickForm} disabled={!editMode} required/>
+        </label>
+      </div>
+
+      <div>
+        <label>
+          *Номер группы студии/секции:
+          <input name="groupNumber" type="text" value={form.groupNumber} onChange={handleClickForm} disabled={!editMode} required/>
+        </label>
+      </div>
+
+      <div>
+        <label>
+          *Место проведения занятий:
+          <input name="adress" type="text" value={form.adress} onChange={handleClickForm} disabled={!editMode} required/>
+        </label>
+      </div>
+
+      <div>
+        <label>
+          *Минимальный возраст:
+          <input
+            name="age_min"
+            type="text"
+            value={form.age_min}
+            onChange={handleClickForm}
+            disabled={!editMode}
+            required
+          />
+        </label>
+      </div>
+
+      <div>
+        <label>
+          *День недели:
+          <input 
+          name="day" 
+          type="text" 
+          value={form.day} 
+          disabled={!editMode}
+          onChange={handleClickForm} required/>
+        </label>
+      </div>
+
+      <div>
+        <label>
+          *Стоимость:
+          <input 
+          name="price" 
+          type="text" 
+          value={form.price} 
+          disabled={!editMode}
+          onChange={handleClickForm} required/>
+        </label>
+      </div>
+
+      <div>
+        <label>
+          *Время начала занятий:
+          <input 
+          name="timeFrom" 
+          type="text" 
+          value={form.timeFrom} 
+          disabled={!editMode}
+          onChange={handleClickForm} required/>
+        </label>
+      </div>
+
+      <div>
+        <label>
+          *Время окончания занятий:
+          <input 
+          name="timeTo" 
+          type="text" 
+          value={form.timeTo} 
+          disabled={!editMode}
+          onChange={handleClickForm} required/>
+        </label>
+      </div>
+
+      <div>
+        <label>
+          *Категория:
+          <input 
+          name="type" 
+          type="text" 
+          value={form.type} 
+          disabled={!editMode}
+          onChange={handleClickForm} required/>
+        </label>
+      </div>
+
+      <div>
+        <label>
+        isDuplicate:
+          <input 
+          name="isDuplicate" 
+          type="text" 
+          value={form.isDuplicate} 
+          disabled={!editMode}
+          onChange={handleClickForm}/>
+        </label>
+      </div>
+
+      <div>
+        <label>
+        age_max:
+          <input 
+          name="age_max" 
+          type="text" 
+          value={form.age_max} 
+          disabled={!editMode}
+          onChange={handleClickForm}/>
+        </label>
+      </div>
+
+      <div>
+        <label>
+        cab:
+          <input 
+          name="cab" 
+          type="text" 
+          value={form.cab} 
+          disabled={!editMode}
+          onChange={handleClickForm}/>
+        </label>
+      </div>
+
+      <div>
+        <label>
+        teacher:
+          <input 
+          name="teacher" 
+          type="text" 
+          value={form.teacher} 
+          disabled={!editMode}
+          onChange={handleClickForm}/>
+        </label>
+      </div>
+
+      <div>
+        <label>
+        priceOptions:
+          <input 
+          name="priceOptions" 
+          type="text" 
+          value={form.priceOptions} 
+          disabled={!editMode}
+          onChange={handleClickForm}/>
+        </label>
+      </div>
+
+      <div>
+        <label>
+        imgUrl:
+          <input 
+          name="imgUrl" 
+          type="text" 
+          value={form.imgUrl} 
+          onChange={handleClickForm}
+          disabled={!editMode}
+          required
+          />
+        </label>
+      </div>
+
+      <div>
+        <label>
+        description:
+          <input 
+          name="description" 
+          type="text" 
+          value={form.description} 
+          disabled={!editMode}
+          onChange={handleClickForm}/>
+        </label>
+      </div>
+
+      <div>
+        <label>
+        status:
+          <input 
+          name="status" 
+          type="text" 
+          value={form.status} 
+          disabled={!editMode}
+          onChange={handleClickForm}/>
+        </label>
+      </div>
+
+      <div>
+        <img style={{width: '100px'}} src={studio.imgUrl || "https://bayramix.ru/local/templates/bayramix_new/images/load.gif"} alt="studioPoster"/>
+      </div>
+
+        <button onClick={handleEditMode}>{editMode ? 'Save' : 'Edit'}</button>
+
+      </form>
+
+      <div>
+        <button onClick={()=>{handleDeleteStudio(studio._id)}}>Delete</button>
+        
+        <button onClick={() => setEditMode(false)}>Cancel</button>
+      </div>
+
+      
+
+      
+    </li>
+  );
+};
+
 const AdminPage = ({events, studios}) => {
   const { request, loading, error, clearError } = useHttp();
   
@@ -505,6 +763,8 @@ const AdminPage = ({events, studios}) => {
   const handleShowNewStudio = (value) => {
     setshowNewStudio(value);
   };
+
+  
 
   return (
     <>
@@ -531,7 +791,7 @@ const AdminPage = ({events, studios}) => {
         ) : (
           <button onClick={() => handleShowNewEvent(true)}>+</button>
         )}
-        <ul>{events.map((event) => <AdminEventCard key={event._id} event={event} />)}</ul>
+        <ul>{events&&events.map((event) => <AdminEventCard key={event._id} event={event} />)}</ul>
       </div>
 
       <div>
@@ -542,7 +802,7 @@ const AdminPage = ({events, studios}) => {
         ) : (
           <button onClick={() => handleShowNewStudio(true)}>+</button>
         )}
-        {/* <ul>{studios.map((studio) => <AdminStudioCard key={studio._id} event={studio} />)}</ul> */}
+        <ul>{studios&&studios.map((studio) => <AdminStudioCard key={studio._id} studio={studio} />)}</ul>
       </div>
 
       

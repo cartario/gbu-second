@@ -2,11 +2,11 @@ import React from 'react';
 import Navbar from '../components/navbar';
 import Header from '../components/header';
 import {useParams} from 'react-router-dom';
-import {studios} from '../data/studios-mock';
+// import {studios} from '../data/studios-mock';
 
 const daysOfWeek = ['Восересенье ','Понедельник ','Вторник ','Среда ','Четверг ','Пятница ','Суббота '];
 
-const DetailPage = () => {
+const DetailPage = ({studios}) => {
   const [card, setCard] = React.useState(null);
   const cardId = useParams().id;  
 

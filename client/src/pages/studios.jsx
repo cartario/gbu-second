@@ -3,35 +3,35 @@ import Navbar from '../components/navbar';
 import Card from '../components/studioCard';
 import Header from '../components/header';
 import Compilation from '../components/studios-compilation';
-import {studios} from '../data/studios-mock';
+// import {studios} from '../data/studios-mock';
 import useHttp from '../hooks/http.hook';
 
 const SHOWING_BY_CLICK = 6;
 
-const Studios = () => {
+const Studios = ({studios}) => {
   const [showingCards, setShowingCards] = React.useState(6);
-  const {request, loading} = useHttp();
-  const [studiosServer, setStudiosServer] = React.useState(null);  
+  // const {request, loading} = useHttp();
+  // const [studiosServer, setStudiosServer] = React.useState(null);  
 
   const handleClickShowMore =()=>{
     setShowingCards((prev) => prev + SHOWING_BY_CLICK);
   }
 
-  const fetchStudios = async () => {
-    try {
-      const fetchedStudios = await request('/api/studios');
-      setStudiosServer(fetchedStudios);
-    }
-    catch(err){
-      console.log(err)
-    }
-  }
+  // const fetchStudios = async () => {
+  //   try {
+  //     const fetchedStudios = await request('/api/studios');
+  //     setStudiosServer(fetchedStudios);
+  //   }
+  //   catch(err){
+  //     console.log(err)
+  //   }
+  // }
 
-  React.useEffect(()=>{
-    fetchStudios();
-  }, []);
+  // React.useEffect(()=>{
+  //   fetchStudios();
+  // }, []);
   
-  if(!studiosServer){
+  if(!studios){
     return null;
   }  
 
