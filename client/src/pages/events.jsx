@@ -39,7 +39,11 @@ const Events = () => {
   //TODO fix showmore btn
 
   if (!events) {
-    return null;
+    return (<>
+      <Navbar />
+      <Header title="Мероприятия" />
+      <h1>...Loading...</h1>
+      </>);
   }
 
   if (showingEvents > events.length) {

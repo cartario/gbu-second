@@ -74,7 +74,7 @@ const AdminPage = () => {
         ) : (
           <button onClick={() => handleShowNewEvent(true)}>+</button>
         )}
-        <ul>{events&&events.map((event) => <AdminEventCard setEvents={setEvents} key={event._id} event={event} />)}</ul>
+        <ul>{events ?events.map((event) => <AdminEventCard setEvents={setEvents} key={event._id} event={event} />) : <p>Loading...</p>}</ul>
       </div>
 
       <div>
@@ -85,7 +85,7 @@ const AdminPage = () => {
         ) : (
           <button onClick={() => handleShowNewStudio(true)}>+</button>
         )}
-        <ul>{studios&&studios.map((studio) => <AdminStudioCard key={studio._id} studio={studio} />)}</ul>
+        <ul>{studios ? studios.map((studio) => <AdminStudioCard key={studio._id} studio={studio} />) : <p>Loading...</p>}</ul>
       </div>      
     </>
   );
