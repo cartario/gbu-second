@@ -5,6 +5,7 @@ import classNames from 'classnames';
 const currentHour = (new Date()).getHours();
 
 const SessionTodayAddress = ({ dataList}) => {
+  
   const history = useHistory();
   const handleClickItem = (id) => {
     history.push(`/detail/${id}`);

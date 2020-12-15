@@ -216,7 +216,7 @@ export const studios = [
         "status": "1",
         "id": "88"
     },
-    {
+    {//next
         "isDuplicate": "1",
         "name": "Студия изобразительного искусства «Game of art I»",
         "title": "Студия изобразительного искусства «Game of art I»",

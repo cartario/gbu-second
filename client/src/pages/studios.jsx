@@ -44,10 +44,12 @@ const Studios = () => {
   // }, []);
   
   if(!studios){
-    return null;
+    return (<>
+    <Navbar/>    
+      <Header title="Студии и секции"/>
+    <h1>...Loading...</h1>
+    </>);
   }
-  
-  console.log(studios)
 
   const studiosCopy = [...studios].filter((studio)=>!studio.isDuplicate);
   const studiosKids = [...studios].filter((studio)=>!studio.isDuplicate&&studio.age_min<=6);

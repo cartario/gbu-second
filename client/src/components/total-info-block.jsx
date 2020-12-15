@@ -9,7 +9,7 @@ const TotalInfoBlock = ({studios}) => {
   const artStudiosCount = studios.filter((studio) => !studio.isDuplicate && studio.type !== 'sport')
     .length;
 
-  const instructorsCount = [...new Set(studios.map((studio) => studio.teacher))].length;
+  const instructorsCount = [...new Set(studios.map((studio) => !studio.isDuplicate&&studio.teacher))].length;
 
   return (
     <div className="totalInfoBlock">

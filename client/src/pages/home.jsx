@@ -24,7 +24,13 @@ const Home = () => {
   }, [getStudios]);
 
   if(!studios){
-    return null;
+    return (<>
+    <Navbar/>
+    <WelcomeBlock />
+    <SayHello />
+      <h1>...Loading...</h1>
+    <SoonEvents />
+    </>);
   }
   
   return (

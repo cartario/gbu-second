@@ -43,7 +43,11 @@ const DetailPage = () => {
   // },[cardId]);
 
   if(!card || !studios){
-    return null;
+    return (<>
+    <Navbar activeItem={"Студии"}/>      
+      <Header title="...я качаю вы отдыхаете"/>
+    <h1>...Loading...</h1>
+    </>);
   }
 
   const cardsByTitle = studios.reduce((acc, studio)=>{
