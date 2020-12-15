@@ -20,14 +20,14 @@ const SessionTodayAddress = ({ dataList}) => {
         {dataList &&
           dataList.map((card) => (
             <li
-              key={card.id}
+              key={card._id}
               className={classNames({
                 sessions__item: true,
                 'sessions__item--active':
                   currentHour >= card.timeFrom.split(':')[0] &&
                   currentHour < card.timeTo.split(':')[0],
               })}
-              onClick={() => handleClickItem(card.id)}
+              onClick={() => handleClickItem(card._id)}
             >
               <p>
                 {card.name}

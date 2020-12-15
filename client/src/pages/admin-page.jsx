@@ -74,7 +74,7 @@ const AdminPage = () => {
         ) : (
           <button onClick={() => handleShowNewEvent(true)}>+</button>
         )}
-        <ul>{events&&events.map((event) => <AdminEventCard key={event._id} event={event} />)}</ul>
+        <ul>{events&&events.map((event) => <AdminEventCard setEvents={setEvents} key={event._id} event={event} />)}</ul>
       </div>
 
       <div>

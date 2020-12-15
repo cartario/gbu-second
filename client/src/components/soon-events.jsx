@@ -2,36 +2,47 @@ import React, {useCallback} from 'react';
 import { Link } from 'react-router-dom';
 import SoonEventsCategories from '../components/soon-events-categories';
 import SoonEventsSlider from '../components/soon-events-slider';
-// import {events} from '../data/events-mock';
 import useHttp from '../hooks/http.hook';
+
+const adapterEvents = (events) => {
+  return events.map((event)=> {
+    const date = new Date(event.date)
+    return {...event, date}
+  });
+};
+
+const getCurrentEvents = (events) => {
+  const date = new Date();
+  const currentYear = date.getFullYear();
+  const currentMonth = date.getMonth();
+  
+  return events
+  .filter((event)=>event.date.getFullYear()===currentYear&&event.date.getMonth()===currentMonth)
+  .sort((a,b)=>b.date - a.date);
+}
 
 const SoonEvents = () => {
   const {request} = useHttp(); 
   const [count, setCount] = React.useState(0);
-  // const [categories, setCategories] = React.useState(null);
   const [filteredEvents, setFilteredEvents] = React.useState([]);
   const [visibleDescription, setVisibleDescription] = React.useState(false);
-  // const [currentEvents, setCurrentEvents] = React.useState([]);
+  const [currentEvents, setCurrentEvents] = React.useState([]);
   const [events, setEvents] = React.useState(null);
-
-  const date = new Date();
-  const currentYear = date.getFullYear();
-  const currentMonth = date.getMonth();
 
   const getEvents = useCallback(async ()=>{
     try {
       const response = await request(`/api/events`);
-      setEvents(response.map((event)=> {
-        const date = new Date(event.date)
-        return {...event, date}
-      }));      
+
+      setEvents(adapterEvents(response));      
+      setFilteredEvents(getCurrentEvents(adapterEvents(response))); 
+      setCurrentEvents(getCurrentEvents(adapterEvents(response)))
     }
     catch(err){}
   },[request]);  
 
   React.useEffect(()=>{    
     getEvents();    
-  }, [getEvents])
+  }, [getEvents]);
 
   const handleClickDescription = () => {
     setVisibleDescription(!visibleDescription);
@@ -41,8 +52,7 @@ const SoonEvents = () => {
     return null;
   }
 
-const currentEvents = (events.filter((event)=>event.date.getFullYear()===currentYear&&event.date.getMonth()===currentMonth).sort((a,b)=>b.date - a.date));
-const categories = [...new Set(currentEvents.map((event) => event.category.trim()))];
+const categories = [...new Set(currentEvents.map((event) => event.category))];
 
 //TODO fix slider data
 
@@ -54,14 +64,14 @@ const categories = [...new Set(currentEvents.map((event) => event.category.trim(
         <>
           {categories && (
             <SoonEventsCategories
-              events={filteredEvents}
+              events={currentEvents}
               categories={categories}
               setFilteredEvents={setFilteredEvents}
               setCount={setCount}
             />
           )}
 
-          <SoonEventsSlider filteredEvents={currentEvents} setCount={setCount} count={count} />
+          <SoonEventsSlider filteredEvents={filteredEvents} setCount={setCount} count={count} />
 
           <div className="soon-events__description">
             <p onClick={handleClickDescription}>              
@@ -70,7 +80,7 @@ const categories = [...new Set(currentEvents.map((event) => event.category.trim(
               </span>}
             </p>
             <div className={visibleDescription ? '' : 'hidden'}>
-              {currentEvents.map((event, index) => (
+              {filteredEvents.map((event, index) => (
                 <p key={event._id}>{count === index ? event.description : ''}</p>
               ))}
             </div>

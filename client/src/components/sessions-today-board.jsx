@@ -1,12 +1,12 @@
 import React from 'react';
 import SessionTodayAddress from '../components/sessions-today-addres';
-import { studios } from '../data/studios-mock';
+// import { studios } from '../data/studios-mock';
 import { sayWelcome } from '../utils';
 
 const HOLIDAY = 0;
 const day = (new Date()).getDay();
 
-const SessionsTodayBoard = () => {
+const SessionsTodayBoard = ({studios}) => {
   const [todayCards, setTodayCards] = React.useState(null);
   const dayStatus = sayWelcome();
 

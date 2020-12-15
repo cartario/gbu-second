@@ -1,7 +1,7 @@
 import React from 'react';
 import useHttp from '../hooks/http.hook';
 
-const AdminEventCard = ({ event }) => {
+const AdminEventCard = ({ event , setEvents}) => {
   const [visible, setVisible] = React.useState(false);
   const [editMode, setEditMode] = React.useState(false);
   const [form, setForm] = React.useState(event);

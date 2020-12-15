@@ -1,7 +1,7 @@
 import React from 'react';
-import { studios } from '../data/studios-mock'; //TODO fetch from server
+// import { studios } from '../data/studios-mock';
 
-const TotalInfoBlock = () => {
+const TotalInfoBlock = ({studios}) => {
 
   const sportStudiosCount = studios.filter(
     (studio) => !studio.isDuplicate && studio.type === 'sport',
