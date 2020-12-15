@@ -59,7 +59,7 @@ const AdminPage = () => {
           </li>
           <li>
             {' '}
-            <a href="/login" onClick={() => auth.logout()}>
+            <a href="/admin" onClick={() => auth.logout()}>
               Logout
             </a>
           </li>

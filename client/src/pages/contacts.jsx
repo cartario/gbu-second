@@ -12,7 +12,7 @@ const Contacts = () => {
         <ul className="contacts__team">
           <li className="contacts__team-item">
             <img
-              src="http://центрданиил.рф/wp-content/uploads/2019/11/%D0%98%D0%93.jpeg"
+              src="https://res.cloudinary.com/dxioiveim/image/upload/v1608015313/team/%D0%98%D0%93_hixyjv.jpg"
               alt="photoTeam"
             />
             <p className="contacts__team-name">Фадеева Инна Генадьевна</p>
@@ -28,7 +28,7 @@ const Contacts = () => {
 
           <li className="contacts__team-item">
             <img
-              src="http://центрданиил.рф/wp-content/uploads/2019/11/%D0%9C%D0%B8%D1%88%D0%B0-576x1024.jpeg"
+              src="https://res.cloudinary.com/dxioiveim/image/upload/v1608015312/team/%D0%9C%D0%B8%D1%88%D0%B0-576x1024_j5tbec.jpg"
               alt="photoTeam"
             />
             <p className="contacts__team-name">Ременников Михаил Юрьевич</p>
@@ -51,7 +51,7 @@ const Contacts = () => {
 
           <li className="contacts__team-item">
             <img
-              src="http://центрданиил.рф/wp-content/uploads/2019/11/%D0%9D%D0%B0%D1%81%D1%82%D1%8F-683x1024.jpg"
+              src="https://res.cloudinary.com/dxioiveim/image/upload/v1608015309/team/%D0%9D%D0%B0%D1%81%D1%82%D1%8F-683x1024_fftwun.jpg"
               alt="photoTeam"
             />
             <p className="contacts__team-name">
@@ -74,7 +74,7 @@ const Contacts = () => {
 
           <li className="contacts__team-item">
             <img
-              src="http://центрданиил.рф/wp-content/uploads/2019/11/Levshtanov.jpg"
+              src="https://res.cloudinary.com/dxioiveim/image/upload/v1608015306/team/Levshtanov_gxy5fj.jpg"
               alt="photoTeam"
             />
             <p className="contacts__team-name">Левштанов Дмитрий Николаевич</p>
@@ -106,7 +106,7 @@ const Contacts = () => {
 
           <li className="contacts__team-item">
             <img
-              src="http://центрданиил.рф/wp-content/uploads/2020/01/%D0%90%D0%BD%D0%BD%D0%B0-%D0%93%D0%BB%D0%B0%D0%B7%D0%BA%D0%BE%D0%B2%D0%B0-1-200x300.jpeg"
+              src="https://res.cloudinary.com/dxioiveim/image/upload/v1608015302/team/%D0%90%D0%BD%D0%BD%D0%B0-%D0%93%D0%BB%D0%B0%D0%B7%D0%BA%D0%BE%D0%B2%D0%B0-1-200x300_pyvpgd.jpg"
               alt="photoTeam"
             />
             <p className="contacts__team-name">Тикот Анна Николаевна</p>
