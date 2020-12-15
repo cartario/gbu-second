@@ -28,20 +28,6 @@ const Studios = () => {
   React.useEffect(()=>{    
     getStudios();
   }, [getStudios])
-
-  // const fetchStudios = async () => {
-  //   try {
-  //     const fetchedStudios = await request('/api/studios');
-  //     setStudiosServer(fetchedStudios);
-  //   }
-  //   catch(err){
-  //     console.log(err)
-  //   }
-  // }
-
-  // React.useEffect(()=>{
-  //   fetchStudios();
-  // }, []);
   
   if(!studios){
     return (<>

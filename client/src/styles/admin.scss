@@ -1,3 +1,13 @@
+.admin-groups {
+  width: 50%;
+  margin: 10px auto;
+  border: 1px solid orange;
+
+  @media(max-width: 415px){
+    width: 100%;
+  }
+}
+
 .admin-item{
   width: 50%;
   margin: 10px auto;

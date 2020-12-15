@@ -19,7 +19,7 @@ const AdminEventCard = ({ event , setEvents}) => {
 
   const handleEditMode = () => {
     setEditMode(!editMode);
-    handleUpdateEvent(form);
+    handleUpdateEvent(form);    
   };
 
   const handleDeleteEvent = (id) => {

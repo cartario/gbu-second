@@ -28,13 +28,6 @@ const Events = () => {
     getEvents();
   }, [getEvents]);
 
-  const handleClickShowMore = () => {
-    setShowingEvents((prev) => prev + SHOWING_BY_CLICK);
-    listRef.current.scroll(1000, 0);
-  };
-
-
-
   //TODO replace to Reducer
   //TODO fix showmore btn
 
@@ -46,10 +39,20 @@ const Events = () => {
       </>);
   }
 
-  if (showingEvents > events.length) {
-    setVisibleShowMore(false);
-    setShowingEvents(events.length);
-  }
+  const handleClickShowMore = () => {
+    //fix  8
+    if (showingEvents >= (events.length - 8)) {
+      setVisibleShowMore(false);
+      setShowingEvents(events.length);
+    }
+
+    else {
+      setShowingEvents((prev) => prev + SHOWING_BY_CLICK);
+    listRef.current.scroll(1000, 0);
+    }
+  };
+
+  // console.log(showingEvents, events.length)
 
   const uniq = [
     ...new Set(

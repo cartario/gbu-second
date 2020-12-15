@@ -47,7 +47,21 @@ const AdminPage = () => {
   React.useEffect(()=>{    
     getStudios();
     getEvents();
-  }, [getStudios, getEvents])
+  }, [getStudios, getEvents]);
+
+  if(!studios){
+    return (<h1>Loading...</h1>)
+  }
+
+  const namesOfGroup = [... new Set(studios.map((studio)=>studio.name))];
+  const studiosBynamesOfGroup = namesOfGroup.map((group)=>studios.filter((studio)=>studio.name===group));
+
+  const StudiosByGroup = ({studios}) => {
+    return (
+    <ul>
+      {studios.map((studio) => <AdminStudioCard key={studio._id} studio={studio} />)}
+    </ul>)
+  }
 
   return (
     <>
@@ -85,7 +99,14 @@ const AdminPage = () => {
         ) : (
           <button onClick={() => handleShowNewStudio(true)}>+</button>
         )}
-        <ul>{studios ? studios.map((studio) => <AdminStudioCard key={studio._id} studio={studio} />) : <p>Loading...</p>}</ul>
+        {/* <ul>{studios ? studios.map((studio) => <AdminStudioCard key={studio._id} studio={studio} />) : <p>Loading...</p>}</ul> */}
+
+          {studiosBynamesOfGroup.map((studios, index)=>
+          <div key={index} className="admin-groups">
+            <p>{index+1} Группа студий: {studios[0].name}</p>
+            <StudiosByGroup studios={studios}/>
+          </div>)}
+        
       </div>      
     </>
   );

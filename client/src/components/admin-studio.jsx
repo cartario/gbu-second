@@ -1,6 +1,8 @@
 import React from 'react';
 import useHttp from '../hooks/http.hook';
 
+const daysOfWeek = ['Восересенье ','Понедельник ','Вторник ','Среда ','Четверг ','Пятница ','Суббота '];
+
 const AdminStudioCard = ({ studio }) => {
   const [visible, setVisible] = React.useState(false);
   const [editMode, setEditMode] = React.useState(false);
@@ -40,10 +42,13 @@ const AdminStudioCard = ({ studio }) => {
     <li className="admin-item">
       <div className="admin-item__top">
         <p className="admin-item__title" onClick={handleToggleForm}>
-          <span>Группа студий: {studio.name}</span>
-          <br />
+          {/* <span>Группа студий: {studio.name}</span>
+          <br /> */}
           <span>Студия/секция: {studio.title}</span>
-          <span> &nbsp; id: {studio._id}</span>
+          {/* <span> &nbsp; id: {studio._id}</span> */}
+        <span>{daysOfWeek[studio.day]}</span>
+        <span> {studio.timeFrom} - {studio.timeTo}</span>
+        
         </p>
       </div>
 
