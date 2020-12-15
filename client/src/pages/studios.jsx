@@ -67,7 +67,7 @@ const Studios = () => {
       <main className="studios">         
         <div className="container">  
 
-        <Compilation studios={studiosKids} title={'Для самых маленьких (до 6 лет):'}/>
+        <Compilation studios={studiosKids} title={'Для самых маленьких (до 6 лет):'} visibleProps={true}/>
         <Compilation studios={studiosMusic} title={'Музыка:'}/>
         <Compilation studios={studiosDance} title={'Танцы:'}/>
         <Compilation studios={studiosSport} title={'Спорт:'}/>

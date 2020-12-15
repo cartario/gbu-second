@@ -42,10 +42,14 @@ const DetailPage = () => {
   //   setCard(studios.find((card)=>card.id===cardId));    
   // },[cardId]);
 
-  if(!card || !studios){
+  if(!card){
+    return null;
+  }
+
+  if(!studios){
     return (<>
     <Navbar activeItem={"Студии"}/>      
-      <Header title="...я качаю вы отдыхаете"/>
+      <Header title={card.name}/>
     <h1>...Loading...</h1>
     </>);
   }
