@@ -15,10 +15,33 @@
 .studios__compilation{
   
   h3{
+    span{
+      position: relative;
+      &::before {
+        position: absolute;
+        content: "";
+        top: 5px;
+        right: -15px;
+        width: 0; 
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 8px solid #24375B;    
+        transition:  0.5s all ease;
+      }
+    
+      &.hide::before{
+        top: 7px;
+        transform: rotate(180deg);
+      }
+    }
     margin-left:40px;
     margin-bottom: 0;
     text-align: left;
     cursor: pointer;
+
+    
+
     &:hover{
       transform: scale(1.02)
     }

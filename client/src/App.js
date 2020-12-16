@@ -12,6 +12,7 @@ import Schedule from './pages/schedule';
 import Documents from './pages/documents';
 import Contacts from './pages/contacts';
 import DetailPage from './pages/detail-page';
+import Minors from './pages/minors';
 import Admin from './pages/admin';
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path="/schedule" component={Schedule} />
           <Route path="/documents" component={Documents} />
           <Route path="/contacts" component={Contacts} />
+          <Route path="/minors" component={Minors} />
           <Route path="/admin" exact component={Admin}/>           
         </div>
         <div className="App__footer">

@@ -7,7 +7,7 @@ const Contacts = () => {
     <>
       <Navbar/>
       <Header title="Контакты" />      
-      <main className="contacts">
+      <main className="contacts">        
         
         <ul className="contacts__team">
           <li className="contacts__team-item">

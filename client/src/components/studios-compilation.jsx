@@ -14,7 +14,7 @@ const Compilation = ({studios, title, visibleProps=false})=>{
   }
   return (
     <div className="studios__compilation">
-          <h3 onClick={handleToggleVisible}>{title}</h3>
+          <h3 onClick={handleToggleVisible}><span className={visible ? "": "hide"}>{title}</span></h3>
          {visible ? 
           <ul className="studios__compilation-list">
           {studios.map((studio)=><li key={studio._id} className="studios__compilation-item" onClick={()=>handleClickCardCompilation(studio._id)}>

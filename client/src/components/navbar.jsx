@@ -27,9 +27,14 @@ const MenuItems = [{
   link: '/documents' 
 },
 { 
+  title: 'Юный правовед', 
+  link: '/minors' 
+},
+{ 
   title: 'Контакты', 
   link: '/contacts' 
 },
+
 ];
 
 const Navbar =({activeItem}) =>{
