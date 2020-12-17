@@ -14,6 +14,7 @@ router.post('/upload/create', upload.single('posterUrl'), async (req, res) => {
       return;
     }
 
+    
     const uploadedFile = await cloudinary.uploader.upload(req.file.path);
     
     const event = {
