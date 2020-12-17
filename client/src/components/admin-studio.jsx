@@ -26,11 +26,13 @@ const AdminStudioCard = ({ studio }) => {
 
   const handleDeleteStudio = (id) => {
     request(`api/studios/${id}`, 'DELETE');
+    window.location.reload(); //temporary
   };
 
   const handleUpdateStudio = (form) => {
     if (editMode) {
       request(`api/studios/${form._id}`, 'PATCH', form);
+      window.location.reload(); //temporary
     }
   };
 

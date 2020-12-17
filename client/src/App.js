@@ -1,9 +1,8 @@
 import React from 'react';
-import { Route, Redirect} from 'react-router-dom';
+import { Route} from 'react-router-dom';
 import Footer from './components/footer';
 import { AuthConext } from './context/auth.context';
 import useAuth from './hooks/auth.hook';
-
 import Home from './pages/home';
 import About from './pages/about';
 import Events from './pages/events';

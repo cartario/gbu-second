@@ -21,9 +21,14 @@ const EventSchema = new Schema({
   },
   posterUrl: {
     type: String
+  },
+  cloudinary_id: {
+    type: String
   }
 }, {
   timestamps: true
 })
 
 module.exports = model('Event', EventSchema);
+
+

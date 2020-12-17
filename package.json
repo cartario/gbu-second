@@ -14,11 +14,13 @@
   "license": "ISC",
   "dependencies": {
     "classnames": "2.2.6",
+    "cloudinary": "1.23.0",
     "dotenv": "8.2.0",
     "express": "^4.17.1",
     "express-validator": "6.8.0",
     "jsonwebtoken": "8.5.1",
     "mongoose": "5.11.7",
+    "multer": "1.4.2",
     "nodemon": "^2.0.6"
   }
 }

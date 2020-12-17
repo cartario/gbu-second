@@ -26,9 +26,11 @@ const AdminEventNewCard = ({ handleShowNewEvent }) => {
   };
 
   const handleSubmit = async ()=>{
+    
    try{
     const response = await request('/api/events/create', 'POST', form);
     setEvent(response);
+    window.location.reload(); //temporary
    }catch(err){}
   }
 
@@ -84,7 +86,7 @@ const AdminEventNewCard = ({ handleShowNewEvent }) => {
       <div className="admin-item__field">
         <label>
           PosterImage:
-          <input name="posterUrl" type="text" value={form.posterUrl} onChange={handleClickForm} />
+          <input name="posterUrl" type="text" value={form.posterUrl} onChange={handleClickForm}/>
         </label>
       </div>
 

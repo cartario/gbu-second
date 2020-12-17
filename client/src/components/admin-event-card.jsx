@@ -24,11 +24,13 @@ const AdminEventCard = ({ event , setEvents}) => {
 
   const handleDeleteEvent = (id) => {
     request(`api/events/${id}`, 'DELETE');
+    window.location.reload(); //temporary
   };
 
   const handleUpdateEvent = (form) => {
     if (editMode) {
       request(`api/events/${form._id}`, 'PATCH', form);
+      window.location.reload(); //temporary
     }
   };
 

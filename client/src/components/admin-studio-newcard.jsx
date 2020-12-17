@@ -41,6 +41,7 @@ const AdminStudioNewCard = ({ handleShowNewStudio }) => {
     try {
       const response = await request('/api/studios/create', 'POST', form);
       setStudio(response);
+      window.location.reload(); //temporary
     } catch (err) {}
   };
 
