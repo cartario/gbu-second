@@ -1,4 +1,5 @@
 import React from 'react';
+import Poster from '../pages/main-poster'
 
 const SoonEventsSlider = ({filteredEvents, count, setCount}) => {
   
@@ -35,6 +36,7 @@ const SoonEventsSlider = ({filteredEvents, count, setCount}) => {
                 </div>
               </li>
             ))}
+            
         </ul>
 
         <div className={`slider__controls ${filteredEvents.length<=1 ? "slider__control--hide" : ""}`}>

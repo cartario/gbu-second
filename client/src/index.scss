@@ -72,6 +72,29 @@ ul {
   animation: shake 0.6s;
 }
 
+.shake-btn {
+  animation: shake 0.6s infinite;
+}
+
+@keyframes a_left-right {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10% {
+    transform: translateX(-5px);
+  }
+
+  20% {
+    transform: translateX(5px);
+  }
+}
+
+.a_left-right{
+  animation: a_left-right 2s infinite;
+}
+
 @keyframes glitch {
   0% {
     transform: translate(10px, -20px);
@@ -164,3 +187,4 @@ ul {
 @import './styles/contacts.scss';
 @import './styles/login.scss';
 @import './styles/admin.scss';
+@import './styles/poster.scss';

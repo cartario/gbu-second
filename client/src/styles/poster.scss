@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+
+.poster{
+  max-width: 596px;
+  min-height: 724px;
+  margin: 100px auto;
+  
+  background: url('https://res.cloudinary.com/dxioiveim/image/upload/v1608364656/posters/1x/sports_2_j5p3ib.jpg') no-repeat;
+  
+  @media (max-width: 596px) {
+    width: 100%;
+    height: auto;
+  } 
+}
+
+.poster-top{
+  display: flex; 
+}
+
+.poster-top__logo{
+  margin-top: 7px;
+  margin-left: 19.25px;
+  margin-right: 19.25px;  
+}
+
+.poster-top__contacts{
+  width: 319px;
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+  border-radius: 0px 0px 10px 10px;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 10px);
+    margin: 0 auto;
+  }
+}
+
+.poster-content__title{
+  width: calc(100% - 80px);
+  margin: 0 auto;
+  padding: 10px;
+  font-family: 'Amatic SC', cursive;
+  
+  h1 {
+    margin: 0;
+    font-size: 74px;
+    line-height: 56px;
+    letter-spacing: 0.18px;    
+  }
+  p{
+    margin: 0;
+    padding: 0;
+    font-size: 42px;
+  }
+}
+
+.poster-content__date{
+  display: flex;
+  margin-left: calc(100% - 250px);
+  max-width: 220px;
+  margin-top: 130px;
+  padding: 10px;
+  font-family: 'Amatic SC', cursive;
+  font-weight: bold;
+}
+
+.poster-content__date--date{  
+  font-size: 89px;
+}
+
+.poster-content__date--time{
+  font-size: 54px;  
+}
+
+.poster-bottom{
+  padding: 10px;
+  background-color: #79684A;
+  h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    color: white;
+  }
+  p{
+    margin: 0;
+    padding: 0;
+    color: white;
+  }
+}
+
+.poster-bottom__whatsapp{
+  display: flex;
+  justify-content: space-between;
+}
+
+.poster-bottom__whatsapp--input{
+  width: 500px;
+  height: 60px;
+  background: white;
+  border-radius: 30px;
+  div {
+    padding-top: 10px;
+  }
+}
+
+.poster-bottom__whatsapp--btn{
+  width: 60px;
+  height: 60px;
+  background: url('../data/send.png') no-repeat center center;
+  background-color: #44CF2E;
+  border-radius: 50%;
+}
