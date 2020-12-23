@@ -3,6 +3,7 @@ import AdminEventCard from '../components/admin-event-card';
 import AdminEventNewCard from '../components/admin-event-newcard';
 import AdminStudioCard from '../components/admin-studio';
 import AdminStudioNewCard from '../components/admin-studio-newcard';
+import AdminMainPost from '../components/admin-main-post';
 import useHttp from '../hooks/http.hook';
 import { useContext } from 'react';
 import { AuthConext } from '../context/auth.context';
@@ -90,6 +91,8 @@ const AdminPage = () => {
         )}
         <ul>{events ?events.map((event) => <AdminEventCard setEvents={setEvents} key={event._id} event={event} />) : <p>Loading...</p>}</ul>
       </div>
+
+      <AdminMainPost />
 
       <div>
         <h2>Studios</h2>

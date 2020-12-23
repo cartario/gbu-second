@@ -1,11 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+.wrapper-poster{
+  padding-top: 30px;
+  background: black;
+  h1{    
+    color: white; 
+  }
+}
 
 .poster{
   max-width: 596px;
   min-height: 724px;
-  margin: 100px auto;
+  margin: 0 auto;
   
-  background: url('https://res.cloudinary.com/dxioiveim/image/upload/v1608364656/posters/1x/sports_2_j5p3ib.jpg') no-repeat;
+  // background: url('https://res.cloudinary.com/dxioiveim/image/upload/v1608364656/posters/1x/sports_2_j5p3ib.jpg') no-repeat;
+  background: url('https://res.cloudinary.com/dxioiveim/image/upload/v1608709447/posters/1x/sports_2_1_dpjzl0.jpg') no-repeat;
   
   @media (max-width: 596px) {
     width: 100%;
@@ -15,12 +25,16 @@
 
 .poster-top{
   display: flex; 
+  
 }
 
 .poster-top__logo{
   margin-top: 7px;
   margin-left: 19.25px;
   margin-right: 19.25px;  
+  @media(max-width: 470px){
+    display: none;
+  }
 }
 
 .poster-top__contacts{
@@ -36,7 +50,21 @@
     justify-content: space-between;
     width: calc(100% - 10px);
     margin: 0 auto;
+
+    @media(max-width: 470px){ 
+      width: 80%;  
+      margin: 0 auto;
+      
+      li {
+        margin: 5px;
+      }
+    }
   }
+
+  @media(max-width: 470px){   
+    font-size: 12px;
+  }
+  
 }
 
 .poster-content__title{
@@ -49,27 +77,37 @@
     margin: 0;
     font-size: 74px;
     line-height: 56px;
-    letter-spacing: 0.18px;    
+    letter-spacing: 0.18px; 
+    @media(max-width: 415px){
+      font-size: 60px; 
+    }   
   }
   p{
     margin: 0;
     padding: 0;
+    color: black;
+    text-align: right;
+    padding-right: 65px;
     font-size: 42px;
   }
 }
 
 .poster-content__date{
   display: flex;
-  margin-left: calc(100% - 250px);
+  margin-right: calc(100% - 250px);
   max-width: 220px;
   margin-top: 130px;
   padding: 10px;
-  font-family: 'Amatic SC', cursive;
-  font-weight: bold;
+  font-family: 'Alfa Slab One', cursive;
+  font-weight: bold; 
+  
 }
 
 .poster-content__date--date{  
-  font-size: 89px;
+  font-size: 60px; 
+  @media(max-width: 415px){
+    font-size: 40px; 
+  }
 }
 
 .poster-content__date--time{
@@ -113,4 +151,43 @@
   background: url('../data/send.png') no-repeat center center;
   background-color: #44CF2E;
   border-radius: 50%;
+}
+
+@keyframes notransform {
+  10% {transform: none;}  
+}
+
+.container-t {
+  min-height:120px;  
+  perspective: 200px; 
+  transform-style: preserve-3d;
+  @media(max-width: 470px){
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.rotateY {  
+  transform: rotateY(360deg);  
+  animation: notransform 5s infinite;  
+  
+}
+
+.translate3d {  
+  transform: translate3d(30px,30px,30px);
+  animation: notransform 5s infinite; 
+  animation-delay: 2s;
+}
+
+@keyframes freeze-rotate {
+  
+  0% {transform: rotateX(-70deg)}  
+  70% {transform: rotateX(-30deg)}  
+  80% {transform: rotateX(360deg)} 
+  100% {transform: rotateX(-70deg)}  
+}
+
+.freeze-rotate {
+  transform: rotateY(-40deg);
+  animation: freeze-rotate 5s infinite;
 }

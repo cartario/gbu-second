@@ -1,8 +1,11 @@
 .about {
   padding: 10px 0;
-  background: url('https://img2.goodfon.ru/original/1920x1080/c/c4/abstrakciya-krugi-uzory-svet.jpg')
-    no-repeat;
+  // background: url('https://i.pinimg.com/originals/e9/49/e7/e949e75e091c5d7d109a4682fcc53c59.jpg') no-repeat ;
+    background: url('https://img2.goodfon.ru/original/1920x1080/c/c4/abstrakciya-krugi-uzory-svet.jpg')
+      no-repeat;
+  
   background-size: cover;
+  background-attachment: fixed;
 
   img {
     max-width: 100%;

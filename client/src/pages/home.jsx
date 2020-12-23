@@ -6,6 +6,8 @@ import SayHello from '../components/say-hello';
 import TotalInfoBlock from '../components/total-info-block';
 import SessionsTodayBoard from '../components/sessions-today-board';
 import useHttp from '../hooks/http.hook';
+import Poster from '../components/main-poster';
+import VideoPlayer from '../components/videoplayer';
 
 const Home = () => {
   const {request} = useHttp();
@@ -37,7 +39,9 @@ const Home = () => {
     <section className="home">
       <Navbar/>
       <WelcomeBlock />
-      <SayHello />      
+      <SayHello />  
+      <VideoPlayer /> 
+      <Poster />   
       <TotalInfoBlock studios={studios}/>
       <SessionsTodayBoard studios={studios}/>
       <SoonEvents />

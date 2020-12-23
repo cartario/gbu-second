@@ -13,7 +13,6 @@ import Contacts from './pages/contacts';
 import DetailPage from './pages/detail-page';
 import Minors from './pages/minors';
 import Admin from './pages/admin';
-import Poster from './pages/main-poster';
 
 function App() {
   const { token, userId, login , logout} = useAuth();
@@ -40,10 +39,7 @@ function App() {
           <Route path="/documents" component={Documents} />
           <Route path="/contacts" component={Contacts} />
           <Route path="/minors" component={Minors} />
-          <Route path="/admin" exact component={Admin}/> 
-          <Route path="/poster" exact>
-            <Poster />
-          </Route>          
+          <Route path="/admin" exact component={Admin}/>                  
         </div>
         <div className="App__footer">
           <Footer />
