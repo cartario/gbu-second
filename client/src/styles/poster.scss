@@ -13,6 +13,7 @@
   max-width: 596px;
   min-height: 724px;
   margin: 0 auto;
+  overflow: hidden;
   
   // background: url('https://res.cloudinary.com/dxioiveim/image/upload/v1608364656/posters/1x/sports_2_j5p3ib.jpg') no-repeat;
   background: url('https://res.cloudinary.com/dxioiveim/image/upload/v1608709447/posters/1x/sports_2_1_dpjzl0.jpg') no-repeat;
@@ -56,13 +57,15 @@
       margin: 0 auto;
       
       li {
-        margin: 5px;
+        margin: 2px 5px;
       }
     }
   }
 
   @media(max-width: 470px){   
     font-size: 12px;
+    width: 90%;
+    margin: 0 auto;
   }
   
 }
@@ -89,6 +92,9 @@
     text-align: right;
     padding-right: 65px;
     font-size: 42px;
+    @media(max-width: 415px){
+      font-size: 24px;
+    }
   }
 }
 
@@ -164,6 +170,7 @@
   @media(max-width: 470px){
     width: 100%;
     margin: 0 auto;
+    
   }
 }
 
