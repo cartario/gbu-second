@@ -10,6 +10,7 @@ import CCF_000031z from '../uploads/2019/11/Положение-о-деятель
 import CCF_000032z from '../uploads/2020/12/011-Положение-об-оплате-труда-1.pdf';
 import CCF_000033z from '../uploads/2020/12/012-Положение-о-платных-услуг.pdf';
 
+
 const documents = [
   {
     title: 'Скачать - Административный регламент',
@@ -86,6 +87,7 @@ const documents = [
 ];
 
 const Documents = () => {
+  
   return (
     <>
       <Navbar/>     

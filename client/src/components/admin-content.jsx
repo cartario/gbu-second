@@ -7,6 +7,7 @@ import AdminMainPost from '../components/admin-main-post';
 import useHttp from '../hooks/http.hook';
 import { useContext } from 'react';
 import { AuthConext } from '../context/auth.context';
+import ScheduleDocs from '../components/schedule-docs';
 
 const AdminPage = () => {
   const { request, loading, error, clearError } = useHttp();
@@ -80,6 +81,8 @@ const AdminPage = () => {
           </li>
         </ul>
       </nav>
+
+      <ScheduleDocs />
 
       <div>
         <h2>Events</h2>

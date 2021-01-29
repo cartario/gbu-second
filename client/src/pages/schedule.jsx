@@ -12,6 +12,7 @@ import CCF_000112 from '../uploads/2020/11/CCF_000112.pdf';
 import non20events from '../uploads/2020/11/ноя.png';
 import oct20events from '../uploads/2020/11/окт.png';
 import dec20events from '../uploads/2020/11/дек.jpg';
+import useHttp from '../hooks/http.hook';
 
 const schedules = [
   {
@@ -61,6 +62,30 @@ const schedules = [
 ];
 
 const Schedule = () => {
+  const { request, loading, error, clearError } = useHttp();
+  const [docs, setDocs] = React.useState(null);
+
+  const getDocs = React.useCallback(async ()=>{
+    try {
+      const response = await request(`/api/docs`);
+      setDocs(response)
+    }
+    catch(err){}
+  },[request]);
+
+  React.useEffect(()=>{    
+    getDocs();
+    
+  }, [getDocs]);
+
+  if(!docs){
+    return (<h1>Loading...</h1>)
+  }
+
+  const adapterDocs = docs.map((doc)=>({
+    title:doc.title,
+    link:doc.url
+  }))
   
   return (
     <>
@@ -69,7 +94,7 @@ const Schedule = () => {
       <main className="schedule">      
         <ul className="schedule__list">
           {schedules &&
-            schedules.map((doc) => (
+            [...adapterDocs, ...schedules].map((doc) => (
               <li key={doc.title} className="schedule__item">
                 <a href={doc.link}>{doc.title}</a>
               </li>

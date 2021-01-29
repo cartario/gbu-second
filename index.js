@@ -4,6 +4,7 @@ const app = express();
 const router = require('./routes/auth.routes');
 const routerStudios = require('./routes/studios.routes');
 const routerEvents = require('./routes/events.routes');
+const routerDocs = require('./routes/docs.routes');
 const routerMainPost = require('./routes/main-post.routes');
 const path = require('path');
 
@@ -17,6 +18,7 @@ app.use('/api/auth', router);
 app.use('/api/studios', routerStudios);
 app.use('/api/events', routerEvents);
 app.use('/api/mainpost', routerMainPost);
+app.use('/api/docs', routerDocs);
 
 app.use('/', express.static(path.join(__dirname, 'client', 'build')));
 
