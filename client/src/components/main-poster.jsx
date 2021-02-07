@@ -229,7 +229,7 @@ const Poster = () => {
               className="poster-bottom__whatsapp--input"
               placeholder="Введите ФИО"
               onChange={handleWhatsApp}
-              autoFocus
+              
               value={whatsApp}
             />
 
