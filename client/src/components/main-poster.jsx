@@ -64,9 +64,9 @@ const Poster = () => {
 
   const data = adapterMainPoster(mainPost[0]);
 
-  // if(!data.visible){
-  //   return null;
-  // }
+  if(!data.visible){
+    return null;
+  }
 
   return (
     <div className="wrapper-poster">
