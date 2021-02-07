@@ -235,7 +235,7 @@ const Poster = () => {
 
             <a
               className="poster-bottom__whatsapp--btn shake-btn"
-              href={`https://api.whatsapp.com/send/?phone=%2B79032530753&text=${
+              href={`https://api.whatsapp.com/send/?phone=%2B79032530773&text=${
                 'Запись на мероприятие:' + data.title.content + '__' + whatsApp
               }&app_absent=0`}
             ></a>
