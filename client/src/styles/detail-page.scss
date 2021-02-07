@@ -25,6 +25,35 @@
   width: 50%;
 }
 
+.detail-page__contact{
+  width: 300px;
+  margin: 15px auto;
+  padding:15px;
+  border: 1px solid grey;
+  border-radius: 15px;
+  background: rgb(191, 240, 191);
+  input{
+    width: 100%;    
+    padding: 10px;
+    border-radius: 5px;
+    border:none;
+    outline: none;
+  }
+  a{
+    display: block;    
+    margin-top: 10px;
+    padding: 10px;
+    font-weight: bold;
+    color: black;
+    border: 1px grey solid;
+    border-radius: 10px;
+
+    &:hover{
+      color: grey;
+    }
+  }
+}
+
 @media(max-width: 415px){  
   .detailPage__img {
     width: 100%;

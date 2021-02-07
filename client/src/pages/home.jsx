@@ -8,6 +8,7 @@ import SessionsTodayBoard from '../components/sessions-today-board';
 import useHttp from '../hooks/http.hook';
 import Poster from '../components/main-poster';
 import VideoPlayer from '../components/videoplayer';
+import WhatsApp from '../components/whatsapp';
 
 const Home = () => {
   const {request} = useHttp();
@@ -45,6 +46,7 @@ const Home = () => {
       <TotalInfoBlock studios={studios}/>
       <SessionsTodayBoard studios={studios}/>
       <SoonEvents />
+      <WhatsApp title='Main'/>
     </section>
   );
 };

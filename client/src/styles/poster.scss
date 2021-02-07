@@ -16,8 +16,9 @@
   overflow: hidden;
   
   // background: url('https://res.cloudinary.com/dxioiveim/image/upload/v1608364656/posters/1x/sports_2_j5p3ib.jpg') no-repeat;
-  background: url('https://res.cloudinary.com/dxioiveim/image/upload/v1608709447/posters/1x/sports_2_1_dpjzl0.jpg') no-repeat;
-  
+  // background: url('https://res.cloudinary.com/dxioiveim/image/upload/v1608709447/posters/1x/sports_2_1_dpjzl0.jpg') no-repeat;
+  background-repeat: no-repeat;
+
   @media (max-width: 596px) {
     width: 100%;
     height: auto;
@@ -110,7 +111,10 @@
 }
 
 .poster-content__date--date{  
-  font-size: 60px; 
+  padding: 15px;
+  font-size: 55px; 
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.69);
   @media(max-width: 415px){
     font-size: 40px; 
   }
@@ -142,8 +146,11 @@
 }
 
 .poster-bottom__whatsapp--input{
-  width: 500px;
+  width: 80%;
   height: 60px;
+  padding: 15px;
+  font-size: 24px;
+  outline: none;
   background: white;
   border-radius: 30px;
   div {
@@ -157,6 +164,7 @@
   background: url('../data/send.png') no-repeat center center;
   background-color: #44CF2E;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 @keyframes notransform {

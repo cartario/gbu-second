@@ -2,6 +2,7 @@ import React, {useCallback} from 'react';
 import Navbar from '../components/navbar';
 import Header from '../components/header';
 import {useParams} from 'react-router-dom';
+import WhatsApp from '../components/whatsapp';
 // import {studios} from '../data/studios-mock';
 import useHttp from '../hooks/http.hook';
 
@@ -74,6 +75,7 @@ const DetailPage = () => {
       <Navbar activeItem={"Студии"}/>      
       <Header title={card.name}/>
       <main className="detailPage">
+        
         <div className="detailPage__info">          
           <div className="detailPage__top">
             <p><b>Адрес: {card.adress}</b></p>
@@ -99,6 +101,7 @@ const DetailPage = () => {
           
         </div>
         <img className="detailPage__img" src={card.imgUrl ||"https://bayramix.ru/local/templates/bayramix_new/images/load.gif"} alt="cardImg"/>
+        <WhatsApp title={card.name}/>
       </main>
       
     </>
