@@ -1,7 +1,6 @@
 import React from 'react';
 import useHttp from '../hooks/http.hook';
 
-
 const AdminDocCard = ({ doc }) => {
   const { title } = doc;
   const [visible, setVisible] = React.useState(false);
@@ -21,7 +20,7 @@ const AdminDocCard = ({ doc }) => {
 
   const handleEditMode = () => {
     setEditMode(!editMode);
-    handleUpdateEvent(form);    
+    handleUpdateEvent(form);
   };
 
   const handleDeleteEvent = (id) => {
@@ -32,7 +31,7 @@ const AdminDocCard = ({ doc }) => {
   const handleUpdateEvent = (form) => {
     if (editMode) {
       request(`api/docs/${form._id}`, 'PATCH', form);
-      window.location.reload(); //temporary      
+      window.location.reload(); //temporary
     }
   };
 
@@ -47,55 +46,60 @@ const AdminDocCard = ({ doc }) => {
           <span>{title}</span>
         </p>
 
-       {visible&& <form onSubmit={(e) => e.preventDefault()} className="admin-item__form">
-          <div className="admin-item__field">
-            <label>
-              Title
-              <input 
-                name="title"
-                disabled={!editMode}
-                type="text"
-                value={form.title}
-                onChange={handleClickForm}              
-              />
-            </label>
-          </div>
-          <div className="admin-item__field">
-            <label>
-              Url
-              <input 
-                name="url"
-                disabled={!editMode}
-                type="text"
-                value={form.url}
-                onChange={handleClickForm}                
-              />
-            </label>
-          </div>
+        {visible && (
+          <form onSubmit={(e) => e.preventDefault()} className="admin-item__form">
+            <div className="admin-item__field">
+              <label>
+                Title
+                <input
+                  name="title"
+                  disabled={!editMode}
+                  type="text"
+                  value={form.title}
+                  onChange={handleClickForm}
+                />
+              </label>
+            </div>
+            <div className="admin-item__field">
+              <label>
+                Url
+                <input
+                  name="url"
+                  disabled={!editMode}
+                  type="text"
+                  value={form.url}
+                  onChange={handleClickForm}
+                />
+              </label>
+            </div>
 
-          <div className="admin-item__controls">
-            <button className="admin-item__controls--edit" onClick={handleEditMode}>
-              {editMode ? 'Save' : 'Edit'}
-            </button>
-            {editMode ? (
-              <>
-                <button className="admin-item__controls--cancel" onClick={() => setEditMode(false)}>
-                  Cancel
-                </button>
-                <button
-                  className="admin-item__controls--delete"
-                  onClick={() => {
-                    handleDeleteEvent(doc._id);
-                  }}
-                >
-                  Delete
-                </button>
-              </>
-            ) : (
-              ''
-            )}
-          </div>
-        </form>}
+            <div className="admin-item__controls">
+              <button className="admin-item__controls--edit" onClick={handleEditMode}>
+                {editMode ? 'Save' : 'Edit'}
+              </button>
+              {editMode ? (
+                <>
+                  <button
+                    className="admin-item__controls--cancel"
+                    onClick={() => setEditMode(false)}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className="admin-item__controls--delete"
+                    onClick={() => {
+                      handleDeleteEvent(doc._id);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </>
+              ) : (
+                ''
+              )}
+            </div>
+          </form>
+        )}
       </div>
     </li>
   );
@@ -111,25 +115,28 @@ const AdminDocCard = ({ doc }) => {
 
 const ScheduleDocs = () => {
   const { request, loading, error, clearError } = useHttp();
+  const [showSection, setShowSection] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
   const [docs, setDocs] = React.useState(null);
 
   const [form, setForm] = React.useState({
     title: '',
-    url: ''    
+    url: '',
   });
 
-  const getDocs = React.useCallback(async ()=>{
+  const handleClickShowSection = () => {
+    setShowSection(!showSection);
+  };
+
+  const getDocs = React.useCallback(async () => {
     try {
       const response = await request(`/api/docs`);
-      setDocs(response)
-    }
-    catch(err){}
-  },[request]);
+      setDocs(response);
+    } catch (err) {}
+  }, [request]);
 
-  React.useEffect(()=>{    
+  React.useEffect(() => {
     getDocs();
-    
   }, [getDocs]);
 
   const handleClickForm = (e) => {
@@ -142,54 +149,73 @@ const ScheduleDocs = () => {
     });
   };
 
-  const handleSubmit = async ()=>{    
-    try{
-     const response = await request('/api/docs/create', 'POST', form);
-    //  setEvent(response);
-     window.location.reload(); //temporary
-    }catch(err){}
-   }
+  const handleSubmit = async () => {
+    try {
+      const response = await request('/api/docs/create', 'POST', form);
+      //  setEvent(response);
+      window.location.reload(); //temporary
+    } catch (err) {}
+  };
 
-   if(!docs){
-    return (<h1>Loading...</h1>)
+  if (!docs) {
+    return <h1>Loading...</h1>;
   }
 
   return (
-    <div className="schedule-docs ">
-      <h2>Расписания</h2>
+    <div className="admin-section">
+      <h2 onClick={handleClickShowSection}>
+        Расписания {showSection ? '(свернуть)' : '(развернуть)'}
+      </h2>
 
-      {!visible && <button onClick={() => setVisible(true)}>+</button>}
-      {visible && (
-        <div className="admin-item admin-item--new">
-          <p onClick={() => setVisible(false)} className="admin-item__title">
-            Новое расписание
-          </p>
-          <form className="admin-item__form" onSubmit={(e)=>e.preventDefault()}>
-            <div className="admin-item__field">
-              <label>
-                Title
-                <input type="text" name="title" 
-                value={form.title} onChange={handleClickForm} required
-                />
-              </label>
+      {showSection && (
+        <>
+          {!visible && <button className='admin-section__button' onClick={() => setVisible(true)}>+</button>}
+          {visible && (
+            <div className="admin-item admin-item--new">
+              <p onClick={() => setVisible(false)} className="admin-item__title">
+                Новое расписание
+              </p>
+              <form className="admin-item__form" onSubmit={(e) => e.preventDefault()}>
+                <div className="admin-item__field">
+                  <label>
+                    Title
+                    <input
+                      type="text"
+                      name="title"
+                      value={form.title}
+                      onChange={handleClickForm}
+                      required
+                    />
+                  </label>
+                </div>
+                <div className="admin-item__field">
+                  <label>
+                    Url
+                    <input
+                      type="text"
+                      name="url"
+                      value={form.url}
+                      onChange={handleClickForm}
+                      required
+                    />
+                  </label>
+                </div>
+                <button
+                  
+                  onClick={() => {
+                    handleSubmit();
+                  }}
+                >
+                  Submit
+                </button>
+              </form>
             </div>
-            <div className="admin-item__field">
-              <label>
-                Url
-                <input type="text" name="url" 
-                value={form.url} onChange={handleClickForm} required
-                />
-              </label>
-            </div>
-            <button  onClick={() => {            
-            handleSubmit();
-          }}>Submit</button>
-          </form>
-        </div>
+          )}
+          <ul>
+            {docs ? docs.map((doc) => <AdminDocCard key={doc._id} doc={doc} />) : <p>Loading...</p>}
+          </ul>
+        </>
       )}
-      <ul>
-        {docs ? docs.map((doc) => <AdminDocCard key={doc._id} doc={doc} />) : <p>Loading...</p>}
-      </ul>
     </div>
   );
 };

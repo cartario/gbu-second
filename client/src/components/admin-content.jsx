@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, { useCallback } from 'react';
 import AdminEventCard from '../components/admin-event-card';
 import AdminEventNewCard from '../components/admin-event-newcard';
 import AdminStudioCard from '../components/admin-studio';
@@ -8,13 +8,15 @@ import useHttp from '../hooks/http.hook';
 import { useContext } from 'react';
 import { AuthConext } from '../context/auth.context';
 import ScheduleDocs from '../components/schedule-docs';
+import FileInputComponent from '../components/FileInput';
 
 const AdminPage = () => {
   const { request, loading, error, clearError } = useHttp();
   const [events, setEvents] = React.useState(null);
   const [studios, setStudios] = React.useState(null);
-  
+
   const auth = useContext(AuthConext);
+  const [showEvents, setShowEvents] = React.useState(false);
   const [showNewEvent, setshowNewEvent] = React.useState(false);
   const [showNewStudio, setshowNewStudio] = React.useState(false);
 
@@ -26,13 +28,12 @@ const AdminPage = () => {
     setshowNewStudio(value);
   };
 
-  const getStudios = useCallback(async ()=>{
+  const getStudios = useCallback(async () => {
     try {
       const response = await request(`/api/studios`);
-      setStudios(response)
-    }
-    catch(err){}
-  },[request]);
+      setStudios(response);
+    } catch (err) {}
+  }, [request]);
 
   const getEvents = useCallback(async () => {
     try {
@@ -46,24 +47,29 @@ const AdminPage = () => {
     } catch (err) {}
   }, [request]);
 
-  React.useEffect(()=>{    
+  React.useEffect(() => {
     getStudios();
     getEvents();
   }, [getStudios, getEvents]);
 
-  if(!studios){
-    return (<h1>Loading...</h1>)
+  if (!studios) {
+    return <h1>Loading...</h1>;
   }
 
-  const namesOfGroup = [... new Set(studios.map((studio)=>studio.name))];
-  const studiosBynamesOfGroup = namesOfGroup.map((group)=>studios.filter((studio)=>studio.name===group));
+  const namesOfGroup = [...new Set(studios.map((studio) => studio.name))];
+  const studiosBynamesOfGroup = namesOfGroup.map((group) =>
+    studios.filter((studio) => studio.name === group),
+  );
 
-  const StudiosByGroup = ({studios}) => {
+  const StudiosByGroup = ({ studios }) => {
     return (
-    <ul>
-      {studios.map((studio) => <AdminStudioCard key={studio._id} studio={studio} />)}
-    </ul>)
-  }
+      <ul>
+        {studios.map((studio) => (
+          <AdminStudioCard key={studio._id} studio={studio} />
+        ))}
+      </ul>
+    );
+  };
 
   return (
     <>
@@ -84,15 +90,32 @@ const AdminPage = () => {
 
       <ScheduleDocs />
 
-      <div>
-        <h2>Events</h2>
+      <div style={{ backgroundColor: '#ffc0cb36' }}>
+        <h2 style={{ cursor: 'pointer', margin: 0 }} onClick={() => setShowEvents(!showEvents)}>
+          Events {showEvents ? '(свернуть)' : '(развернуть)'}
+        </h2>
 
-        {showNewEvent ? (
-          <AdminEventNewCard handleShowNewEvent={handleShowNewEvent} />
-        ) : (
-          <button onClick={() => handleShowNewEvent(true)}>+</button>
+        {showEvents && (
+          <>
+            {showNewEvent ? (
+              <AdminEventNewCard handleShowNewEvent={handleShowNewEvent} />
+            ) : (
+              <button className="admin-section__button" onClick={() => handleShowNewEvent(true)}>
+                +
+              </button>
+            )}
+
+            <ul>
+              {events ? (
+                events.map((event) => (
+                  <AdminEventCard setEvents={setEvents} key={event._id} event={event} />
+                ))
+              ) : (
+                <p>Loading...</p>
+              )}
+            </ul>
+          </>
         )}
-        <ul>{events ?events.map((event) => <AdminEventCard setEvents={setEvents} key={event._id} event={event} />) : <p>Loading...</p>}</ul>
       </div>
 
       <AdminMainPost />
@@ -107,13 +130,15 @@ const AdminPage = () => {
         )}
         {/* <ul>{studios ? studios.map((studio) => <AdminStudioCard key={studio._id} studio={studio} />) : <p>Loading...</p>}</ul> */}
 
-          {studiosBynamesOfGroup.map((studios, index)=>
+        {studiosBynamesOfGroup.map((studios, index) => (
           <div key={index} className="admin-groups">
-            <p>{index+1} Группа студий: {studios[0].name}</p>
-            <StudiosByGroup studios={studios}/>
-          </div>)}
-        
-      </div>      
+            <p>
+              {index + 1} Группа студий: {studios[0].name}
+            </p>
+            <StudiosByGroup studios={studios} />
+          </div>
+        ))}
+      </div>
     </>
   );
 };

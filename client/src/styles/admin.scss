@@ -1,3 +1,34 @@
+
+.admin-section{
+  padding: 10px;
+  background-color: rgb(157, 211, 233);
+
+  h2{
+    margin: 0;
+    font-size: 30px;
+    color: #00636d;
+    cursor: pointer;
+  }
+}
+
+.admin-section__button{
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  font-size: 40px;
+  border-radius: 50%;
+  background-color: green;
+  color: #fff;
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  &:hover{
+    transform: scale(1.1);
+
+  }
+}
+
 .admin-groups {
   width: 50%;
   margin: 10px auto;
