@@ -26,8 +26,13 @@ fieldsName.splice(0, 1);
 fieldsName.splice(0, 1);
 
 const AdminMainPost = () => {
+  const [showSection, setShowSection] = React.useState(false);
   const [form, setForm] = React.useState(initialState);
   const { request } = useHttp();
+
+  const handleClickShowSection = () => {
+    setShowSection(!showSection);
+  };
 
   const getMainPost = React.useCallback(async () => {
     try {
@@ -56,13 +61,22 @@ const AdminMainPost = () => {
   };
 
   return (
-    <div className="admin-item">
-      <h2>Main post</h2>
+    <div className="admin-section" style={{ backgroundColor: '#80cbc4' }}>
+      <h2 style={{ color: '#004d40' }} onClick={handleClickShowSection}>
+        Main post {showSection ? '(свернуть)' : '(развернуть)'}
+      </h2>
+      {showSection &&
+      <div className="admin-item">
       <form className="admin-item__form" onSubmit={handleSubmit}>
         <div className="admin-item__field">
           <label>
             Visible
-            <input type="checkbox" name="visible" checked={form.visible} onChange={handleChange} />
+            <input
+              type="checkbox"
+              name="visible"
+              checked={form.visible}
+              onChange={handleChange}
+            />
           </label>
         </div>
 
@@ -123,6 +137,9 @@ const AdminMainPost = () => {
 
         <button>SEND CHANGES</button>
       </form>
+    </div>
+  
+      }
     </div>
   );
 };

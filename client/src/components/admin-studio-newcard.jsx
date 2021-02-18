@@ -99,6 +99,7 @@ const AdminStudioNewCard = ({ handleShowNewStudio }) => {
               value={form.adress}
               onChange={handleClickForm}
               required
+              placeholder='трофимова или люсиновская'
             />
           </label>
         </div>
@@ -119,7 +120,9 @@ const AdminStudioNewCard = ({ handleShowNewStudio }) => {
         <div className="admin-item__field">
           <label>
             *День недели:
-            <input name="day" type="text" value={form.day} onChange={handleClickForm} required />
+            <input name="day" type="text" value={form.day} onChange={handleClickForm} required 
+              placeholder='пн-1, вт-2, ср-3 и тд'
+            />
           </label>
         </div>
 
@@ -132,6 +135,7 @@ const AdminStudioNewCard = ({ handleShowNewStudio }) => {
               value={form.price}
               onChange={handleClickForm}
               required
+              placeholder='если бесплатно, то писать free'
             />
           </label>
         </div>
@@ -177,6 +181,7 @@ const AdminStudioNewCard = ({ handleShowNewStudio }) => {
               type="text"
               value={form.isDuplicate}
               onChange={handleClickForm}
+              placeholder='ставится 1 если студия уже была записана, чтобы избежать дублей'
             />
           </label>
         </div>
@@ -236,7 +241,9 @@ const AdminStudioNewCard = ({ handleShowNewStudio }) => {
         <div className="admin-item__field">
           <label>
             status:
-            <input name="status" type="text" value={form.status} onChange={handleClickForm} />
+            <input name="status" type="text" value={form.status} onChange={handleClickForm} 
+            placeholder='ставить 1'
+            />
           </label>
         </div>
 

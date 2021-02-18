@@ -1,11 +1,16 @@
 import React from 'react';
 import useHttp from '../hooks/http.hook';
+import FileInputComponent from '../components/FileInput';
 
-const AdminEventCard = ({ event , setEvents}) => {
+const AdminEventCard = ({ event, setEvents }) => {
   const [visible, setVisible] = React.useState(false);
   const [editMode, setEditMode] = React.useState(false);
   const [form, setForm] = React.useState(event);
   const { request } = useHttp();
+
+  const onFileInputChange = React.useCallback((url) => {
+    setForm({ ...form, posterUrl: url });
+  }, []);
 
   const handleClickForm = (e) => {
     const target = e.target.value;
@@ -19,7 +24,7 @@ const AdminEventCard = ({ event , setEvents}) => {
 
   const handleEditMode = () => {
     setEditMode(!editMode);
-    handleUpdateEvent(form);    
+    handleUpdateEvent(form);
   };
 
   const handleDeleteEvent = (id) => {
@@ -50,6 +55,17 @@ const AdminEventCard = ({ event , setEvents}) => {
 
       {visible ? (
         <form className="admin-item__form" onSubmit={(e) => e.preventDefault()}>
+
+          <div className="admin-item__field">
+            {/* <label>
+            PosterImage:
+            <input name="posterUrl" type="text" value={form.posterUrl} onChange={handleClickForm}/>
+            
+          </label> */}
+
+            <FileInputComponent handler={onFileInputChange} initialImgUrl={form.posterUrl} disabled={!editMode}/>
+          </div>
+
           <div className="admin-item__field">
             <label>
               Title:
@@ -115,7 +131,7 @@ const AdminEventCard = ({ event , setEvents}) => {
             </label>
           </div>
 
-          <div className="admin-item__field">
+          {/* <div className="admin-item__field">
             <label>
               PosterImage:
               <input
@@ -126,7 +142,7 @@ const AdminEventCard = ({ event , setEvents}) => {
                 onChange={handleClickForm}
               />
             </label>
-          </div>
+          </div> */}
 
           <div className="admin-item__img">
             <img style={{ width: '100px' }} src={event.posterUrl} alt="eventPoster" />

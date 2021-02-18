@@ -51,6 +51,16 @@ const AdminEventNewCard = ({ handleShowNewEvent }) => {
 
       <form className="admin-item__form" onSubmit={(e) => e.preventDefault()}>
         <div className="admin-item__field">
+          {/* <label>
+            PosterImage:
+            <input name="posterUrl" type="text" value={form.posterUrl} onChange={handleClickForm}/>
+            
+          </label> */}
+
+          <FileInputComponent handler={onFileInputChange} initialImgUrl={form.posterUrl} />
+        </div>
+
+        <div className="admin-item__field">
           <label>
             *Title:
             <input
@@ -85,6 +95,7 @@ const AdminEventNewCard = ({ handleShowNewEvent }) => {
               value={form.category}
               onChange={handleClickForm}
               required
+              placeholder='конкурс, соревнование, концерт и тд, желательно избегать спорт или досуг'
             />
           </label>
         </div>
@@ -106,17 +117,6 @@ const AdminEventNewCard = ({ handleShowNewEvent }) => {
               onChange={handleClickForm}
             />
           </label>
-        </div>
-
-        <div className="admin-item__field">
-          {/* <label>
-            PosterImage:
-            <input name="posterUrl" type="text" value={form.posterUrl} onChange={handleClickForm}/>
-            
-          </label> */}
-          
-          <FileInputComponent handler={onFileInputChange} initialImgUrl={form.posterUrl} />
-          
         </div>
 
         <div>

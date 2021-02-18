@@ -8,7 +8,6 @@ import useHttp from '../hooks/http.hook';
 import { useContext } from 'react';
 import { AuthConext } from '../context/auth.context';
 import ScheduleDocs from '../components/schedule-docs';
-import FileInputComponent from '../components/FileInput';
 
 const AdminPage = () => {
   const { request, loading, error, clearError } = useHttp();
@@ -17,6 +16,7 @@ const AdminPage = () => {
 
   const auth = useContext(AuthConext);
   const [showEvents, setShowEvents] = React.useState(false);
+  const [showStudios, setShowStudios] = React.useState(false);
   const [showNewEvent, setshowNewEvent] = React.useState(false);
   const [showNewStudio, setshowNewStudio] = React.useState(false);
 
@@ -79,7 +79,7 @@ const AdminPage = () => {
           <li>
             <a href="/">На главную</a>
           </li>
-          <li>
+          <li style={{ margin: '20px' }}>
             {' '}
             <a href="/admin" onClick={() => auth.logout()}>
               Logout
@@ -90,8 +90,11 @@ const AdminPage = () => {
 
       <ScheduleDocs />
 
-      <div style={{ backgroundColor: '#ffc0cb36' }}>
-        <h2 style={{ cursor: 'pointer', margin: 0 }} onClick={() => setShowEvents(!showEvents)}>
+      <div className="admin-section" style={{ backgroundColor: '#f48fb1', padding: '10px' }}>
+        <h2
+          style={{ cursor: 'pointer', margin: 0, color: '#880e4f' }}
+          onClick={() => setShowEvents(!showEvents)}
+        >
           Events {showEvents ? '(свернуть)' : '(развернуть)'}
         </h2>
 
@@ -120,24 +123,33 @@ const AdminPage = () => {
 
       <AdminMainPost />
 
-      <div>
-        <h2>Studios</h2>
+      <div className="admin-section" style={{ backgroundColor: '#c8e6c9', marginBottom: '50px' }}>
+        <h2 style={{ color: '#1b5e20' }} onClick={() => setShowStudios(!showStudios)}>
+          Studios
+          {showStudios ? '(свернуть)' : '(развернуть)'}
+        </h2>
 
-        {showNewStudio ? (
-          <AdminStudioNewCard handleShowNewStudio={handleShowNewStudio} />
-        ) : (
-          <button onClick={() => handleShowNewStudio(true)}>+</button>
+        {showStudios && (
+          <>
+            {showNewStudio ? (
+              <AdminStudioNewCard handleShowNewStudio={handleShowNewStudio} />
+            ) : (
+              <button className="admin-section__button" onClick={() => handleShowNewStudio(true)}>
+                +
+              </button>
+            )}
+            {/* <ul>{studios ? studios.map((studio) => <AdminStudioCard key={studio._id} studio={studio} />) : <p>Loading...</p>}</ul> */}
+
+            {studiosBynamesOfGroup.map((studios, index) => (
+              <div key={index} className="admin-groups">
+                <p>
+                  {index + 1} Группа студий: {studios[0].name}
+                </p>
+                <StudiosByGroup studios={studios} />
+              </div>
+            ))}
+          </>
         )}
-        {/* <ul>{studios ? studios.map((studio) => <AdminStudioCard key={studio._id} studio={studio} />) : <p>Loading...</p>}</ul> */}
-
-        {studiosBynamesOfGroup.map((studios, index) => (
-          <div key={index} className="admin-groups">
-            <p>
-              {index + 1} Группа студий: {studios[0].name}
-            </p>
-            <StudiosByGroup studios={studios} />
-          </div>
-        ))}
       </div>
     </>
   );

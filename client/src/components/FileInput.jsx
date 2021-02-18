@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FileInput = ({ handler, initialImgUrl }) => {
+const FileInput = ({ handler, initialImgUrl, disabled }) => {
   const [form, setForm] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -71,9 +71,9 @@ const FileInput = ({ handler, initialImgUrl }) => {
     <div style={styles.wrap}>
       <h4 style={{margin: 0, backgroundColor: 'lightgrey', borderRadius: '15px 15px 0 0'}}>Постер</h4>
       <div >
-        <input ref={inputRef} type="file" onChange={handleChange} style={{ display: 'none' }} />
+        <input ref={inputRef} type="file" onChange={handleChange} style={{ display: 'none' }} disabled={disabled}/>
 
-        <div style={styles.btnAdd} onClick={handleHiddenInput}>
+        <div style={{...styles.btnAdd, backgroundColor: disabled ? 'grey' : 'green'}} onClick={handleHiddenInput}>
           +
         </div>
 
