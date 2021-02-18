@@ -6,7 +6,7 @@ const cloudinary = require('../utils/cloudinary');
 const upload = require('../utils/multer');
 
 router.post('/upload/create', upload.single('posterUrl'), async (req, res) => {
-  
+  const FOLDER_NAME='test-upload';
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -14,74 +14,43 @@ router.post('/upload/create', upload.single('posterUrl'), async (req, res) => {
       return;
     }
 
-    
-    const uploadedFile = await cloudinary.uploader.upload(req.file.path);
-    
-    const event = {
-      title: req.body.title,
-      date: req.body.date,
-      category: req.body.category,
-      place: req.body.place,
-      description: req.body.description,
-      posterUrl: uploadedFile.secure_url || req.body.posterUrl,
-      cloudinary_id: uploadedFile.public_id || "",
-    };
+    const uploadedFile = await cloudinary.uploader.upload(req.file.path, { folder: FOLDER_NAME });    
 
-    const eventItem = await EventModel.create(event);
-    res.status(200).send(eventItem);
-    }
-
-   catch (err) {
+    res.status(200).send({
+      public_id: uploadedFile.public_id.split('/').pop(),
+      cloudinary_url: uploadedFile.url,
+    });
+  } catch (err) {
     res.status(500).send({ message: err });
   }
 });
 
-router.patch('/upload/:id', upload.single('posterUrl'), async (req, res) => {
+router.delete('/upload/delete/:id', upload.single('posterUrl'), async (req, res) => {
+  const FOLDER_NAME='test-upload';
+
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.status(400).json({ status: 'error', errors: errors.array() });
       return;
     }
-    const eventsId = req.params.id;
-    const eventItem = await EventModel.findById(eventsId);  
     
-    if (!eventItem) {
-      res.status(400).json({
-        message: 'событие не найдено',
-      });
-    }
+    const cloudinaryId = req.params.id;    
 
-    // await cloudinary.uploader.destroy(eventItem.cloudinary_id); //delete from cloudinary
-    const uploadedFile = await cloudinary.uploader.upload(req.file.path); //upload to cloudinary
+    const removedFile = await cloudinary.uploader.destroy(`${FOLDER_NAME}/${cloudinaryId}`);   
 
-    const event = {
-      title: req.body.title || eventItem.title,
-      date: req.body.date || eventItem.date,
-      category: req.body.category || eventItem.category,
-      place: req.body.place || eventItem.place,
-      description: req.body.description || eventItem.description,
-      posterUrl: uploadedFile.secure_url || eventItem.posterUrl,
-      cloudinary_id: uploadedFile.public_id || eventItem.cloudinary_id,
-    };
-
-    const fields = Object.keys(event);
-
-    fields.forEach((field) => {      
-      eventItem[field] = event[field];
-    });
-    await eventItem.save();
-    
     res.status(200).send({
-      message: `Updated success. Updated fields: ${fields}`,
+      message: 'deleted ok'
     });
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).send({ message: err });
   }
 });
 
+
+
 router.post('/create', async (req, res) => {
-  const obj = req.body; 
+  const obj = req.body;
 
   try {
     const errors = validationResult(req);
@@ -155,11 +124,11 @@ router.patch('/:id', async (req, res) => {
 
     const fields = Object.keys(obj);
 
-    fields.forEach((field) => {      
+    fields.forEach((field) => {
       event[field] = obj[field];
     });
     await event.save();
-    
+
     res.status(200).send({
       message: `Updated success. Updated fields: ${fields}`,
     });
