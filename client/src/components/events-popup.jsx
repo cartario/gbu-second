@@ -51,6 +51,18 @@ const EventsPopup = ({ event , visible, setVisible}) => {
             </div>
           )} */}
 
+          
+          {event.photos &&
+          <p>Фотоотчет:</p>
+          }
+          {event.photos&&event.photos.split(',').map((item, i)=>{
+            console.log(item)
+            return <div key={i} >
+              <img style={{margin: '10px'}} width="300" alt="photos" src={item}/>
+            </div>
+          })}
+
+          
           <div className="popup__close" onClick={() => setVisible(false)}>
             
           </div>

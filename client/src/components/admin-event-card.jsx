@@ -131,6 +131,18 @@ const AdminEventCard = ({ event, setEvents }) => {
             </label>
           </div>
 
+          <div className="admin-item__field">
+          <label>
+            Photos:
+            <input
+              name="photos"
+              type="text"
+              value={form.photos}
+              onChange={handleClickForm}
+            />
+          </label>
+        </div>
+
           {/* <div className="admin-item__field">
             <label>
               PosterImage:

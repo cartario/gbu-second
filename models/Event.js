@@ -24,7 +24,8 @@ const EventSchema = new Schema({
   },
   cloudinary_id: {
     type: String
-  }
+  },
+  photos: String
 }, {
   timestamps: true
 })

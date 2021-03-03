@@ -12,6 +12,7 @@ const AdminEventNewCard = ({ handleShowNewEvent }) => {
     place: '',
     description: '',
     posterUrl: '',
+    photos: ''
   });
 
   const [event, setEvent] = React.useState(null);
@@ -114,6 +115,18 @@ const AdminEventNewCard = ({ handleShowNewEvent }) => {
               name="description"
               type="text"
               value={form.description}
+              onChange={handleClickForm}
+            />
+          </label>
+        </div>
+
+        <div className="admin-item__field">
+          <label>
+            Photos:
+            <input
+              name="photos"
+              type="text"
+              value={form.photos}
               onChange={handleClickForm}
             />
           </label>

@@ -128,7 +128,7 @@ const Contacts = () => {
           <p className="contacts__addres">
             Адрес: улица Люсиновская, дом 53 — основное здание,
           </p>
-          <p className="contacts__phone">Телефон: +7(499) 237-90-40 </p>
+          <p className="contacts__phone">Телефон: +7(499) 237-90-40, +7-903-253-07-73 </p>
           <p className="contacts__admin">
             Администратор: Семяник Наталья Мирославовна{" "}
           </p>

@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const app = express();
 const router = require('./routes/auth.routes');
 const routerStudios = require('./routes/studios.routes');
+
+const routerNewStudios = require('./routes/new-studios.routes');
 const routerEvents = require('./routes/events.routes');
 const routerDocs = require('./routes/docs.routes');
 const routerMainPost = require('./routes/main-post.routes');
@@ -16,6 +18,7 @@ app.use(express.json({extended: true}));
 
 app.use('/api/auth', router);
 app.use('/api/studios', routerStudios);
+app.use('/api/new-studios', routerNewStudios);
 app.use('/api/events', routerEvents);
 app.use('/api/mainpost', routerMainPost);
 app.use('/api/docs', routerDocs);
