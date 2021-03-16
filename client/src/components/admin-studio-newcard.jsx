@@ -38,11 +38,13 @@ const AdminStudioNewCard = ({ handleShowNewStudio }) => {
   };
 
   const handleSubmit = async () => {
+   if(window.confirm('Вы действительно хотите добавить новую студию?')){
     try {
       const response = await request('/api/studios/create', 'POST', form);
       setStudio(response);
       window.location.reload(); //temporary
     } catch (err) {}
+   }
   };
 
   return (

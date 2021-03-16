@@ -25,14 +25,18 @@ const AdminStudioCard = ({ studio }) => {
   };
 
   const handleDeleteStudio = (id) => {
-    request(`api/studios/${id}`, 'DELETE');
-    window.location.reload(); //temporary
+    if(window.confirm('Вы действительно хотите удалить студию?')){
+      request(`api/studios/${id}`, 'DELETE');
+      window.location.reload(); //temporary
+    }
   };
 
   const handleUpdateStudio = (form) => {
     if (editMode) {
-      request(`api/studios/${form._id}`, 'PATCH', form);
+      if(window.confirm('Вы действительно хотите обновить данные студии?')){
+        request(`api/studios/${form._id}`, 'PATCH', form);
       window.location.reload(); //temporary
+      }
     }
   };
 

@@ -28,11 +28,13 @@ const AdminEventNewCard = ({ handleShowNewEvent }) => {
   };
 
   const handleSubmit = async () => {
+   if(window.confirm('Вы действительно хотите добавить новое событие?')){
     try {
       const response = await request('/api/events/create', 'POST', form);
       setEvent(response);
       window.location.reload(); //temporary
     } catch (err) {}
+   }
   };
 
   const onFileInputChange = React.useCallback((url) => {

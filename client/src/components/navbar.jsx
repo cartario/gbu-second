@@ -34,6 +34,11 @@ const MenuItems = [{
   title: 'Контакты', 
   link: '/contacts' 
 },
+{ 
+  title: 'Дополнительно', 
+  link: '/extrapages' 
+}
+
 
 ];
 

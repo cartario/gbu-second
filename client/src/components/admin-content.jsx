@@ -8,6 +8,7 @@ import useHttp from '../hooks/http.hook';
 import { useContext } from 'react';
 import { AuthConext } from '../context/auth.context';
 import ScheduleDocs from '../components/schedule-docs';
+import PushNotificationsComponent from '../components/pushNotifications';
 
 const AdminPage = () => {
   const { request, loading, error, clearError } = useHttp();
@@ -88,7 +89,9 @@ const AdminPage = () => {
         </ul>
       </nav>
 
-      <ScheduleDocs />
+      <PushNotificationsComponent />
+
+      <ScheduleDocs />      
 
       <div className="admin-section" style={{ backgroundColor: '#f48fb1', padding: '10px' }}>
         <h2

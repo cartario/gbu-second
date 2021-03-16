@@ -13,6 +13,10 @@ import Contacts from './pages/contacts';
 import DetailPage from './pages/detail-page';
 import Minors from './pages/minors';
 import Admin from './pages/admin';
+import extrapages from './pages/extrapages';
+import Page1 from './pages/page1';
+import Page2 from './pages/page2';
+import Page3 from './pages/page3';
 
 function App() {
   const { token, userId, login , logout} = useAuth();
@@ -39,7 +43,12 @@ function App() {
           <Route path="/documents" component={Documents} />
           <Route path="/contacts" component={Contacts} />
           <Route path="/minors" component={Minors} />
-          <Route path="/admin" exact component={Admin}/>                  
+          <Route path="/admin" exact component={Admin}/>  
+          <Route path="/extrapages" exact component={extrapages}/>
+          <Route path="/page1" exact component={Page1}/>
+          <Route path="/page2" exact component={Page2}/>
+          <Route path="/page3" exact component={Page3}/>
+                            
         </div>
         <div className="App__footer">
           <Footer />
