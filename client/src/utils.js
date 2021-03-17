@@ -16,3 +16,24 @@ export const sayWelcome = () => {
   }
   return {name: 'Доброй ночи!', status: 0}
 };
+
+export const adapterContactPage = (data) => {
+  return {
+    items: {
+      members:
+        Object.keys(data.items.members).map((key) => {
+          return {
+            id: key,
+            ...data.items.members[key],
+          };
+        }) || [],
+      contacts: Object.values(data.items.contacts)[0] || {},      
+      social: Object.keys(data.items.social).map((key)=> {
+        return {
+          id: key,
+          ...data.items.social[key]
+        }
+      }) || []
+    },
+  };
+};

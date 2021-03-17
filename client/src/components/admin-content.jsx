@@ -9,6 +9,8 @@ import { useContext } from 'react';
 import { AuthConext } from '../context/auth.context';
 import ScheduleDocs from '../components/schedule-docs';
 import PushNotificationsComponent from '../components/pushNotifications';
+import AdminContactPage from '../components/admin-contact-page';
+import AdminSection from '../components/admin-section';
 
 const AdminPage = () => {
   const { request, loading, error, clearError } = useHttp();
@@ -16,8 +18,7 @@ const AdminPage = () => {
   const [studios, setStudios] = React.useState(null);
 
   const auth = useContext(AuthConext);
-  const [showEvents, setShowEvents] = React.useState(false);
-  const [showStudios, setShowStudios] = React.useState(false);
+
   const [showNewEvent, setshowNewEvent] = React.useState(false);
   const [showNewStudio, setshowNewStudio] = React.useState(false);
 
@@ -73,7 +74,7 @@ const AdminPage = () => {
   };
 
   return (
-    <>
+    <div style={{ marginBottom: '50px' }}>
       <h1>AdminPage</h1>
       <nav>
         <ul>
@@ -91,70 +92,57 @@ const AdminPage = () => {
 
       <PushNotificationsComponent />
 
-      <ScheduleDocs />      
+      <ScheduleDocs />
 
-      <div className="admin-section" style={{ backgroundColor: '#f48fb1', padding: '10px' }}>
-        <h2
-          style={{ cursor: 'pointer', margin: 0, color: '#880e4f' }}
-          onClick={() => setShowEvents(!showEvents)}
-        >
-          Events {showEvents ? '(свернуть)' : '(развернуть)'}
-        </h2>
+      <AdminSection sectionName="Мероприятия" backgroundColor="#f48fb1" color="#880e4f">
+        <>
+          {showNewEvent ? (
+            <AdminEventNewCard handleShowNewEvent={handleShowNewEvent} />
+          ) : (
+            <button className="admin-section__button" onClick={() => handleShowNewEvent(true)}>
+              +
+            </button>
+          )}
 
-        {showEvents && (
-          <>
-            {showNewEvent ? (
-              <AdminEventNewCard handleShowNewEvent={handleShowNewEvent} />
+          <ul>
+            {events ? (
+              events.map((event) => (
+                <AdminEventCard setEvents={setEvents} key={event._id} event={event} />
+              ))
             ) : (
-              <button className="admin-section__button" onClick={() => handleShowNewEvent(true)}>
-                +
-              </button>
+              <p>Loading...</p>
             )}
-
-            <ul>
-              {events ? (
-                events.map((event) => (
-                  <AdminEventCard setEvents={setEvents} key={event._id} event={event} />
-                ))
-              ) : (
-                <p>Loading...</p>
-              )}
-            </ul>
-          </>
-        )}
-      </div>
+          </ul>
+        </>
+      </AdminSection>
 
       <AdminMainPost />
 
-      <div className="admin-section" style={{ backgroundColor: '#c8e6c9', marginBottom: '50px' }}>
-        <h2 style={{ color: '#1b5e20' }} onClick={() => setShowStudios(!showStudios)}>
-          Studios
-          {showStudios ? '(свернуть)' : '(развернуть)'}
-        </h2>
+      <AdminSection sectionName="Студии/секции" backgroundColor="#c8e6c9" color="#1b5e20">
+        <>
+          {showNewStudio ? (
+            <AdminStudioNewCard handleShowNewStudio={handleShowNewStudio} />
+          ) : (
+            <button className="admin-section__button" onClick={() => handleShowNewStudio(true)}>
+              +
+            </button>
+          )}
 
-        {showStudios && (
-          <>
-            {showNewStudio ? (
-              <AdminStudioNewCard handleShowNewStudio={handleShowNewStudio} />
-            ) : (
-              <button className="admin-section__button" onClick={() => handleShowNewStudio(true)}>
-                +
-              </button>
-            )}
-            {/* <ul>{studios ? studios.map((studio) => <AdminStudioCard key={studio._id} studio={studio} />) : <p>Loading...</p>}</ul> */}
+          {studiosBynamesOfGroup.map((studios, index) => (
+            <div key={index} className="admin-groups">
+              <p>
+                {index + 1} Группа студий: {studios[0].name}
+              </p>
+              <StudiosByGroup studios={studios} />
+            </div>
+          ))}
+        </>
+      </AdminSection>
 
-            {studiosBynamesOfGroup.map((studios, index) => (
-              <div key={index} className="admin-groups">
-                <p>
-                  {index + 1} Группа студий: {studios[0].name}
-                </p>
-                <StudiosByGroup studios={studios} />
-              </div>
-            ))}
-          </>
-        )}
-      </div>
-    </>
+      <AdminSection sectionName="Страница-Контакты" backgroundColor="pink" color="tomato">
+        <AdminContactPage />
+      </AdminSection>
+    </div>
   );
 };
 
