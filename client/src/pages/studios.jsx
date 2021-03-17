@@ -45,6 +45,7 @@ const Studios = () => {
   const studiosSport = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.type==='sport')).reverse();
   const studiosTeenAge = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.age_min>=12&&studio.age_min<=16));
   const studiosParents = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.age_min>=18&&studio.age_min<55)); 
+  const studiosPay = [...studios].filter((studio)=>!studio.isDuplicate&&(studio.price!=='free'));
   
   return (
     <>  
@@ -53,6 +54,7 @@ const Studios = () => {
       <main className="studios">         
         <div className="container">  
 
+        <Compilation studios={studiosPay} title={'Платные студии'} visibleProps={true}/>
         <Compilation studios={studiosKids} title={'Для самых маленьких (до 6 лет):'} visibleProps={true}/>
         <Compilation studios={studiosMusic} title={'Музыка:'}/>
         <Compilation studios={studiosDance} title={'Танцы:'}/>

@@ -11,6 +11,7 @@ import ScheduleDocs from '../components/schedule-docs';
 import PushNotificationsComponent from '../components/pushNotifications';
 import AdminContactPage from '../components/admin-contact-page';
 import AdminSection from '../components/admin-section';
+import AdminSumPage from '../components/admin-sum-page';
 
 const AdminPage = () => {
   const { request, loading, error, clearError } = useHttp();
@@ -89,6 +90,10 @@ const AdminPage = () => {
           </li>
         </ul>
       </nav>
+
+      <AdminSection sectionName="Суммарные показатели" backgroundColor="pink" color="tomato">
+        <AdminSumPage />
+      </AdminSection>
 
       <PushNotificationsComponent />
 

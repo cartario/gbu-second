@@ -7,25 +7,25 @@ const Contacts = () => {
   const BASE_URL = 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/';
   const [data, setData] = React.useState();
 
-  // const obj =   {
-  //   adminName1: 'Семяник Наталья Мирославовна',
-  //   adminName2: 'Тикот Анна Николаевна',
-  //   phone1: '+7(499) 237-90-40',
-  //   phone2: '+7-903-253-07-73',
-  //   phone3: '+7(495)679-92-93',
-  //   phone4: '+7(965)336-06-83' 
-  // }
+  const obj =   {
+    budgetSport: '10',
+    budgetArt: '11',
+    budgetTeachers: '11',
+    platkaSport: '12',
+    platkaArt: '13',
+    platkaTeachers: '11',
+  }
 
-  // const handleSubmit = async () => {
-  //   await fetch(`${BASE_URL}contactPage/items/contacts.json`, {
-  //     mode: 'no-cors',
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(obj)
-  //   })
-  // }
+  const handleSubmit = async () => {
+    await fetch(`${BASE_URL}mainPage/totalCount.json`, {
+      mode: 'no-cors',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(obj)
+    })
+  }
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -61,14 +61,12 @@ const Contacts = () => {
 
   const { members, contacts, social } = data.items;
 
-  console.log(contacts)
-
   return (
     <>
       <Navbar />
       <Header title="Контакты" />
       <main className="contacts">
-        
+        <button onClick={handleSubmit}>send</button>
         <ul className="contacts__team">
           {members.map((member) => (
             <li className="contacts__team-item" key={member.name}>
