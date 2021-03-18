@@ -8,6 +8,9 @@ const DocSchema = new Schema({
   url: {
     type: String,
     required: true
+  },
+  afisha: {
+    type: Boolean    
   }
 }, {
   timestamps: true

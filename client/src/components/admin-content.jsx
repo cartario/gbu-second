@@ -12,6 +12,7 @@ import PushNotificationsComponent from '../components/pushNotifications';
 import AdminContactPage from '../components/admin-contact-page';
 import AdminSection from '../components/admin-section';
 import AdminSumPage from '../components/admin-sum-page';
+import AdminPage1 from '../components/admin-page1';
 
 const AdminPage = () => {
   const { request, loading, error, clearError } = useHttp();
@@ -95,10 +96,6 @@ const AdminPage = () => {
         <AdminSumPage />
       </AdminSection>
 
-      <PushNotificationsComponent />
-
-      <ScheduleDocs />
-
       <AdminSection sectionName="Мероприятия" backgroundColor="#f48fb1" color="#880e4f">
         <>
           {showNewEvent ? (
@@ -121,6 +118,12 @@ const AdminPage = () => {
         </>
       </AdminSection>
 
+      <PushNotificationsComponent />
+
+      <ScheduleDocs />
+
+     
+
       <AdminMainPost />
 
       <AdminSection sectionName="Студии/секции" backgroundColor="#c8e6c9" color="#1b5e20">
@@ -133,19 +136,28 @@ const AdminPage = () => {
             </button>
           )}
 
-          {studiosBynamesOfGroup.map((studios, index) => (
-            <div key={index} className="admin-groups">
-              <p>
-                {index + 1} Группа студий: {studios[0].name}
-              </p>
-              <StudiosByGroup studios={studios} />
-            </div>
-          ))}
+          {studiosBynamesOfGroup.map((studios, index) => {           
+
+            const isPayGroup = studios.find((studio)=>studio.price!=='free');
+
+            return (
+              <div key={index} className={isPayGroup ? `admin-groups admin-groups--pay` : `admin-groups`}>
+                <p>
+                  {index + 1} Группа студий: {studios[0].name}
+                </p>
+                <StudiosByGroup studios={studios} />
+              </div>
+            );
+          })}
         </>
       </AdminSection>
 
       <AdminSection sectionName="Страница-Контакты" backgroundColor="pink" color="tomato">
         <AdminContactPage />
+      </AdminSection>
+
+      <AdminSection sectionName="Страница-Московское долголетие" backgroundColor="#ff9800" color="#e65100">
+        <AdminPage1 />
       </AdminSection>
     </div>
   );

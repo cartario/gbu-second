@@ -143,10 +143,6 @@ const AdminSummPage = () => {
     );
   }
 
-
-
-
-
   const budgetSportStudios = studios.filter(
     (studio) => !studio.isDuplicate && studio.price==='free' &&studio.type === 'sport',
   ).length;
@@ -165,6 +161,14 @@ const AdminSummPage = () => {
 
   const instructorsCount = [...new Set(studios.map((studio) => !studio.isDuplicate&&studio.teacher))].length;
 
+  const platkaStudiosTeachers = [... new Set(studios.map(
+    (studio) => !studio.isDuplicate && studio.price!=='free' &&studio.teacher,
+  ))].length;
+
+  const budgetStudiosTeachers = [... new Set(studios.map(
+    (studio) => !studio.isDuplicate && studio.price==='free' &&studio.teacher,
+  ))].length;
+
   return (
     <>
       <div className="admin-item">
@@ -172,9 +176,9 @@ const AdminSummPage = () => {
 
         <Form data={data} />
         <h3>Фактические показатели</h3>
-        <p>Бюджет: досуг({budgetArtStudios}) спорт({budgetSportStudios}) </p>
-        <p>Платка: досуг({platkaArtStudios}) спорт({platkaSportStudios}) </p>
-        <p>Тренеров/преподавателей: ({instructorsCount}) </p>
+        <p>Бюджет: досуг({budgetArtStudios}) спорт({budgetSportStudios}) преподов ({budgetStudiosTeachers})</p>
+        <p>Платка: досуг({platkaArtStudios}) спорт({platkaSportStudios}) преподов ({platkaStudiosTeachers})</p>
+       
 
       </div>
     </>

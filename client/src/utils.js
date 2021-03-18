@@ -37,3 +37,28 @@ export const adapterContactPage = (data) => {
     },
   };
 };
+
+export const adapterPage1 = (data) => {
+  return {
+    title: Object.values(data.title)[0] || '',
+    afisha: Object.values(data.afisha)[0] || '',
+    projects: Object.keys(data.projects).map((key)=>{
+      return {
+        id: key,
+        ...data.projects[key]
+      }
+    }) || [],
+    studios: Object.keys(data.studios).map((key)=>{
+      return {
+        id: key,
+        ...data.studios[key]
+      }
+    }) || [],
+    teachers: Object.keys(data.teachers).map((key)=>{
+      return {
+        id: key,
+        ...data.teachers[key]
+      }
+    }) || [],
+  };
+};

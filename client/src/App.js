@@ -8,6 +8,7 @@ import About from './pages/about';
 import Events from './pages/events';
 import Studios from './pages/studios';
 import Schedule from './pages/schedule';
+import Afisha from './pages/afisha';
 import Documents from './pages/documents';
 import Contacts from './pages/contacts';
 import DetailPage from './pages/detail-page';
@@ -40,6 +41,7 @@ function App() {
             <DetailPage />
           </Route>
           <Route path="/schedule" component={Schedule} />
+          <Route path="/afisha" component={Afisha} />
           <Route path="/documents" component={Documents} />
           <Route path="/contacts" component={Contacts} />
           <Route path="/minors" component={Minors} />

@@ -7,17 +7,10 @@ const Contacts = () => {
   const BASE_URL = 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/';
   const [data, setData] = React.useState();
 
-  const obj =   {
-    budgetSport: '10',
-    budgetArt: '11',
-    budgetTeachers: '11',
-    platkaSport: '12',
-    platkaArt: '13',
-    platkaTeachers: '11',
-  }
+  const obj =   'url'
 
   const handleSubmit = async () => {
-    await fetch(`${BASE_URL}mainPage/totalCount.json`, {
+    await fetch(`${BASE_URL}page1/afisha.json`, {
       mode: 'no-cors',
       method: 'POST',
       headers: {

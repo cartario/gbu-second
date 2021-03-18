@@ -3,6 +3,7 @@ import useHttp from '../hooks/http.hook';
 
 const AdminDocCard = ({ doc }) => {
   const { title } = doc;
+  
   const [visible, setVisible] = React.useState(false);
   const [editMode, setEditMode] = React.useState(false);
   const [form, setForm] = React.useState(doc);
@@ -12,10 +13,11 @@ const AdminDocCard = ({ doc }) => {
     const target = e.target.value;
     const name = e.target.name;
 
-    setForm({
+    setForm((prev) => ({
       ...form,
       [name]: target,
-    });
+      afisha: e.target.checked,
+    }));
   };
 
   const handleEditMode = () => {
@@ -73,6 +75,19 @@ const AdminDocCard = ({ doc }) => {
               </label>
             </div>
 
+            <div className="admin-item__field">
+              <label>
+                Afisha
+                <input
+                  disabled={!editMode}
+                  type="checkbox"
+                  name="afisha"
+                  checked={form.afisha}
+                  onChange={handleClickForm}
+                />
+              </label>
+            </div>
+
             <div className="admin-item__controls">
               <button className="admin-item__controls--edit" onClick={handleEditMode}>
                 {editMode ? 'Save' : 'Edit'}
@@ -122,6 +137,7 @@ const ScheduleDocs = () => {
   const [form, setForm] = React.useState({
     title: '',
     url: '',
+    afisha: false,
   });
 
   const handleClickShowSection = () => {
@@ -143,10 +159,11 @@ const ScheduleDocs = () => {
     const target = e.target.value;
     const name = e.target.name;
 
-    setForm({
+    setForm((prev) => ({
       ...form,
       [name]: target,
-    });
+      afisha: e.target.checked,
+    }));
   };
 
   const handleSubmit = async () => {
@@ -164,12 +181,16 @@ const ScheduleDocs = () => {
   return (
     <div className="admin-section">
       <h2 onClick={handleClickShowSection}>
-        Расписания {showSection ? '(свернуть)' : '(развернуть)'}
+        Расписания/афиши {showSection ? '(свернуть)' : '(развернуть)'}
       </h2>
 
       {showSection && (
         <>
-          {!visible && <button className='admin-section__button' onClick={() => setVisible(true)}>+</button>}
+          {!visible && (
+            <button className="admin-section__button" onClick={() => setVisible(true)}>
+              +
+            </button>
+          )}
           {visible && (
             <div className="admin-item admin-item--new">
               <p onClick={() => setVisible(false)} className="admin-item__title">
@@ -200,8 +221,19 @@ const ScheduleDocs = () => {
                     />
                   </label>
                 </div>
+
+                <div className="admin-item__field">
+                  <label>
+                    Afisha
+                    <input
+                      type="checkbox"
+                      name="afisha"
+                      checked={form.afisha}
+                      onChange={handleClickForm}
+                    />
+                  </label>
+                </div>
                 <button
-                  
                   onClick={() => {
                     handleSubmit();
                   }}

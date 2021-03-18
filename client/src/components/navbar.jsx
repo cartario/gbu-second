@@ -11,7 +11,7 @@ const MenuItems = [{
   link: '/about' 
 },
 { 
-  title: 'Афиша', 
+  title: 'Мероприятия', 
   link: '/events' 
 },
 { 
@@ -21,6 +21,10 @@ const MenuItems = [{
 { 
   title: 'Расписание', 
   link: '/schedule' 
+},
+{ 
+  title: 'Афиша', 
+  link: '/afisha' 
 },
 { 
   title: 'Документы', 
