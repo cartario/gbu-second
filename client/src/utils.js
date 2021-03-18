@@ -62,3 +62,15 @@ export const adapterPage1 = (data) => {
     }) || [],
   };
 };
+
+export const adapterPage2 = (data) => {
+  return {
+    info: Object.values(data.info)[0] || {},    
+    items: Object.keys(data.items).map((key)=>{
+      return {
+        id: key,
+        ...data.items[key]
+      }
+    }) || []
+  };
+};

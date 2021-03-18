@@ -12,6 +12,7 @@ const AdminPage1 = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(`${BASE_URL}/page1.json`);
+
         const resData = await response.json();
 
         const adaptedData = adapter(resData);
@@ -36,72 +37,92 @@ const AdminPage1 = () => {
 
   const { title, afisha, projects, studios, teachers } = data;
 
-  const sections = [{
-    title: 'Открыты студии',
-    newItemUrl: 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/page1/studios.json',
-    baseUrl: 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/page1/studios',
-    initialState: {
-      title: '',
-      description: ''
+  const sections = [
+    {
+      title: 'Открыты студии',
+      newItemUrl: 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/page1/studios.json',
+      baseUrl: 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/page1/studios',
+      initialState: {
+        title: '',
+        description: '',
+      },
+      items: studios,
     },
-    items: studios
-  },
-  {
-    title: 'Планируются к открытию',
-    newItemUrl: 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/page1/projects.json',
-    baseUrl: 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/page1/projects',
-    initialState: {
-      title: '',
-      description: ''
+    {
+      title: 'Планируются к открытию',
+      newItemUrl: 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/page1/projects.json',
+      baseUrl: 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/page1/projects',
+      initialState: {
+        title: '',
+        description: '',
+      },
+      items: projects,
     },
-    items: projects
-  },
-  {
-    title: 'Преподаватели',
-    newItemUrl: 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/page1/teachers.json',
-    baseUrl: 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/page1/teachers',
-    initialState: {
-      name: '',
-      subj: ''
+    {
+      title: 'Преподаватели',
+      newItemUrl: 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/page1/teachers.json',
+      baseUrl: 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/page1/teachers',
+      initialState: {
+        name: '',
+        subj: '',
+      },
+      items: teachers,
     },
-    items: teachers
-  }
-]
+  ];
 
   return (
     <>
       <div className="admin-item">
+        <h3>Заголовок</h3>
 
-        {sections.map((section, i)=>
-          <div key={i}>
-          <h3>{section.title}</h3>
-          <AdminAddButton>
-            <div className="admin-item__form">
-              <Form
-                mode="new"
-                baseUrl={
-                  section.newItemUrl
-                }
-                initialState={section.initialState}
-              />
-            </div>
-          </AdminAddButton>
-
-          <div>
-            {section.items.map((item, i) => (
-              <div className="admin-item__form" key={i}>
-                <Form
-                  mode="edit"
-                  baseUrl={section.baseUrl}
-                  initialState={item}
-                  id={item.id}
-                />
-              </div>
-            ))}
-          </div>
+        <div className="admin-item__form">
+          <Form
+            withoutDelete
+            mode="edit"
+            baseUrl="https://centerdaniil-b74b6-default-rtdb.firebaseio.com/page1/title"
+            initialState={{
+              title: title.title
+            }}
+            id={'-MW2jafGa3SxKvnmjtZ9'}
+          />
         </div>
-        )}
+      </div>
 
+      <div className="admin-item">
+        {sections.map((section, i) => (
+          <div key={i}>
+            <h3>{section.title}</h3>
+            <AdminAddButton>
+              <div className="admin-item__form">
+                <Form mode="new" baseUrl={section.newItemUrl} initialState={section.initialState} />
+              </div>
+            </AdminAddButton>
+
+            <div>
+              {section.items.map((item, i) => (
+                <div className="admin-item__form" key={i}>
+                  <Form mode="edit" baseUrl={section.baseUrl} initialState={item} id={item.id} />
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="admin-item">
+        <h3>Расписание</h3>
+
+        <div className="admin-item__form">
+          <Form
+            withoutDelete
+            mode="edit"
+            baseUrl="https://centerdaniil-b74b6-default-rtdb.firebaseio.com/page1/afisha"
+            initialState={{
+              afisha
+            }}
+            id={'-MW2odWcilcIh4uE2ZDk'}
+          />
+        </div>
       </div>
     </>
   );

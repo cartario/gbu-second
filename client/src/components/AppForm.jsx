@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AppForm = ({ id, baseUrl, initialState, mode }) => {
+const AppForm = ({ id, baseUrl, initialState, mode, withoutDelete }) => {
   const [form, setForm] = React.useState(initialState);
   const [isSuccesfullSent, setSuccesfullSent] = React.useState(null);
   const [editMode, setEditMode] = React.useState(false);
@@ -118,9 +118,13 @@ const AppForm = ({ id, baseUrl, initialState, mode }) => {
             {field}
 
             {mode === 'edit' ? (
-              <input name={field} 
-              disabled={!editMode}
-              type="text" value={form[field]} onChange={handleChange} />
+              <input
+                name={field}
+                disabled={!editMode}
+                type="text"
+                value={form[field]}
+                onChange={handleChange}
+              />
             ) : (
               <input name={field} type="text" value={form[field]} onChange={handleChange} />
             )}
@@ -152,9 +156,13 @@ const AppForm = ({ id, baseUrl, initialState, mode }) => {
                 <button style={{ backgroundColor: 'lightgreen' }} onClick={handleUpdate}>
                   Сохранить изменения
                 </button>
-                <button style={{ backgroundColor: 'tomato' }} onClick={handleDelete}>
-                  Удалить
-                </button>
+
+                {!withoutDelete && (
+                  <button style={{ backgroundColor: 'tomato' }} onClick={handleDelete}>
+                    Удалить
+                  </button>
+                )}
+
                 <button onClick={() => setEditMode(false)} onClick={handleCancel}>
                   Отменить
                 </button>

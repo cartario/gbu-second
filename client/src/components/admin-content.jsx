@@ -13,6 +13,8 @@ import AdminContactPage from '../components/admin-contact-page';
 import AdminSection from '../components/admin-section';
 import AdminSumPage from '../components/admin-sum-page';
 import AdminPage1 from '../components/admin-page1';
+import AdminPage2 from '../components/admin-page2';
+import AdminPage3 from '../components/admin-page3';
 
 const AdminPage = () => {
   const { request, loading, error, clearError } = useHttp();
@@ -158,6 +160,14 @@ const AdminPage = () => {
 
       <AdminSection sectionName="Страница-Московское долголетие" backgroundColor="#ff9800" color="#e65100">
         <AdminPage1 />
+      </AdminSection>
+
+      <AdminSection sectionName="Страница-Лента памяти" backgroundColor="rgb(244 142 177)" color="#e65100">
+        <AdminPage2 />
+      </AdminSection>
+
+      <AdminSection sectionName="Страница-Города воинской славы" backgroundColor="rgb(128, 203, 196)" color="#e65100">
+        <AdminPage3 />
       </AdminSection>
     </div>
   );

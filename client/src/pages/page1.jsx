@@ -13,7 +13,6 @@ const Page1 = () => {
           'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/page1.json',
         );
         const resData = await response.json();
-
         const adaptedData = adapter(resData);
         setData(adaptedData);
       } catch (err) {
@@ -44,7 +43,7 @@ const Page1 = () => {
         <ul className="contacts__team">
           <li className="contacts__team-item">
             <p className="contacts__team-name" style={{ fontWeight: 'bold' }}>
-              {title}
+              {title.title}
             </p>
 
             <p className="contacts__team-position" style={{ backgroundColor: 'orange' }}>

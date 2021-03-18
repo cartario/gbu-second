@@ -7,10 +7,15 @@ const Contacts = () => {
   const BASE_URL = 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/';
   const [data, setData] = React.useState();
 
-  const obj =   'url'
+  const obj =   {
+    title: 'Казьмин Н.И., 1918- 1978гг',
+    description: 'Рядовой, воевал в Польше, попал в концлагерь в Польше. Пришел после войны инвалидом, истощенный, 38 кг. ',
+    imgUrl: '',
+    videoUrl: ''
+  }
 
   const handleSubmit = async () => {
-    await fetch(`${BASE_URL}page1/afisha.json`, {
+    await fetch(`${BASE_URL}page3/items.json`, {
       mode: 'no-cors',
       method: 'POST',
       headers: {
@@ -59,7 +64,7 @@ const Contacts = () => {
       <Navbar />
       <Header title="Контакты" />
       <main className="contacts">
-        <button onClick={handleSubmit}>send</button>
+        {/* <button onClick={handleSubmit}>send</button> */}
         <ul className="contacts__team">
           {members.map((member) => (
             <li className="contacts__team-item" key={member.name}>
