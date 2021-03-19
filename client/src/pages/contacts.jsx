@@ -8,14 +8,13 @@ const Contacts = () => {
   const [data, setData] = React.useState();
 
   const obj =   {
-    title: 'Казьмин Н.И., 1918- 1978гг',
-    description: 'Рядовой, воевал в Польше, попал в концлагерь в Польше. Пришел после войны инвалидом, истощенный, 38 кг. ',
-    imgUrl: '',
-    videoUrl: ''
+    pageName: 'New page',
+    pagePath: 'page4',
+    visible: true
   }
 
   const handleSubmit = async () => {
-    await fetch(`${BASE_URL}page3/items.json`, {
+    await fetch(`${BASE_URL}pages.json`, {
       mode: 'no-cors',
       method: 'POST',
       headers: {
@@ -64,7 +63,7 @@ const Contacts = () => {
       <Navbar />
       <Header title="Контакты" />
       <main className="contacts">
-        {/* <button onClick={handleSubmit}>send</button> */}
+        <button onClick={handleSubmit}>send</button>
         <ul className="contacts__team">
           {members.map((member) => (
             <li className="contacts__team-item" key={member.name}>

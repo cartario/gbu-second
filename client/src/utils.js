@@ -74,3 +74,15 @@ export const adapterPage2 = (data) => {
     }) || []
   };
 };
+
+export const adapterCreatePage = (data) => {
+  return {
+       
+    items: Object.keys(data).map((key)=>{
+      return {
+        id: key,
+        ...data[key]
+      }
+    }) || []
+  };
+};

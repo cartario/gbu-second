@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Footer from './components/footer';
 import { AuthConext } from './context/auth.context';
 import useAuth from './hooks/auth.hook';
@@ -18,21 +18,56 @@ import extrapages from './pages/extrapages';
 import Page1 from './pages/page1';
 import Page2 from './pages/page2';
 import Page3 from './pages/page3';
+import CreateNewPage from './pages/createNewPage';
+import { adapterCreatePage as adapter } from './utils';
 
 function App() {
-  const { token, userId, login , logout} = useAuth();
+  const { token, userId, login, logout } = useAuth();
   const isAuth = !!token;
-  
+
+  const [data, setData] = React.useState(null);
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/pages.json',
+        );
+        const resData = await response.json();
+        const adaptedData = adapter(resData);
+        setData(adaptedData);
+      } catch (err) {
+        throw err;
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (!data) {
+    return (
+      <>
+        <div className="App">
+          <div className="App__content">
+            <p>Loading pages...</p>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  const paths = data.items.map((each) => each.pagePath);
+
   return (
     <AuthConext.Provider value={{ token, userId, isAuth, login, logout }}>
       <div className="App">
         <div className="App__content">
-          <Route path="/" exact>          
-            <Home />          
+          <Route path="/" exact>
+            <Home />
           </Route>
           <Route path="/about" component={About} />
           <Route path="/events" exact>
-            <Events/>
+            <Events />
           </Route>
           <Route path="/studios" exact>
             <Studios />
@@ -45,12 +80,17 @@ function App() {
           <Route path="/documents" component={Documents} />
           <Route path="/contacts" component={Contacts} />
           <Route path="/minors" component={Minors} />
-          <Route path="/admin" exact component={Admin}/>  
-          <Route path="/extrapages" exact component={extrapages}/>
-          <Route path="/page1" exact component={Page1}/>
-          <Route path="/page2" exact component={Page2}/>
-          <Route path="/page3" exact component={Page3}/>
-                            
+          <Route path="/admin" exact component={Admin} />
+          <Route path="/extrapages" exact component={extrapages} />
+          <Route path="/page1" exact component={Page1} />
+          <Route path="/page2" exact component={Page2} />
+          <Route path="/page3" exact component={Page3} />
+
+          {paths.map((each) => (
+            <Route key={each} path={`/${each}`} exact >
+              <CreateNewPage path={each}/>
+            </Route>
+          ))}
         </div>
         <div className="App__footer">
           <Footer />
