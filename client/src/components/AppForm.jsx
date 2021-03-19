@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AppForm = ({ id, baseUrl, initialState, mode, withoutDelete , onAddPage}) => {
+const AppForm = ({ id, baseUrl, initialState, mode, withoutDelete , onAddPage=()=>console.log('hey')}) => {
   const [form, setForm] = React.useState(initialState);
   const [isSuccesfullSent, setSuccesfullSent] = React.useState(null);
   const [editMode, setEditMode] = React.useState(false);

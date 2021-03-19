@@ -4,11 +4,11 @@ import { AuthConext } from '../context/auth.context';
 import Login from '../components/login';
 import AdminContent from '../components/admin-content';
 
-const Admin = () => {
+const Admin = ({paths}) => {
   const auth = useContext(AuthConext);
   
   if(auth.isAuth){
-    return (<AdminContent/>);
+    return (<AdminContent paths={paths}/>);
   }
 
   return (<Login />);

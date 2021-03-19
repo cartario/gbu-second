@@ -16,14 +16,12 @@ const CreateNewPage = ({path}) => {
         const adaptedData = adapter(resData);
         setData(adaptedData);
       } catch (err) {
-        throw err;
+        console.log(err)
       }
     };
 
     fetchData();
-  }, []);
-
- 
+  }, []); 
 
   if (!data) {
     return (
@@ -43,17 +41,17 @@ const CreateNewPage = ({path}) => {
       <Header title={info.pageName} />
       <main className="contacts">
         <ul className="contacts__team">
-          {items.map((item) => (
+        {items.map((item) => (
             <li className="contacts__team-item" key={item.id}>
+              <img
+                src={item.imgUrl}
+                alt="photoItem"
+              />
               <p className="contacts__team-name">{item.title}</p>
-              <iframe
-                width="560"
-                height="315"
-                src={item.videoUrl}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+
+              <p className="contacts__team-description">
+                {item.description}
+              </p>
             </li>
           ))}
         </ul>

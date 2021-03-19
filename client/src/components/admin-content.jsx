@@ -16,8 +16,10 @@ import AdminPage1 from '../components/admin-page1';
 import AdminPage2 from '../components/admin-page2';
 import AdminPage3 from '../components/admin-page3';
 import AdminCreatePage from '../components/admin-create-page';
+import AdminPageTemplate from '../components/admin-page-template';
 
-const AdminPage = () => {
+
+const AdminPage = ({paths}) => {
   const { request, loading, error, clearError } = useHttp();
   const [events, setEvents] = React.useState(null);
   const [studios, setStudios] = React.useState(null);
@@ -77,6 +79,8 @@ const AdminPage = () => {
       </ul>
     );
   };
+
+  
 
   return (
     <div style={{ marginBottom: '50px' }}>
@@ -170,6 +174,16 @@ const AdminPage = () => {
       <AdminSection sectionName="Страница-Города воинской славы" backgroundColor="rgb(128, 203, 196)" color="#e65100">
         <AdminPage3 />
       </AdminSection>
+
+      {paths&&paths.map((each)=>
+        <AdminSection sectionName={`Страница - ${each}`} 
+        key={each}
+        backgroundColor={`#${Math.floor(Math.random()*16777215).toString(16)}`}
+        color="#000">
+        
+          <AdminPageTemplate path={each}/>
+        </AdminSection>
+      )}
 
       <AdminSection sectionName="Создание новой страницы" backgroundColor="rgb(244 142 177)" color="#e65100">
         <AdminCreatePage />

@@ -86,7 +86,11 @@ function App() {
           <Route path="/documents" component={Documents} />
           <Route path="/contacts" component={Contacts} />
           <Route path="/minors" component={Minors} />
-          <Route path="/admin" exact component={Admin} />
+
+          <Route path="/admin" exact>
+            <Admin paths={paths}/>
+          </Route>
+
           <Route path="/extrapages" exact component={extrapages} />
           <Route path="/page1" exact component={Page1} />
           <Route path="/page2" exact component={Page2} />
