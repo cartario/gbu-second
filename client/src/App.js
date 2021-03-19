@@ -34,18 +34,16 @@ function App() {
           'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/pages.json',
         );
         const resData = await response.json();
-        const adaptedData = adapter(resData);        
+        const adaptedData = adapter(resData);
         setData(adaptedData);
       } catch (err) {
-        setData({})
-        console.log(err)
+        setData({});
+        console.log(err);
       }
     };
 
     fetchData();
-  }, []);  
-
-
+  }, []);
 
   if (!data) {
     return (
@@ -60,7 +58,7 @@ function App() {
   }
 
   let paths;
-  if(data.items){
+  if (data.items) {
     paths = data.items.map((each) => each.pagePath);
   }
 
@@ -68,27 +66,36 @@ function App() {
     <AuthConext.Provider value={{ token, userId, isAuth, login, logout }}>
       <div className="App">
         <div className="App__content">
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/about" component={About} />
-          <Route path="/events" exact>
-            <Events />
-          </Route>
-          <Route path="/studios" exact>
-            <Studios />
-          </Route>
-          <Route path="/detail/:id">
-            <DetailPage />
-          </Route>
-          <Route path="/schedule" component={Schedule} />
-          <Route path="/afisha" component={Afisha} />
-          <Route path="/documents" component={Documents} />
-          <Route path="/contacts" component={Contacts} />
-          <Route path="/minors" component={Minors} />
+          {isAuth ? (
+            <div>
+              <Route path="/" exact>
+                <Home />
+              </Route>
+              <Route path="/about" component={About} />
+              <Route path="/events" exact>
+                <Events />
+              </Route>
+              <Route path="/studios" exact>
+                <Studios />
+              </Route>
+              <Route path="/detail/:id">
+                <DetailPage />
+              </Route>
+              <Route path="/schedule" component={Schedule} />
+              <Route path="/afisha" component={Afisha} />
+              <Route path="/documents" component={Documents} />
+              <Route path="/contacts" component={Contacts} />
+              <Route path="/minors" component={Minors} />
+            </div>
+          ) : (
+            <div>
+              <p>ВЕДУТСЯ ТЕХНИЧЕСКИЕ РАБОТЫ</p>
+              <a href="http://xn--80ahcoasjcyt5b.xn--p1ai/">Перейти на запасной сайт</a>
+            </div>
+          )}
 
           <Route path="/admin" exact>
-            <Admin paths={paths}/>
+            <Admin paths={paths} />
           </Route>
 
           <Route path="/extrapages" exact component={extrapages} />
@@ -96,11 +103,12 @@ function App() {
           <Route path="/page2" exact component={Page2} />
           <Route path="/page3" exact component={Page3} />
 
-          {paths&&paths.map((each) => (
-            <Route key={each} path={`/${each}`} exact >
-              <CreateNewPage path={each}/>
-            </Route>
-          ))}
+          {paths &&
+            paths.map((each) => (
+              <Route key={each} path={`/${each}`} exact>
+                <CreateNewPage path={each} />
+              </Route>
+            ))}
         </div>
         <div className="App__footer">
           <Footer />
