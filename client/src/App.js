@@ -34,15 +34,18 @@ function App() {
           'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/pages.json',
         );
         const resData = await response.json();
-        const adaptedData = adapter(resData);
+        const adaptedData = adapter(resData);        
         setData(adaptedData);
       } catch (err) {
-        throw err;
+        setData({})
+        console.log(err)
       }
     };
 
     fetchData();
-  }, []);
+  }, []);  
+
+
 
   if (!data) {
     return (
@@ -56,7 +59,10 @@ function App() {
     );
   }
 
-  const paths = data.items.map((each) => each.pagePath);
+  let paths;
+  if(data.items){
+    paths = data.items.map((each) => each.pagePath);
+  }
 
   return (
     <AuthConext.Provider value={{ token, userId, isAuth, login, logout }}>
@@ -86,7 +92,7 @@ function App() {
           <Route path="/page2" exact component={Page2} />
           <Route path="/page3" exact component={Page3} />
 
-          {paths.map((each) => (
+          {paths&&paths.map((each) => (
             <Route key={each} path={`/${each}`} exact >
               <CreateNewPage path={each}/>
             </Route>

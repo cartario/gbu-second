@@ -19,8 +19,8 @@ const AdminCreatePage = () => {
 
         setData(adaptedData);
       } catch (err) {
-        console.log(err);
-        throw err;
+        setData({})
+        console.log(err);        
       }
     };
 
@@ -60,8 +60,6 @@ const AdminCreatePage = () => {
     );
   }
 
-  const {items} = data;
-
   return (
     <>
       <div className="admin-item">
@@ -74,13 +72,13 @@ const AdminCreatePage = () => {
               mode="new" baseUrl={`${BASE_URL}/pages.json`} initialState={{
                 pageName: '',
                 pagePath: '',
-                visible: false
+                visible: true
               }} />
             </div>
           </AdminAddButton>
 
           <div>
-            {items.map((item, i) => (
+            {data.items&&data.items.map((item, i) => (
               <div className="admin-item__form" key={i}>
                 <Form mode="edit" baseUrl={`${BASE_URL}/pages`} initialState={item} id={item.id} />
               </div>
