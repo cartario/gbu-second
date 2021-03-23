@@ -8,6 +8,7 @@ import useHttp from '../hooks/http.hook';
 import { useContext } from 'react';
 import { AuthConext } from '../context/auth.context';
 import ScheduleDocs from '../components/schedule-docs';
+import AfishaScheduleDocs from '../components/afisha-schedule-docs';
 import PushNotificationsComponent from '../components/pushNotifications';
 import AdminContactPage from '../components/admin-contact-page';
 import AdminSection from '../components/admin-section';
@@ -128,6 +129,8 @@ const AdminPage = ({paths}) => {
       <PushNotificationsComponent />
 
       <ScheduleDocs />
+
+      <AfishaScheduleDocs />
 
      
 

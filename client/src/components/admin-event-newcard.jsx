@@ -12,7 +12,8 @@ const AdminEventNewCard = ({ handleShowNewEvent }) => {
     place: '',
     description: '',
     posterUrl: '',
-    photos: ''
+    photos: '',
+    booked: false
   });
 
   const [event, setEvent] = React.useState(null);

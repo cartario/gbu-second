@@ -19,26 +19,26 @@ const schedules = [
     title: 'Расписание на декабрь 2020 (дистанционный режим) - Скачать',
     link: CCF_000112,
   },
-  {
-    title: 'Расписание мероприятий на декабрь 2020 (дистанционный режим) - Скачать',
-    link: dec20events,
-  },
+  // {
+  //   title: 'Расписание мероприятий на декабрь 2020 (дистанционный режим) - Скачать',
+  //   link: dec20events,
+  // },
   {
     title: 'Расписание на ноябрь 2020 (дистанционный режим) - Скачать',
     link: CCF_000090,
   },
-  {
-    title: 'Расписание мероприятий на ноябрь 2020 (дистанционный режим) - Скачать',
-    link: non20events,
-  },
+  // {
+  //   title: 'Расписание мероприятий на ноябрь 2020 (дистанционный режим) - Скачать',
+  //   link: non20events,
+  // },
   {
     title: 'Расписание на октябрь 2020 (дистанционный режим) - Скачать',
     link: CCF_000062,
   },
-  {
-    title: 'Расписание мероприятий на октябрь 2020 - Скачать',
-    link: oct20events,
-  },
+  // {
+  //   title: 'Расписание мероприятий на октябрь 2020 - Скачать',
+  //   link: oct20events,
+  // },
   {
     title: 'Расписание платных секций на 2020 - Скачать',
     link: CCF_000058,
@@ -68,7 +68,7 @@ const Schedule = () => {
   const getDocs = React.useCallback(async ()=>{
     try {
       const response = await request(`/api/docs`);
-      setDocs(response)
+      setDocs(response.filter((each)=>!each.afisha))
     }
     catch(err){}
   },[request]);
@@ -82,10 +82,16 @@ const Schedule = () => {
     return (<h1>Loading...</h1>)
   }
 
+  docs.sort((b,a)=>new Date(a.createdAt)-new Date(b.createdAt));
+
+  console.log(docs)
+
   const adapterDocs = docs.map((doc)=>({
     title:doc.title,
     link:doc.url
-  }))
+  }));
+
+  
   
   return (
     <>

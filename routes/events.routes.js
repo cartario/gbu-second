@@ -47,8 +47,6 @@ router.delete('/upload/delete/:id', upload.single('posterUrl'), async (req, res)
   }
 });
 
-
-
 router.post('/create', async (req, res) => {
   const obj = req.body;
 

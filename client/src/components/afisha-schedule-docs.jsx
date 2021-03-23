@@ -147,7 +147,7 @@ const ScheduleDocs = () => {
   const getDocs = React.useCallback(async () => {
     try {
       const response = await request(`/api/docs`);
-      setDocs(response.filter((each)=>!each.afisha));
+      setDocs(response.filter((each)=>each.afisha));
     } catch (err) {}
   }, [request]);
 
@@ -181,7 +181,7 @@ const ScheduleDocs = () => {
   return (
     <div className="admin-section">
       <h2 onClick={handleClickShowSection}>
-        Расписания {showSection ? '(свернуть)' : '(развернуть)'}
+        Афиши {showSection ? '(свернуть)' : '(развернуть)'}
       </h2>
 
       {showSection && (

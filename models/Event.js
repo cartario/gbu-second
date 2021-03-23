@@ -25,7 +25,8 @@ const EventSchema = new Schema({
   cloudinary_id: {
     type: String
   },
-  photos: String
+  photos: String,
+  booked: Boolean
 }, {
   timestamps: true
 })

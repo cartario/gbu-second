@@ -85,6 +85,8 @@ const Schedule = () => {
     return (<h1>Loading...</h1>)
   }
 
+  docs.sort((b,a)=>new Date(a.createdAt)-new Date(b.createdAt));
+
   const adapterDocs = docs.map((doc)=>({
     title:doc.title,
     link:doc.url

@@ -94,7 +94,7 @@ const Contacts = () => {
               <span>{contacts.phone3}, {contacts.phone4}</span>
             </p>
             <p className="contacts__admin">
-              Руководитель структурного подразделения: {contacts.adminName2}
+              {contacts.adminPosition}: {contacts.adminName2}
             </p>
           </div>
 
