@@ -6,6 +6,12 @@ import { adapterCreatePage as adapter } from '../utils';
 
 const items = [
   {
+    title: 'Присоединиться',
+    url: '/page-join',
+    backgroundColor: '#d64760',
+    visible: true
+  },
+  {
     title: 'Московское долголетие',
     url: '/page1',
     backgroundColor: '#3fb2bf',

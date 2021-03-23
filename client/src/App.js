@@ -18,6 +18,7 @@ import extrapages from './pages/extrapages';
 import Page1 from './pages/page1';
 import Page2 from './pages/page2';
 import Page3 from './pages/page3';
+import PageJoin from './pages/page-join';
 import CreateNewPage from './pages/createNewPage';
 import { adapterCreatePage as adapter } from './utils';
 
@@ -102,6 +103,7 @@ function App() {
           <Route path="/page1" exact component={Page1} />
           <Route path="/page2" exact component={Page2} />
           <Route path="/page3" exact component={Page3} />
+          <Route path="/page-join" exact component={PageJoin} />
 
           {paths &&
             paths.map((each) => (

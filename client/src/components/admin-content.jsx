@@ -13,6 +13,7 @@ import PushNotificationsComponent from '../components/pushNotifications';
 import AdminContactPage from '../components/admin-contact-page';
 import AdminSection from '../components/admin-section';
 import AdminSumPage from '../components/admin-sum-page';
+import AdminPageJoin from '../components/admin-page-join';
 import AdminPage1 from '../components/admin-page1';
 import AdminPage2 from '../components/admin-page2';
 import AdminPage3 from '../components/admin-page3';
@@ -164,6 +165,10 @@ const AdminPage = ({paths}) => {
 
       <AdminSection sectionName="Страница-Контакты" backgroundColor="pink" color="tomato">
         <AdminContactPage />
+      </AdminSection>
+
+      <AdminSection sectionName="Присоединиться" backgroundColor="rgb(128, 203, 196)" color="#e65100">
+        <AdminPageJoin />
       </AdminSection>
 
       <AdminSection sectionName="Страница-Московское долголетие" backgroundColor="#ff9800" color="#e65100">
