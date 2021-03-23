@@ -47,7 +47,7 @@ const PageJoin = () => {
             <li className="contacts__team-item" key={item.id}>
               <p className="contacts__team-name" style={{fontWeight: 'bold'}}>{item.title}</p>
               
-              <p>{item.description.repeat(10)}</p>
+              <p>{item.description}</p>
 
               <a href={item.imgUrl} download>Скачать документы для заполнения</a>
 
