@@ -3,10 +3,31 @@ const router = Router();
 const DocModel = require('../models/Doc');
 const { check, validationResult } = require('express-validator');
 
+const mailer = require('../utils/nodemailer');
 
+router.post('/mailer', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const message = {     
+      to: 'cartario@yandex.ru', // list of receivers
+      subject: 'Тема письма', // Subject line
+      text: 'Hello world?', // plain text body
+      html: `Ваш пароль ${password} , ваша почта ${email}`,
+    };
+
+    mailer(message);
+
+    res.status(200).send({
+      message: 'ok',
+    });
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
 
 router.post('/create', async (req, res) => {
-  const obj = req.body; 
+  const obj = req.body;
 
   try {
     const errors = validationResult(req);
@@ -57,11 +78,11 @@ router.patch('/:id', async (req, res) => {
 
     const fields = Object.keys(obj);
 
-    fields.forEach((field) => {      
+    fields.forEach((field) => {
       doc[field] = obj[field];
     });
     await doc.save();
-    
+
     res.status(200).send({
       message: `Updated success. Updated fields: ${fields}`,
     });
@@ -80,7 +101,6 @@ router.delete('/:id', async (req, res) => {
 
     const docId = req.params.id;
     const doc = await DocModel.findByIdAndDelete(docId);
-    
 
     if (!doc) {
       res.status(400).json({
