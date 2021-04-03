@@ -63,6 +63,7 @@ function App() {
     paths = data.items.map((each) => each.pagePath);
   }
 
+
   return (
     <AuthConext.Provider value={{ token, userId, isAuth, login, logout }}>
       <div className="App">

@@ -20,6 +20,8 @@ import AdminPage3 from '../components/admin-page3';
 import AdminCreatePage from '../components/admin-create-page';
 import AdminPageTemplate from '../components/admin-page-template';
 
+import {AdminPageMainPost} from '../components'
+
 
 const AdminPage = ({paths}) => {
   const { request, loading, error, clearError } = useHttp();
@@ -133,9 +135,13 @@ const AdminPage = ({paths}) => {
 
       <AfishaScheduleDocs />
 
-     
-
       <AdminMainPost />
+
+      <AdminSection sectionName="Главный пост" backgroundColor="#fff" color="tomato">
+        <AdminPageMainPost />
+      </AdminSection>
+
+
 
       <AdminSection sectionName="Студии/секции" backgroundColor="#c8e6c9" color="#1b5e20">
         <>
