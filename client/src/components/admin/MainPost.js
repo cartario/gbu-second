@@ -1,9 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import {ToggleVisiblePost, Select} from '../mui';
+import {ToggleVisiblePost, Button, Toast, Input} from '../mui';
 import {useSelector, useDispatch} from 'react-redux';
-import {setVisible, setDisabled, setMainPostForm} from '../../redux/mainPostReducer';
+import {setMainPostForm} from '../../redux/mainPostReducer';
 import {UploadPoster} from '../../components';
 import {Backdrop} from '../../components/mui';
 import useHttp from '../../hooks/custom.hook';
@@ -20,55 +20,50 @@ const useStyles = makeStyles((theme) => ({
   },  
 }));
 
-const initialState = {
-  visible: false,
-  select: '',
-  posterUrl: ''
-}
-
 export default function MainPost () {
-  const dispatch = useDispatch();
-  const classes = useStyles();
-  const [form, setForm] = React.useState(initialState);
-  const [disabled, setDisabled] = React.useState(false);
-
-  const {request, loading, error, clearError} = useHttp();
-
-  const handleChange = (target) => {
-    const {name, value} = target;
-    setForm({...form, [name]: value});
-  } 
+  const classes = useStyles();  
+  const dispatch = useDispatch();  
+  const form = useSelector((state)=>state.mainPost);
+  const {disabled, title, address, age_category} = form;
+  const {request, loading} = useHttp();
+  const [success, setSuccess] = React.useState(null);
 
   const handleSubmit = async () => {    
     dispatch(setMainPostForm(form));
-    await request(`${URL}/-MXQr_to0soQv6EgpDdt.json`, 'PATCH', form);
-  }
+    const res = await request(`${URL}/-MXQr_to0soQv6EgpDdt.json`, 'PATCH', form);
 
-  const handleDisabled = (value) => {
-    setDisabled(value)
+    if(res){
+      setSuccess(true)
+    }
   }
 
   React.useEffect(()=>{
     (async function  () {
       const data = await request(`${URL}.json`);      
-      setForm(Object.values(data)[0])     
+      dispatch(setMainPostForm(Object.values(data)[0]));    
     })();    
-  }, [])
+  }, [dispatch, request]);
 
   React.useEffect(()=>{
-    dispatch(setMainPostForm(form));
-  }, [form])
+    if(success){
+      setTimeout(()=>{
+        setSuccess(null)
+      }, 1000)
+    }
+  }, [success]);
   
   return (
     <div className={classes.root}>
       {loading && <Backdrop />}
       <Paper elevation={3}>
-      <ToggleVisiblePost initial={form.visible} onChange={handleChange} name='visible'/>
-      <UploadPoster initial={form.posterUrl} setDisableSubmitButton={handleDisabled} onChange={handleChange} name='posterUrl'/>
-      
-      <Select onChange={handleChange} name='select'/>
+        <ToggleVisiblePost />
+        <UploadPoster /> 
 
-      <button onClick={handleSubmit} disabled={disabled}>Submit</button>
+        <Input text='Название мероприятия' data={title}/>    
+        <Input text='Место проведения' data={address}/>    
+        <Input text='Возрастная категория' data={age_category}/>      
+        <Button disabled={disabled} onClick={handleSubmit}/>
+       {success && <Toast text='Успешно сохранено'/>}
       </Paper>
     </div>)
 };

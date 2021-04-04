@@ -1,9 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  disabled: false,
-  visible: false,
-  select: ''
+  visible: false, 
+  title: 'title',
+  address: 'address',
+  age_category: '6+', 
+  posterUrl: '',
+  disabled: false
 }
 
 const mainPostSlice = createSlice({
@@ -16,6 +19,9 @@ const mainPostSlice = createSlice({
     setVisible: (state, action)=>{
       state.visible = action.payload
     },
+    setPoster: (state, action)=>{
+      state.posterUrl = action.payload
+    },
     setMainPostForm: (state, action)=>{
       return {...state, ...action.payload}      
     },
@@ -23,6 +29,6 @@ const mainPostSlice = createSlice({
   }
 });
 
-export const {setVisible, setDisabled, setMainPostForm} = mainPostSlice.actions;
+export const {setVisible, setDisabled, setMainPostForm, setPoster} = mainPostSlice.actions;
 
 export default mainPostSlice.reducer;

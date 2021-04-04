@@ -3,6 +3,8 @@ import { withStyles } from '@material-ui/core/styles';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
+import {useSelector, useDispatch} from 'react-redux';
+import {setVisible} from '../../redux/mainPostReducer'
 
 const IOSSwitch = withStyles((theme) => ({
   root: {    
@@ -57,28 +59,19 @@ const IOSSwitch = withStyles((theme) => ({
   );
 });
 
-export default function CustomizedSwitches({initial, onChange, name}) {
-  const [state, setState] = React.useState({    
-    visible: initial,    
-  });
+export default function CustomizedSwitches() {  
+  const {visible} = useSelector((state)=>state.mainPost);
+  const dispatch = useDispatch();
 
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });  
-    onChange({
-      name,
-      value: event.target.checked
-    })  
+  const handleChange = (event) => {   
+    dispatch(setVisible(event.target.checked))
   };  
-
-  React.useEffect(()=>{
-    setState({ ...state, visible: initial}); 
-  }, [initial])
 
   return (
     <FormGroup style={{alignItems: 'center'}}>      
       <FormControlLabel
-        control={<IOSSwitch checked={state.visible} onChange={handleChange} name="visible" />}
-        label= {state.visible ? 'Виден' : 'Скрыт'}
+        control={<IOSSwitch checked={visible} onChange={handleChange} name="visible" />}
+        label= {visible ? 'Виден' : 'Скрыт'}
       />
     </FormGroup>
   );

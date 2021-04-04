@@ -16,17 +16,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleSelect({onChange, name}) {
+export default function SimpleSelect() {
   const classes = useStyles();
   const [age, setAge] = React.useState('');
 
   const handleChange = (event) => {
-    setAge(event.target.value);
-
-    onChange({
-      name,
-      value: event.target.value
-    })
+    setAge(event.target.value);    
   };  
 
   return (

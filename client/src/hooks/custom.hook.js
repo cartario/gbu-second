@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
 
 const useHttp = () => {
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);  
   const [error, setError] = React.useState(null);
 
   const request = useCallback(async (url, method = 'GET', body = null, headers = {}, mode = 'cors') => {
@@ -29,6 +29,7 @@ const useHttp = () => {
   const clearError = useCallback(() => {
     setError(null)
   },[]) 
+
 
   return {request, loading, error, clearError}
 };
