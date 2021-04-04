@@ -5,7 +5,8 @@ import {ToggleVisiblePost, Select} from '../mui';
 import {useSelector, useDispatch} from 'react-redux';
 import {setVisible, setDisabled, setMainPostForm} from '../../redux/mainPostReducer';
 import {UploadPoster} from '../../components';
-import {Backdrop} from '../../components/mui'
+import {Backdrop} from '../../components/mui';
+import useHttp from '../../hooks/custom.hook';
 
 const URL = 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/adminPage/mainpost'
 
@@ -30,26 +31,17 @@ export default function MainPost () {
   const classes = useStyles();
   const [form, setForm] = React.useState(initialState);
   const [disabled, setDisabled] = React.useState(false);
-  const [loader, setLoader] = React.useState(false)
+
+  const {request, loading, error, clearError} = useHttp();
 
   const handleChange = (target) => {
     const {name, value} = target;
     setForm({...form, [name]: value});
-  }
+  } 
 
   const handleSubmit = async () => {    
     dispatch(setMainPostForm(form));
-
-    setLoader(true)
-    await fetch(`${URL}/-MXQr_to0soQv6EgpDdt.json`, {
-      method: 'PATCH',
-        // mode: 'no-cors',
-        body: JSON.stringify(form),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-    })
-    setLoader(false)
+    await request(`${URL}/-MXQr_to0soQv6EgpDdt.json`, 'PATCH', form);
   }
 
   const handleDisabled = (value) => {
@@ -57,33 +49,19 @@ export default function MainPost () {
   }
 
   React.useEffect(()=>{
-
-    const fetchPost = async () => {
-      const res = await fetch(`${URL}.json`);
-      const data = await res.json();
-
-      const obj = Object.values(data)[0];
-      const id = Object.keys(data)[0];  //-MXQr_to0soQv6EgpDdt
-
-      setForm(obj);
-      dispatch(setMainPostForm(obj));
-    }
-
-    fetchPost();
-
-  },[]);
+    (async function  () {
+      const data = await request(`${URL}.json`);      
+      setForm(Object.values(data)[0])     
+    })();    
+  }, [])
 
   React.useEffect(()=>{
     dispatch(setMainPostForm(form));
   }, [form])
-
-  if(!form){
-    return null;
-  } 
   
   return (
     <div className={classes.root}>
-      {loader && <Backdrop />}
+      {loading && <Backdrop />}
       <Paper elevation={3}>
       <ToggleVisiblePost initial={form.visible} onChange={handleChange} name='visible'/>
       <UploadPoster initial={form.posterUrl} setDisableSubmitButton={handleDisabled} onChange={handleChange} name='posterUrl'/>
