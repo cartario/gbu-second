@@ -25,6 +25,27 @@ router.post('/upload/create', upload.single('posterUrl'), async (req, res) => {
   }
 });
 
+///mainpost
+router.post('/upload/create/mainpost', upload.single('posterUrl'), async (req, res) => {
+  const FOLDER_NAME='постеры(для блока Совсем скоро)';
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.status(400).json({ status: 'error', errors: errors.array() });
+      return;
+    }
+
+    const uploadedFile = await cloudinary.uploader.upload(req.file.path, { folder: FOLDER_NAME });    
+
+    res.status(200).send({
+      public_id: uploadedFile.public_id.split('/').pop(),
+      cloudinary_url: uploadedFile.url,
+    });
+  } catch (err) {
+    res.status(500).send({ message: err });
+  }
+});
+
 router.delete('/upload/delete/:id', upload.single('posterUrl'), async (req, res) => {
   const FOLDER_NAME='test-upload';
 

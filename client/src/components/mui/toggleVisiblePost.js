@@ -70,6 +70,10 @@ export default function CustomizedSwitches({initial, onChange, name}) {
     })  
   };  
 
+  React.useEffect(()=>{
+    setState({ ...state, visible: initial}); 
+  }, [initial])
+
   return (
     <FormGroup style={{alignItems: 'center'}}>      
       <FormControlLabel
