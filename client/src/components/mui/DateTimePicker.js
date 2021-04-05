@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DateAndTimePickers({initial = new Date().toJSON().substr(0,16), name, next}) {
+export default function DateAndTimePickers({initial, name, next}) {
   const classes = useStyles();
   const [date, setDate] = React.useState(initial);
 

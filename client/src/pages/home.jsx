@@ -6,7 +6,8 @@ import SayHello from '../components/say-hello';
 import TotalInfoBlock from '../components/total-info-block';
 import SessionsTodayBoard from '../components/sessions-today-board';
 import useHttp from '../hooks/http.hook';
-import Poster from '../components/main-poster';
+// import Poster from '../components/main-poster';
+import Poster from '../components/main-poster-new';
 import VideoPlayer from '../components/videoplayer';
 import WhatsApp from '../components/whatsapp';
 

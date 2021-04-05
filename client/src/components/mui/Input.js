@@ -31,6 +31,10 @@ export default function BasicTextFields({text, data, name, next}) {
     })
   }
 
+  React.useEffect(()=>{
+    setValue(data)
+  }, [data])
+
   return (
     <div className={classes.root} noValidate autoComplete="off">      
       <TextField 
