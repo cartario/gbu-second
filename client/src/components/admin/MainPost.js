@@ -1,9 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import {ToggleVisiblePost, Button, Toast, Input} from '../mui';
+import {ToggleVisiblePost, Button, Toast, Input, DateTimePicker} from '../mui';
 import {useSelector, useDispatch} from 'react-redux';
-import {setMainPostForm} from '../../redux/mainPostReducer';
+import {setMainPostForm, setDate, setTitle, setAddress, setCategory} from '../../redux/mainPostReducer';
 import {UploadPoster} from '../../components';
 import {Backdrop} from '../../components/mui';
 import useHttp from '../../hooks/custom.hook';
@@ -27,6 +27,23 @@ export default function MainPost () {
   const {disabled, title, address, age_category} = form;
   const {request, loading} = useHttp();
   const [success, setSuccess] = React.useState(null);
+
+  const handleChange = (obj) => {
+    const {name, value} = obj;
+    
+    if(name==='date'){
+      dispatch(setDate(value));
+    }
+    if(name==='title'){
+      dispatch(setTitle(value));
+    }
+    if(name==='address'){
+      dispatch(setAddress(value));
+    }
+    if(name==='category'){
+      dispatch(setCategory(value));
+    }
+  }
 
   const handleSubmit = async () => {    
     dispatch(setMainPostForm(form));
@@ -58,10 +75,10 @@ export default function MainPost () {
       <Paper elevation={3}>
         <ToggleVisiblePost />
         <UploadPoster /> 
-
-        <Input text='Название мероприятия' data={title}/>    
-        <Input text='Место проведения' data={address}/>    
-        <Input text='Возрастная категория' data={age_category}/>      
+        <DateTimePicker initial='2010-04-04T10:10' name='date' next={handleChange}/>
+        <Input text='Название мероприятия' data={title} name='title' next={handleChange}/>    
+        <Input text='Место проведения' data={address} name='address' next={handleChange}/>    
+        <Input text='Возрастная категория' data={age_category} name='category' next={handleChange}/>      
         <Button disabled={disabled} onClick={handleSubmit}/>
        {success && <Toast text='Успешно сохранено'/>}
       </Paper>

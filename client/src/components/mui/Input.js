@@ -9,21 +9,33 @@ const useStyles = makeStyles((theme) => ({
       width: '25ch',
     },
   },
+
+  input: {
+    width: '50%',
+    [theme.breakpoints.down(415)]: {
+      width: '90%',
+    },
+  }
 }));
 
-export default function BasicTextFields({text, data}) {
+export default function BasicTextFields({text, data, name, next}) {
   const classes = useStyles();
   const [value, setValue] = React.useState(data);
 
   const handleChange = (e) => {
-    setValue(e.target.value)
+    setValue(e.target.value);
+
+    next({
+      name,
+      value: e.target.value
+    })
   }
 
   return (
     <div className={classes.root} noValidate autoComplete="off">      
       <TextField 
       value={value}
-
+      className={classes.input}
       onChange={handleChange}
       
       id="outlined-basic" label={text} variant="outlined" />      
