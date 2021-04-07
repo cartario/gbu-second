@@ -15,6 +15,8 @@
   margin: 0 auto;
   overflow: hidden;
   background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
 
   @media (max-width: 596px) {
     width: 100%;
