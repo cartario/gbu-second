@@ -1,6 +1,6 @@
 import React from 'react';
-import AdminAddButton from '../components/admin-add-button';
-import { adapterContactPage as adapter } from '../utils';
+import AdminAddButton from './admin-add-button';
+import { adapterContactPage as adapter } from '../../utils';
 
 const BASE_URL = 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/';
 

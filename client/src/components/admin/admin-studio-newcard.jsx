@@ -1,5 +1,5 @@
 import React from 'react';
-import useHttp from '../hooks/http.hook';
+import useHttp from '../../hooks/http.hook';
 
 const AdminStudioNewCard = ({ handleShowNewStudio }) => {
   const { request } = useHttp();

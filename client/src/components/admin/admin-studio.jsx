@@ -1,5 +1,5 @@
 import React from 'react';
-import useHttp from '../hooks/http.hook';
+import useHttp from '../../hooks/http.hook';
 
 const daysOfWeek = ['Восересенье ','Понедельник ','Вторник ','Среда ','Четверг ','Пятница ','Суббота '];
 

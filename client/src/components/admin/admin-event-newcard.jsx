@@ -1,6 +1,6 @@
 import React from 'react';
-import useHttp from '../hooks/http.hook';
-import FileInputComponent from '../components/FileInput';
+import useHttp from '../../hooks/http.hook';
+import FileInputComponent from '../FileInput';
 
 const AdminEventNewCard = ({ handleShowNewEvent }) => {
   const { request } = useHttp();

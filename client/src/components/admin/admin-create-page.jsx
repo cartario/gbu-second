@@ -1,7 +1,7 @@
 import React from 'react';
-import Form from '../components/AppForm';
-import AdminAddButton from '../components/admin-add-button';
-import { adapterCreatePage as adapter } from '../utils';
+import Form from '../AppForm';
+import AdminAddButton from './admin-add-button';
+import { adapterCreatePage as adapter } from '../../utils';
 
 const BASE_URL = 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/';
 

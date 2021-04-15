@@ -1,30 +1,14 @@
-import React, { useCallback } from 'react';
-import AdminEventCard from '../components/admin-event-card';
-import AdminEventNewCard from '../components/admin-event-newcard';
-import AdminStudioCard from '../components/admin-studio';
-import AdminStudioNewCard from '../components/admin-studio-newcard';
-import AdminVideo from '../components/admin-video';
+import React, { useCallback, useContext } from 'react';
+
+import {AdminPageMainPost, AdminEventCard, AdminEventNewCard, AdminStudioCard, AdminStudioNewCard,
+AdminVideo, ScheduleDocs, AfishaScheduleDocs, PushNotificationsComponent, AdminSection,
+AdminContactPage, AdminSumPage, AdminPageJoin, AdminPage1, AdminPage2, AdminPage3, AdminCreatePage, AdminPageTemplate} from '../components';
+
 import useHttp from '../hooks/http.hook';
-import { useContext } from 'react';
 import { AuthConext } from '../context/auth.context';
-import ScheduleDocs from '../components/schedule-docs';
-import AfishaScheduleDocs from '../components/afisha-schedule-docs';
-import PushNotificationsComponent from '../components/pushNotifications';
-import AdminContactPage from '../components/admin-contact-page';
-import AdminSection from '../components/admin-section';
-import AdminSumPage from '../components/admin-sum-page';
-import AdminPageJoin from '../components/admin-page-join';
-import AdminPage1 from '../components/admin-page1';
-import AdminPage2 from '../components/admin-page2';
-import AdminPage3 from '../components/admin-page3';
-import AdminCreatePage from '../components/admin-create-page';
-import AdminPageTemplate from '../components/admin-page-template';
-
-import {AdminPageMainPost} from '../components'
-
 
 const AdminPage = ({paths}) => {
-  const { request, loading, error, clearError } = useHttp();
+  const { request} = useHttp();
   const [events, setEvents] = React.useState(null);
   const [studios, setStudios] = React.useState(null);
 
