@@ -14,7 +14,6 @@ import {
 } from '../../redux/mainPostReducer';
 import { UploadPoster, ColorPicker } from '../../components';
 import { Backdrop } from '../../components/mui';
-import Chart from '../charts/SimpleLine';
 import useHttp from '../../hooks/custom.hook';
 
 const URL = 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/adminPage/mainpost';
@@ -103,8 +102,7 @@ export default function MainPost() {
   return (
     <div className={classes.root}>
       {loading && <Backdrop />}
-      <Paper elevation={3}>  
-      <Chart />      
+      <Paper elevation={3}>         
         <ColorPicker initial={colorContact} name="colorContact" next={handleChange}/>
         <ToggleVisiblePost />
         <UploadPoster />

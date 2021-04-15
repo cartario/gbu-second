@@ -3,7 +3,7 @@ import AdminEventCard from '../components/admin-event-card';
 import AdminEventNewCard from '../components/admin-event-newcard';
 import AdminStudioCard from '../components/admin-studio';
 import AdminStudioNewCard from '../components/admin-studio-newcard';
-import AdminMainPost from '../components/admin-main-post';
+import AdminVideo from '../components/admin-video';
 import useHttp from '../hooks/http.hook';
 import { useContext } from 'react';
 import { AuthConext } from '../context/auth.context';
@@ -84,8 +84,6 @@ const AdminPage = ({paths}) => {
     );
   };
 
-  
-
   return (
     <div style={{ marginBottom: '50px' }}>
       <h1>AdminPage</h1>
@@ -135,13 +133,11 @@ const AdminPage = ({paths}) => {
 
       <AfishaScheduleDocs />
 
-      <AdminMainPost />
+      <AdminVideo />
 
       <AdminSection sectionName="Главный пост" backgroundColor="#fff" color="tomato">
         <AdminPageMainPost />
       </AdminSection>
-
-
 
       <AdminSection sectionName="Студии/секции" backgroundColor="#c8e6c9" color="#1b5e20">
         <>

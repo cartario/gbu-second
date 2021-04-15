@@ -25,9 +25,7 @@ const VideoPlayer = () => {
       {mainPost[0].videoplayer_visible ? 
       <div className="videoplayer">
       <h3>{mainPost[0].videoplayer_title}</h3>
-      <iframe        
-        // width="560"
-        // height="315"
+      <iframe       
         src={mainPost[0].videoplayer_url}
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

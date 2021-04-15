@@ -1,25 +1,12 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import Footer from './components/footer';
+import {Footer} from './components';
 import { AuthConext } from './context/auth.context';
 import useAuth from './hooks/auth.hook';
-import Home from './pages/home';
-import About from './pages/about';
-import Events from './pages/events';
-import Studios from './pages/studios';
-import Schedule from './pages/schedule';
-import Afisha from './pages/afisha';
-import Documents from './pages/documents';
-import Contacts from './pages/contacts';
-import DetailPage from './pages/detail-page';
-import Minors from './pages/minors';
-import Admin from './pages/admin';
-import extrapages from './pages/extrapages';
-import Page1 from './pages/page1';
-import Page2 from './pages/page2';
-import Page3 from './pages/page3';
-import PageJoin from './pages/page-join';
-import CreateNewPage from './pages/createNewPage';
+
+import {About, Events, Studios,  Schedule, Afisha, Documents, Contacts,
+DetailPage, Minors, Admin, extrapages, Page1, Page2, Page3, PageJoin,CreateNewPage, Home} from './pages';
+
 import { adapterCreatePage as adapter } from './utils';
 
 function App() {
@@ -62,7 +49,6 @@ function App() {
   if (data.items) {
     paths = data.items.map((each) => each.pagePath);
   }
-
 
   return (
     <AuthConext.Provider value={{ token, userId, isAuth, login, logout }}>

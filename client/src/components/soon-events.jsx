@@ -80,8 +80,8 @@ const categories = [...new Set(currentEvents.map((event) => event.category))];
               </span>}
             </p>
             <div className={visibleDescription ? '' : 'hidden'}>
-              {filteredEvents.map((event, index) => (
-                <p key={event._id}>{count === index ? event.description : ''}</p>
+              {filteredEvents.map((event, index) => (               
+                <p key={event._id}>{count === index ? event.description : ''}</p>               
               ))}
             </div>
           </div>
