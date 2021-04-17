@@ -1,8 +1,7 @@
 import React from 'react';
 import useHttp from '../../hooks/custom.hook';
-import { Paper, Checkbox } from '@material-ui/core';
-import { AdminAddButton } from '../';
-import { Input, Button, Select} from '../mui';
+import { Paper } from '@material-ui/core';
+import { Input, Button, Table} from '../mui';
 
 const BASE_URL = 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/adminPage/studios';
 
@@ -83,6 +82,13 @@ export default function Studios() {
   const studiosWithGroupName = uniqGroupNames.map((item)=>{    
     return data.filter((each)=>each.group_name===item)
   });
+  //
+
+  const handleGrouped = (obj) => {
+    console.log(obj)
+
+    //TODO request here
+  }
 
   return (
     <div className="admin-studios__wrap">
@@ -95,7 +101,11 @@ export default function Studios() {
         ) : (
           <div>
             <button className="admin-section__button" onClick={()=>setToggle(true)}>+</button>
-            {studiosWithoutGroupName.map((item)=><p>{item.studio_name}</p>)}
+
+            <Table tableName='Несгруппированные' next={handleGrouped} data={studiosWithoutGroupName.map((each)=>({name:each.studio_name, id:each.id}))}/>
+
+            {/* {studiosWithoutGroupName.map((item)=><p>{item.studio_name}</p>)} */}
+
             {studiosWithGroupName.map((item)=>{
               return (<p>groupedName {item[0].group_name} --- {
                 item.map((each)=><span>{each.id}__</span>)
