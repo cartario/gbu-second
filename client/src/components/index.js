@@ -22,3 +22,4 @@ export {default as AdminPage3} from './admin/admin-page3';
 export {default as AdminCreatePage} from './admin/admin-create-page';
 export {default as AdminPageTemplate} from './admin/admin-page-template';
 export {default as AdminAddButton} from './admin/admin-add-button';
+export {default as Studios} from './admin/Studios';

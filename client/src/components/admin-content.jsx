@@ -2,7 +2,8 @@ import React, { useCallback, useContext } from 'react';
 
 import {AdminPageMainPost, AdminEventCard, AdminEventNewCard, AdminStudioCard, AdminStudioNewCard,
 AdminVideo, ScheduleDocs, AfishaScheduleDocs, PushNotificationsComponent, AdminSection,
-AdminContactPage, AdminSumPage, AdminPageJoin, AdminPage1, AdminPage2, AdminPage3, AdminCreatePage, AdminPageTemplate} from '../components';
+AdminContactPage, AdminSumPage, AdminPageJoin, AdminPage1, AdminPage2, AdminPage3, AdminCreatePage, AdminPageTemplate,
+Studios} from '../components';
 
 import useHttp from '../hooks/http.hook';
 import { AuthConext } from '../context/auth.context';
@@ -121,6 +122,10 @@ const AdminPage = ({paths}) => {
 
       <AdminSection sectionName="Главный пост" backgroundColor="#fff" color="tomato">
         <AdminPageMainPost />
+      </AdminSection>
+
+      <AdminSection sectionName="New студии/секции" backgroundColor="#dadada" color="tomato">
+        <Studios />
       </AdminSection>
 
       <AdminSection sectionName="Студии/секции" backgroundColor="#c8e6c9" color="#1b5e20">

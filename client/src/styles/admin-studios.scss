@@ -1,0 +1,16 @@
+.admin-studios__wrap {
+  width: 50%;
+  margin: 0 auto;
+
+  @media(max-width: 415px){
+    width: 100%;
+  }
+}
+
+.admin-studios__showlist{
+  padding-top: 15px;
+  color: $blueColor;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}

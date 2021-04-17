@@ -6,37 +6,47 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 const useStyles = makeStyles((theme) => ({
-  formControl: {
-    
+  formControl: {    
     margin: theme.spacing(1),
-    width: '70%',
+    width: '50%',
+    [theme.breakpoints.down(415)]: {
+      width: '90%',
+    },
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
 }));
 
-export default function SimpleSelect() {
+export default function SimpleSelect({label, data, name, next}) {
   const classes = useStyles();
-  const [age, setAge] = React.useState('');
+  const [value, setValue] = React.useState('');
 
   const handleChange = (event) => {
-    setAge(event.target.value);    
-  };  
+    setValue(event.target.value);  
+    
+    next({
+      name,
+      value: event.target.value
+    })
+  }; 
+  
+  if(!data){
+    return null;
+  }
 
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
+          value={value}
           onChange={handleChange}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {data.map((item)=><MenuItem value={item}>{item}</MenuItem>)}
+          
         </Select>
       </FormControl>
     </div>
