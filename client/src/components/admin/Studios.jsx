@@ -2,6 +2,8 @@ import React from 'react';
 import useHttp from '../../hooks/custom.hook';
 import { Paper } from '@material-ui/core';
 import { Input, Button, Table} from '../mui';
+import {useSelector, useDispatch} from 'react-redux';
+import {setGroupNames, setStudiosWithoutGroupName, removeStudioWithoutGroupNameById} from '../../redux/adminStudiosReducer'
 
 const BASE_URL = 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/adminPage/studios';
 
@@ -43,6 +45,8 @@ export default function Studios() {
   const { request } = useHttp();
   const [toggle, setToggle] = React.useState(false);
   const [data, setData] = React.useState(null);
+  const {groupNames, studiosWithoutGroupName} = useSelector(({adminStudios})=>adminStudios); 
+  const dispatch = useDispatch(); 
 
   React.useEffect(() => {
     (async () => {
@@ -62,7 +66,12 @@ export default function Studios() {
         })        
       }
 
-      setData(fireBaseAdapter(response));      
+      const resData = fireBaseAdapter(response)
+      setData(resData);
+
+      const uniqGroupNames = [...new Set (resData.filter((each)=>each.group_name).map((item)=>item.group_name))];      
+      dispatch(setGroupNames(uniqGroupNames));
+      dispatch(setStudiosWithoutGroupName(resData.filter((each)=>!each.group_name)))
     })();
   }, []);
 
@@ -76,18 +85,32 @@ export default function Studios() {
     </div>);
   }
 
+  
+
   //реализация механизма группировки
-  const studiosWithoutGroupName = data.filter((each)=>!each.group_name);
-  const uniqGroupNames = [...new Set (data.filter((each)=>each.group_name).map((item)=>item.group_name))];
-  const studiosWithGroupName = uniqGroupNames.map((item)=>{    
+  // const studiosWithoutGroupName = data.filter((each)=>!each.group_name)
+  // const groupNames = [...new Set (data.filter((each)=>each.group_name).map((item)=>item.group_name))];
+  const studiosWithGroupName = groupNames.map((item)=>{    
     return data.filter((each)=>each.group_name===item)
   });
   //
 
-  const handleGrouped = (obj) => {
-    console.log(obj)
+  const handleClickGroup = (obj, name) => {
+   obj.forEach((each)=>{
+    const {id} = each; 
+    dispatch(removeStudioWithoutGroupNameById(id));
 
-    //TODO request here
+    const patchData = async () => {
+      await request(`${BASE_URL}/${id}.json`, 'PATCH', {group_name: name})   ;
+    };
+
+    patchData();
+    
+   })
+  
+    dispatch(setGroupNames([...groupNames, name]));
+    
+
   }
 
   return (
@@ -102,15 +125,17 @@ export default function Studios() {
           <div>
             <button className="admin-section__button" onClick={()=>setToggle(true)}>+</button>
 
-            <Table tableName='Несгруппированные' next={handleGrouped} data={studiosWithoutGroupName.map((each)=>({name:each.studio_name, id:each.id}))}/>
+            <Table 
+            handleClickGroup={handleClickGroup}
+            tableName='Несгруппированные' data={studiosWithoutGroupName.map((each)=>({name:each.studio_name, id:each.id}))}/>
 
             {/* {studiosWithoutGroupName.map((item)=><p>{item.studio_name}</p>)} */}
 
-            {studiosWithGroupName.map((item)=>{
+            {/* {studiosWithGroupName.map((item)=>{
               return (<p>groupedName {item[0].group_name} --- {
                 item.map((each)=><span>{each.id}__</span>)
                 }</p>)
-            })}
+            })} */}
           </div>         
         )}
       </Paper>
