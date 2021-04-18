@@ -17,7 +17,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import clsx from 'clsx';
 import GroupIcon from '@material-ui/icons/Group';
-import {Input} from '../mui'
 
 const useToolbarStyles = makeStyles((theme) => ({
   root: {
@@ -118,10 +117,14 @@ export default function DenseTable({ data, tableName, handleClickGroup }) {
         groupName={groupName}
         setGroupName={setGroupName}
         handleClickGroup={() =>
-          handleClickGroup(
-            selected.map((each) => data.find((item) => item.name === each)),
-            groupName,
-          )
+          {
+            handleClickGroup(
+              selected.map((each) => data.find((item) => item.studio_name === each)),
+              groupName,
+            );
+
+            setSelected([])
+          }          
         }
       />
 
@@ -133,14 +136,14 @@ export default function DenseTable({ data, tableName, handleClickGroup }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((row, index) => (
-              <TableRow key={row.name} hover selected={isSelected(row.name)}>
+            {data.map((row) => (
+              <TableRow key={row.studio_name} hover selected={isSelected(row.studio_name)}>
                 <TableCell component="th" scope="row">
                   <Checkbox
-                    onClick={(e) => handleClick(e, row.name)}
-                    checked={isSelected(row.name)}
+                    onClick={(e) => handleClick(e, row.studio_name)}
+                    checked={isSelected(row.studio_name)}
                   />
-                  {row.name}
+                  {row.studio_name}
                 </TableCell>
               </TableRow>
             ))}

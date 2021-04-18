@@ -86,3 +86,17 @@ export const adapterCreatePage = (data) => {
     }) || []
   };
 };
+
+export const fireBaseAdapter = (response) => {
+  if (!response) {
+    return;
+  }
+  const keys = Object.keys(response);
+
+  return keys.map((key) => {
+    return {
+      id: key,
+      ...response[key],
+    };
+  });
+};
