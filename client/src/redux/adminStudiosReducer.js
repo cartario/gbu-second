@@ -31,6 +31,9 @@ const adminStudiosSlice = createSlice({
       state.allStudios = [...state.allStudios, action.payload];
       state.studiosWithoutGroupName = [...state.studiosWithoutGroupName, action.payload]
     },
+    addStudioWithGroupName: (state, action)=>{      
+      state.studiosWithGroupName = [...state.studiosWithGroupName, action.payload]
+    },
     setGroupNames: (state, action)=>{
       state.groupNames = action.payload
     },
@@ -60,6 +63,6 @@ const adminStudiosSlice = createSlice({
 });
 
 export const {setAllStudios, setGroupNames, setStudiosWithoutGroupName, setStudiosWithGroupName, showStudioWithoutGroupNameById,
-  removeStudioWithoutGroupNameById, addStudio} = adminStudiosSlice.actions;
+  removeStudioWithoutGroupNameById, addStudio, addStudioWithGroupName} = adminStudiosSlice.actions;
 
 export default adminStudiosSlice.reducer;

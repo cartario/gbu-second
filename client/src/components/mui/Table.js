@@ -123,7 +123,8 @@ export default function DenseTable({ data, tableName, handleClickGroup }) {
               groupName,
             );
 
-            setSelected([])
+            setSelected([]);
+            setGroupName('');
           }          
         }
       />

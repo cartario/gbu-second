@@ -7,6 +7,7 @@ import {
   setAllStudios,
   setGroupNames,
   addStudio,
+  addStudioWithGroupName,
   setStudiosWithoutGroupName,
   setStudiosWithGroupName,
   removeStudioWithoutGroupNameById,
@@ -95,13 +96,12 @@ export default function Studios() {
   const handleClickGroup = (obj, name) => {
     obj.forEach((each) => {
       const { id } = each;
-      dispatch(removeStudioWithoutGroupNameById(id));      
-
+      dispatch(removeStudioWithoutGroupNameById(id));
       (async function(){
         await request(`${BASE_URL}/${id}.json`, 'PATCH', { group_name: name });
-      })()
-    });
-
+      })();      
+    });   
+    dispatch(addStudioWithGroupName(obj.map((each)=>({...each, group_name: name}))));
     dispatch(setGroupNames([...groupNames, name]));    
   };
 
@@ -111,6 +111,8 @@ export default function Studios() {
       allStudios.forEach(async (studio) => {
         await request(`${BASE_URL}/${studio.id}.json`, 'PATCH', { group_name: null });
       });
+
+      dispatch(setStudiosWithGroupName([]))
     }
   };
 
@@ -136,7 +138,7 @@ export default function Studios() {
               data={studiosWithoutGroupName}
             />
 
-            {studiosWithGroupName.map((item) => {
+            {studiosWithGroupName&&studiosWithGroupName.map((item) => {
               return (
                 <p>
                   groupedName {item[0].group_name} ---{' '}
