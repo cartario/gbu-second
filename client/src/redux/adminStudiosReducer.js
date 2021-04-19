@@ -22,9 +22,7 @@ const adminStudiosSlice = createSlice({
 
       const studiosWithGroupName = uniqGroupNames.map((item) => {
         return allStudios.filter((each) => each.group_name === item);
-      });
-
-      // const studiosWithGroupName = allStudios.filter((each)=>each.group_name)
+      });     
 
       state.allStudios = action.payload;
       state.groupNames = uniqGroupNames;
@@ -49,14 +47,7 @@ const adminStudiosSlice = createSlice({
       return {...state, 
         studiosWithGroupName
       }
-    },
-    setGroupNames: (state, action)=>{
-      state.groupNames = action.payload
-    },
-    setStudiosWithoutGroupName: (state, action)=>{
-      state.studiosWithoutGroupName = action.payload
-    },
-    
+    },       
     addStudioWihoutGroupName: (state, action)=>{
       const id = action.payload;
       const newStudio = state.allStudios.find((studio)=>studio.id===id)
@@ -73,12 +64,14 @@ const adminStudiosSlice = createSlice({
         studiosWithoutGroupName: state.studiosWithoutGroupName.filter((each)=>each.id!==id)
       }
       
-    },
-       
+    },       
   }
 });
 
-export const {setAllStudios, setGroupNames, setStudiosWithoutGroupName,
-  removeStudioWithoutGroupNameById, addStudio, addStudioWithGroupName, removeStudioWithGroupName, addStudioWihoutGroupName} = adminStudiosSlice.actions;
+export const {setAllStudios,
+  removeStudioWithoutGroupNameById, 
+  addStudio, addStudioWithGroupName, 
+  removeStudioWithGroupName, 
+  addStudioWihoutGroupName} = adminStudiosSlice.actions;
 
 export default adminStudiosSlice.reducer;

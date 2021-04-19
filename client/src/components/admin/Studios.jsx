@@ -6,10 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   setAllStudios,
   addStudio,
-  addStudioWithGroupName,
-  setStudiosWithGroupName,
-  removeStudioWithoutGroupNameById,
-  showStudioWithoutGroupNameById,
+  addStudioWithGroupName,  
+  removeStudioWithoutGroupNameById,  
   removeStudioWithGroupName,
   addStudioWihoutGroupName,
 } from '../../redux/adminStudiosReducer';
