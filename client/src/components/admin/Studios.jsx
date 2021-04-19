@@ -5,15 +5,17 @@ import { Input, Button, Table } from '../mui';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   setAllStudios,
-  setGroupNames,
   addStudio,
   addStudioWithGroupName,
-  setStudiosWithoutGroupName,
   setStudiosWithGroupName,
   removeStudioWithoutGroupNameById,
   showStudioWithoutGroupNameById,
+  removeStudioWithGroupName,
+  addStudioWihoutGroupName,
 } from '../../redux/adminStudiosReducer';
-import {fireBaseAdapter} from '../../utils';
+import { fireBaseAdapter } from '../../utils';
+import LinkOffIcon from '@material-ui/icons/LinkOff';
+import {Button as ButtonMUI} from '@material-ui/core';
 
 const BASE_URL = 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/adminPage/studios';
 
@@ -23,10 +25,10 @@ const initialState = {
   sub_studio_number: '',
 };
 
-const NewStudioForm = ({setToggle}) => {
+const NewStudioForm = ({ setToggle }) => {
   const { request } = useHttp();
   const [form, setForm] = React.useState(initialState);
-  const  dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleChange = (obj) => {
     const { name, value } = obj;
@@ -38,11 +40,10 @@ const NewStudioForm = ({setToggle}) => {
   };
 
   const handleSubmit = async () => {
-    
     const resData = await request(`${BASE_URL}.json`, 'POST', form);
     const id = resData.name;
-    dispatch(addStudio({...form, id}));
-    setToggle(false)
+    dispatch(addStudio({ ...form, id }));
+    setToggle(false);
   };
 
   const { studio_name, sub_studio_number } = form;
@@ -69,16 +70,16 @@ const NewStudioForm = ({setToggle}) => {
 
 export default function Studios() {
   const { request } = useHttp();
-  const [toggle, setToggle] = React.useState(false); 
-  const { allStudios, groupNames, studiosWithoutGroupName, studiosWithGroupName } = useSelector(
+  const [toggle, setToggle] = React.useState(false);
+  const { allStudios, studiosWithoutGroupName, studiosWithGroupName } = useSelector(
     ({ adminStudios }) => adminStudios,
   );
   const dispatch = useDispatch();
 
   React.useEffect(() => {
     (async () => {
-      const response = await request(`${BASE_URL}/.json`);     
-      dispatch(setAllStudios(fireBaseAdapter(response)));      
+      const response = await request(`${BASE_URL}/.json`);
+      dispatch(setAllStudios(fireBaseAdapter(response)));
     })();
   }, []);
 
@@ -87,33 +88,32 @@ export default function Studios() {
       <div className="admin-studios__wrap">
         <Paper elevation={3}>
           <p>список студий пуст</p>
-          <NewStudioForm setToggle={setToggle}/>
+          <NewStudioForm setToggle={setToggle} />
         </Paper>
       </div>
     );
   }
 
-  const handleClickGroup = (obj, name) => {
+  const handleGroup = (obj, name) => {
     obj.forEach((each) => {
       const { id } = each;
       dispatch(removeStudioWithoutGroupNameById(id));
-      (async function(){
+      (async function () {
         await request(`${BASE_URL}/${id}.json`, 'PATCH', { group_name: name });
-      })();      
-    });   
-    dispatch(addStudioWithGroupName(obj.map((each)=>({...each, group_name: name}))));
-    dispatch(setGroupNames([...groupNames, name]));    
+      })();
+    });
+    dispatch(addStudioWithGroupName(obj.map((each) => ({ ...each, group_name: name }))));
   };
 
-  const handleUngroupAll = () => {
-    if (window.confirm('Вы действительно хотите разблокировать?')) {
-      dispatch(showStudioWithoutGroupNameById());
-      allStudios.forEach(async (studio) => {
-        await request(`${BASE_URL}/${studio.id}.json`, 'PATCH', { group_name: null });
-      });
-
-      dispatch(setStudiosWithGroupName([]))
-    }
+  const handleUngroup = (obj) => {
+    obj.forEach((each) => {
+      const { id } = each;
+      dispatch(removeStudioWithGroupName(id));
+      dispatch(addStudioWihoutGroupName(id));
+      (async function () {
+        await request(`${BASE_URL}/${id}.json`, 'PATCH', { group_name: null });
+      })();
+    });
   };
 
   return (
@@ -124,7 +124,7 @@ export default function Studios() {
             <p className="admin-studios__showlist" onClick={() => setToggle(false)}>
               Показать список
             </p>
-            <NewStudioForm setToggle={setToggle}/>
+            <NewStudioForm setToggle={setToggle} />
           </div>
         ) : (
           <div>
@@ -133,23 +133,34 @@ export default function Studios() {
             </button>
 
             <Table
-              handleClickGroup={handleClickGroup}
-              tableName="Несгруппированные"
+              onGroupClick={handleGroup}
+              tableName="Студии/секции:"
               data={studiosWithoutGroupName}
             />
 
-            {studiosWithGroupName&&studiosWithGroupName.map((item) => {
+            {studiosWithGroupName.map((item) => {
               return (
-                <p>
-                  groupedName {item[0].group_name} ---{' '}
-                  {item.map((each) => (
-                    <span>{each.id}__</span>
-                  ))}
-                </p>
+                <>
+                  {item.length ? (
+                    <div style={{margin: '10px'}}>
+                      groupedName {item[0].group_name} ---{' '}
+                      {item.map((each) => (
+                        <span>{each.id}__</span>
+                      ))}
+                      
+                      <ButtonMUI
+                        onClick={() => handleUngroup(item)}
+                        variant="contained"
+                        color="secondary"                        
+                        startIcon={<LinkOffIcon />}
+                      >Разгруппировать</ButtonMUI>
+                    </div>
+                  ) : (
+                    ''
+                  )}
+                </>
               );
             })}
-
-            <button onClick={handleUngroupAll}>Разгруппировать все</button>
           </div>
         )}
       </Paper>

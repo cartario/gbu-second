@@ -17,6 +17,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import clsx from 'clsx';
 import GroupIcon from '@material-ui/icons/Group';
+import LinkIcon from '@material-ui/icons/Link';
 
 const useToolbarStyles = makeStyles((theme) => ({
   root: {
@@ -26,8 +27,8 @@ const useToolbarStyles = makeStyles((theme) => ({
   highlight:
     theme.palette.type === 'light'
       ? {
-          color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85),
+          color: theme.palette.primary.main,
+          backgroundColor: lighten(theme.palette.primary.light, 0.85),
         }
       : {
           color: theme.palette.text.primary,
@@ -36,9 +37,16 @@ const useToolbarStyles = makeStyles((theme) => ({
   title: {
     flex: '1 1 100%',
   },
+  input: {
+    backgroundColor: '#fff'
+  },
+  button: {
+    marginLeft: '15px',
+    backgroundColor: '#fff'
+  },
 }));
 
-const EnhancedTableToolbar = ({ numSelected, handleClickGroup, setGroupName, groupName}) => {
+const EnhancedTableToolbar = ({ numSelected, onGroupClick, setGroupName, groupName}) => {
   const classes = useToolbarStyles();
   
 
@@ -58,13 +66,16 @@ const EnhancedTableToolbar = ({ numSelected, handleClickGroup, setGroupName, gro
 
       {numSelected > 0 ? (<>
         <TextField 
+          className={classes.input}
           value={groupName}
           onChange={(e)=>setGroupName(e.target.value)}
           label='Название группы' variant="outlined" style={{width: '220px'}}/>
         <Tooltip title="Сгруппировать">
         
-          <IconButton aria-label="delete" onClick={handleClickGroup} disabled={numSelected === 1 ||!groupName.length}>
-            <GroupIcon />            
+          <IconButton 
+          className={classes.button}
+          aria-label="delete" onClick={onGroupClick} disabled={numSelected === 1 ||!groupName.length}>
+            <LinkIcon />            
           </IconButton>          
         </Tooltip>
        
@@ -82,7 +93,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function DenseTable({ data, tableName, handleClickGroup }) {
+export default function DenseTable({ data, tableName, onGroupClick }) {
   const classes = useStyles();
   const [selected, setSelected] = React.useState([]);
   const [groupName, setGroupName] = React.useState('');
@@ -116,9 +127,9 @@ export default function DenseTable({ data, tableName, handleClickGroup }) {
         numSelected={selected.length}
         groupName={groupName}
         setGroupName={setGroupName}
-        handleClickGroup={() =>
+        onGroupClick={() =>
           {
-            handleClickGroup(
+            onGroupClick(
               selected.map((each) => data.find((item) => item.studio_name === each)),
               groupName,
             );
