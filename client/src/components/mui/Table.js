@@ -7,7 +7,8 @@ import {
   Typography,
   Tooltip,
   IconButton,
-  TextField
+  TextField,
+  Dialog
 } from '@material-ui/core';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -16,8 +17,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import clsx from 'clsx';
-import GroupIcon from '@material-ui/icons/Group';
 import LinkIcon from '@material-ui/icons/Link';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const useToolbarStyles = makeStyles((theme) => ({
   root: {
@@ -38,17 +40,16 @@ const useToolbarStyles = makeStyles((theme) => ({
     flex: '1 1 100%',
   },
   input: {
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   button: {
     marginLeft: '15px',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
 }));
 
-const EnhancedTableToolbar = ({ numSelected, onGroupClick, setGroupName, groupName}) => {
+const EnhancedTableToolbar = ({ numSelected, onGroupClick, setGroupName, groupName }) => {
   const classes = useToolbarStyles();
-  
 
   return (
     <Toolbar
@@ -56,29 +57,37 @@ const EnhancedTableToolbar = ({ numSelected, onGroupClick, setGroupName, groupNa
         [classes.highlight]: numSelected > 0,
       })}
     >
-      {numSelected > 0 ? (
-        <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
-          {numSelected} selected
+      {numSelected > 0 ? (<>
+        <Typography variant="subtitle1" component="div">
+          Сгруппировать?
         </Typography>
+        <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
+          {numSelected} выбрано
+        </Typography></>
       ) : (
         ''
       )}
 
-      {numSelected > 0 ? (<>
-        <TextField 
-          className={classes.input}
-          value={groupName}
-          onChange={(e)=>setGroupName(e.target.value)}
-          label='Название группы' variant="outlined" style={{width: '220px'}}/>
-        <Tooltip title="Сгруппировать">
-        
-          <IconButton 
-          className={classes.button}
-          aria-label="delete" onClick={onGroupClick} disabled={numSelected === 1 ||!groupName.length}>
-            <LinkIcon />            
-          </IconButton>          
-        </Tooltip>
-       
+      {numSelected > 0 ? (
+        <>
+          <TextField
+            className={classes.input}
+            value={groupName}
+            onChange={(e) => setGroupName(e.target.value)}
+            label="Название группы"
+            variant="outlined"
+            style={{ width: '220px' }}
+          />
+          <Tooltip title="Сгруппировать">
+            <IconButton
+              className={classes.button}
+              aria-label="delete"
+              onClick={onGroupClick}
+              disabled={numSelected === 1 || !groupName.length}
+            >
+              <LinkIcon />
+            </IconButton>
+          </Tooltip>
         </>
       ) : (
         ''
@@ -87,17 +96,36 @@ const EnhancedTableToolbar = ({ numSelected, onGroupClick, setGroupName, groupNa
   );
 };
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 650,
   },
-});
+  item: {
+    display: 'flex',
+    alignItems: 'center',
+    
+  },
+  schedule: {
+    padding: '5px',
+    backgroundColor: theme.palette.primary.main,
+    color: '#fff',
+  },
+  age: {
+    padding: '5px',
+    backgroundColor: theme.palette.secondary.main,
+    color: '#fff',
+  },
+  controls: {
+    flex: 1,
+    textAlign: 'right',
+    cursor: 'pointer'
+  },
+}));
 
-export default function DenseTable({ data, tableName, onGroupClick }) {
+export default function DenseTable({ data, tableName, onGroupClick, onEdit, onDelete}) {
   const classes = useStyles();
   const [selected, setSelected] = React.useState([]);
   const [groupName, setGroupName] = React.useState('');
-
 
   const handleClick = (e, name) => {
     const selectedIndex = selected.indexOf(name);
@@ -116,10 +144,10 @@ export default function DenseTable({ data, tableName, onGroupClick }) {
       );
     }
 
-    setSelected(newSelected);    
+    setSelected(newSelected);
   };
 
-  const isSelected = (name) => selected.indexOf(name) !== -1;  
+  const isSelected = (name) => selected.indexOf(name) !== -1;
 
   return (
     <>
@@ -127,17 +155,15 @@ export default function DenseTable({ data, tableName, onGroupClick }) {
         numSelected={selected.length}
         groupName={groupName}
         setGroupName={setGroupName}
-        onGroupClick={() =>
-          {
-            onGroupClick(
-              selected.map((each) => data.find((item) => item.studio_name === each)),
-              groupName,
-            );
+        onGroupClick={() => {
+          onGroupClick(
+            selected.map((each) => data.find((item) => item.studio_name === each)),
+            groupName,
+          );
 
-            setSelected([]);
-            setGroupName('');
-          }          
-        }
+          setSelected([]);
+          setGroupName('');
+        }}
       />
 
       <TableContainer component={Paper}>
@@ -149,13 +175,27 @@ export default function DenseTable({ data, tableName, onGroupClick }) {
           </TableHead>
           <TableBody>
             {data.map((row) => (
-              <TableRow key={row.studio_name} hover selected={isSelected(row.studio_name)}>
-                <TableCell component="th" scope="row">
+              <TableRow key={row.studio_name} hover selected={isSelected(row.studio_name)}>                
+                <TableCell component="th" scope="row" className={classes.item}>
                   <Checkbox
                     onClick={(e) => handleClick(e, row.studio_name)}
                     checked={isSelected(row.studio_name)}
                   />
-                  {row.studio_name}
+                  <Typography variant="h6">{row.studio_name}</Typography>
+                  <div className={classes.schedule}>
+                    <span>Пн, Вт 16:00-17:00</span>
+                  </div>
+                  <div className={classes.age}>
+                    <span>6-15лет</span>
+                  </div>
+                  <div className={classes.controls}>
+                    <IconButton aria-label="edit" onClick={()=>onEdit(row.id)}>
+                      <EditIcon />
+                    </IconButton>
+                    <IconButton aria-label="delete" onClick={()=>onDelete(row.id)}>
+                      <DeleteIcon />
+                    </IconButton>
+                  </div>
                 </TableCell>
               </TableRow>
             ))}

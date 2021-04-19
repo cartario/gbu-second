@@ -64,7 +64,7 @@ const adminStudiosSlice = createSlice({
         studiosWithoutGroupName: state.studiosWithoutGroupName.filter((each)=>each.id!==id)
       }
       
-    },       
+    }    
   }
 });
 

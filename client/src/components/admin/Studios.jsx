@@ -1,19 +1,19 @@
 import React from 'react';
 import useHttp from '../../hooks/custom.hook';
-import { Paper } from '@material-ui/core';
-import { Input, Button, Table } from '../mui';
+import { Paper, Dialog } from '@material-ui/core';
+import { Input, Button, Table, TableGroupedName, StudioModal } from '../mui';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   setAllStudios,
   addStudio,
-  addStudioWithGroupName,  
-  removeStudioWithoutGroupNameById,  
+  addStudioWithGroupName,
+  removeStudioWithoutGroupNameById,
   removeStudioWithGroupName,
   addStudioWihoutGroupName,
 } from '../../redux/adminStudiosReducer';
 import { fireBaseAdapter } from '../../utils';
 import LinkOffIcon from '@material-ui/icons/LinkOff';
-import {Button as ButtonMUI} from '@material-ui/core';
+import { Button as ButtonMUI } from '@material-ui/core';
 
 const BASE_URL = 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/adminPage/studios';
 
@@ -26,8 +26,9 @@ const initialState = {
 const NewStudioForm = ({ setToggle }) => {
   const { request } = useHttp();
   const [form, setForm] = React.useState(initialState);
+  
   const dispatch = useDispatch();
-
+  
   const handleChange = (obj) => {
     const { name, value } = obj;
 
@@ -69,6 +70,9 @@ const NewStudioForm = ({ setToggle }) => {
 export default function Studios() {
   const { request } = useHttp();
   const [toggle, setToggle] = React.useState(false);
+  const [modal, setModal] = React.useState(false);
+  const [currentId, setCurrentId] = React.useState(null);
+  
   const { allStudios, studiosWithoutGroupName, studiosWithGroupName } = useSelector(
     ({ adminStudios }) => adminStudios,
   );
@@ -90,6 +94,10 @@ export default function Studios() {
         </Paper>
       </div>
     );
+  };
+
+  const handleToggleModal = (value) => {
+    setModal(value)
   }
 
   const handleGroup = (obj, name) => {
@@ -114,6 +122,18 @@ export default function Studios() {
     });
   };
 
+  const handleDelete = async (id)=>{
+    if(window.confirm('Вы действительно хотите удалить?')){
+      dispatch(removeStudioWithoutGroupNameById(id));
+      await request(`${BASE_URL}/${id}.json`, 'DELETE');
+    }
+  }
+
+  const handleEdit = (id)=>{
+    setCurrentId(id);
+    handleToggleModal(true);
+  }
+
   return (
     <div className="admin-studios__wrap">
       <Paper elevation={3}>
@@ -132,27 +152,38 @@ export default function Studios() {
 
             <Table
               onGroupClick={handleGroup}
+              onDelete={handleDelete}
+              onEdit={handleEdit}              
               tableName="Студии/секции:"
               data={studiosWithoutGroupName}
             />
-
+            
+            <StudioModal id={currentId} modal={modal} handleToggleModal={handleToggleModal}/>
+            
             {studiosWithGroupName.map((item) => {
               return (
                 <>
+                  
+
                   {item.length ? (
-                    <div style={{margin: '10px'}}>
-                      groupedName {item[0].group_name} ---{' '}
-                      {item.map((each) => (
-                        <span>{each.id}__</span>
-                      ))}
-                      
-                      <ButtonMUI
-                        onClick={() => handleUngroup(item)}
-                        variant="contained"
-                        color="secondary"                        
-                        startIcon={<LinkOffIcon />}
-                      >Разгруппировать</ButtonMUI>
-                    </div>
+                    <>
+                      <TableGroupedName data={item} onUngroup={handleUngroup}/>
+
+                      {/* <div style={{ margin: '10px' }}>
+                        groupedName {item[0].group_name} ---{' '}
+                        {item.map((each) => (
+                          <span>{each.id}__</span>
+                        ))}
+                        <ButtonMUI
+                          onClick={() => handleUngroup(item)}
+                          variant="contained"
+                          color="secondary"
+                          startIcon={<LinkOffIcon />}
+                        >
+                          Разгруппировать
+                        </ButtonMUI>
+                      </div> */}
+                    </>
                   ) : (
                     ''
                   )}
