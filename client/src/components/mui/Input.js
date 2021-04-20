@@ -41,7 +41,7 @@ export default function BasicTextFields({text, data, name, next}) {
       value={value}
       className={classes.input}
       onChange={handleChange}
-      
+      error={!value}
       id="outlined-basic" label={text} variant="outlined" />      
     </div>
   );

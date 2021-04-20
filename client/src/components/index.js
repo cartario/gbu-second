@@ -24,3 +24,4 @@ export {default as AdminPageTemplate} from './admin/admin-page-template';
 export {default as AdminAddButton} from './admin/admin-add-button';
 export {default as Studios} from './admin/Studios';
 export {default as NewStudio} from './admin/NewStudioForm';
+export {default as Schedule} from './admin/admin-newStudio-schedule';

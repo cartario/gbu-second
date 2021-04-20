@@ -5,6 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
+
 const useStyles = makeStyles((theme) => ({
   formControl: {    
     margin: theme.spacing(1),
@@ -12,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down(415)]: {
       width: '90%',
     },
+    textAlign: 'left'
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -20,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleSelect({label, data, name, next}) {
   const classes = useStyles();
-  const [value, setValue] = React.useState('');
+  const [value, setValue] = React.useState(null);
 
   const handleChange = (event) => {
     setValue(event.target.value);  
@@ -37,9 +39,10 @@ export default function SimpleSelect({label, data, name, next}) {
 
   return (
     <div>
-      <FormControl className={classes.formControl}>
+      <FormControl className={classes.formControl} variant='outlined'>
         <InputLabel id="demo-simple-select-label">{label}</InputLabel>
-        <Select
+        <Select          
+          error={!value}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={value}
