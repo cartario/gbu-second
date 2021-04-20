@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+
 import {Footer} from './components';
+import {Backdrop} from './components/mui';
 import { AuthConext } from './context/auth.context';
 import useAuth from './hooks/auth.hook';
 
@@ -9,12 +11,13 @@ DetailPage, Minors, Admin, extrapages, Page1, Page2, Page3, PageJoin,CreateNewPa
 
 import { adapterCreatePage as adapter } from './utils';
 
+
 function App() {
   const { token, userId, login, logout } = useAuth();
   const isAuth = !!token;
 
   const [data, setData] = React.useState(null);
-
+  
   React.useEffect(() => {
     const fetchData = async () => {
       try {
@@ -38,7 +41,7 @@ function App() {
       <>
         <div className="App">
           <div className="App__content">
-            <p>Loading pages...</p>
+          <Backdrop />
           </div>
         </div>
       </>
@@ -53,7 +56,7 @@ function App() {
   return (
     <AuthConext.Provider value={{ token, userId, isAuth, login, logout }}>
       <div className="App">
-        <div className="App__content">
+        <div className="App__content">       
           {isAuth ? (
             <div>
               <Route path="/" exact>

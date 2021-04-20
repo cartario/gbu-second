@@ -14,3 +14,5 @@ export const MONTH_NAMES = [
   'НОЯБРЬ',
   'ДЕКАБРЬ',
 ];
+
+export const BASE_URL = 'https://centerdaniil-b74b6-default-rtdb.firebaseio.com/adminPage/studios';

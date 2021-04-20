@@ -8,10 +8,21 @@ Studios} from '../components';
 import useHttp from '../hooks/http.hook';
 import { AuthConext } from '../context/auth.context';
 
+import {Backdrop, CircularProgress} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(() => ({
+  backdrop: {
+    zIndex: 2,
+    color: '#fff',
+  },
+}));
+
 const AdminPage = ({paths}) => {
+  const classes = useStyles();
   const { request} = useHttp();
   const [events, setEvents] = React.useState(null);
-  const [studios, setStudios] = React.useState(null);
+  const [studios, setStudios] = React.useState(null);  
 
   const auth = useContext(AuthConext);
 
@@ -51,7 +62,9 @@ const AdminPage = ({paths}) => {
   }, [getStudios, getEvents]);
 
   if (!studios) {
-    return <h1>Loading...</h1>;
+    return (<Backdrop className={classes.backdrop} open>
+      <CircularProgress color="inherit" />
+    </Backdrop>)
   }
 
   const namesOfGroup = [...new Set(studios.map((studio) => studio.name))];
